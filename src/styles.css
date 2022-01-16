@@ -1,1 +1,361 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=Nunito:wght@200;300;400;600&family=Raleway:wght@100;300;400;500;600&display=swap");
+* {
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  text-transform: capitalize;
+  transition: all 0.2s linear;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+html::-webkit-scrollbar-thumb {
+  background: #0eb582;
+}
+
+section {
+  padding: 5rem 9%;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1rem 3rem;
+  font-size: 1.8rem;
+  border: 0.1rem solid #0eb582;
+  background: #f0fdfa;
+  color: #0eb582;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #0eb582;
+  color: #fff;
+  padding-right: 5rem;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 9%;
+  z-index: 10000;
+  background: #444;
+}
+.header .logo {
+  font-weight: bolder;
+  color: #0eb582;
+  font-size: 3rem;
+}
+.header .logo span {
+  color: #eee;
+}
+.header .navbar a {
+  display: inline-block;
+  padding: 1.5rem 2rem;
+  font-size: 1.7rem;
+  color: #eee;
+}
+.header .navbar a:hover {
+  color: #0eb582;
+}
+
+#menu-btn {
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+.home {
+  padding: 0;
+}
+.home .slide {
+  min-height: 90vh;
+  background-size: cover;
+  background-position: center;
+  padding: 2rem 9%;
+  display: flex;
+  align-items: center;
+}
+.home .slide01 {
+  background-image: url(../src/assets/img/img01.jpg);
+  background-repeat: no-repeat;
+}
+
+.home .slide02 {
+  background-image: url(../src/assets/img/img02.jpg);
+  background-repeat: no-repeat;
+}
+.home .slide03 {
+  background-image: url(../src/assets/img/img03.jpg);
+  background-repeat: no-repeat;
+}
+.home .content {
+  width: 60rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.home .content span {
+  font-size: 2rem;
+  color: white;
+  display: block;
+}
+.home .content h3 {
+  font-size: 5rem;
+  color: white;
+  padding: 1rem 0;
+}
+.home .content:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.swiper-pagination-bullet {
+  height: 2rem;
+  width: 2rem;
+  background: #fff;
+}
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: #0eb582;
+}
+
+.about h3 {
+  font-size: 4rem;
+  color: #777;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.about .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+.about .card {
+  padding: 2rem;
+  height: 30rem;
+  width: 35rem;
+  background-color: #f0fdfa;
+  border-radius: 1rem;
+}
+.about .card h3 {
+  font-size: 2.5rem;
+  margin: 2rem 0 2rem 0;
+}
+.about .card p {
+  font-size: 1.7rem;
+}
+.about .card:hover {
+  background-color: #444;
+  color: #fff;
+}
+.about .card:hover h3 {
+  color: #0eb582;
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+.contact .icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
+  flex: 1 1 auto;
+}
+.contact .icons .icons-content i {
+  font-size: 3rem;
+  padding: 1rem;
+  border-radius: 50%;
+  background: #f0fdfa;
+  margin-right: 2rem;
+}
+.contact .icons .icons-content i:hover {
+  background: #0eb582;
+}
+.contact .icons .icons-content span {
+  font-size: 2rem;
+}
+.contact .form {
+  background: #f0fdfa;
+  padding: 2rem;
+  border-radius: 1rem;
+  flex: 1 1 auto;
+}
+.contact .form h3 {
+  font-size: 3rem;
+  text-align: center;
+  color: #777;
+  margin: 2rem 0 2rem 0;
+}
+.contact .form label {
+  font-size: 2rem;
+  display: block;
+  margin: 0.5rem 0 0.5rem 0;
+}
+.contact .form input {
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 0 1rem 0;
+  width: 100%;
+}
+.contact .form .btn-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0 1rem 0;
+}
+
+.footer {
+  background: #444;
+  padding: 2rem;
+}
+.footer h3 {
+  text-align: center;
+  font-size: 2rem;
+  color: #eee;
+}
+.footer span {
+  color: #0eb582;
+}
+
+/********************************/
+/*login Styles*/
+/*******************************/
+.login {
+  height: 92vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login .card-login {
+  height: 44rem;
+  width: 30rem;
+  border: 0.1rem solid #0eb582;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  background: #f0fdfa;
+  color: #0eb582;
+}
+.login .card-login i {
+  font-size: 7rem;
+  text-align: center;
+  display: block;
+}
+.login .card-login h3 {
+  font-size: 4rem;
+  text-align: center;
+  margin: 2rem 0 2rem 0;
+}
+.login .card-login label,
+.login .card-login input {
+  display: block;
+}
+.login .card-login label {
+  margin: 0.5rem 0 0.5rem 0;
+  font-size: 2.5rem;
+}
+.login .card-login input {
+  width: 100%;
+  border-radius: 1rem;
+  border: none;
+  padding: 1rem 0.5rem 1rem 0.5rem;
+}
+.login .card-login .login-btn {
+  text-align: center;
+  margin: 2rem 0 2rem 0;
+}
+.login .card-login .login-btn button {
+  padding: 1rem 3rem 1rem 3rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #0eb582;
+  font-size: 2rem;
+  color: #0eb582;
+  background: #f0fdfa;
+}
+.login .card-login .login-btn button:hover {
+  color: white;
+  background: #0eb582;
+  cursor: pointer;
+}
+
+/**********************************************************************************/
+/*Media Queries*/
+/**********************************************************************************/
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+
+  .home .slide {
+    padding: 2rem 5%;
+  }
+  .home .slide .content {
+    width: 50rem;
+  }
+  .home .slide h3 {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 768px) {
+  #menu-btn {
+    display: inline-block;
+  }
+  #menu-btn.fa-times {
+    transform: rotate(180deg);
+  }
+
+  .header .navbar {
+    position: absolute;
+    top: 99%;
+    left: 0;
+    right: 0;
+    background: #444;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  .header .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .header .navbar a {
+    display: block;
+    font-size: 2rem;
+  }
+
+  .contact .icons {
+    margin-bottom: 4rem;
+  }
+}
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

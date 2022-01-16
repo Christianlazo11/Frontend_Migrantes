@@ -1,1 +1,14 @@
-<p>navbar works!</p>
+<header class="header">
+  <a href="index.html" class="logo">
+    <p>Migrantes <span>2022</span></p>
+  </a>
+
+  <div id="menu-btn" class="fa fa-bars"></div>
+
+  <nav class="navbar">
+    <a routerLink="/inicio">Inicio</a>
+    <a routerLink="/encuesta/realizar-encuesta">Ingresar Encuesta</a>
+    <a (click)="buttonClick('about')">Nosotros</a>
+    <a (click)="buttonClick('contact')">Contacto</a>
+  </nav>
+</header>
