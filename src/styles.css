@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=Nunito:wght@200;300;400;600&family=Raleway:wght@100;300;400;500;600&display=swap");
+@import '~font-awesome/css/font-awesome.css';
 * {
   font-family: "Nunito", sans-serif;
   margin: 0;
@@ -58,7 +59,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 9%;
+  padding: 1rem 9%;
   z-index: 10000;
   background: #444;
 }
