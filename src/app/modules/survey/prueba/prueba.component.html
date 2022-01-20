@@ -1,0 +1,25 @@
+
+
+
+<section class="pregunta" id="pregunta">
+
+    <h3>Encuesta</h3>
+    <div class="content"
+    *ngFor='let index of data; let i = index; let even =even'>
+      <div class="card">
+        <h3> {{data[i].Descripcion}}</h3>
+            <!-- <p *ngIf="{{data[i].Tipo}}=='text'">
+                
+            </p> -->
+            <input id="i" type="{{data[i].Tipo}}" />
+            
+            <p>{{data[i].Tipo}}
+            <p
+            *ngFor='let index of data[i].NoOp; let a = index; let even =even'>
+            {{data[i].NoOp[a]}}
+            </p>
+           
+      </div>
+    </div>
+</section>
+          

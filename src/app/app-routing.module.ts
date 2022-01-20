@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+
 import { ErrorComponent } from './templates/error/error.component';
 import { HomeComponent } from './templates/home/home.component';
 
@@ -36,6 +37,7 @@ const routes: Routes = [
     path: '**',
     component: ErrorComponent,
   },
+  
 ];
 
 const routerOptions: ExtraOptions = {

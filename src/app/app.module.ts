@@ -8,13 +8,14 @@ import { FooterComponent } from './templates/footer/footer.component';
 import { HomeComponent } from './templates/home/home.component';
 import { ErrorComponent } from './templates/error/error.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

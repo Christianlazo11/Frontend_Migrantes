@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { SurveyRoutingModule } from './survey-routing.module';
 import { DoSurveyComponent } from './do-survey/do-survey.component';
+import { PruebaComponent } from './prueba/prueba.component';
 
 
 @NgModule({
   declarations: [
-    DoSurveyComponent
+    DoSurveyComponent,
+    PruebaComponent
   ],
   imports: [
     CommonModule,

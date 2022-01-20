@@ -360,3 +360,38 @@ section {
 }
 
 /*# sourceMappingURL=style.css.map */
+/**********************************************************************************/
+/*Preguntas*/
+/**********************************************************************************/
+.pregunta{padding: 10rem 0;}
+
+.pregunta h3 {
+  font-size: 4rem;
+  color: #777;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.pregunta .content {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+.pregunta .card {
+  padding: 2rem;
+  height: auto;
+  width: 100rem;
+  background-color: #f0fdfa;
+  border-radius: 1rem;
+}
+.pregunta .card h3 {
+  font-size: 2.5rem;
+  margin: 2rem 0 2rem 0;
+  text-align: left;
+}
+.pregunta .card p {
+  font-size: 1.7rem;
+  margin: 2rem ;
+}
