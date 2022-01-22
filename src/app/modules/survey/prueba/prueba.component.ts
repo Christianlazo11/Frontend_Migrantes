@@ -1,23 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Directive, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-prueba',
   templateUrl: './prueba.component.html',
   styleUrls: ['./prueba.component.css']
 })
+
 export class PruebaComponent implements OnInit {
+  item : any
   preguntas: any
   data : any
 
+  constructor() { 
+  }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.preguntas = {
       1: {
         "Descripcion": "Número de encuesta",
-        "Tipo": "text",
+        "Tipo":'text',
         "NoOp": [""]
       },
       2: {

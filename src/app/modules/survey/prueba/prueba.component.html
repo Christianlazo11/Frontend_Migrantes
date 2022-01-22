@@ -1,25 +1,49 @@
-
-
-
 <section class="pregunta" id="pregunta">
 
-    <h3>Encuesta</h3>
-    <div class="content"
-    *ngFor='let index of data; let i = index; let even =even'>
-      <div class="card">
-        <h3> {{data[i].Descripcion}}</h3>
-            <!-- <p *ngIf="{{data[i].Tipo}}=='text'">
-                
-            </p> -->
-            <input id="i" type="{{data[i].Tipo}}" />
-            
-            <p>{{data[i].Tipo}}
-            <p
-            *ngFor='let index of data[i].NoOp; let a = index; let even =even'>
-            {{data[i].NoOp[a]}}
-            </p>
-           
-      </div>
+  <h3>Encuesta</h3>
+  <div class="content" *ngFor='let index of data; let i = index; let even =even'>
+    <div class="card">
+      <h3> {{data[i].Descripcion}}</h3>
+
+      <!-- <div *ngIf="i+1" (onCreate)="validartipo(data[i].Tipo)">
+              
+            </div> -->
+
+
+
+      <!-- <button (click)="validartipo(data[i].Tipo)">
+              {{texto}}
+              {{select}}
+              {{checkbox}}
+
+            </button> -->
+
+
+      <p *ngIf="data[i].Tipo === 'text'">
+        <input id="{{i+1}}" type="{{data[i].Tipo}}" />
+      </p>
+      <p *ngIf="data[i].Tipo === 'email'">
+        <input id="{{i+1}}" type="{{data[i].Tipo}}" />
+      </p>
+      <p *ngIf="data[i].Tipo === 'select'">
+        <select id="{{i+1}}">
+          <option *ngFor='let index of data[i].NoOp; let a = index; let even =even' value="{{data[i].NoOp[a]}}">
+            {{data[i].NoOp[a]}}</option>
+        </select>
+      </p>
+      <p *ngIf="data[i].Tipo === 'checkbox'">
+        
+        <label *ngFor='let index of data[i].NoOp; let a = index; let even =even'> <input id="'{{i+1}}'+'-'+'{{a+1}}'"  type="{{data[i].Tipo}}" />{{data[i].NoOp[a]}}<br></label>
+        
+      </p>
+
+
+
+  
+
+
+
+
     </div>
+  </div>
 </section>
-          

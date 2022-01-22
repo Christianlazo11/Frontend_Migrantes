@@ -372,15 +372,15 @@ section {
   margin-bottom: 3rem;
 }
 .pregunta .content {
-  margin: 30px;
+  margin: 20px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  gap: 3rem;
+  gap: 2rem;
 }
 .pregunta .card {
-  padding: 2rem;
+  padding: 1rem;
   height: auto;
   width: 100rem;
   background-color: #f0fdfa;
