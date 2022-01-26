@@ -80,6 +80,9 @@ section {
 .header .navbar a:hover {
   color: #0eb582;
 }
+.header .navbar a i {
+  font-size: 2rem;
+}
 
 #menu-btn {
   font-size: 3rem;
@@ -306,6 +309,105 @@ section {
   background: #0eb582;
   cursor: pointer;
 }
+
+/**********************************************************************************/
+/*Pollsters-search*/
+/**********************************************************************************/
+.pollsters{
+  height: 100vh;
+  padding: 8rem 9%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.pollsters .table {
+  width: 100%;
+  border: 0.1rem solid #0eb582;
+  /* padding: 1rem; */
+}
+.pollsters .table thead {
+  background-color: #0eb582;
+}
+.pollsters .table th {
+  font-size: 2rem;
+  /* background-color: #0eb582; */
+}
+.pollsters .table tbody tr:nth-child(odd) {
+  background-color: #e1e1e1;
+}
+.pollsters .table td {
+  font-size: 1.7rem;
+  text-align: center;
+  padding: 2rem 0;
+}
+.pollsters .btn {
+  margin-top: 4rem;
+}
+
+.pollsters .card-login {
+  margin-top: 2rem;
+  height: 100%;
+  width: 40rem;
+  border: 0.1rem solid #0eb582;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  background: #f0fdfa;
+  color: #0eb582;
+}
+
+.pollsters .card-login h3 {
+  font-size: 4rem;
+  text-align: center;
+  margin: 2rem 0 2rem 0;
+}
+
+.pollsters .card-login label, input {
+  display: block;
+}
+
+.pollsters .card-login label {
+  margin: 0.5rem 0 0.5rem 0;
+  font-size: 2.5rem;
+}
+
+.pollsters .card-login input {
+  width: 100%;
+  border-radius: 1rem;
+  border: none;
+  padding: 1rem 0.5rem 1rem 0.5rem;
+}
+
+.pollsters .card-login select {
+  width: 100%;
+  border-radius: 1rem;
+  border: none;
+  padding: 1rem 0.5rem 1rem 0.5rem;
+}
+
+.pollsters .card-login .login-btn {
+  text-align: center;
+  margin: 2rem 0 2rem 0;
+}
+
+.pollsters .card-login .login-btn button{
+  padding: 1rem 3rem 1rem 3rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #0eb582;
+  font-size: 2rem;
+  color: #0eb582;
+  background: #f0fdfa;
+}
+
+.pollsters .card-login .login-btn button:hover {
+  color: white;
+  background: #0eb582;
+  cursor: pointer;
+}
+
 
 /**********************************************************************************/
 /*Media Queries*/

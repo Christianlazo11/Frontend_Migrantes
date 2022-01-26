@@ -1,1 +1,32 @@
-<p>create-user works!</p>
+<div class="pollsters">
+  <div class="card-login">
+    <h3>Crear Encuestador</h3>
+    <form [formGroup]="fgValidator" (ngSubmit)="SaveUser()">
+      <div>
+        <label for="name">nombre</label>
+        <input formControlName="name" id="name" type="text" />
+      </div>
+      <div>
+        <label for="lastName">apellido</label>
+        <input formControlName="lastName" id="lastname" type="text" />
+      </div>
+      <div>
+        <label for="document">número documento</label>
+        <input formControlName="document" id="document" type="number" />
+      </div>
+      <div>
+        <label for="email">correo</label>
+        <input formControlName="email" id="email" type="text" />
+      </div>
+      <div>
+        <label for="rol">rol</label>
+        <select formControlName="rol" name="" id="rol">
+          <option value="encuestador">encuestador</option>
+        </select>
+      </div>
+      <div class="login-btn">
+        <button [disabled]="!fgValidator.valid" type="submit">Crear</button>
+      </div>
+    </form>
+  </div>
+</div>

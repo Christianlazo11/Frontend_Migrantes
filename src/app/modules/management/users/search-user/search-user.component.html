@@ -1,1 +1,42 @@
-<p>search-user works!</p>
+<div class="pollsters get-users">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>nombre</th>
+        <th>apellido</th>
+        <th>Documento</th>
+        <th>usuario</th>
+        <th>contraseña</th>
+        <th><i class="fa fa-edit"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of listUsers">
+        <td>
+          {{ p.nombre }}
+        </td>
+        <td>
+          {{ p.apellido }}
+        </td>
+        <td>
+          {{ p.documento }}
+        </td>
+        <td>
+          {{ p.correo }}
+        </td>
+        <td>
+          {{ p.clave }}
+        </td>
+        <td>
+          <a routerLink="/administracion/editar-usuario/{{ p.id }}"
+            >Editar <i class="fa fa-edit"></i
+          ></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a class="btn" routerLink="/administracion/crear-usuario"
+    >Crear Encuestador</a
+  >
+</div>

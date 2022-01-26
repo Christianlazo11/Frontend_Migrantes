@@ -10,7 +10,7 @@ import { CreateUserComponent } from './users/create-user/create-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { DeleteUserComponent } from './users/delete-user/delete-user.component';
 import { SearchUserComponent } from './users/search-user/search-user.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,11 +21,13 @@ import { SearchUserComponent } from './users/search-user/search-user.component';
     CreateUserComponent,
     EditUserComponent,
     DeleteUserComponent,
-    SearchUserComponent
+    SearchUserComponent,
   ],
   imports: [
     CommonModule,
-    ManagementRoutingModule
-  ]
+    ManagementRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
-export class ManagementModule { }
+export class ManagementModule {}

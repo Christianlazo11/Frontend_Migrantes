@@ -21,7 +21,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'administración',
+    path: 'administracion',
     loadChildren: () =>
       import('./modules/management/management.module').then(
         (x) => x.ManagementModule
