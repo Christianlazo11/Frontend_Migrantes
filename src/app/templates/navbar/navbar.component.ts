@@ -1,5 +1,8 @@
 import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ModelIdentify } from 'src/app/models/Identify.model';
+import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,13 +10,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private router: Router, private el: ElementRef) {}
+  isLogin: boolean = false;
+
+  subs: Subscription = new Subscription();
+
+  constructor(
+    private router: Router,
+    private el: ElementRef,
+    private securityService: SecurityService
+  ) {}
 
   public buttonClick(fragment: string): void {
     this.router.navigateByUrl('#' + fragment);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subs = this.securityService
+      .GetDataUserSession()
+      .subscribe((data: ModelIdentify) => {
+        this.isLogin = data.isLog;
+      });
+
+    console.log(this.isLogin);
+  }
 
   responsiveNav() {
     let menu = this.el.nativeElement.querySelector('#menu-btn');

@@ -7,6 +7,7 @@ import { NavbarComponent } from './templates/navbar/navbar.component';
 import { FooterComponent } from './templates/footer/footer.component';
 import { HomeComponent } from './templates/home/home.component';
 import { ErrorComponent } from './templates/error/error.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -16,12 +17,16 @@ import { ErrorComponent } from './templates/error/error.component';
     FooterComponent,
     HomeComponent,
     ErrorComponent,
+<<<<<<< HEAD
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
+=======
+>>>>>>> 4ad218c110761233873fa71b1e7672188db35a8b
   ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
