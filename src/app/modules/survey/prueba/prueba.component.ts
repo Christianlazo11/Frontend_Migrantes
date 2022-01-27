@@ -1,4 +1,5 @@
 import { Component, Directive, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-prueba',
@@ -10,8 +11,24 @@ export class PruebaComponent implements OnInit {
   item : any
   preguntas: any
   data : any
+  fgValidator: FormGroup = this.fb.group({
+    
+    noEncuesta: ['',[Validators.required]],
+    municipio: ['',[Validators.required]],
+    correo: ['',[Validators.required]],
+    intencion: ['',[Validators.required]],
+    docCuenta: ['',[Validators.required]],
+    etnia: ['',[Validators.required]],
+    didentGenero: ['',[Validators.required]],
+    orSexual: ['',[Validators.required]]
 
-  constructor() { 
+
+  })
+
+  
+
+  constructor(private fb: FormBuilder) { 
+
   }
 
   ngOnInit(): void { 
@@ -88,6 +105,12 @@ export class PruebaComponent implements OnInit {
       }
     };
     this.data = Object.values(this.preguntas)
+  }
+  
+  guardarRespuesta(){
+    let respPreguntas: string[]=[]
+  
+
   }
 
 }

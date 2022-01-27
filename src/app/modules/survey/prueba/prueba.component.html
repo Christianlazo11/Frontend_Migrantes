@@ -1,50 +1,53 @@
 <section class="pregunta" id="pregunta">
 
   <h3>Encuesta</h3>
-  <div class="content" *ngFor='let index of data; let i = index; let even =even'>
-    <div class="card">
-      <h3> {{data[i].Descripcion}}</h3>
-
-
-
-      <p *ngIf="data[i].Tipo === 'text'">
-        <input id="{{i+1}}" type="{{data[i].Tipo}}" />
-      </p>
-      <p *ngIf="data[i].Tipo === 'email'">
-        <input id="{{i+1}}" type="{{data[i].Tipo}}" />
-      </p>
-      <p *ngIf="data[i].Tipo === 'select'">
-        <select id="{{i+1}}">
-          <option *ngFor='let index of data[i].NoOp; let a = index; let even =even' value="{{data[i].NoOp[a]}}">
-            {{data[i].NoOp[a]}}</option>
-        </select>
-      </p>
-      <!-- <div *ngFor='let index of data[i].NoOp; let a = index; let even =even' class="box">
-        <input *ngIf="data[i].Tipo === 'checkbox'" id="'{{i+1}}'+'-'+'{{a+1}}'" type="checkbox">
-        <span  class="check"></span>
-        <label for="'{{i+1}}'+'-'+'{{a+1}}'">{{data[i].NoOp[a]}}</label>
-
-
-      </div> -->
-      <p *ngIf="data[i].Tipo === 'checkbox'" >
-
-        
-        <label  *ngFor='let index of data[i].NoOp; let a = index; let even =even'  class="container">{{data[i].NoOp[a]}} 
-          
-          <input id="'{{i+1}}'+'-'+'{{a+1}}'"  type="{{data[i].Tipo}}">
-          <span class="checkmark"></span>
-          <br></label>
-      </p>
-
-
-
+  <form [formGroup]="fgValidator">
+    <div class="content" *ngFor='let index of data; let i = index; let even =even'>
+      <div class="card">
+        <h3> {{data[i].Descripcion}}</h3>
   
-
-
-
-
+        <p *ngIf="data[i].Tipo === 'text'">
+          <input formControlName="noEncuesta" id="{{i+1}}" type="{{data[i].Tipo}}" />
+        </p>
+        <p *ngIf="data[i].Tipo === 'email'">
+          <input id="{{i+1}}" type="{{data[i].Tipo}}" />
+        </p>
+        <p *ngIf="data[i].Tipo === 'select'">
+          <select id="{{i+1}}">
+            <option *ngFor='let index of data[i].NoOp; let a = index; let even =even' value="{{data[i].NoOp[a]}}">
+              {{data[i].NoOp[a]}}</option>
+          </select>
+        </p>
+        <!-- <div *ngFor='let index of data[i].NoOp; let a = index; let even =even' class="box">
+          <input *ngIf="data[i].Tipo === 'checkbox'" id="'{{i+1}}'+'-'+'{{a+1}}'" type="checkbox">
+          <span  class="check"></span>
+          <label for="'{{i+1}}'+'-'+'{{a+1}}'">{{data[i].NoOp[a]}}</label>
+  
+  
+        </div> -->
+        <p *ngIf="data[i].Tipo === 'checkbox'" >
+         
+          <label  *ngFor='let index of data[i].NoOp; let a = index; let even =even'  class="container">{{data[i].NoOp[a]}} 
+            
+            <input id="'{{i+1}}'+'-'+'{{a+1}}'"  type="{{data[i].Tipo}}">
+            <span class="checkmark"></span>
+            <br></label>
+        </p>
+  
+      </div>
+      
     </div>
-  </div>
+    <div>
+      <div class="card-login">
+        <div class="login-btn">
+          <button type="submit">Guardar</button>
+        </div>
+      </div>
+     
+  
+    </div> 
+  </form>
+
   
   
   
