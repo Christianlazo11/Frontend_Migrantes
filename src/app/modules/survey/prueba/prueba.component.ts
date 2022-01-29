@@ -1,5 +1,6 @@
 import { Component, Directive, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-prueba',
@@ -7,12 +8,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./prueba.component.css']
 })
 
+
 export class PruebaComponent implements OnInit {
   item : any
   preguntas: any
   data : any
+
   fgValidator: FormGroup = this.fb.group({
-    
     noEncuesta: ['',[Validators.required]],
     municipio: ['',[Validators.required]],
     correo: ['',[Validators.required]],
@@ -21,15 +23,39 @@ export class PruebaComponent implements OnInit {
     etnia: ['',[Validators.required]],
     didentGenero: ['',[Validators.required]],
     orSexual: ['',[Validators.required]]
-
-
   })
-
+// Checkbox intención
+//************************************************************************ */
+  form: FormGroup;
+  intenciones: Array<any> = [
+    { name: 'Cédula de ciudadanía venezolana', value: 'Cédula de ciudadanía venezolana' },
+    { name: 'PEP o PPPFF', value: 'PEP o PPPFF' },
+    { name: 'Pasaporte venezolano', value: 'Pasaporte venezolano' },
+    { name: 'Salvo conducto', value: 'Salvo conducto' },
+    { name: 'Tarjeta de movilidad fronteriza', value: 'Tarjeta de movilidad fronteriza' }
+  ];
   
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder) {
+    this.form = fb.group({
+      intencionSeleccionada:  new FormArray([])
+     });
 
   }
+  onCheckboxChange(event: any) {
+    const intencionSeleccionada = (this.form.controls['intencionSeleccionada'] as FormArray);
+    if (event.target.checked) {
+      intencionSeleccionada.push(new FormControl(event.target.value));
+    } else {
+      const index = intencionSeleccionada.controls
+      .findIndex(x => x.value === event.target.value);
+      intencionSeleccionada.removeAt(index);
+    }
+  }
+  submit() {
+    console.log(this.form.value);
+  }
+  //*********************************************** */
 
   ngOnInit(): void { 
     this.preguntas = {

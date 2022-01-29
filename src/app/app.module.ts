@@ -17,14 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     HomeComponent,
     ErrorComponent,
-<<<<<<< HEAD
+
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-=======
->>>>>>> 4ad218c110761233873fa71b1e7672188db35a8b
-  ],
+
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
