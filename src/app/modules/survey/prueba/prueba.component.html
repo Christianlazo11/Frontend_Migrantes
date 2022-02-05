@@ -1,131 +1,111 @@
 <section class="pregunta" id="pregunta">
 
   <h3>Encuesta</h3>
-  <form [formGroup]="fgValidator">
-    <div class="content">
-      <div class="card">
-        <h3> Número de encuesta</h3>
-        <input formControlName="noEncuesta" id="1" type="text" />
-        <button type="submit">Guardar</button>
+  <div class="content">
+    <div class="card">
+      <h3> Número de encuesta</h3>
+      <input formControlName="noEncuesta" id="1" type="text" />
+      <div class="survey-btn">
+        <button id="validarNoEncuesta" (click)="validarNoEncuesta()">Validar</button>
       </div>
     </div>
+  </div>
+  <form [formGroup]="fgValidator" (ngSubmit)="GuardarRespuestas()">
+    
 
-    <div class="content">
+    <div class="content" *ngIf="validador">
       <div class="card">
         <h3> Municipio</h3>
         <select formControlName="municipio" id="2">
-          <option value="2-1">Arauca</option>
-          <option value="2-2">Arauquita</option>
-          <option value="2-3">Saravena</option>
+          <option value="Arauca">Arauca</option>
+          <option value=">Arauquita">Arauquita</option>
+          <option value="Saravena">Saravena</option>
         </select>
-      </div>
-    </div>
 
-    <div class="content">
+      </div>
+
+      <div class="card">
+        <h3> Dirección de residencia</h3>
+        <input formControlName="direccion" id="3" type="text" />
+      </div>
+
       <div class="card">
         <h3> Correo</h3>
         <input formControlName="correo" id="3" type="email" />
       </div>
-    </div>
 
-    <div class="content">
+      <div class="card">
+        <h3> Telefono fijo o celular</h3>
+        <input formControlName="tel" id="3" type="text" />
+      </div>
+
       <div class="card">
         <h3> ¿2. Una vez ingresó a Colombia cuál fue su intención?</h3>
-        <select formControlName="municipio" id="4">
-          <option value="4-1">Establecer su domicilio en el país</option>
-          <option value="4-2">Transitar hacia otro país</option>
-          <option value="4-3">Trabajar por un tiempo para regresar a Venezuela</option>
-          <option value="4-4">Encontrarse con su familia</option>
+        <select formControlName="intencion" id="4">
+          <option value="Establecer su domicilio en el país">Establecer su domicilio en el país</option>
+          <option value="Transitar hacia otro país">Transitar hacia otro país</option>
+          <option value="Trabajar por un tiempo para regresar a Venezuela">Trabajar por un tiempo para regresar a
+            Venezuela</option>
+          <option value="ncontrarse con su familia">Encontrarse con su familia</option>
         </select>
       </div>
-    </div>
 
-    <div class="content">
       <div class="card">
-        <h3> ¿3. ¿Con que documento cuenta?</h3>
-        <label class="container">Cédula de ciudadanía venezolana
-          <input id="5-1" type="checkbox">
-          <span class="checkmark"></span><br>
-        </label>
-
-        <label class="container">PEP o PPPFF
-          <input id="5-2" type="checkbox">
-          <span class="checkmark"></span><br>
-        </label>
-
-        <label class="container">Pasaporte venezolano
-          <input id="5-3" type="checkbox">
-          <span class="checkmark"></span><br>
-        </label>
-
-        <label class="container">Salvo conducto
-          <input id="5-4" type="checkbox">
-          <span class="checkmark"></span><br>
-        </label>
-
-        <label class="container">Tarjeta de movilidad fronteriza
-          <input id="5-5" type="checkbox">
-          <span class="checkmark"></span><br>
-        </label>
+        <h3> 3. ¿Con que documento cuenta?</h3>
+        <div *ngFor="let doc of docs; let i=index">
+          <label class="container">
+            <input type="checkbox" formArrayName="docsSeleccionados" [value]="doc.value"
+              (change)="onCheckboxChange($event)" />
+            {{doc.name}}
+            <span class="checkmark"></span><br>
+          </label>
+        </div>
+        <p>{{ fgValidator.value | json }} </p>
       </div>
-    </div>
-  </form>
 
-  <form [formGroup]="form" (ngSubmit)="submit()" novalidate class="content">
-    <div class="card">
-      <h3> 3. ¿Con que documento cuenta?</h3>
-      <div *ngFor="let intencion of intenciones; let i=index">
-        <label class="container">
-          <input type="checkbox" formArrayName="intencionSeleccionada" [value]="intencion.value"
-            (change)="onCheckboxChange($event)" />
-          {{intencion.name}}
-          <span class="checkmark"></span><br>
-        </label>
-      </div>
-      <p>{{ form.value | json }}</p>
-    </div>
-    <button type="submit">Submit</button>
-  </form>
-
-  <form [formGroup]="fgValidator">
-    <div class="content">
       <div class="card">
         <h3> 4. De acuerdo con su cultura, pueblo o rasgos físicos; usted se auto reconoce como?</h3>
-        <select formControlName="municipio" id="6">
-          <option value="6-1">Mestizo</option>
-          <option value="6-2">Afrodescendiente</option>
-          <option value="6-3">Indígena</option>
-          <option value="6-4">Otro</option>
+        <select formControlName="etnia" id="6">
+          <option value="Mestizo">Mestizo</option>
+          <option value="Afrodescendiente">Afrodescendiente</option>
+          <option value="Indígena">Indígena</option>
+          <option value="Otro">Otro</option>
         </select>
       </div>
-    </div>
 
-    <div class="content">
       <div class="card">
         <h3> 5. ¿Cuál es su identidad de género?</h3>
-        <select formControlName="municipio" id="7">
-          <option value="7-1">Hombre</option>
-          <option value="7-2">Mujer</option>
-          <option value="7-3">Hombre trans</option>
-          <option value="7-4">Mujer trans</option>
-          <option value="7-5">Otro</option>
+        <select formControlName="identGenero" id="7">
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
+          <option value="Hombre trans">Hombre trans</option>
+          <option value="Mujer trans">Mujer trans</option>
+          <option value="Otro">Otro</option>
         </select>
       </div>
-    </div>
 
-    <div class="content">
       <div class="card">
-        <h3> 5. ¿Cuál es su identidad de género?</h3>
-        <select formControlName="municipio" id="8">
-          <option value="8-1">Hombre</option>
-          <option value="8-2">Mujer</option>
-          <option value="8-3">Hombre trans</option>
-          <option value="8-4">Mujer trans</option>
-          <option value="8-5">Otro</option>
+        <h3> 6. ¿Cuál de las siguientes opciones describe mejor su orientación sexual?</h3>
+        <select formControlName="orSexual" id="8">
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
+          <option value="Hombre trans">Hombre trans</option>
+          <option value="Mujer trans">Mujer trans</option>
+          <option value="Otro">Otro</option>
         </select>
       </div>
+    
+
+    <div class="survey-btn">
+      <button [disabled]="!fgValidator.valid" type="submit">Guardar</button>
     </div>
+  </div>
+
   </form>
+
+
+
+
 
 
 
