@@ -15,7 +15,7 @@ const routes: Routes = [
     component: CreatePersonComponent,
   },
   {
-    path: 'editar-persona',
+    path: 'editar-persona/:id',
     component: EditPersonComponent,
   },
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
     component: DeletePersonComponent,
   },
   {
-    path: 'buscar-persona',
+    path: 'lista-personas',
     component: SearchPersonComponent,
   },
   {

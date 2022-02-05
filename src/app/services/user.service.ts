@@ -17,8 +17,11 @@ export class UserService {
     this.token = this.securityService.GetToken();
   }
 
+  //Aplicamos un filtro para solo obtener los datos de los usuarios que tengan el rol encuestador
   GetData(): Observable<ModelUser[]> {
-    return this.http.get<ModelUser[]>(`${this.url}/usuarios`);
+    return this.http.get<ModelUser[]>(
+      `${this.url}/usuarios?filter={"where":{"rol":"encuestador"}}`
+    );
   }
 
   GetDataById(id: string): Observable<ModelUser> {

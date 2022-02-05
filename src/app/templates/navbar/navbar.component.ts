@@ -11,6 +11,7 @@ import { SecurityService } from 'src/app/services/security.service';
 })
 export class NavbarComponent implements OnInit {
   isLogin: boolean = false;
+  isAdmin: string = '';
 
   subs: Subscription = new Subscription();
 
@@ -29,6 +30,10 @@ export class NavbarComponent implements OnInit {
       .GetDataUserSession()
       .subscribe((data: ModelIdentify) => {
         this.isLogin = data.isLog;
+        if (data.datos?.rol === 'administrador') {
+          this.isAdmin = 'administrador';
+          console.log(data.datos.rol);
+        }
       });
 
     console.log(this.isLogin);

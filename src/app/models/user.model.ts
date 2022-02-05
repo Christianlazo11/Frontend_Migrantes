@@ -6,6 +6,7 @@ export class ModelUser {
   correo?: String;
   clave?: String;
   rol?: String;
+  estado?: String;
 }
 
 // "nombre": "string",

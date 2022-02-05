@@ -80,4 +80,14 @@ export class SecurityService {
       return '';
     }
   }
+
+  GelRol() {
+    let dataSession = localStorage.getItem('dataSession');
+    if (dataSession) {
+      let data = JSON.parse(dataSession);
+      return data.datos.rol;
+    } else {
+      return '';
+    }
+  }
 }
