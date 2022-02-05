@@ -28,7 +28,7 @@ export class IdentifyComponent implements OnInit {
     let user = this.fgValidator.controls['user'].value;
     let password = this.fgValidator.controls['password'].value;
     let encriptedKey = cryptoJS.MD5(password).toString();
-    this.serviceSecurity.IdentifyUser(user, encriptedKey).subscribe(
+    this.serviceSecurity.IdentifyUser(user, password).subscribe(
       (data: any) => {
         this.serviceSecurity.SaveSession(data);
         alert('Datos Correctos');

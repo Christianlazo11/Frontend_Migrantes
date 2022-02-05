@@ -10,9 +10,12 @@
     <a *ngIf="isLogin" routerLink="/encuesta/realizar-encuesta"
       >Ingresar Encuesta</a
     >
-    <a *ngIf="isLogin" routerLink="/administracion/lista-usuarios"
+    <a
+      *ngIf="isLogin && isAdmin == 'administrador'"
+      routerLink="/administracion/lista-usuarios"
       >Encuestadores</a
     >
+    <a *ngIf="isLogin" routerLink="/administracion/lista-personas">Personas</a>
     <a (click)="buttonClick('about')">Nosotros</a>
     <a (click)="buttonClick('contact')">Contacto</a>
     <a *ngIf="!isLogin" routerLink="/seguridad/identificar"

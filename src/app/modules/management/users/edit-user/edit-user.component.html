@@ -4,6 +4,7 @@
     <form [formGroup]="fgValidator" (ngSubmit)="EditUser()">
       <input type="hidden" formControlName="id" />
       <input type="hidden" formControlName="password" />
+      <input type="hidden" formControlName="state" />
       <div>
         <label for="name">nombre</label>
         <input formControlName="name" id="name" type="text" />
@@ -27,7 +28,9 @@
         </select>
       </div>
       <div class="login-btn">
-        <button [disabled]="!fgValidator.valid" type="submit">Crear</button>
+        <button [disabled]="!fgValidator.valid" type="submit">
+          Guardar Cambios
+        </button>
       </div>
     </form>
   </div>

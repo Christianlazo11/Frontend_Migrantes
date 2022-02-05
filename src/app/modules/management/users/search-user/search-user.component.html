@@ -7,6 +7,7 @@
         <th>Documento</th>
         <th>usuario</th>
         <th>contraseña</th>
+        <th>estado</th>
         <th><i class="fa fa-edit"></i></th>
       </tr>
     </thead>
@@ -26,6 +27,9 @@
         </td>
         <td>
           {{ p.clave }}
+        </td>
+        <td>
+          {{ p.estado }}
         </td>
         <td>
           <a routerLink="/administracion/editar-usuario/{{ p.id }}"
