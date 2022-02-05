@@ -9,6 +9,7 @@ import { HomeComponent } from './templates/home/home.component';
 import { ErrorComponent } from './templates/error/error.component';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     HomeComponent,
     ErrorComponent,
+
   ],
+
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

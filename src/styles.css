@@ -463,3 +463,110 @@ section {
 }
 
 /*# sourceMappingURL=style.css.map */
+/**********************************************************************************/
+/*Preguntas*/
+/**********************************************************************************/
+.pregunta{padding: 10rem 0;}
+
+.pregunta h3 {
+  font-size: 4rem;
+  color: #777;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.pregunta .content {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.pregunta .card {
+  padding: 1rem;
+  height: auto;
+  width: 100rem;
+  background-color: #f0fdfa;
+  border-radius: 1rem;
+}
+.pregunta .card h3 {
+  font-size: 2.5rem;
+  margin: 2rem 0 2rem 0;
+  text-align: left;
+}
+.pregunta .card p {
+  font-size: 1.7rem;
+  margin: 2rem ;
+}
+.pregunta .card input {
+  width: 100%;
+  border-radius: 1rem;
+  border: none;
+  padding: 1rem 0.5rem 1rem 0.5rem;
+}
+.pregunta .card select {
+  width: 100%;
+  border-radius: 1rem;
+  border: none;
+  padding: 1rem 0.5rem 1rem 0.5rem;
+}
+/*Checkbox*/
+/**********/
+
+/*Ocultar el checkbox por defecto*/
+
+.check input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;  
+}
+
+/*crear un checkbox con estilo*/
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/*cuando no se selecciona nada */
+.check:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/*cuando se selecciona */
+.check input:checked ~ .checkmark {
+  background-color: #0eb582;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.check input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.check .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
