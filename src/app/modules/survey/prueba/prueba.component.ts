@@ -202,28 +202,47 @@ export class PruebaComponent implements OnInit {
 
   validarNoEncuesta() {
     let NoEncuesta = (document.getElementById('1') as HTMLInputElement).value
-    this.serviceSurvey.GetData(NoEncuesta).subscribe( 
+    this.serviceSurvey.GetData(NoEncuesta).subscribe(
       (datos: ModelSurvey) => {
-        console.log(datos)
-        
-        Swal.fire({
-          title: 'Se encontró una encuesta, ¿Desea editarla?',
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: 'Si',
-          denyButtonText: `No`,
-        }).then((result) => {
-          if (result.isConfirmed) {
-            //Primero se deben activar los campos del formulario para que se puedan visualizar
-            this.validador = true
-            //Llenar los campos de la encuesta con los datos traidos de la base de datos
-            
 
-          } else if (result.isDenied) {            
-            Swal.fire('Ingrese otro número de encuesta')
-            this.validador = false
-          }
-        })
+        let listDatos = JSON.stringify(datos)
+        console.log(listDatos.length)
+        if (listDatos.length != 2) {
+          Swal.fire({
+            title: 'Se encontró una encuesta, ¿Desea editarla?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Si',
+            denyButtonText: `No`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              //Primero se deben activar los campos del formulario para que se puedan visualizar
+              this.validador = true
+              //Llenar los campos de la encuesta con los datos traidos de la base de datos
+            } else if (result.isDenied) {
+              Swal.fire('Ingrese otro número de encuesta')
+              this.validador = false
+            }
+          })
+        }
+        else {
+          Swal.fire({
+            title: 'No se encontro ninguna encuesta, ¿Desea Crear una encuenta?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Si',
+            denyButtonText: `No`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              //Primero se deben activar los campos del formulario para que se puedan visualizar
+              this.validador = true
+            } else if (result.isDenied) {
+              Swal.fire('Ingrese otro número de encuesta')
+              this.validador = false
+            }
+          })
+        }
       },
       (error) => {
         Swal.fire({
@@ -237,7 +256,7 @@ export class PruebaComponent implements OnInit {
           if (result.isConfirmed) {
             //Primero se deben activar los campos del formulario para que se puedan visualizar
             this.validador = true
-          } else if (result.isDenied) { 
+          } else if (result.isDenied) {
             Swal.fire('Ingrese otro número de encuesta')
             this.validador = false
 
