@@ -1,8 +1,15 @@
 import { Component, Directive, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { ModelDatos } from 'src/app/models/datos.model';
+import { ModelPerson } from 'src/app/models/person.model';
 import { ModelSurvey } from 'src/app/models/survey.model';
+import { ModelUser } from 'src/app/models/user.model';
+import { PersonService } from 'src/app/services/person.service';
 import { SurveyService } from 'src/app/services/survey.service';
+import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 import { SurveyRoutingModule } from '../survey-routing.module';
+
 
 
 @Component({
@@ -17,23 +24,29 @@ export class PruebaComponent implements OnInit {
   preguntas: any
   data: any
   validador = false
+  listSurvey: ModelSurvey[] = [];
+  listUsers: ModelUser[] = [];
+  listPeople: ModelPerson[] = [];
+
+  fgEncuesta: FormGroup = this.fb.group({
+    noEncuesta: ['', [Validators.required]],
+  })
 
   fgValidator: FormGroup = this.fb.group({
-    noEncuesta: ['', [Validators.required]],
     municipio: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
-    correo: ['', [Validators.required,Validators.email]],
+    correo: ['', [Validators.required, Validators.email]],
     tel: ['', [Validators.required]],
     intencion: ['', [Validators.required]],
     docsSeleccionados: new FormArray([]),
     etnia: ['', [Validators.required]],
     identGenero: ['', [Validators.required]],
     orSexual: ['', [Validators.required]]
-    
+
   })
   // Checkbox intención
   //************************************************************************ */
- 
+
   docs: Array<any> = [
     { name: 'Cédula de ciudadanía venezolana', value: 'Cédula de ciudadanía venezolana' },
     { name: 'PEP o PPPFF', value: 'PEP o PPPFF' },
@@ -44,9 +57,11 @@ export class PruebaComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private serviceSurvey: SurveyService
+    private serviceSurvey: SurveyService,
+    private userService: UserService,
+    private servicePerson: PersonService
 
-  ) { 
+  ) {
   }
 
   onCheckboxChange(event: any) {
@@ -58,11 +73,10 @@ export class PruebaComponent implements OnInit {
       const index = docsSeleccionados.controls
         .findIndex(x => x.value === event.target.value);
       docsSeleccionados.removeAt(index);
-
     }
   }
 
-  
+
   //*********************************************** */
 
   ngOnInit(): void {
@@ -142,7 +156,7 @@ export class PruebaComponent implements OnInit {
   }
   //Metodo para guardar las respuestas siempre y cuando los campos esten llenos
   GuardarRespuestas() {
-    let NoEncuesta = this.fgValidator.controls['noEncuesta'].value;
+    let NoEncuesta = this.fgEncuesta.controls['noEncuesta'].value;
     let Municipio = this.fgValidator.controls['municipio'].value;
     let Direccion = this.fgValidator.controls['direccion'].value;
     let Correo = this.fgValidator.controls['correo'].value;
@@ -174,23 +188,62 @@ export class PruebaComponent implements OnInit {
       }
     )
   }
-
-  validarNoEncuesta(){
-    let NoEncuesta = (document.getElementById('1') as HTMLSelectElement).value
-    this.serviceSurvey.GetSurveyById(NoEncuesta).subscribe(
-      (datos: ModelSurvey) => {
-        alert("Se encontró la encuesta")
-      },
-      (error: any) => {
-        alert("No se encontró ninguna encuesta con este número, desea crear una encuesta?")
-      }
-    )
-
-    console.log("el numero de encuesta es: ",NoEncuesta)
-
+  GetListUsers() {
+    this.userService.GetData().subscribe((data: ModelUser[]) => {
+      this.listUsers = data;
+    });
   }
 
+  GetListPeople() {
+    this.servicePerson.GetPeople().subscribe((datos: ModelPerson[]) => {
+      this.listPeople = datos;
+    });
+  }
 
+  validarNoEncuesta() {
+    let NoEncuesta = (document.getElementById('1') as HTMLInputElement).value
+    this.serviceSurvey.GetData(NoEncuesta).subscribe( 
+      (datos: ModelSurvey) => {
+        console.log(datos)
+        
+        Swal.fire({
+          title: 'Se encontró una encuesta, ¿Desea editarla?',
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: 'Si',
+          denyButtonText: `No`,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            //Primero se deben activar los campos del formulario para que se puedan visualizar
+            this.validador = true
+            //Llenar los campos de la encuesta con los datos traidos de la base de datos
+            
 
+          } else if (result.isDenied) {            
+            Swal.fire('Ingrese otro número de encuesta')
+            this.validador = false
+          }
+        })
+      },
+      (error) => {
+        Swal.fire({
+          title: 'No se encontro ninguna encuesta, ¿Desea Crear una encuenta?',
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: 'Si',
+          denyButtonText: `No`,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            //Primero se deben activar los campos del formulario para que se puedan visualizar
+            this.validador = true
+          } else if (result.isDenied) { 
+            Swal.fire('Ingrese otro número de encuesta')
+            this.validador = false
 
+          }
+        })
+      }
+    );
+  }
 }

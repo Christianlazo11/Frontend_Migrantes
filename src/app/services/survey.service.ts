@@ -50,7 +50,11 @@ export class SurveyService {
   GetSurveyById(id:string):Observable<ModelSurvey>{
     return this.http.get<ModelSurvey>(`${this.url}/encuestas/${id}`,{})
   }
-  GetSurveyByNoSurvey(no_encuesta:string):Observable<ModelSurvey>{
-    return this.http.get<ModelSurvey>(`${this.url}/encuestas/${no_encuesta}`,{})
+  
+  GetData(no_encuesta:string): Observable<ModelSurvey> {
+    return this.http.get<ModelSurvey>(
+      `${this.url}/encuestas?filter={"where":{"no_encuesta":${no_encuesta}}}`
+    );
   }
+
 }

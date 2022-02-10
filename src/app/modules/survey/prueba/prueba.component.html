@@ -1,17 +1,59 @@
 <section class="pregunta" id="pregunta">
 
   <h3>Encuesta</h3>
-  <div class="content">
+  <form [formGroup]="fgEncuesta" (ngSubmit)="validarNoEncuesta()">
+    <div class="content">
+      <div class="card">
+        <h3> Número de encuesta</h3>
+        <input formControlName="noEncuesta" id="1" type="text" />
+        <div class="survey-btn">
+          <button [disabled]="!fgEncuesta" type="submit">Validar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <!-- tabla nucleo familiar -->
+  <div class="content" *ngIf="validador">
     <div class="card">
-      <h3> Número de encuesta</h3>
-      <input formControlName="noEncuesta" id="1" type="text" />
-      <div class="survey-btn">
-        <button id="validarNoEncuesta" (click)="validarNoEncuesta()">Validar</button>
+      <h4> Nucleo Familiar </h4>
+      <div class="pollsters">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>nombre</th>
+              <th>apellido</th>
+              <th>documento</th>
+              <th>genero</th>
+              <th><i class="fa fa-edit"></i></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of listPeople">
+              <td>
+                {{ p.nombre }}
+              </td>
+              <td>
+                {{ p.apellido }}
+              </td>
+              <td>
+                {{ p.documento }}
+              </td>
+              <td>
+                {{ p.genero }}
+              </td>
+              <td>
+                <a routerLink="/administracion/editar-persona/{{ p.id }}">Editar <i class="fa fa-edit"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
+
   <form [formGroup]="fgValidator" (ngSubmit)="GuardarRespuestas()">
-    
+
 
     <div class="content" *ngIf="validador">
       <div class="card">
@@ -94,12 +136,11 @@
           <option value="Otro">Otro</option>
         </select>
       </div>
-    
+    </div>
 
-    <div class="survey-btn">
+    <div class="survey-btn" *ngIf="validador">
       <button [disabled]="!fgValidator.valid" type="submit">Guardar</button>
     </div>
-  </div>
 
   </form>
 

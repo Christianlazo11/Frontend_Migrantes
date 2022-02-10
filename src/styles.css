@@ -315,9 +315,9 @@ section {
 /**********************************************************************************/
 .pollsters{
   height: 100%;
-  min-height: 80rem;
-  padding: 8rem 9%;
-  display: flex;
+  /* min-height: 80rem; */
+  padding: 5rem 4%;
+  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -474,9 +474,15 @@ section {
   text-align: center;
   margin-bottom: 3rem;
 }
+.pregunta h4 {
+  font-size: 4rem;
+  color: #777;
+  text-align: center;
+  margin-bottom: 3rem;
+}
 .pregunta .content {
   margin: 20px;
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -495,6 +501,11 @@ section {
   font-size: 2.5rem;
   margin: 2rem 0 2rem 0;
   text-align: left;
+}
+.pregunta .card h4 {
+  font-size: 2.5rem;
+  margin: 1rem 0 1rem 0;
+  text-align: center;
 }
 .pregunta .card p {
   font-size: 1.7rem;
@@ -591,3 +602,6 @@ section {
 
 
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
