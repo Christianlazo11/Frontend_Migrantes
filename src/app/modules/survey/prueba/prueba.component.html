@@ -7,7 +7,7 @@
         <h3> Número de encuesta</h3>
         <input formControlName="noEncuesta" id="1" type="text" />
         <div class="survey-btn">
-          <button [disabled]="!fgEncuesta" type="submit">Validar</button>
+          <button [disabled]="!fgEncuesta" type="submit">Buscar</button>
         </div>
       </div>
     </div>
@@ -16,8 +16,13 @@
   <!-- tabla nucleo familiar -->
   <div class="content" *ngIf="validador">
     <div class="card">
-      <h4> Nucleo Familiar </h4>
-      <div class="pollsters">
+      
+      <div class="btncontent">
+        <h3> Nucleo Familiar </h3>
+        <a class="btn" routerLink="/administracion/crear-persona">Crear Persona</a> 
+       </div>
+      <div class="pollstersEncuesta">
+        
         <table class="table">
           <thead>
             <tr>
@@ -48,11 +53,13 @@
             </tr>
           </tbody>
         </table>
+        
+        
       </div>
     </div>
   </div>
 
-  <form [formGroup]="fgValidator" (ngSubmit)="GuardarRespuestas()">
+  <form [formGroup]="fgValidator" (ngSubmit)="ModificarEncuesta()">
 
 
     <div class="content" *ngIf="validador">
@@ -143,16 +150,6 @@
     </div>
 
   </form>
-
-
-
-
-
-
-
-
-
-
 
   <!-- <form [formGroup]="fgValidator">
     <div class="content" *ngFor='let index of data; let i = index; let even =even'>

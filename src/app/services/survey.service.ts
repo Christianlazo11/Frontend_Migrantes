@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ModelIdentify } from '../models/Identify.model';
 import { ModelSurvey } from '../models/survey.model';
 import { SecurityService } from './security.service';
 
@@ -10,6 +11,7 @@ import { SecurityService } from './security.service';
 export class SurveyService {
   url="http://localhost:3000";
   token:string="";
+  dataUserSession = new BehaviorSubject<ModelIdentify>(new ModelIdentify());
 
 
   constructor(
@@ -51,9 +53,10 @@ export class SurveyService {
     return this.http.get<ModelSurvey>(`${this.url}/encuestas/${id}`,{})
   }
   
-  GetData(no_encuesta:string): Observable<ModelSurvey> {
+  GetData(no_encuesta:number): Observable<ModelSurvey> {
     return this.http.get<ModelSurvey>(
-      `${this.url}/encuestas?filter={"where":{"no_encuesta":${no_encuesta}}}`
+      `${this.url}/encuestas?filter={"where":{"no_encuesta":"${no_encuesta}"}}`
+      
     );
   }
 

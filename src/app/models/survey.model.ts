@@ -1,6 +1,6 @@
 export class ModelSurvey {
     id?: string;
-    no_encuesta?: string;
+    no_encuesta?: number;
     municipio?: string;
     direccion?: string;
     correo?: string;
