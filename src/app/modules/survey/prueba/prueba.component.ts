@@ -10,6 +10,7 @@ import { SecurityService } from 'src/app/services/security.service';
 import { SurveyService } from 'src/app/services/survey.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
+import { __values } from 'tslib';
 import { SurveyRoutingModule } from '../survey-routing.module';
 
 
@@ -32,8 +33,14 @@ export class PruebaComponent implements OnInit {
   listPeople: ModelPerson[] = [];
 
   fgEncuesta: FormGroup = this.fb.group({
-    noEncuesta: ['', [Validators.required]],
-  })
+    // noEncuesta: ['', [Validators.required]]
+    noEncuesta: ['', [Validators.required,Validators.pattern(/^\d+$/)]]
+  });
+
+  // this.fgEncuesta.valueChanges.subscribe(values =>{
+
+  // });
+  
 
   fgValidator: FormGroup = this.fb.group({
     municipio: ['', [Validators.required]],
@@ -45,7 +52,6 @@ export class PruebaComponent implements OnInit {
     etnia: ['', [Validators.required]],
     identGenero: ['', [Validators.required]],
     orSexual: ['', [Validators.required]]
-
   })
   // Checkbox intención
   //************************************************************************ */
@@ -86,7 +92,7 @@ export class PruebaComponent implements OnInit {
   //*********************************************** */
 
   ngOnInit(): void {
- 
+
     this.preguntas = {
       1: {
         "Descripcion": "Número de encuesta",
@@ -197,7 +203,7 @@ export class PruebaComponent implements OnInit {
 
     let dataEncu = this.serviceSecurity.GetDataSession();
 
-    let NoEncuesta:number = this.fgEncuesta.controls['noEncuesta'].value;
+    let NoEncuesta: number = this.fgEncuesta.controls['noEncuesta'].value;
     let Municipio = this.fgValidator.controls['municipio'].value;
     let Direccion = this.fgValidator.controls['direccion'].value;
     let Correo = this.fgValidator.controls['correo'].value;
@@ -225,23 +231,28 @@ export class PruebaComponent implements OnInit {
         newSurvey.grupo_etnico = Etnia;
         newSurvey.ident_genero = IdentGenero;
         newSurvey.usuarioId = dataEncu.datos.id;
-    
-    
+
+
         this.serviceSurvey.UpdateSurvey(newSurvey).subscribe(
           (datos: ModelSurvey) => {
             alert('Encuesta Actualizada Correctamente');
             this.router.navigate(['/encuesta/prueba']);
             this.validador = false
+            this.fgEncuesta.controls['noEncuesta'].enable()
+            this.fgEncuesta.controls['noEncuesta'].reset()
+            
 
           },
           (error: any) => {
             alert('Error Actualizando la encuesta');
+            this.fgEncuesta.controls['noEncuesta'].reset()
           }
         );
-        
+
       },
       (error) => {
         alert("No se encontro la encuesta")
+        this.fgEncuesta.controls['noEncuesta'].reset()
 
       })
   }
@@ -259,25 +270,23 @@ export class PruebaComponent implements OnInit {
   }
 
   validarNoEncuesta() {
-    let NoEncuesta:number = this.fgEncuesta.controls['noEncuesta'].value;
+    let NoEncuesta: number = this.fgEncuesta.controls['noEncuesta'].value;
 
-    
+
     //Buscar el id del encuestador
     let dataEncu = this.serviceSecurity.GetDataSession();
-    // console.log(dataEncu.datos.id)
-    console.log(typeof(NoEncuesta))
-
-
+    console.log(dataEncu.datos.id)
+    // console.log(typeof(NoEncuesta))
+    
     this.serviceSurvey.GetData(NoEncuesta).subscribe(
       (datos: ModelSurvey) => {
-        // console.log(Object.values(datos)[0].id)
-
+        // console.log(Object.values(datos)[0].usuarioId)
+        // console.log(dataEncu.datos.id)
         let listDatos = JSON.stringify(datos)
-
-        console.log(listDatos)
+        // console.log(listDatos)
         console.log(listDatos.length)
 
-        if (listDatos.length != 2) {
+        if (listDatos.length != 2 && dataEncu.datos.id == Object.values(datos)[0].usuarioId) {
           Swal.fire({
             title: 'Se encontró una encuesta, ¿Desea editarla?',
             showDenyButton: true,
@@ -288,33 +297,42 @@ export class PruebaComponent implements OnInit {
             if (result.isConfirmed) {
               //Primero se deben activar los campos del formulario para que se puedan visualizar
               this.validador = true
+              this.fgEncuesta.controls['noEncuesta'].disable()
 
               //Llenar los campos de la encuesta con los datos traidos de la base de datos
             } else if (result.isDenied) {
               Swal.fire('Ingrese otro número de encuesta')
               this.validador = false
+              this.fgEncuesta.controls['noEncuesta'].reset()
             }
           })
         }
+        else if (listDatos.length != 2 && dataEncu.datos.id != Object.values(datos)[0].usuarioId) {
+          Swal.fire('Se encontro encuesta pero no la puede editar')
+          this.fgEncuesta.controls['noEncuesta'].reset()
+        }
         else {
           Swal.fire({
-            title: 'No se encontro ninguna encuesta, ¿Desea Crear una encuenta?',
+            title: 'No se encontro ninguna encuesta, ¿Desea Crear una encuesta?',
             showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: 'Si',
             denyButtonText: `No`,
           }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
               //Primero se deben activar los campos del formulario para que se puedan visualizar
               this.validador = true
+              this.fgEncuesta.controls['noEncuesta'].disable()
               //Crear la encuesta vacia
               this.CrearEncuesta()
-
             } else if (result.isDenied) {
               Swal.fire('Ingrese otro número de encuesta')
+              this.fgEncuesta.controls['noEncuesta'].reset()
               this.validador = false
             }
           })
+
         }
       },
       (error) => {
@@ -329,14 +347,17 @@ export class PruebaComponent implements OnInit {
           if (result.isConfirmed) {
             //Primero se deben activar los campos del formulario para que se puedan visualizar
             this.validador = true
+            this.fgEncuesta.controls['noEncuesta'].disable()
             //Crear la encuesta vacia
             this.CrearEncuesta()
           } else if (result.isDenied) {
             Swal.fire('Ingrese otro número de encuesta')
+            this.fgEncuesta.controls['noEncuesta'].reset()
             this.validador = false
           }
         })
       }
     );
   }
+
 }

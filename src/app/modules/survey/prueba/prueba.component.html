@@ -6,8 +6,9 @@
       <div class="card">
         <h3> Número de encuesta</h3>
         <input formControlName="noEncuesta" id="1" type="text" />
+        
         <div class="survey-btn">
-          <button [disabled]="!fgEncuesta" type="submit">Buscar</button>
+          <button [disabled]="!fgEncuesta.valid" type="submit">Buscar</button>
         </div>
       </div>
     </div>
