@@ -1,0 +1,18 @@
+<div class="search-survey">
+  <h1>Buscar Encuesta</h1>
+
+  <div class="search-survey-content">
+    <form
+      [formGroup]="fgEncuesta"
+      (ngSubmit)="validarNoEncuesta()"
+      class="search-survey-form"
+    >
+      <input
+        type="text"
+        formControlName="noEncuesta"
+        (keypress)="validateFormat($event)"
+      />
+      <button [disabled]="!fgEncuesta.valid">Buscar</button>
+    </form>
+  </div>
+</div>

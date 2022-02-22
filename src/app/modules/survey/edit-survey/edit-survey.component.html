@@ -1,0 +1,151 @@
+<div class="edit-survey">
+  <h1>Editar Encuesta</h1>
+  <div class="edit-survey-content">
+    <div class="edit-survey-content-left">
+      <h2>Formulario</h2>
+      <form>
+        <div class="content">
+          <div class="card">
+            <h3>Municipio</h3>
+            <select formControlName="municipio" id="2">
+              <option value="Arauca">Arauca</option>
+              <option value=">Arauquita">Arauquita</option>
+              <option value="Saravena">Saravena</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <h3>Dirección de residencia</h3>
+            <input formControlName="direccion" id="3" type="text" />
+          </div>
+
+          <div class="card">
+            <h3>Correo</h3>
+            <input formControlName="correo" id="3" type="email" />
+          </div>
+
+          <div class="card">
+            <h3>Telefono fijo o celular</h3>
+            <input formControlName="tel" id="3" type="text" />
+          </div>
+
+          <div class="card">
+            <h3>¿2. Una vez ingresó a Colombia cuál fue su intención?</h3>
+            <select formControlName="intencion" id="4">
+              <option value="Establecer su domicilio en el país"
+                >Establecer su domicilio en el país</option
+              >
+              <option value="Transitar hacia otro país"
+                >Transitar hacia otro país</option
+              >
+              <option value="Trabajar por un tiempo para regresar a Venezuela"
+                >Trabajar por un tiempo para regresar a Venezuela</option
+              >
+              <option value="ncontrarse con su familia"
+                >Encontrarse con su familia</option
+              >
+            </select>
+          </div>
+
+          <!-- <div class="card">
+            <h3>3. ¿Con que documento cuenta?</h3>
+            <div *ngFor="let doc of docs; let i=index">
+              <label class="container">
+                <input
+                  type="checkbox"
+                  formArrayName="docsSeleccionados"
+                  [value]="doc.value"
+                  (change)="onCheckboxChange($event)"
+                />
+                {{doc.name}}
+                <span class="checkmark"></span><br />
+              </label>
+            </div>
+            <p>{{ fgValidator.value | json }}</p>
+          </div> -->
+
+          <div class="card">
+            <h3>
+              4. De acuerdo con su cultura, pueblo o rasgos físicos; usted se
+              auto reconoce como?
+            </h3>
+            <select formControlName="etnia" id="6">
+              <option value="Mestizo">Mestizo</option>
+              <option value="Afrodescendiente">Afrodescendiente</option>
+              <option value="Indígena">Indígena</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <h3>5. ¿Cuál es su identidad de género?</h3>
+            <select formControlName="identGenero" id="7">
+              <option value="Hombre">Hombre</option>
+              <option value="Mujer">Mujer</option>
+              <option value="Hombre trans">Hombre trans</option>
+              <option value="Mujer trans">Mujer trans</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <h3>
+              6. ¿Cuál de las siguientes opciones describe mejor su orientación
+              sexual?
+            </h3>
+            <select formControlName="orSexual" id="8">
+              <option value="Hombre">Hombre</option>
+              <option value="Mujer">Mujer</option>
+              <option value="Hombre trans">Hombre trans</option>
+              <option value="Mujer trans">Mujer trans</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="survey-btn">
+          <button type="submit">Guardar</button>
+        </div>
+      </form>
+    </div>
+    <div class="edit-survey-content-right">
+      <h2>Grupo Familiar</h2>
+      <form action="">
+        <p>Personas</p>
+      </form>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>nombre</th>
+            <th>apellido</th>
+            <th>documento</th>
+            <th>genero</th>
+            <th><i class="fa fa-edit"></i></th>
+          </tr>
+        </thead>
+        <!-- <tbody>
+          <tr *ngFor="let p of listPeople">
+            <td>
+              {{ p.nombre }}
+            </td>
+            <td>
+              {{ p.apellido }}
+            </td>
+            <td>
+              {{ p.documento }}
+            </td>
+            <td>
+              {{ p.genero }}
+            </td>
+            <td>
+              <a routerLink="/administracion/editar-persona/{{ p.id }}"
+                >Editar <i class="fa fa-edit"></i
+              ></a>
+            </td>
+          </tr>
+        </tbody> -->
+      </table>
+    </div>
+  </div>
+</div>
