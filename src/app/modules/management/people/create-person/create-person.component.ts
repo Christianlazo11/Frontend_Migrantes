@@ -53,7 +53,7 @@ export class CreatePersonComponent implements OnInit {
     this.servicePerson.CreatePerson(newPerson).subscribe(
       (datos: ModelPerson) => {
         alert('Persona Creada Correctamente');
-        this.router.navigate(['/administracion/lista-personas']);
+        this.router.navigate(['/encuesta/prueba']);
       },
       (error: any) => {
         alert('Error Al Guardar La Persona');
