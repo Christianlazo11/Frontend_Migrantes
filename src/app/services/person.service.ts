@@ -1,15 +1,15 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
-import { ModelPerson } from '../models/person.model';
-import { SecurityService } from './security.service';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs/internal/Observable";
+import { ModelPerson } from "../models/person.model";
+import { SecurityService } from "./security.service";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class PersonService {
-  url = 'http://localhost:3000';
-  token: String = '';
+  url = "http://localhost:3000";
+  token: String = "";
 
   constructor(
     private http: HttpClient,

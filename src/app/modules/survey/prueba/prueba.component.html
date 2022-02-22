@@ -1,12 +1,11 @@
 <section class="pregunta" id="pregunta">
-
   <h3>Encuesta</h3>
   <form [formGroup]="fgEncuesta" (ngSubmit)="validarNoEncuesta()">
     <div class="content">
       <div class="card">
-        <h3> Número de encuesta</h3>
+        <h3>Número de encuesta</h3>
         <input formControlName="noEncuesta" id="1" type="text" />
-        
+
         <div class="survey-btn">
           <button [disabled]="!fgEncuesta.valid" type="submit">Buscar</button>
         </div>
@@ -17,13 +16,13 @@
   <!-- tabla nucleo familiar -->
   <div class="content" *ngIf="validador">
     <div class="card">
-      
       <div class="btncontent">
-        <h3> Nucleo Familiar </h3>
-        <a class="btn" routerLink="/administracion/crear-persona">Crear Persona</a> 
-       </div>
+        <h3>Nucleo Familiar</h3>
+        <a class="btn" routerLink="/administracion/crear-persona"
+          >Crear Persona</a
+        >
+      </div>
       <div class="pollstersEncuesta">
-        
         <table class="table">
           <thead>
             <tr>
@@ -49,72 +48,83 @@
                 {{ p.genero }}
               </td>
               <td>
-                <a routerLink="/administracion/editar-persona/{{ p.id }}">Editar <i class="fa fa-edit"></i></a>
+                <a routerLink="/administracion/editar-persona/{{ p.id }}"
+                  >Editar <i class="fa fa-edit"></i
+                ></a>
               </td>
             </tr>
           </tbody>
         </table>
-        
-        
       </div>
     </div>
   </div>
 
   <form [formGroup]="fgValidator" (ngSubmit)="ModificarEncuesta()">
-
-
     <div class="content" *ngIf="validador">
       <div class="card">
-        <h3> Municipio</h3>
+        <h3>Municipio</h3>
         <select formControlName="municipio" id="2">
           <option value="Arauca">Arauca</option>
           <option value=">Arauquita">Arauquita</option>
           <option value="Saravena">Saravena</option>
         </select>
-
       </div>
 
       <div class="card">
-        <h3> Dirección de residencia</h3>
+        <h3>Dirección de residencia</h3>
         <input formControlName="direccion" id="3" type="text" />
       </div>
 
       <div class="card">
-        <h3> Correo</h3>
+        <h3>Correo</h3>
         <input formControlName="correo" id="3" type="email" />
       </div>
 
       <div class="card">
-        <h3> Telefono fijo o celular</h3>
+        <h3>Telefono fijo o celular</h3>
         <input formControlName="tel" id="3" type="text" />
       </div>
 
       <div class="card">
-        <h3> ¿2. Una vez ingresó a Colombia cuál fue su intención?</h3>
+        <h3>¿2. Una vez ingresó a Colombia cuál fue su intención?</h3>
         <select formControlName="intencion" id="4">
-          <option value="Establecer su domicilio en el país">Establecer su domicilio en el país</option>
-          <option value="Transitar hacia otro país">Transitar hacia otro país</option>
-          <option value="Trabajar por un tiempo para regresar a Venezuela">Trabajar por un tiempo para regresar a
-            Venezuela</option>
-          <option value="ncontrarse con su familia">Encontrarse con su familia</option>
+          <option value="Establecer su domicilio en el país"
+            >Establecer su domicilio en el país</option
+          >
+          <option value="Transitar hacia otro país"
+            >Transitar hacia otro país</option
+          >
+          <option value="Trabajar por un tiempo para regresar a Venezuela"
+            >Trabajar por un tiempo para regresar a Venezuela</option
+          >
+          <option value="ncontrarse con su familia"
+            >Encontrarse con su familia</option
+          >
         </select>
       </div>
 
       <div class="card">
-        <h3> 3. ¿Con que documento cuenta?</h3>
+        <h3>3. ¿Con que documento cuenta?</h3>
         <div *ngFor="let doc of docs; let i=index">
           <label class="container">
-            <input type="checkbox" formArrayName="docsSeleccionados" [value]="doc.value"
-              (change)="onCheckboxChange($event)" />
+            <input
+              type="checkbox"
+              formArrayName="docsSeleccionados"
+              [value]="doc.value"
+              (change)="onCheckboxChange($event)"
+            />
             {{doc.name}}
-            <span class="checkmark"></span><br>
+            <span class="checkmark"></span><br />
           </label>
         </div>
-        <p>{{ fgValidator.value | json }} </p>
+        <p>{{ fgValidator.value | json }}</p>
       </div>
 
       <div class="card">
-        <h3> 4. De acuerdo con su cultura, pueblo o rasgos físicos; usted se auto reconoce como?</h3>
+        <h3>
+          4. De acuerdo con su cultura, pueblo o rasgos físicos; usted se auto
+          reconoce como?
+        </h3>
         <select formControlName="etnia" id="6">
           <option value="Mestizo">Mestizo</option>
           <option value="Afrodescendiente">Afrodescendiente</option>
@@ -124,7 +134,7 @@
       </div>
 
       <div class="card">
-        <h3> 5. ¿Cuál es su identidad de género?</h3>
+        <h3>5. ¿Cuál es su identidad de género?</h3>
         <select formControlName="identGenero" id="7">
           <option value="Hombre">Hombre</option>
           <option value="Mujer">Mujer</option>
@@ -135,7 +145,10 @@
       </div>
 
       <div class="card">
-        <h3> 6. ¿Cuál de las siguientes opciones describe mejor su orientación sexual?</h3>
+        <h3>
+          6. ¿Cuál de las siguientes opciones describe mejor su orientación
+          sexual?
+        </h3>
         <select formControlName="orSexual" id="8">
           <option value="Hombre">Hombre</option>
           <option value="Mujer">Mujer</option>
@@ -149,7 +162,6 @@
     <div class="survey-btn" *ngIf="validador">
       <button [disabled]="!fgValidator.valid" type="submit">Guardar</button>
     </div>
-
   </form>
 
   <!-- <form [formGroup]="fgValidator">
@@ -190,8 +202,4 @@
   
     </div> 
   </form> -->
-
-
-
-
 </section>

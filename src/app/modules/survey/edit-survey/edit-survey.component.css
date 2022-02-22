@@ -1,0 +1,77 @@
+.edit-survey {
+    /* min-height: 65rem; */
+    height: auto;
+    margin-bottom: 6rem;
+}
+
+.edit-survey h1 {
+    margin-top: 10rem;
+    font-size: 4rem;
+    text-align: center;
+}
+
+.edit-survey-content {
+    display: flex;
+}
+
+.edit-survey-content-left, .edit-survey-content-right {
+    flex: 1;
+    display: flex;
+    /* justify-content:center; */
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.edit-survey-content-left form{
+    border: solid 1px #e1e1e1;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 0.6rem;
+    border: 0.1rem solid #0eb582;
+    background: #f0fdfa;
+}
+
+.edit-survey-content-right form{
+    border: solid 1px #e1e1e1;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 0.6rem;
+    border: 0.1rem solid #0eb582;
+    background: #f0fdfa;
+}
+
+
+.table {
+    width: 100%;
+    border: 0.1rem solid #0eb582;
+    /* padding: 1rem; */
+  }
+.table thead {
+    background-color: #0eb582;
+  }
+.table th {
+    font-size: 2rem;
+    /* background-color: #0eb582; */
+  }
+.table tbody tr:nth-child(odd) {
+    background-color: #e1e1e1;
+  }
+.table td {
+    font-size: 1.7rem;
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .card {
+    display: block;
+    width: 100%;
+}
+
+.card input, select {
+    width: 100%;
+    border-radius:0.5rem;
+    border: none;
+    font-size: 1.8rem;
+    padding: 0.5rem
+}
