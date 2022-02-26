@@ -57,11 +57,16 @@ export class PruebaComponent implements OnInit {
   //************************************************************************ */
 
   docs: Array<any> = [
+    { name: 'Acta de nacimiento', value: 'Acta de nacimiento' },
     { name: 'Cédula de ciudadanía venezolana', value: 'Cédula de ciudadanía venezolana' },
-    { name: 'PEP o PPPFF', value: 'PEP o PPPFF' },
+    { name: 'PPT', value: 'PPT' },
     { name: 'Pasaporte venezolano', value: 'Pasaporte venezolano' },
     { name: 'Salvo conducto', value: 'Salvo conducto' },
-    { name: 'Tarjeta de movilidad fronteriza', value: 'Tarjeta de movilidad fronteriza' }
+    { name: 'TMF', value: 'TMF' },
+    { name: 'Cédula/TI/RC Colombia', value: 'Cédula/TI/RC Colombia' },
+    { name: 'Solución ETPV', value: 'Solución ETPV' },
+    { name: 'Visa laboral o estudiantil', value: 'Visa laboral o estudiantil' },
+    { name: 'Ninguno', value: 'Ninguno' }
   ];
 
   constructor(
@@ -72,7 +77,6 @@ export class PruebaComponent implements OnInit {
     private serviceSecurity: SecurityService,
     private router: Router,
     private route: ActivatedRoute
-
   ) {
   }
 
@@ -181,10 +185,12 @@ export class PruebaComponent implements OnInit {
     newSurvey.direccion = "-";
     newSurvey.correo = "-";
     newSurvey.fijo_cel = "-";
+    newSurvey.est_civil= "-";
+    newSurvey.info_nucleo= "-";
+   
+
     newSurvey.intencion = "-";
-    newSurvey.tipo_doc = "-";
-    newSurvey.grupo_etnico = "-";
-    newSurvey.ident_genero = "-";
+
     newSurvey.usuarioId = dataEncu.datos.id;
 
     console.log(newSurvey)
@@ -227,9 +233,6 @@ export class PruebaComponent implements OnInit {
         newSurvey.correo = Correo;
         newSurvey.fijo_cel = Telefono;
         newSurvey.intencion = Intencion;
-        newSurvey.tipo_doc = String(DocsCuenta);
-        newSurvey.grupo_etnico = Etnia;
-        newSurvey.ident_genero = IdentGenero;
         newSurvey.usuarioId = dataEncu.datos.id;
 
 

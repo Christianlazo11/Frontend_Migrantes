@@ -5,10 +5,15 @@ export class ModelSurvey {
     direccion?: string;
     correo?: string;
     fijo_cel?: string;
+    est_civil?: string;
+    info_nucleo?: string;
+    conf_hogar?: number;
+    quedaron_hijos?: string;
+    nacionalidad_pareja?: string;
+    razon_cruce?: string;
+    tiempo_estancia?: string;
+    razon_arauca?: string;    
     intencion?: string;
-    tipo_doc?: string;
-    ident_genero?: string;
-    grupo_etnico?: string;
     usuarioId?: string;
     
    

@@ -3,7 +3,7 @@
   <div class="edit-survey-content">
     <div class="edit-survey-content-left">
       <h2>Formulario</h2>
-      <form>
+      <form [formGroup]="fgValidator">
         <div class="content">
           <div class="card">
             <h3>Municipio</h3>
@@ -20,7 +20,7 @@
           </div>
 
           <div class="card">
-            <h3>Correo</h3>
+            <h3>Correo Electrónico</h3>
             <input formControlName="correo" id="3" type="email" />
           </div>
 
@@ -30,75 +30,97 @@
           </div>
 
           <div class="card">
-            <h3>¿2. Una vez ingresó a Colombia cuál fue su intención?</h3>
+            <h3>¿19. Estado civil?</h3>
+            <select formControlName="est_civil" id="est_civil">
+              <option value="Soltero">Soltero</option>
+              <option value="Casado">Casado</option>
+              <option value="Unión libre">Unión libre</option>
+              <option value="Separado/Divorciado">Separado/Divorciado</option>
+              <option value="Viudo">Viudo</option>
+              <option value="No especificado">No especificado</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <h3>20. Información nucleo Familiar</h3>
+            <select formControlName="info_nucleo" id="info_nucleo">
+              <option value="Padre Jefe de Hogar">Padre Jefe de Hogar</option>
+              <option value="Madre Jefe de Hogar">Madre Jefe de Hogar</option>
+              <option value="Padre Cabeza de familia">Padre Cabeza de familia</option>
+              <option value="Madre Cabeza de familia">Madre Cabeza de familia</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="conf_hogar">21A. Número de personas que conforman el hogar</label>
+            <input formControlName="conf_hogar" id="conf_hogar" type="number" />
+          </div>
+
+          <div class="card">
+            <label for="quedaron_hijos">21B. ¿Se quedaron hijos?</label>
+            <select name="quedaron_hijos" id="quedaron_hijos" formControlName="quedaron_hijos">
+              <option value="Si">Si</option>
+              <option value="No">Si</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="nacionalidad_pareja">21C. Nacionalidad de la pareja</label>
+            <select name="nacionalidad_pareja" id="nacionalidad_pareja" formControlName="nacionalidad_pareja">
+              <option value="Venolano">Venolano</option>
+              <option value="Colombiano">Colombiano</option>
+              <option value="Otro">Otro</option>
+              <option value="No Aplica">No Aplica</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="razon_cruce">22. Razón cruce a Colombia</label>
+            <select name="razon_cruce" id="razon_cruce" formControlName="razon_cruce">
+              <option value="Seguridad">Seguridad</option>
+              <option value="Político">Político</option>
+              <option value="Familiar">Familiar</option>
+              <option value="Laboral">Laboral</option>
+              <option value="Económico">Económico</option>
+              <option value="Desplazamiento">Desplazamiento</option>
+              <option value="Otra">Otra</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="tiempo_estancia">23. Tiempo de estancia en el departamento de Arauc</label>
+            <select name="tiempo_estancia" id="tiempo_estancia" formControlName="tiempo_estancia">
+              <option value="Hasta 1 año">Hasta 1 año</option>
+              <option value="2 años">2 años</option>
+              <option value="3 años">3 años</option>
+              <option value="4 años">4 años</option>
+              <option value="5 años">5 años</option>
+              <option value="Más de 5 años">Más de 5 años</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="razon_arauca">24. Razon de permanencia en el departamente de Arauca</label>
+            <select name="razon_arauca" id="razon_arauca" formControlName="razon_arauca">
+              <option value="Trabajar en Arauca">Trabajar en Arauca</option>
+              <option value="Trabajar en Arauquita">Trabajar en Arauquita</option>
+              <option value="Trabajar en Saravena">Trabajar en Saravena</option>
+              <option value="Trabajar en Otro municipio">Trabajar en Otro municipio</option>
+              <option value="Estudiar">Estudiar</option>
+              <option value="Otra Razón">Otra Razón</option>
+              <option value="No especificado">No especificado</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <h3>25. ¿Una vez ingresó a Colombia cuál fue su intención?</h3>
             <select formControlName="intencion" id="4">
-              <option value="Establecer su domicilio en el país"
-                >Establecer su domicilio en el país</option
-              >
-              <option value="Transitar hacia otro país"
-                >Transitar hacia otro país</option
-              >
-              <option value="Trabajar por un tiempo para regresar a Venezuela"
-                >Trabajar por un tiempo para regresar a Venezuela</option
-              >
-              <option value="ncontrarse con su familia"
-                >Encontrarse con su familia</option
-              >
-            </select>
-          </div>
-
-          <!-- <div class="card">
-            <h3>3. ¿Con que documento cuenta?</h3>
-            <div *ngFor="let doc of docs; let i=index">
-              <label class="container">
-                <input
-                  type="checkbox"
-                  formArrayName="docsSeleccionados"
-                  [value]="doc.value"
-                  (change)="onCheckboxChange($event)"
-                />
-                {{doc.name}}
-                <span class="checkmark"></span><br />
-              </label>
-            </div>
-            <p>{{ fgValidator.value | json }}</p>
-          </div> -->
-
-          <div class="card">
-            <h3>
-              4. De acuerdo con su cultura, pueblo o rasgos físicos; usted se
-              auto reconoce como?
-            </h3>
-            <select formControlName="etnia" id="6">
-              <option value="Mestizo">Mestizo</option>
-              <option value="Afrodescendiente">Afrodescendiente</option>
-              <option value="Indígena">Indígena</option>
-              <option value="Otro">Otro</option>
-            </select>
-          </div>
-
-          <div class="card">
-            <h3>5. ¿Cuál es su identidad de género?</h3>
-            <select formControlName="identGenero" id="7">
-              <option value="Hombre">Hombre</option>
-              <option value="Mujer">Mujer</option>
-              <option value="Hombre trans">Hombre trans</option>
-              <option value="Mujer trans">Mujer trans</option>
-              <option value="Otro">Otro</option>
-            </select>
-          </div>
-
-          <div class="card">
-            <h3>
-              6. ¿Cuál de las siguientes opciones describe mejor su orientación
-              sexual?
-            </h3>
-            <select formControlName="orSexual" id="8">
-              <option value="Hombre">Hombre</option>
-              <option value="Mujer">Mujer</option>
-              <option value="Hombre trans">Hombre trans</option>
-              <option value="Mujer trans">Mujer trans</option>
-              <option value="Otro">Otro</option>
+              <option value="Establecer su domicilio en el país">Establecer su domicilio en el país</option>
+              <option value="Transitar hacia otro país">Transitar hacia otro país</option>
+              <option value="Trabajar por un tiempo para regresar a Venezuela">Trabajar por un tiempo para regresar a
+                Venezuela</option>
+              <option value="ncontrarse con su familia">Encontrarse con su familia</option>
             </select>
           </div>
         </div>
@@ -110,8 +132,276 @@
     </div>
     <div class="edit-survey-content-right">
       <h2>Grupo Familiar</h2>
-      <form action="">
-        <p>Personas</p>
+      <!-- <crear-persona-root></crear-persona-root> -->
+
+      <form [formGroup]="fgPersona">
+        <div class="edit-survey-content">
+          <div class="edit-survey-content-left">
+            <!-- IZQUIERDA ***************************** -->
+            <input type="hidden" formControlName="id" />
+            <div class="card">
+              <label for="name">Nombre</label>
+              <input formControlName="name" id="name" type="text" />
+            </div>
+
+            <div class="card">
+              <label for="document">Número de Documento</label>
+              <input formControlName="document" id="document" type="number" />
+            </div>
+
+            <div class="card">
+              <label for="dateOfBirth">fecha de nacimiento</label>
+              <input formControlName="dateOfBirth" id="dateOfBirth" type="date" />
+            </div>
+
+            <div class="card">
+              <label for="country">nacionalidad</label>
+              <select name="" id="country" formControlName="country">
+                <option value="venezuela">venezuela</option>
+                <option value="colombia">colombia</option>
+                <option value="otro">otro</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="profesion">profesion</label>
+              <input formControlName="profesion" id="profesion" type="text" />
+            </div>
+
+            <div class="card">
+              <label for="act_economica">act_economica</label>
+              <input formControlName="act_economica" id="act_economica" type="text" />
+            </div>
+
+            <div class="card">
+              <label for="estatus_migratorio">Estatus Migratorio</label>
+              <select name="estatus_migratorio" id="estatus_migratorio" formControlName="estatus_migratorio">
+                <option value="Migrante">Migrante</option>
+                <option value="Refugiado">Refugiado</option>
+                <option value="Retornado">Retornado</option>
+                <option value="No Aplica">No Aplica</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="afiliacion_salud">Afiliación Salud</label>
+              <select name="afiliacion_salud" id="afiliacion_salud" formControlName="afiliacion_salud">
+                <option value="Contributivo">Contributivo</option>
+                <option value="Subcidiado">Subcidiado</option>
+              </select>
+            </div>
+            <div>
+
+              <div class="card">
+                <label>Tipo de Documento</label>
+
+                <div *ngFor="let doc of docs; let i=index">
+                  <div *ngIf="(i/2)*2==i">
+                    <label class="container">
+                      <input type="checkbox" formArrayName="docsSeleccionados" [value]="doc.value"
+                        (change)="onCheckboxChange($event)" />
+                      {{doc.name}}
+                      <span class="checkmark"></span><br />
+                    </label>
+                  </div>
+
+                  </div>
+
+                  
+                <!-- <p>{{ fgValidator.value | json }}</p> -->
+
+
+              </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <!-- ************************************************ -->
+          </div>
+          <div class="edit-survey-content-right">
+            <!-- DERECHA ******************************** -->
+            <div class="card">
+              <label for="lastName">Apellido</label>
+              <input formControlName="lastName" id="lastname" type="text" />
+            </div>
+            <div class="card">
+              <div>
+                <label for="gender">Genero</label>
+                <select name="" id="gender" formControlName="gender">
+                  <option value="masculino">Masculino</option>
+                  <option value="femenino">Femenino</option>
+                </select>
+              </div>
+            </div>
+            <div class="card">
+              <label for="edad">edad</label>
+              <input formControlName="edad" id="edad" type="number" />
+            </div>
+
+            <div class="card">
+              <label for="nivel">Nivel Educativo</label>
+              <select name="" id="nivel" formControlName="nivel">
+                <option value="A-Analfabeta">bachiller</option>
+                <option value="P-Primaria">P-Primaria</option>
+                <option value="S-Secundaria">S-Secundaria</option>
+                <option value="T-Tecnica">T-Tecnica</option>
+                <option value="U-Universitaria">U-Universitaria</option>
+                <option value="N-Ninguna">N-Ninguna</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="tipo_emprendimiento">tipo_emprendimiento</label>
+              <input formControlName="tipo_emprendimiento" id="tipo_emprendimiento" type="text" />
+            </div>
+
+            <div class="card">
+              <label for="tipo_act_economica">Tipo de actividad</label>
+              <select name="tipo_act_economica" id="tipo_act_economica" formControlName="tipo_act_economica">
+                <option value="Formal">Formal</option>
+                <option value="Informal">Informal</option>
+                <option value="No Aplica">No Aplica</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="afiliacion_salud">Afiliación Salud</label>
+              <select name="afiliacion_salud" id="afiliacion_salud" formControlName="afiliacion_salud">
+                <option value="Contributivo">Contributivo</option>
+                <option value="Subcidiado">Subcidiado</option>
+                <option value="Vinculado">Vinculado</option>
+                <option value="Regimen especial">Regimen especial</option>
+                <option value="Refugiado">Refugiado</option>
+                <option value="Subicidiado">Subicidiado</option>
+                <option value="No Afiliado">No Afiliado</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="runv">Inscrito en el RUNV</label>
+              <select name="runv" id="runv" formControlName="runv">
+                <option value="Si">Si</option>
+                <option value="No">Si</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="discapacidad">Discapacidad</label>
+              <select name="discapacidad" id="discapacidad" formControlName="discapacidad">
+                <option value="Mental">Mental</option>
+                <option value="Cognitiva">Cognitiva</option>
+                <option value="Auditiva">Auditiva</option>
+                <option value="visual">visual</option>
+                <option value="Física">Física</option>
+                <option value="Múltiple">Múltiple</option>
+                <option value="Ninguna">Ninguna</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="grupo_etnico">Grupo Étnico</label>
+              <select name="grupo_etnico" id="grupo_etnico" formControlName="grupo_etnico">
+                <option value="Mestizo">Mestizo</option>
+                <option value="Afrodescendiente">Afrodescendiente</option>
+                <option value="Palenquero">Palenquero</option>
+                <option value="Raizal">Raizal</option>
+                <option value="Indigena">Indigena</option>
+                <option value="ROM/Gitano">ROM/Gitano</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="movilidad_migratoria">Movilidad Migratoria</label>
+              <select name="movilidad_migratoria" id="movilidad_migratoria" formControlName="movilidad_migratoria">
+                <option value="Solo">Solo</option>
+                <option value="Familiar">Familiar</option>
+                <option value="Grupal">Grupal</option>
+              </select>
+            </div>
+            
+            <div class="card">
+              <label for="estudia">Estudia Actualmente</label>
+              <select name="estudia" id="estudia" formControlName="estudia">
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="grado">Grado Actual</label>
+              <select name="grado" id="grado" formControlName="grado">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="Ninguno">Ninguno</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="parentezco">Parentezco</label>
+              <select name="parentezco" id="parentezco" formControlName="parentezco">
+                <option value="Principal">Principal</option>
+                <option value="Padre">Padre</option>
+                <option value="Madre">Madre</option>
+                <option value="Abuelo/Abuela">Abuelo/Abuela</option>
+                <option value="Tio/Tia">Tio/Tia</option>
+                <option value="Primo/Prima">Primo/Prima</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+            <!-- ************************************************ -->
+          </div>
+        </div>
+        <input type="hidden" formControlName="id" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="login-btn">
+          <button [disabled]="!fgValidator.valid" type="submit">
+            Guardar Cambios
+          </button>
+        </div>
       </form>
 
       <table class="table">
