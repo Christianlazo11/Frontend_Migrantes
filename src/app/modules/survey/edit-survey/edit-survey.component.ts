@@ -134,17 +134,20 @@ export class EditSurveyComponent implements OnInit {
         this.fgValidator.controls['direccion'].setValue(Object.values(datos)[0].direccion);
         this.fgValidator.controls['correo'].setValue(Object.values(datos)[0].correo);
         this.fgValidator.controls['tel'].setValue(Object.values(datos)[0].fijo_cel);
+        this.fgValidator.controls['est_civil'].setValue(Object.values(datos)[0].est_civil);
+        this.fgValidator.controls['info_nucleo'].setValue(Object.values(datos)[0].info_nucleo);
+        this.fgValidator.controls['conf_hogar'].setValue(Object.values(datos)[0].conf_hogar);
+        this.fgValidator.controls['quedaron_hijos'].setValue(Object.values(datos)[0].quedaron_hijos);
+        this.fgValidator.controls['nacionalidad_pareja'].setValue(Object.values(datos)[0].nacionalidad_pareja);
+        this.fgValidator.controls['razon_cruce'].setValue(Object.values(datos)[0].razon_cruce);
+        this.fgValidator.controls['razon_cruce'].setValue(Object.values(datos)[0].razon_cruce);
+        this.fgValidator.controls['tiempo_estancia'].setValue(Object.values(datos)[0].tiempo_estancia);
+        this.fgValidator.controls['razon_arauca'].setValue(Object.values(datos)[0].razon_arauca);
         this.fgValidator.controls['intencion'].setValue(Object.values(datos)[0].intencion);
-        // this.fgValidator.controls['docsSeleccionados'].setValue(Object.values(datos)[0].docsSeleccionados);
-        this.fgValidator.controls['etnia'].setValue(Object.values(datos)[0].etnia);
-        this.fgValidator.controls['identGenero'].setValue(Object.values(datos)[0].ident_genero);
-        this.fgValidator.controls['orSexual'].setValue(Object.values(datos)[0].intencion);
-
       },
       (error) => {
         alert("No se encontró la encuesta")
         this.router.navigate([`/encuesta/buscar-encuesta`]);
-
       })
 
   }
@@ -158,11 +161,15 @@ export class EditSurveyComponent implements OnInit {
     let Correo = this.fgValidator.controls['correo'].value;
     let Telefono = this.fgValidator.controls['tel'].value;
     let Estado_civil= this.fgValidator.controls['est_civil'].value;
-
+    let Info_nucleo = this.fgValidator.controls['info_nucleo'].value;
+    let conf_hogar = this.fgValidator.controls['conf_hogar'].value;
+    let quedaron_hijos = this.fgValidator.controls['quedaron_hijos'].value;
+    let nacionalidad_pareja = this.fgValidator.controls['nacionalidad_pareja'].value;
+    let razon_cruce = this.fgValidator.controls['razon_cruce'].value;
+    let tiempo_estancia = this.fgValidator.controls['tiempo_estancia'].value;
+    let razon_arauca = this.fgValidator.controls['razon_arauca'].value;
     let Intencion = this.fgValidator.controls['intencion'].value;
-    let DocsCuenta: string[] = this.fgValidator.value.docsSeleccionados;
-    let Etnia = this.fgValidator.controls['etnia'].value;
-    let IdentGenero = this.fgValidator.controls['identGenero'].value;
+    
     let newSurvey = new ModelSurvey();
 
     //Obtenemos el numero del Id con el numero de encuesta
@@ -178,7 +185,17 @@ export class EditSurveyComponent implements OnInit {
         newSurvey.direccion = Direccion;
         newSurvey.correo = Correo;
         newSurvey.fijo_cel = Telefono;
+
         newSurvey.est_civil = Estado_civil;
+        newSurvey.info_nucleo = Info_nucleo;
+        newSurvey.conf_hogar = conf_hogar;
+        newSurvey.quedaron_hijos = quedaron_hijos;
+        newSurvey.nacionalidad_pareja = nacionalidad_pareja;
+        newSurvey.razon_cruce = razon_cruce;
+        newSurvey.tiempo_estancia = tiempo_estancia;
+        newSurvey.razon_arauca = razon_arauca;
+
+
         newSurvey.intencion = Intencion;
         newSurvey.usuarioId = dataEncu.datos.id;
 
@@ -186,7 +203,7 @@ export class EditSurveyComponent implements OnInit {
         this.serviceSurvey.UpdateSurvey(newSurvey).subscribe(
           (datos: ModelSurvey) => {
             alert('Encuesta Actualizada Correctamente');
-            this.router.navigate(['/encuesta/prueba']);
+            this.router.navigate(['/encuesta/buscar-encuesta']);
             this.validador = false
           },
           (error: any) => {

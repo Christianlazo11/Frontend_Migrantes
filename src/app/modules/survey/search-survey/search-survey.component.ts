@@ -99,9 +99,9 @@ export class SearchSurveyComponent implements OnInit {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
               //Primero se deben activar los campos del formulario para que se puedan visualizar
-              this.fgEncuesta.controls["noEncuesta"].disable();
+              // this.fgEncuesta.controls["noEncuesta"].disable();
               //Crear la encuesta vacia
-              // this.CrearEncuesta();
+              this.CrearEncuestaVacia();
               this.router.navigate([`/encuesta/crear-encuesta/${NoEncuesta}`]);
             } else if (result.isDenied) {
               Swal.fire("Ingrese otro número de encuesta");
@@ -123,7 +123,8 @@ export class SearchSurveyComponent implements OnInit {
             //Primero se deben activar los campos del formulario para que se puedan visualizar
             this.fgEncuesta.controls["noEncuesta"].disable();
             //Crear la encuesta vacia
-            // this.CrearEncuesta();
+
+            this.CrearEncuestaVacia();
             this.router.navigate([`/encuesta/crear-encuesta/${NoEncuesta}`]);
           } else if (result.isDenied) {
             Swal.fire("Ingrese otro número de encuesta");
@@ -133,4 +134,30 @@ export class SearchSurveyComponent implements OnInit {
       }
     );
   }
+
+  //Metodo para guardar las respuestas siempre y cuando los campos esten llenos
+  CrearEncuestaVacia() {
+    let dataEncu = this.serviceSecurity.GetDataSession();
+
+    let NoEncuesta: number =  this.fgEncuesta.controls["noEncuesta"].value
+
+
+    let newSurvey = new ModelSurvey();
+
+    newSurvey.no_encuesta = NoEncuesta;
+    newSurvey.usuarioId = dataEncu.datos.id;
+
+    console.log(newSurvey)
+
+    this.serviceSurvey.CreateSurvey(newSurvey).subscribe(
+      (datos: ModelSurvey) => {
+        alert("Encuesta guardada correctamente")
+      },
+      (error: any) => {
+        alert("Error guardando la encuesta")
+      }
+    )
+  }
+
+
 }

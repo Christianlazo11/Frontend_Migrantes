@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ModelIdentify } from '../models/Identify.model';
 import { ModelSurvey } from '../models/survey.model';
@@ -54,6 +55,7 @@ export class SurveyService {
   }
   
   GetData(no_encuesta:number): Observable<ModelSurvey> {
+    console.log(no_encuesta)
     return this.http.get<ModelSurvey>(
       `${this.url}/encuestas?filter={"where":{"no_encuesta":"${no_encuesta}"}}`
       
