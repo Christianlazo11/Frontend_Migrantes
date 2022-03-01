@@ -18,9 +18,11 @@ export class PersonService {
     this.token = this.serviceSecurity.GetToken();
   }
 
-  GetPeople(): Observable<ModelPerson[]> {
-    return this.http.get<ModelPerson[]>(`${this.url}/personas`);
+  GetPeople(id:string): Observable<ModelPerson[]> {
+    return this.http.get<ModelPerson[]>(`${this.url}/personas?filter={"where":{"encuestaId":"${id}"}}`);
   }
+
+ 
 
   GetPeopleById(id: string): Observable<ModelPerson> {
     return this.http.get<ModelPerson>(`${this.url}/personas/${id}`);

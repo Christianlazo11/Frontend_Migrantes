@@ -3,7 +3,7 @@
   <div class="edit-survey-content">
     <div class="edit-survey-content-left">
       <h2>Formulario</h2>
-      <form [formGroup]="fgValidator">
+      <form [formGroup]="fgValidator" (ngSubmit)="ModificarEncuesta()">
         <div class="content">
           <div class="card">
             <h3>Municipio</h3>
@@ -130,11 +130,13 @@
         </div>
       </form>
     </div>
+
+
     <div class="edit-survey-content-right">
       <h2>Grupo Familiar</h2>
       <!-- <crear-persona-root></crear-persona-root> -->
 
-      <form [formGroup]="fgPersona">
+      <form [formGroup]="fgPersona" (ngSubmit)="SavePerson()">
         <div class="edit-survey-content">
           <div class="edit-survey-content-left">
             <!-- IZQUIERDA ***************************** -->
@@ -146,7 +148,7 @@
 
             <div class="card">
               <label for="document">Número de Documento</label>
-              <input formControlName="document" id="document" type="number" />
+              <input formControlName="document" id="document" type="text" />
             </div>
 
             <div class="card">
@@ -205,27 +207,13 @@
                     </label>
                   </div>
 
-                  </div>
+                </div>
 
-                  
+
                 <!-- <p>{{ fgValidator.value | json }}</p> -->
 
-
               </div>
-
-
             </div>
-
-
-
-
-
-
-
-
-
-
-
             <!-- ************************************************ -->
           </div>
           <div class="edit-survey-content-right">
@@ -328,7 +316,7 @@
                 <option value="Grupal">Grupal</option>
               </select>
             </div>
-            
+
             <div class="card">
               <label for="estudia">Estudia Actualmente</label>
               <select name="estudia" id="estudia" formControlName="estudia">
@@ -373,7 +361,7 @@
         </div>
 
         <div class="login-btn">
-          <button [disabled]="!fgValidator.valid" type="submit">
+          <button type="submit">
             Guardar Cambios
           </button>
         </div>
@@ -389,7 +377,7 @@
             <th><i class="fa fa-edit"></i></th>
           </tr>
         </thead>
-        <!-- <tbody>
+        <tbody>
           <tr *ngFor="let p of listPeople">
             <td>
               {{ p.nombre }}
@@ -404,12 +392,11 @@
               {{ p.genero }}
             </td>
             <td>
-              <a routerLink="/administracion/editar-persona/{{ p.id }}"
-                >Editar <i class="fa fa-edit"></i
+              <a>Editar <i class="fa fa-edit"></i
               ></a>
             </td>
           </tr>
-        </tbody> -->
+        </tbody>
       </table>
     </div>
   </div>

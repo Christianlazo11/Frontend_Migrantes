@@ -7,7 +7,7 @@ export class ModelSurvey {
     fijo_cel?: string;
     est_civil?: string;
     info_nucleo?: string;
-    conf_hogar?: number;
+    conf_hogar?: string;
     quedaron_hijos?: string;
     nacionalidad_pareja?: string;
     razon_cruce?: string;

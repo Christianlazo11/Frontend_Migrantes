@@ -55,11 +55,15 @@ export class SurveyService {
   }
   
   GetData(no_encuesta:number): Observable<ModelSurvey> {
-    console.log(no_encuesta)
+  
     return this.http.get<ModelSurvey>(
       `${this.url}/encuestas?filter={"where":{"no_encuesta":"${no_encuesta}"}}`
       
     );
   }
 
+  ObtenerDatos(noEncuesta:number): Observable<ModelSurvey> {
+ 
+    return this.http.get<ModelSurvey>( `${this.url}/encuestas?filter={"where":{"no_encuesta":"${noEncuesta}"}}`)
+  }
 }

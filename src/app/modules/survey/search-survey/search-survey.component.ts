@@ -102,7 +102,7 @@ export class SearchSurveyComponent implements OnInit {
               // this.fgEncuesta.controls["noEncuesta"].disable();
               //Crear la encuesta vacia
               this.CrearEncuestaVacia();
-              this.router.navigate([`/encuesta/crear-encuesta/${NoEncuesta}`]);
+              this.router.navigate([`/encuesta/editar-encuesta/${NoEncuesta}`]);
             } else if (result.isDenied) {
               Swal.fire("Ingrese otro número de encuesta");
               this.fgEncuesta.controls["noEncuesta"].reset();
@@ -125,7 +125,7 @@ export class SearchSurveyComponent implements OnInit {
             //Crear la encuesta vacia
 
             this.CrearEncuestaVacia();
-            this.router.navigate([`/encuesta/crear-encuesta/${NoEncuesta}`]);
+            this.router.navigate([`/encuesta/editar-encuesta/${NoEncuesta}`]);
           } else if (result.isDenied) {
             Swal.fire("Ingrese otro número de encuesta");
             this.fgEncuesta.controls["noEncuesta"].reset();

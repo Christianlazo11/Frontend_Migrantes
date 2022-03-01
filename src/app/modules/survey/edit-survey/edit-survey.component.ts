@@ -20,6 +20,7 @@ import { __values } from 'tslib';
 export class EditSurveyComponent implements OnInit {
   item: any
   noEncu: any
+  idEncu: any
 
   preguntas: any
   data: any
@@ -43,6 +44,9 @@ export class EditSurveyComponent implements OnInit {
   ngOnInit(): void {
     this.noEncu = this.route.snapshot.params['id'];
     this.SerchSurvey();
+    this.GetListPeople();
+
+
 
 
   }
@@ -80,11 +84,14 @@ export class EditSurveyComponent implements OnInit {
     tipo_act_economica: ['', [Validators.required]],
     estatus_migratorio: ['', [Validators.required]],
     afiliacion_salud: ['', [Validators.required]],
+    runv: ['', [Validators.required]],
     docsSeleccionados: new FormArray([]),
     discapacidad: ['', [Validators.required]],
     grupo_etnico: ['', [Validators.required]],
+    movilidad_migratoria: ['', [Validators.required]],
     estudia: ['', [Validators.required]],
     grado: ['', [Validators.required]],
+    parentezco: ['', [Validators.required]],
 
 
 
@@ -92,7 +99,7 @@ export class EditSurveyComponent implements OnInit {
     // surveyId: ['', [Validators.required]],
   });
 
-   // Checkbox intención
+  // Checkbox intención
   //************************************************************************ */
 
   docs: Array<any> = [
@@ -122,14 +129,18 @@ export class EditSurveyComponent implements OnInit {
 
 
 
-  SerchSurvey(){
+  SerchSurvey() {
 
-    console.log("l número de encuesta es: " + this.noEncu.replace(":",""))
-    
-    this.serviceSurvey.GetData(this.noEncu.replace(":","")).subscribe(
+    console.log("l número de encuesta es: " + this.noEncu.replace(":", ""))
+
+    this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
       (datos: ModelSurvey) => {
-        console.log(Object.values(datos)[0].fijo_cel)
-       
+
+
+        this.idEncu = Object.values(datos)[0].id
+  
+
+
         this.fgValidator.controls['municipio'].setValue(Object.values(datos)[0].municipio);
         this.fgValidator.controls['direccion'].setValue(Object.values(datos)[0].direccion);
         this.fgValidator.controls['correo'].setValue(Object.values(datos)[0].correo);
@@ -152,15 +163,80 @@ export class EditSurveyComponent implements OnInit {
 
   }
 
+
+
+  GetListPeople() {
+
+  
+    this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
+      (datos: ModelSurvey) => {
+        this.servicePerson.GetPeople(Object.values(datos)[0].id).subscribe((datos: ModelPerson[]) => {
+          this.listPeople = datos;
+          console.log(this.listPeople)
+        });
+      },
+      (error) => {
+        alert("No se encontró la encuesta")
+        this.router.navigate([`/encuesta/buscar-encuesta`]);
+      })
+
+  }
+
+  SavePerson() {
+
+    this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
+      (datos: ModelSurvey) => {
+        let nombre = this.fgPersona.controls['name'].value;
+        let apellido = this.fgPersona.controls['lastName'].value;
+        let documento = this.fgPersona.controls['document'].value;
+        let genero = this.fgPersona.controls['gender'].value;
+        let nacionalidad = this.fgPersona.controls['country'].value;
+        let fechaNacimiento = this.fgPersona.controls['dateOfBirth'].value;
+        let nivelEducativo = this.fgPersona.controls['nivel'].value;
+        let surveyId = Object.values(datos)[0].id;
+    
+        let newPerson = new ModelPerson();
+        newPerson.nombre = nombre;
+        newPerson.apellido = apellido;
+        newPerson.documento = String(documento);
+        newPerson.genero = genero;
+        newPerson.nacionalidad = nacionalidad;
+        newPerson.fechaNac = fechaNacimiento;
+
+        newPerson.nivelEdu = nivelEducativo;
+        newPerson.encuestaId = surveyId;
+
+        console.log(newPerson)
+    
+        this.servicePerson.CreatePerson(newPerson).subscribe(
+          (datos: ModelPerson) => {
+            alert('Persona Creada Correctamente');
+            this.router.navigate([`/encuesta/editar-encuesta/${this.noEncu.replace(":", "")}`]);
+            window.location.reload();
+            
+          },
+          (error: any) => {
+            alert('Error Al Guardar La Persona');
+          }
+        );
+
+      },
+      (error) => {
+        alert("No se encontró la encuesta")
+        this.router.navigate([`/encuesta/buscar-encuesta`]);
+      })
+   
+  }
+
   ModificarEncuesta() {
 
-    //Buscar el número de la encuensta
-    let dataEncu = this.serviceSecurity.GetDataSession();  
+
+    let dataEncu = this.serviceSecurity.GetDataSession();
     let Municipio = this.fgValidator.controls['municipio'].value;
     let Direccion = this.fgValidator.controls['direccion'].value;
     let Correo = this.fgValidator.controls['correo'].value;
     let Telefono = this.fgValidator.controls['tel'].value;
-    let Estado_civil= this.fgValidator.controls['est_civil'].value;
+    let Estado_civil = this.fgValidator.controls['est_civil'].value;
     let Info_nucleo = this.fgValidator.controls['info_nucleo'].value;
     let conf_hogar = this.fgValidator.controls['conf_hogar'].value;
     let quedaron_hijos = this.fgValidator.controls['quedaron_hijos'].value;
@@ -169,51 +245,47 @@ export class EditSurveyComponent implements OnInit {
     let tiempo_estancia = this.fgValidator.controls['tiempo_estancia'].value;
     let razon_arauca = this.fgValidator.controls['razon_arauca'].value;
     let Intencion = this.fgValidator.controls['intencion'].value;
-    
+
     let newSurvey = new ModelSurvey();
 
     //Obtenemos el numero del Id con el numero de encuesta
-    this.serviceSurvey.GetData(this.NoEncu).subscribe(
+    
+    console.log(typeof(this.noEncu))
+
+    
+    newSurvey.id = this.idEncu;
+    newSurvey.no_encuesta = this.noEncu.replace(":","");
+    newSurvey.municipio = Municipio;
+    newSurvey.direccion = Direccion;
+    newSurvey.correo = Correo;
+    newSurvey.fijo_cel = Telefono;
+
+    newSurvey.est_civil = Estado_civil;
+    newSurvey.info_nucleo = Info_nucleo;
+    // console.log("El hogar esta conformado por " + conf_hogar + " y es de tipo " + typeof(conf_hogar))
+    newSurvey.conf_hogar = String(conf_hogar);
+    newSurvey.quedaron_hijos = quedaron_hijos;
+    newSurvey.nacionalidad_pareja = nacionalidad_pareja;
+    newSurvey.razon_cruce = razon_cruce;
+    newSurvey.tiempo_estancia = tiempo_estancia;
+    newSurvey.razon_arauca = razon_arauca;
+
+
+    newSurvey.intencion = Intencion;
+    newSurvey.usuarioId = dataEncu.datos.id;
+ 
+
+
+    this.serviceSurvey.UpdateSurvey(newSurvey).subscribe(
       (datos: ModelSurvey) => {
-        let Surveyid = Object.values(datos)[0].id
-        
-        console.log(Object.values(datos)[0].municipio)
-
-        newSurvey.id = Surveyid
-      
-        newSurvey.municipio = Municipio;
-        newSurvey.direccion = Direccion;
-        newSurvey.correo = Correo;
-        newSurvey.fijo_cel = Telefono;
-
-        newSurvey.est_civil = Estado_civil;
-        newSurvey.info_nucleo = Info_nucleo;
-        newSurvey.conf_hogar = conf_hogar;
-        newSurvey.quedaron_hijos = quedaron_hijos;
-        newSurvey.nacionalidad_pareja = nacionalidad_pareja;
-        newSurvey.razon_cruce = razon_cruce;
-        newSurvey.tiempo_estancia = tiempo_estancia;
-        newSurvey.razon_arauca = razon_arauca;
-
-
-        newSurvey.intencion = Intencion;
-        newSurvey.usuarioId = dataEncu.datos.id;
-
-
-        this.serviceSurvey.UpdateSurvey(newSurvey).subscribe(
-          (datos: ModelSurvey) => {
-            alert('Encuesta Actualizada Correctamente');
-            this.router.navigate(['/encuesta/buscar-encuesta']);
-            this.validador = false
-          },
-          (error: any) => {
-            alert('Error Actualizando la encuesta');
-          }
-        );
+        alert('Encuesta Actualizada Correctamente');
+        this.router.navigate(['/encuesta/buscar-encuesta']);
       },
-      (error) => {
-        alert("No se encontro la encuesta")
-      })
+      (error: any) => {
+        alert('Error Actualizando la encuesta');
+      }
+    )
+
   }
 
 

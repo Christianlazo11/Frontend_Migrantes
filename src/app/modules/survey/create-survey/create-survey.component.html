@@ -130,11 +130,242 @@
         </div>
       </form>
     </div>
+
+
     <div class="create-survey-content-right">
       <h2>Grupo Familiar</h2>
-      <form action="">
-        <p>Personas</p>
-        
+
+      <form [formGroup]="fgPersona" (submit)="$event.preventDefault()" (ngSubmit)="ModificarEncuesta()">
+        <div class="create-survey-content">
+          <div class="edit-survey-content-left">
+            <!-- IZQUIERDA ***************************** -->
+            <input type="hidden" formControlName="id" />
+            <div class="card">
+              <label for="name">Nombre</label>
+              <input formControlName="name" id="name" type="text" />
+            </div>
+
+            <div class="card">
+              <label for="document">Número de Documento</label>
+              <input formControlName="document" id="document" type="number" />
+            </div>
+
+            <div class="card">
+              <label for="dateOfBirth">fecha de nacimiento</label>
+              <input formControlName="dateOfBirth" id="dateOfBirth" type="date" />
+            </div>
+
+            <div class="card">
+              <label for="country">nacionalidad</label>
+              <select name="" id="country" formControlName="country">
+                <option value="venezuela">venezuela</option>
+                <option value="colombia">colombia</option>
+                <option value="otro">otro</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="profesion">profesion</label>
+              <input formControlName="profesion" id="profesion" type="text" />
+            </div>
+
+            <div class="card">
+              <label for="act_economica">act_economica</label>
+              <input formControlName="act_economica" id="act_economica" type="text" />
+            </div>
+
+            <div class="card">
+              <label for="estatus_migratorio">Estatus Migratorio</label>
+              <select name="estatus_migratorio" id="estatus_migratorio" formControlName="estatus_migratorio">
+                <option value="Migrante">Migrante</option>
+                <option value="Refugiado">Refugiado</option>
+                <option value="Retornado">Retornado</option>
+                <option value="No Aplica">No Aplica</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="afiliacion_salud">Afiliación Salud</label>
+              <select name="afiliacion_salud" id="afiliacion_salud" formControlName="afiliacion_salud">
+                <option value="Contributivo">Contributivo</option>
+                <option value="Subcidiado">Subcidiado</option>
+              </select>
+            </div>
+            <div>
+
+              <div class="card">
+                <label>Tipo de Documento</label>
+
+                <div *ngFor="let doc of docs; let i=index">
+                  <div *ngIf="(i/2)*2==i">
+                    <label class="container">
+                      <input type="checkbox" formArrayName="docsSeleccionados" [value]="doc.value"
+                        (change)="onCheckboxChange($event)" />
+                      {{doc.name}}
+                      <span class="checkmark"></span><br />
+                    </label>
+                  </div>
+
+                  </div>  
+                <!-- <p>{{ fgValidator.value | json }}</p> -->
+
+              </div>
+
+
+            </div>
+
+
+            <!-- ************************************************ -->
+          </div>
+          <div class="create-survey-content-right">
+            <!-- DERECHA ******************************** -->
+            <div class="card">
+              <label for="lastName">Apellido</label>
+              <input formControlName="lastName" id="lastname" type="text" />
+            </div>
+            <div class="card">
+              <div>
+                <label for="gender">Genero</label>
+                <select name="" id="gender" formControlName="gender">
+                  <option value="masculino">Masculino</option>
+                  <option value="femenino">Femenino</option>
+                </select>
+              </div>
+            </div>
+            <div class="card">
+              <label for="edad">edad</label>
+              <input formControlName="edad" id="edad" type="number" />
+            </div>
+
+            <div class="card">
+              <label for="nivel">Nivel Educativo</label>
+              <select name="" id="nivel" formControlName="nivel">
+                <option value="A-Analfabeta">bachiller</option>
+                <option value="P-Primaria">P-Primaria</option>
+                <option value="S-Secundaria">S-Secundaria</option>
+                <option value="T-Tecnica">T-Tecnica</option>
+                <option value="U-Universitaria">U-Universitaria</option>
+                <option value="N-Ninguna">N-Ninguna</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="tipo_emprendimiento">tipo_emprendimiento</label>
+              <input formControlName="tipo_emprendimiento" id="tipo_emprendimiento" type="text" />
+            </div>
+
+            <div class="card">
+              <label for="tipo_act_economica">Tipo de actividad</label>
+              <select name="tipo_act_economica" id="tipo_act_economica" formControlName="tipo_act_economica">
+                <option value="Formal">Formal</option>
+                <option value="Informal">Informal</option>
+                <option value="No Aplica">No Aplica</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="afiliacion_salud">Afiliación Salud</label>
+              <select name="afiliacion_salud" id="afiliacion_salud" formControlName="afiliacion_salud">
+                <option value="Contributivo">Contributivo</option>
+                <option value="Subcidiado">Subcidiado</option>
+                <option value="Vinculado">Vinculado</option>
+                <option value="Regimen especial">Regimen especial</option>
+                <option value="Refugiado">Refugiado</option>
+                <option value="Subicidiado">Subicidiado</option>
+                <option value="No Afiliado">No Afiliado</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="runv">Inscrito en el RUNV</label>
+              <select name="runv" id="runv" formControlName="runv">
+                <option value="Si">Si</option>
+                <option value="No">Si</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="discapacidad">Discapacidad</label>
+              <select name="discapacidad" id="discapacidad" formControlName="discapacidad">
+                <option value="Mental">Mental</option>
+                <option value="Cognitiva">Cognitiva</option>
+                <option value="Auditiva">Auditiva</option>
+                <option value="visual">visual</option>
+                <option value="Física">Física</option>
+                <option value="Múltiple">Múltiple</option>
+                <option value="Ninguna">Ninguna</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="grupo_etnico">Grupo Étnico</label>
+              <select name="grupo_etnico" id="grupo_etnico" formControlName="grupo_etnico">
+                <option value="Mestizo">Mestizo</option>
+                <option value="Afrodescendiente">Afrodescendiente</option>
+                <option value="Palenquero">Palenquero</option>
+                <option value="Raizal">Raizal</option>
+                <option value="Indigena">Indigena</option>
+                <option value="ROM/Gitano">ROM/Gitano</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="movilidad_migratoria">Movilidad Migratoria</label>
+              <select name="movilidad_migratoria" id="movilidad_migratoria" formControlName="movilidad_migratoria">
+                <option value="Solo">Solo</option>
+                <option value="Familiar">Familiar</option>
+                <option value="Grupal">Grupal</option>
+              </select>
+            </div>
+            
+            <div class="card">
+              <label for="estudia">Estudia Actualmente</label>
+              <select name="estudia" id="estudia" formControlName="estudia">
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="grado">Grado Actual</label>
+              <select name="grado" id="grado" formControlName="grado">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="Ninguno">Ninguno</option>
+              </select>
+            </div>
+
+            <div class="card">
+              <label for="parentezco">Parentezco</label>
+              <select name="parentezco" id="parentezco" formControlName="parentezco">
+                <option value="Principal">Principal</option>
+                <option value="Padre">Padre</option>
+                <option value="Madre">Madre</option>
+                <option value="Abuelo/Abuela">Abuelo/Abuela</option>
+                <option value="Tio/Tia">Tio/Tia</option>
+                <option value="Primo/Prima">Primo/Prima</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+            <!-- ************************************************ -->
+          </div>
+        </div>
+
+        <div class="login-btn">
+          <button type="submit">
+            Guardar Cambios
+          </button>
+        </div>
       </form>
 
       <table class="table">
@@ -147,7 +378,7 @@
             <th><i class="fa fa-edit"></i></th>
           </tr>
         </thead>
-        <!-- <tbody>
+        <tbody>
           <tr *ngFor="let p of listPeople">
             <td>
               {{ p.nombre }}
@@ -162,12 +393,10 @@
               {{ p.genero }}
             </td>
             <td>
-              <a routerLink="/administracion/editar-persona/{{ p.id }}"
-                >Editar <i class="fa fa-edit"></i
-              ></a>
+              <a>Editar <i class="fa fa-edit"></i></a>
             </td>
           </tr>
-        </tbody> -->
+        </tbody>
       </table>
     </div>
   </div>

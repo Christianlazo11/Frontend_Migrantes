@@ -11,6 +11,7 @@ import { SurveyService } from 'src/app/services/survey.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 import { __values } from 'tslib';
+import { SurveyRoutingModule } from '../survey-routing.module';
 
 
 @Component({
@@ -37,13 +38,14 @@ export class CreateSurveyComponent implements OnInit {
     private fb: FormBuilder,
     private serviceSurvey: SurveyService,
     private servicePerson: PersonService,
+    private userService: UserService,
     private serviceSecurity: SecurityService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.noEncu = Number(this.route.snapshot.params['id']);
+    this.noEncu = this.route.snapshot.params['id'];
     this.buscarencuesta()
 
   }
@@ -81,11 +83,14 @@ export class CreateSurveyComponent implements OnInit {
     tipo_act_economica: ['', [Validators.required]],
     estatus_migratorio: ['', [Validators.required]],
     afiliacion_salud: ['', [Validators.required]],
+    runv : ['', [Validators.required]],
     docsSeleccionados: new FormArray([]),
     discapacidad: ['', [Validators.required]],
     grupo_etnico: ['', [Validators.required]],
+    movilidad_migratoria: ['', [Validators.required]],
     estudia: ['', [Validators.required]],
     grado: ['', [Validators.required]],
+    parentezco: ['', [Validators.required]],
     // surveyId: ['', [Validators.required]],
   });
 
@@ -118,14 +123,15 @@ export class CreateSurveyComponent implements OnInit {
   }
 
   buscarencuesta(){
-    console.log(this.noEncu)
-    let no_encuesta=this.NoEncu
-    let newSurvey = new ModelSurvey();
 
-    this.serviceSurvey.GetData(no_encuesta).subscribe(
+    
+    // let noEncuesta=this.NoEncu
+    let noEncuesta=this.noEncu.replace(":","")
+    this.serviceSurvey.ObtenerDatos(noEncuesta).subscribe(
       (datos: ModelSurvey) => {
-       
-      
+        alert("se encontró la encuesta")
+        console.log(Object.values(datos)[0].id)
+        this.idEncu=Object.values(datos)[0].id
       },
       (error) => {
         alert("No se encontro la encuesta")
@@ -155,42 +161,52 @@ export class CreateSurveyComponent implements OnInit {
     let newSurvey = new ModelSurvey();
 
     //Obtenemos el numero del Id con el numero de encuesta
-    let surveyid:any
+    
     console.log(typeof(this.noEncu))
 
     
-    // newSurvey.id = surveyid;
-    // newSurvey.municipio = Municipio;
-    // newSurvey.direccion = Direccion;
-    // newSurvey.correo = Correo;
-    // newSurvey.fijo_cel = Telefono;
+    newSurvey.id = this.idEncu;
+    newSurvey.no_encuesta = this.noEncu.replace(":","");
+    newSurvey.municipio = Municipio;
+    newSurvey.direccion = Direccion;
+    newSurvey.correo = Correo;
+    newSurvey.fijo_cel = Telefono;
 
-    // newSurvey.est_civil = Estado_civil;
-    // newSurvey.info_nucleo = Info_nucleo;
-    // newSurvey.conf_hogar = conf_hogar;
-    // newSurvey.quedaron_hijos = quedaron_hijos;
-    // newSurvey.nacionalidad_pareja = nacionalidad_pareja;
-    // newSurvey.razon_cruce = razon_cruce;
-    // newSurvey.tiempo_estancia = tiempo_estancia;
-    // newSurvey.razon_arauca = razon_arauca;
-
-
-    // newSurvey.intencion = Intencion;
-    // newSurvey.usuarioId = dataEncu.datos.id;
+    newSurvey.est_civil = Estado_civil;
+    newSurvey.info_nucleo = Info_nucleo;
+    // console.log("El hogar esta conformado por " + conf_hogar + " y es de tipo " + typeof(conf_hogar))
+    newSurvey.conf_hogar = String(conf_hogar);
+    newSurvey.quedaron_hijos = quedaron_hijos;
+    newSurvey.nacionalidad_pareja = nacionalidad_pareja;
+    newSurvey.razon_cruce = razon_cruce;
+    newSurvey.tiempo_estancia = tiempo_estancia;
+    newSurvey.razon_arauca = razon_arauca;
 
 
-    // this.serviceSurvey.UpdateSurvey(newSurvey).subscribe(
-    //   (datos: ModelSurvey) => {
-    //     alert('Encuesta Actualizada Correctamente');
-    //     this.router.navigate(['/encuesta/buscar-encuesta']);
-    //     this.validador = false
-    //   },
-    //   (error: any) => {
-    //     alert('Error Actualizando la encuesta');
-    //   }
-    // )
+    newSurvey.intencion = Intencion;
+    newSurvey.usuarioId = dataEncu.datos.id;
+ 
+
+
+    this.serviceSurvey.UpdateSurvey(newSurvey).subscribe(
+      (datos: ModelSurvey) => {
+        alert('Encuesta Actualizada Correctamente');
+        this.router.navigate(['/encuesta/buscar-encuesta']);
+      },
+      (error: any) => {
+        alert('Error Actualizando la encuesta');
+      }
+    )
 
   }
+  GetListPeople() {
+
+    this.servicePerson.GetPeople("123").subscribe((datos: ModelPerson[]) => {
+      this.listPeople = datos;
+    });
+  }
+
+  
 
 
 

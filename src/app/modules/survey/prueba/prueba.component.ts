@@ -267,7 +267,7 @@ export class PruebaComponent implements OnInit {
   }
 
   GetListPeople() {
-    this.servicePerson.GetPeople().subscribe((datos: ModelPerson[]) => {
+    this.servicePerson.GetPeople("123").subscribe((datos: ModelPerson[]) => {
       this.listPeople = datos;
     });
   }
