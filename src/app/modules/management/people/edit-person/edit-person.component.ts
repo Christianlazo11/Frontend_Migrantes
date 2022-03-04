@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModelPerson } from 'src/app/models/person.model';
 import { PersonService } from 'src/app/services/person.service';
@@ -23,6 +23,61 @@ export class EditPersonComponent implements OnInit {
     nivel: ['', [Validators.required]],
     // surveyId: ['', [Validators.required]],
   });
+  fgPersona: FormGroup = this.fb.group({
+    id: ['', [Validators.required]],
+    name: ['', [Validators.required]],
+    lastName: ['', [Validators.required]],
+    document: ['', [Validators.required]],
+    gender: ['', [Validators.required]],
+    country: ['', [Validators.required]],
+    dateOfBirth: ['', [Validators.required]],
+    nivel: ['', [Validators.required]],
+    edad: ['', [Validators.required]],
+    profesion: ['', [Validators.required]],
+    tipo_emprendimiento: ['', [Validators.required]],
+    act_economica: ['', [Validators.required]],
+    tipo_act_economica: ['', [Validators.required]],
+    estatus_migratorio: ['', [Validators.required]],
+    afiliacion_salud: ['', [Validators.required]],
+    runv: ['', [Validators.required]],
+    docsSeleccionados: new FormArray([]),
+    discapacidad: ['', [Validators.required]],
+    grupo_etnico: ['', [Validators.required]],
+    movilidad_migratoria: ['', [Validators.required]],
+    estudia: ['', [Validators.required]],
+    grado: ['', [Validators.required]],
+    parentezco: ['', [Validators.required]],
+
+    // surveyId: ['', [Validators.required]],
+  });
+
+  // Checkbox intención
+  //************************************************************************ */
+
+  docs: Array<any> = [
+    { name: 'Acta de nacimiento', value: 'Acta de nacimiento' },
+    { name: 'Cédula venezolana', value: 'Cédula venezolana' },
+    { name: 'PPT', value: 'PPT' },
+    { name: 'Pasaporte venezolano', value: 'Pasaporte venezolano' },
+    { name: 'Salvo conducto', value: 'Salvo conducto' },
+    { name: 'TMF', value: 'TMF' },
+    { name: 'Cédula/TI/RC Colombia', value: 'Cédula/TI/RC Colombia' },
+    { name: 'Solución ETPV', value: 'Solución ETPV' },
+    { name: 'Visa laboral o estudiantil', value: 'Visa laboral o estudiantil' },
+    { name: 'Ninguno', value: 'Ninguno' }
+  ];
+
+  onCheckboxChange(event: any) {
+    const docsSeleccionados = (this.fgPersona.controls['docsSeleccionados'] as FormArray);
+    if (event.target.checked) {
+      docsSeleccionados.push(new FormControl(event.target.value));
+
+    } else {
+      const index = docsSeleccionados.controls
+        .findIndex(x => x.value === event.target.value);
+      docsSeleccionados.removeAt(index);
+    }
+  }
 
   constructor(
     private fb: FormBuilder,
@@ -40,14 +95,27 @@ export class EditPersonComponent implements OnInit {
     this.servicePerson
       .GetPeopleById(this.id)
       .subscribe((datos: ModelPerson) => {
-        this.fgValidator.controls['id'].setValue(this.id);
-        this.fgValidator.controls['name'].setValue(datos.nombre);
-        this.fgValidator.controls['lastName'].setValue(datos.apellido);
-        this.fgValidator.controls['document'].setValue(datos.documento);
-        this.fgValidator.controls['gender'].setValue(datos.documento);
-        this.fgValidator.controls['country'].setValue(datos.nacionalidad);
-        this.fgValidator.controls['dateOfBirth'].setValue(datos.fechaNac);
-        this.fgValidator.controls['nivel'].setValue(datos.nivelEdu);
+        console.log(datos)
+        
+        this.fgPersona.controls['name'].setValue(datos.nombre);
+        this.fgPersona.controls['lastName'].setValue(datos.apellido);
+        this.fgPersona.controls['document'].setValue(datos.documento);
+        this.fgPersona.controls['gender'].setValue(datos.documento);
+        this.fgPersona.controls['country'].setValue(datos.nacionalidad);
+        this.fgPersona.controls['dateOfBirth'].setValue(datos.fechaNac);
+        this.fgPersona.controls['nivel'].setValue(datos.nivelEdu);
+        this.fgPersona.controls['edad'].setValue(datos.edad);
+        this.fgPersona.controls['profesion'].setValue(datos.profesion);
+        this.fgPersona.controls['tipo_emprendimiento'].setValue(datos.tipo_emprendimiento);
+        this.fgPersona.controls['act_economica'].setValue(datos.act_economica);
+        this.fgPersona.controls['tipo_act_economica'].setValue(datos.tipo_act_economica);
+        this.fgPersona.controls['estatus_migratorio'].setValue(datos.estatus_migratorio);
+        this.fgPersona.controls['afiliacion_salud'].setValue(datos.afiliacion_salud);
+        this.fgPersona.controls['docsSeleccionados'].setValue(datos.docsSeleccionados);
+        this.fgPersona.controls['discapacidad'].setValue(datos.discapacidad);
+        // this.fgPersona.controls['grupo_etnico'].setValue(datos.);
+        this.fgPersona.controls['estudia'].setValue(datos.estudia);
+        this.fgPersona.controls['grado'].setValue(datos.grado);
       });
   }
 
@@ -59,7 +127,7 @@ export class EditPersonComponent implements OnInit {
     let nacionalidad = this.fgValidator.controls['country'].value;
     let fechaNacimiento = this.fgValidator.controls['dateOfBirth'].value;
     let nivelEducativo = this.fgValidator.controls['nivel'].value;
-    let surveyId = '1521';
+   
 
     let newPerson = new ModelPerson();
     newPerson.nombre = nombre;
@@ -69,7 +137,7 @@ export class EditPersonComponent implements OnInit {
     newPerson.nacionalidad = nacionalidad;
     newPerson.fechaNac = fechaNacimiento;
     newPerson.nivelEdu = nivelEducativo;
-    newPerson.encuestaId = surveyId;
+   
     newPerson.id = this.id;
 
     this.servicePerson.UpdatePerson(newPerson).subscribe(

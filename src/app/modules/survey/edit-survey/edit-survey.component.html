@@ -61,14 +61,14 @@
             <label for="quedaron_hijos">21B. ¿Se quedaron hijos?</label>
             <select name="quedaron_hijos" id="quedaron_hijos" formControlName="quedaron_hijos">
               <option value="Si">Si</option>
-              <option value="No">Si</option>
+              <option value="No">No</option>
             </select>
           </div>
 
           <div class="card">
             <label for="nacionalidad_pareja">21C. Nacionalidad de la pareja</label>
             <select name="nacionalidad_pareja" id="nacionalidad_pareja" formControlName="nacionalidad_pareja">
-              <option value="Venolano">Venolano</option>
+              <option value="Venezolano">Venezolano</option>
               <option value="Colombiano">Colombiano</option>
               <option value="Otro">Otro</option>
               <option value="No Aplica">No Aplica</option>
@@ -189,9 +189,15 @@
               <label for="afiliacion_salud">Afiliación Salud</label>
               <select name="afiliacion_salud" id="afiliacion_salud" formControlName="afiliacion_salud">
                 <option value="Contributivo">Contributivo</option>
-                <option value="Subcidiado">Subcidiado</option>
+                <option value="Subsidiado">Subsidiado</option>
+                <option value="Vinculado">Vinculado</option>
+                <option value="Regimen especial">Regimen especial</option>
+                <option value="Refugiado Subsidiado">Refugiado Subsidiado</option>
+                <option value="No Afiliado">No Afiliado</option>
               </select>
             </div>
+
+            
             <div>
 
               <div class="card">
@@ -228,6 +234,7 @@
                 <select name="" id="gender" formControlName="gender">
                   <option value="masculino">Masculino</option>
                   <option value="femenino">Femenino</option>
+                  <option value="LGTBI">LGTBI</option>
                 </select>
               </div>
             </div>
@@ -239,7 +246,7 @@
             <div class="card">
               <label for="nivel">Nivel Educativo</label>
               <select name="" id="nivel" formControlName="nivel">
-                <option value="A-Analfabeta">bachiller</option>
+                <option value="A-Analfabeta">A-Analfabeta</option>
                 <option value="P-Primaria">P-Primaria</option>
                 <option value="S-Secundaria">S-Secundaria</option>
                 <option value="T-Tecnica">T-Tecnica</option>
@@ -262,24 +269,13 @@
               </select>
             </div>
 
-            <div class="card">
-              <label for="afiliacion_salud">Afiliación Salud</label>
-              <select name="afiliacion_salud" id="afiliacion_salud" formControlName="afiliacion_salud">
-                <option value="Contributivo">Contributivo</option>
-                <option value="Subcidiado">Subcidiado</option>
-                <option value="Vinculado">Vinculado</option>
-                <option value="Regimen especial">Regimen especial</option>
-                <option value="Refugiado">Refugiado</option>
-                <option value="Subicidiado">Subicidiado</option>
-                <option value="No Afiliado">No Afiliado</option>
-              </select>
-            </div>
+            
 
             <div class="card">
               <label for="runv">Inscrito en el RUNV</label>
               <select name="runv" id="runv" formControlName="runv">
                 <option value="Si">Si</option>
-                <option value="No">Si</option>
+                <option value="No">No</option>
               </select>
             </div>
 
@@ -350,6 +346,7 @@
                 <option value="Principal">Principal</option>
                 <option value="Padre">Padre</option>
                 <option value="Madre">Madre</option>
+                <option value="Hijo/Hija">Hijo/Hija</option>
                 <option value="Abuelo/Abuela">Abuelo/Abuela</option>
                 <option value="Tio/Tia">Tio/Tia</option>
                 <option value="Primo/Prima">Primo/Prima</option>
@@ -392,8 +389,9 @@
               {{ p.genero }}
             </td>
             <td>
-              <a>Editar <i class="fa fa-edit"></i
-              ></a>
+              <a routerLink="/administracion/editar-persona/{{ p.id }}"
+            >Editar <i class="fa fa-edit"></i
+          ></a>
             </td>
           </tr>
         </tbody>
