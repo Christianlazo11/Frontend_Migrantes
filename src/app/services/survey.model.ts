@@ -6,6 +6,7 @@ export class ModelSurvey {
     correo?: string;
     fijo_cel?: string;
     intencion?: string;
+    intencion_permanecer?: string;
     tipo_doc?: string;
     ident_genero?: string;
     grupo_etnico?: string;

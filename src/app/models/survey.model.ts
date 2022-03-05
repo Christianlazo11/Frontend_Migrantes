@@ -14,6 +14,7 @@ export class ModelSurvey {
     tiempo_estancia?: string;
     razon_arauca?: string;    
     intencion?: string;
+    intencion_permancer?: string;
     usuarioId?: string;
     
    

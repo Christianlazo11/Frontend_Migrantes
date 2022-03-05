@@ -47,8 +47,6 @@ export class EditSurveyComponent implements OnInit {
     this.GetListPeople();
 
 
-
-
   }
 
   //Creamos el formulario
@@ -66,6 +64,7 @@ export class EditSurveyComponent implements OnInit {
     razon_cruce: ['', [Validators.required]],
     tiempo_estancia: ['', [Validators.required]],
     razon_arauca: ['', [Validators.required]],
+    intencion_permanecer: ['', [Validators.required]],
 
   });
   fgPersona: FormGroup = this.fb.group({
