@@ -193,17 +193,49 @@ export class EditSurveyComponent implements OnInit {
         let nacionalidad = this.fgPersona.controls['country'].value;
         let fechaNacimiento = this.fgPersona.controls['dateOfBirth'].value;
         let nivelEducativo = this.fgPersona.controls['nivel'].value;
+        let edad = this.fgPersona.controls['edad'].value;
+        let profesion = this.fgPersona.controls['profesion'].value;
+        let tipo_emprendimiento = this.fgPersona.controls['tipo_emprendimiento'].value;
+        let act_economica = this.fgPersona.controls['act_economica'].value;
+        let tipo_act_economica = this.fgPersona.controls['tipo_act_economica'].value;
+        let runv = this.fgPersona.controls['runv'].value;
+        let estatus_migratorio = this.fgPersona.controls['estatus_migratorio'].value;
+        let afiliacion_salud = this.fgPersona.controls['afiliacion_salud'].value;
+        let docsSeleccionados = this.fgPersona.controls['docsSeleccionados'].value;
+        let discapacidad= this.fgPersona.controls['discapacidad'].value;
+        let grupo_etnico = this.fgPersona.controls['grupo_etnico'].value;
+        let movilidad_migratoria = this.fgPersona.controls['movilidad_migratoria'].value;
+        let estudia = this.fgPersona.controls['estudia'].value;
+        let grado = this.fgPersona.controls['grado'].value;
+        let parentezco = this.fgPersona.controls['parentezco'].value;
         let surveyId = Object.values(datos)[0].id;
     
         let newPerson = new ModelPerson();
+
+        console.log ("los documentos seleccionados son de tipo " +  typeof(docsSeleccionados))
         newPerson.nombre = nombre;
         newPerson.apellido = apellido;
         newPerson.documento = String(documento);
         newPerson.genero = genero;
         newPerson.nacionalidad = nacionalidad;
         newPerson.fechaNac = fechaNacimiento;
-
         newPerson.nivelEdu = nivelEducativo;
+        newPerson.edad = String(edad);
+        newPerson.profesion = profesion;
+        newPerson.tipo_emprendimiento = tipo_emprendimiento;
+        newPerson.act_economica = act_economica;
+        newPerson.tipo_act_economica = tipo_act_economica;
+        newPerson.runv = runv;
+        newPerson.estatus_migratorio = estatus_migratorio;
+        newPerson.afiliacion_salud = afiliacion_salud;
+        newPerson.docsSeleccionados= String(docsSeleccionados);
+        newPerson.discapacidad = discapacidad;
+        newPerson.grupo_etnico = grupo_etnico;
+        newPerson.movilidad_migratoria = movilidad_migratoria;
+        newPerson.estudia = estudia;
+        newPerson.grado = grado;
+        newPerson.parentezco = parentezco;
+        
         newPerson.encuestaId = surveyId;
 
         console.log(newPerson)
