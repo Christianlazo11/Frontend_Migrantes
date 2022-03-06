@@ -65,6 +65,7 @@ export class EditSurveyComponent implements OnInit {
     tiempo_estancia: ['', [Validators.required]],
     razon_arauca: ['', [Validators.required]],
     intencion_permanecer: ['', [Validators.required]],
+    localidad_procedencia: ['', [Validators.required]],
 
   });
   fgPersona: FormGroup = this.fb.group({
@@ -129,16 +130,10 @@ export class EditSurveyComponent implements OnInit {
 
 
   SerchSurvey() {
-
-    console.log("l número de encuesta es: " + this.noEncu.replace(":", ""))
-
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
       (datos: ModelSurvey) => {
-
-
+        console.log(datos)
         this.idEncu = Object.values(datos)[0].id
-  
-
 
         this.fgValidator.controls['municipio'].setValue(Object.values(datos)[0].municipio);
         this.fgValidator.controls['direccion'].setValue(Object.values(datos)[0].direccion);
@@ -155,6 +150,8 @@ export class EditSurveyComponent implements OnInit {
         this.fgValidator.controls['razon_arauca'].setValue(Object.values(datos)[0].razon_arauca);
         this.fgValidator.controls['intencion'].setValue(Object.values(datos)[0].intencion);
         this.fgValidator.controls['intencion_permanecer'].setValue(Object.values(datos)[0].intencion_permanecer);
+        this.fgValidator.controls['localidad_procedencia'].setValue(Object.values(datos)[0].localidad_procedencia);
+      
       },
       (error) => {
         alert("No se encontró la encuesta")
@@ -262,7 +259,6 @@ export class EditSurveyComponent implements OnInit {
 
   ModificarEncuesta() {
 
-
     let dataEncu = this.serviceSecurity.GetDataSession();
     let Municipio = this.fgValidator.controls['municipio'].value;
     let Direccion = this.fgValidator.controls['direccion'].value;
@@ -278,6 +274,8 @@ export class EditSurveyComponent implements OnInit {
     let razon_arauca = this.fgValidator.controls['razon_arauca'].value;
     let Intencion = this.fgValidator.controls['intencion'].value;
     let intencion_permanecer = this.fgValidator.controls['intencion_permanecer'].value;
+    
+    let localidad_procedencia = this.fgValidator.controls['localidad_procedencia'].value;
     let newSurvey = new ModelSurvey();
 
     //Obtenemos el numero del Id con el numero de encuesta
@@ -304,7 +302,9 @@ export class EditSurveyComponent implements OnInit {
 
 
     newSurvey.intencion = Intencion;
-    newSurvey.intencion_permancer = intencion_permanecer;
+    newSurvey.intencion_permanecer = intencion_permanecer;
+    newSurvey.localidad_procedencia = localidad_procedencia;
+
     newSurvey.usuarioId = dataEncu.datos.id;
  
 

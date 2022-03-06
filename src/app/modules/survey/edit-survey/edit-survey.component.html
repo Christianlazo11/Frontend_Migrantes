@@ -118,11 +118,11 @@
             <select formControlName="intencion" id="4">
               <option value="Establecer su domicilio en el país">Establecer su domicilio en el país</option>
               <option value="Transitar hacia otro país">Transitar hacia otro país</option>
-              <option value="Trabajar por un tiempo para regresar a Venezuela">Trabajar por un tiempo para regresar a
-                Venezuela</option>
+              <option value="Trabajar por un tiempo para regresar a Venezuela">Trabajar por un tiempo para regresar a Venezuela</option>
               <option value="Encontrarse con su familia">Encontrarse con su familia</option>
             </select>
           </div>
+
           <div class="card">
             <label for="intencion_permanecer">26. Intencion de Permanecer en Colombia</label>
             <select formControlName="intencion_permanecer" id="intencion_permanecer">
@@ -134,6 +134,15 @@
               <option value="No sabe cómo hacerlo y/o carece de orientación">No sabe cómo hacerlo y/o carece de orientación</option>
               <option value="Estudio de los hijos y/o propio">Estudio de los hijos y/o propio</option>
               <option value="Otra circunstancia">Otra circunstancia</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="localidad_procedencia">31A. Tipo de localidad de donde procede</label>
+            <select formControlName="localidad_procedencia" id="31">
+              <option value="Urbana">Urbana</option>
+              <option value="Rural">Rural</option>
+              <option value="No especificado">No especificado</option>
             </select>
           </div>
 
@@ -383,6 +392,7 @@
             <th>apellido</th>
             <th>documento</th>
             <th>genero</th>
+            <th>parentezco</th>
             <th><i class="fa fa-edit"></i></th>
           </tr>
         </thead>
