@@ -272,7 +272,7 @@ export class EditSurveyComponent implements OnInit {
 
 
     newSurvey.intencion = Intencion;
-    newSurvey.intencion_permancer = intencion_permanecer;
+    newSurvey.intencion_permanecer = intencion_permanecer;
     newSurvey.usuarioId = dataEncu.datos.id;
  
 
