@@ -47,8 +47,6 @@ export class EditSurveyComponent implements OnInit {
     this.GetListPeople();
 
 
-
-
   }
 
   //Creamos el formulario
@@ -66,6 +64,7 @@ export class EditSurveyComponent implements OnInit {
     razon_cruce: ['', [Validators.required]],
     tiempo_estancia: ['', [Validators.required]],
     razon_arauca: ['', [Validators.required]],
+    intencion_permanecer: ['', [Validators.required]],
 
   });
   fgPersona: FormGroup = this.fb.group({
@@ -155,6 +154,7 @@ export class EditSurveyComponent implements OnInit {
         this.fgValidator.controls['tiempo_estancia'].setValue(Object.values(datos)[0].tiempo_estancia);
         this.fgValidator.controls['razon_arauca'].setValue(Object.values(datos)[0].razon_arauca);
         this.fgValidator.controls['intencion'].setValue(Object.values(datos)[0].intencion);
+        this.fgValidator.controls['intencion_permanecer'].setValue(Object.values(datos)[0].intencion_permanecer);
       },
       (error) => {
         alert("No se encontró la encuesta")
@@ -277,7 +277,7 @@ export class EditSurveyComponent implements OnInit {
     let tiempo_estancia = this.fgValidator.controls['tiempo_estancia'].value;
     let razon_arauca = this.fgValidator.controls['razon_arauca'].value;
     let Intencion = this.fgValidator.controls['intencion'].value;
-
+    let intencion_permanecer = this.fgValidator.controls['intencion_permanecer'].value;
     let newSurvey = new ModelSurvey();
 
     //Obtenemos el numero del Id con el numero de encuesta
@@ -304,6 +304,7 @@ export class EditSurveyComponent implements OnInit {
 
 
     newSurvey.intencion = Intencion;
+    newSurvey.intencion_permancer = intencion_permanecer;
     newSurvey.usuarioId = dataEncu.datos.id;
  
 

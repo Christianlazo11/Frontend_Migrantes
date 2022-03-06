@@ -56,7 +56,6 @@ export class CreateSurveyComponent implements OnInit {
     direccion: ['', [Validators.required]],
     correo: ['', [Validators.required, Validators.email]],
     tel: ['', [Validators.required]],
-    intencion: ['', [Validators.required]],
     est_civil: ['', [Validators.required]],
     info_nucleo: ['', [Validators.required]],
     conf_hogar: ['', [Validators.required]],
@@ -65,7 +64,8 @@ export class CreateSurveyComponent implements OnInit {
     razon_cruce: ['', [Validators.required]],
     tiempo_estancia: ['', [Validators.required]],
     razon_arauca: ['', [Validators.required]],
-
+    intencion: ['', [Validators.required]],
+    intencion_permancer: ['', [Validators.required]],
   });
   fgPersona: FormGroup = this.fb.group({
     id: ['', [Validators.required]],

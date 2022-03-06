@@ -15,22 +15,22 @@
           </div>
 
           <div class="card">
-            <h3>Dirección de residencia</h3>
+            <label for="direccion">Dirección de residencia</label>
             <input formControlName="direccion" id="3" type="text" />
           </div>
 
           <div class="card">
-            <h3>Correo Electrónico</h3>
+            <label for="correo">Correo Electrónico</label>
             <input formControlName="correo" id="3" type="email" />
           </div>
 
           <div class="card">
-            <h3>Telefono fijo o celular</h3>
+            <label for="tel">Telefono fijo o celular</label>
             <input formControlName="tel" id="3" type="text" />
           </div>
 
           <div class="card">
-            <h3>¿19. Estado civil?</h3>
+            <label for="est_civil">¿19. Estado civil?</label>
             <select formControlName="est_civil" id="est_civil">
               <option value="Soltero">Soltero</option>
               <option value="Casado">Casado</option>
@@ -42,8 +42,8 @@
           </div>
 
           <div class="card">
-            <h3>20. Información nucleo Familiar</h3>
-            <select formControlName="info_nucleo" id="info_nucleo">
+              <label for="info_nucleo">20. Informacion nucleo Familiar</label>
+              <select formControlName="info_nucleo" id="info_nucleo">
               <option value="Padre Jefe de Hogar">Padre Jefe de Hogar</option>
               <option value="Madre Jefe de Hogar">Madre Jefe de Hogar</option>
               <option value="Padre Cabeza de familia">Padre Cabeza de familia</option>
@@ -120,9 +120,23 @@
               <option value="Transitar hacia otro país">Transitar hacia otro país</option>
               <option value="Trabajar por un tiempo para regresar a Venezuela">Trabajar por un tiempo para regresar a
                 Venezuela</option>
-              <option value="ncontrarse con su familia">Encontrarse con su familia</option>
+              <option value="Encontrarse con su familia">Encontrarse con su familia</option>
             </select>
           </div>
+          <div class="card">
+            <label for="intencion_permanecer">26. Intencion de Permanecer en Colombia</label>
+            <select formControlName="intencion_permanecer" id="intencion_permanecer">
+              <option value="Interesado en permancer en Colombia">Interesado en Permanecer en Colombia</option>
+              <option value="Planea retornar a venezuela">Planea retornar a venezuela</option>
+              <option value="Ha reglamentado su estancia en Colombia">Ha reglamentado su estancia en Colombia</option>
+              <option value="No ha reglamentado su estancia en Colombia">No ha reglamentado su estancia en Colombia</option>
+              <option value="No le interesa reglamentar su estancia">No le interesa reglamentar su estancia</option>
+              <option value="No sabe cómo hacerlo y/o carece de orientación">No sabe cómo hacerlo y/o carece de orientación</option>
+              <option value="Estudio de los hijos y/o propio">Estudio de los hijos y/o propio</option>
+              <option value="Otra circunstancia">Otra circunstancia</option>
+            </select>
+          </div>
+
         </div>
 
         <div class="survey-btn">
@@ -196,7 +210,6 @@
                 <option value="No Afiliado">No Afiliado</option>
               </select>
             </div>
-
             
             <div>
 
@@ -214,7 +227,6 @@
                   </div>
 
                 </div>
-
 
                 <!-- <p>{{ fgValidator.value | json }}</p> -->
 
