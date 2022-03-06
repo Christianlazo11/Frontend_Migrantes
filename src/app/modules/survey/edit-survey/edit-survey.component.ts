@@ -92,10 +92,6 @@ export class EditSurveyComponent implements OnInit {
     estudia: ['', [Validators.required]],
     grado: ['', [Validators.required]],
     parentezco: ['', [Validators.required]],
-
-
-
-
     // surveyId: ['', [Validators.required]],
   });
 
@@ -255,6 +251,10 @@ export class EditSurveyComponent implements OnInit {
         this.router.navigate([`/encuesta/buscar-encuesta`]);
       })
    
+  }
+  DeletePerson(){
+    // this.servicePerson.DeletePerson(this.listPeople.id)
+
   }
 
   ModificarEncuesta() {
