@@ -232,8 +232,8 @@
               <div>
                 <label for="gender">Genero</label>
                 <select name="" id="gender" formControlName="gender">
-                  <option value="masculino">Masculino</option>
-                  <option value="femenino">Femenino</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Femenino">Femenino</option>
                   <option value="LGTBI">LGTBI</option>
                 </select>
               </div>
@@ -387,6 +387,9 @@
             </td>
             <td>
               {{ p.genero }}
+            </td>
+            <td>
+              {{ p.parentezco}}
             </td>
             <td>
               <a routerLink="/administracion/editar-persona/{{ p.id }}"
