@@ -22,6 +22,8 @@ export class ModelSurvey {
     apostillo_tit_tec?: string; 
     lugar_trabajo?: string; 
     posicion_trabajo?: string; 
-    tipo_viculacion?: string;
+    tipo_vinculacion?: string;
+    obtener_ingresos?: string;
+    ingresos_mensuales?: string;
 
   }

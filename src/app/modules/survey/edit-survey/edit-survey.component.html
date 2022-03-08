@@ -199,16 +199,42 @@
           </div>
 
           <div class="card">
-            <label for="tipo_viculacion">35. Tipo ontrato: Vinculación</label>
-            <select formControlName="tipo_viculacion" id="35">
-              <option value="termino_fijo">Contrato término fijo</option>
-              <option value="termino_indefinido">Contrato término indefinido</option>
+            <label for="tipo_vinculacion">35. Tipo contrato: Vinculacion</label>
+            <select formControlName="tipo_vinculacion" id="35">
+              <option value="termino_fijo">Contrato termino fijo</option>
+              <option value="termino_indefinido">Contrato termino indefinido</option>
               <option value="obra_labor">Contrato Obra labor</option>
               <option value="contrato_temporal">Contrato temporal ocasional</option>
               <option value="prestacion_servicios">Contrato civil prestación de servicios</option>
               <option value="ns_nr">NS/NR</option>
             </select>
           </div>
+
+          <div class="card">
+            <label for="obtener_ingresos">36. Forma de obtenes ingresos</label>
+            <select formControlName="obtener_ingresos" id="36">
+              <option value="por_trabajo">Por trabajo</option>
+              <option value="ayuda_personas_locales">Por ayuda de personas locales</option>
+              <option value="remesas">Por remesas de familiares en otros paises</option>
+              <option value="mendicidad">por mendicidad</option>
+              </select>
+          </div>
+
+          <div class="card">
+            <label for="ingresos_mensuales">37. Ingresos mensuales en pesos</label>
+            <select formControlName="ingresos_mensuales" id="37">
+              <option value="sin_ingresos">Sin_ingresos</option>
+              <option value="menos_medio_salario">Menos de medio salario minimo</option>
+              <option value="hasta_ub_salario">Hasta un salario minimo</option>
+              <option value="hasta_dos_salarios">Hasta dos salarios minimos</option>
+              <option value="hasta_tres_salarios">Hasta tres salarios minimos</option>
+              <option value="hasta_cuatro_salarios">Hasta cuatro salarios minimos</option>
+              <option value="hasta_cinco_salarios">Hasta cinco salarios minimos</option>
+              <option value="mas_cinco_salarios">Mas de  cinco salarios minimos</option>
+              <option value="no_especificado">No especificado</option>
+            </select>
+          </div>
+
 
         </div>
 

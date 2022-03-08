@@ -71,6 +71,8 @@ export class EditSurveyComponent implements OnInit {
     lugar_trabajo: ['', [Validators.required]],
     posicion_trabajo: ['', [Validators.required]],
     tipo_viculacion: ['', [Validators.required]],
+    obtener_ingresos: ['', [Validators.required]],
+    ingresos_mensuales: ['', [Validators.required]],
     
 
   });
@@ -159,6 +161,9 @@ export class EditSurveyComponent implements OnInit {
         this.fgValidator.controls['lugar_trabajo'].setValue(Object.values(datos)[0].lugar_trabajo);
         this.fgValidator.controls['posicion_trabajo'].setValue(Object.values(datos)[0].posicion_trabajo);
         this.fgValidator.controls['tipo_viculacion'].setValue(Object.values(datos)[0].tipo_viculacion);
+        this.fgValidator.controls['obtener_ingresos'].setValue(Object.values(datos)[0].obtener_ingresos);
+        this.fgValidator.controls['ingresos_mensuales'].setValue(Object.values(datos)[0].ingresos_mensuales);
+
         
 
       },
@@ -214,6 +219,7 @@ export class EditSurveyComponent implements OnInit {
         let estudia = this.fgPersona.controls['estudia'].value;
         let grado = this.fgPersona.controls['grado'].value;
         let parentezco = this.fgPersona.controls['parentezco'].value;
+        
         let surveyId = Object.values(datos)[0].id;
     
         let newPerson = new ModelPerson();
@@ -293,7 +299,10 @@ export class EditSurveyComponent implements OnInit {
     let apostillo_tit_tec = this.fgValidator.controls['apostillo_tit_tec'].value;
     let lugar_trabajo = this.fgValidator.controls['lugar_trabajo'].value;
     let posicion_trabajo = this.fgValidator.controls['posicion_trabajo'].value;
-    let tipo_viculacion = this.fgValidator.controls['tipo_viculacion'].value;
+    let tipo_vinculacion = this.fgValidator.controls['tipo_vinculacion'].value;
+    let obtener_ingresos = this.fgValidator.controls['obtener_ingresos'].value;
+    let ingresos_mensuales = this.fgValidator.controls['ingresos_mensuales'].value;
+
     
     let newSurvey = new ModelSurvey();
 
@@ -327,7 +336,10 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.apostillo_tit_tec = apostillo_tit_tec;
     newSurvey.lugar_trabajo = lugar_trabajo;
     newSurvey.posicion_trabajo = posicion_trabajo;
-    newSurvey.tipo_viculacion = tipo_viculacion;
+    newSurvey.tipo_vinculacion = tipo_vinculacion;
+    newSurvey.obtener_ingresos = obtener_ingresos;
+    newSurvey.ingresos_mensuales = ingresos_mensuales;
+
 
     newSurvey.usuarioId = dataEncu.datos.id;
  
