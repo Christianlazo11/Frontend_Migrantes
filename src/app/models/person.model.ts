@@ -8,6 +8,7 @@ export class ModelPerson {
   fechaNac?: Date;
   nivelEdu?: String;
   edad?: String;
+  runv?: String;
   profesion?: String;
   tipo_emprendimiento?: String;
   act_economica?: String;
@@ -18,5 +19,11 @@ export class ModelPerson {
   discapacidad?: String;
   estudia?: String;
   grado?: String;
+  grupo_etnico?: String;
   encuestaId?: String;
+  movilidad_migratoria?: String;
+  parentezco?: String;
+  
+  
+
 }
