@@ -19,7 +19,7 @@ const routes: Routes = [
     component: EditPersonComponent,
   },
   {
-    path: 'eliminar-persona',
+    path: 'eliminar-persona/:id',
     component: DeletePersonComponent,
   },
   {

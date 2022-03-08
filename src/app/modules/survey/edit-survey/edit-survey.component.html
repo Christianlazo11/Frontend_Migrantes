@@ -42,8 +42,8 @@
           </div>
 
           <div class="card">
-              <label for="info_nucleo">20. Informacion nucleo Familiar</label>
-              <select formControlName="info_nucleo" id="info_nucleo">
+            <label for="info_nucleo">20. Informacion nucleo Familiar</label>
+            <select formControlName="info_nucleo" id="info_nucleo">
               <option value="Padre Jefe de Hogar">Padre Jefe de Hogar</option>
               <option value="Madre Jefe de Hogar">Madre Jefe de Hogar</option>
               <option value="Padre Cabeza de familia">Padre Cabeza de familia</option>
@@ -118,7 +118,8 @@
             <select formControlName="intencion" id="25">
               <option value="Establecer su domicilio en el país">Establecer su domicilio en el país</option>
               <option value="Transitar hacia otro país">Transitar hacia otro país</option>
-              <option value="Trabajar por un tiempo para regresar a Venezuela">Trabajar por un tiempo para regresar a Venezuela</option>
+              <option value="Trabajar por un tiempo para regresar a Venezuela">Trabajar por un tiempo para regresar a
+                Venezuela</option>
               <option value="Encontrarse con su familia">Encontrarse con su familia</option>
             </select>
           </div>
@@ -129,9 +130,11 @@
               <option value="Interesado en permancer en Colombia">Interesado en Permanecer en Colombia</option>
               <option value="Planea retornar a venezuela">Planea retornar a venezuela</option>
               <option value="Ha reglamentado su estancia en Colombia">Ha reglamentado su estancia en Colombia</option>
-              <option value="No ha reglamentado su estancia en Colombia">No ha reglamentado su estancia en Colombia</option>
+              <option value="No ha reglamentado su estancia en Colombia">No ha reglamentado su estancia en Colombia
+              </option>
               <option value="No le interesa reglamentar su estancia">No le interesa reglamentar su estancia</option>
-              <option value="No sabe cómo hacerlo y/o carece de orientación">No sabe cómo hacerlo y/o carece de orientación</option>
+              <option value="No sabe cómo hacerlo y/o carece de orientación">No sabe cómo hacerlo y/o carece de
+                orientación</option>
               <option value="Estudio de los hijos y/o propio">Estudio de los hijos y/o propio</option>
               <option value="Otra circunstancia">Otra circunstancia</option>
             </select>
@@ -220,8 +223,6 @@
 
     <div class="edit-survey-content-right">
       <h2>Grupo Familiar</h2>
-      <!-- <crear-persona-root></crear-persona-root> -->
-
       <form [formGroup]="fgPersona" (ngSubmit)="SavePerson()">
         <div class="edit-survey-content">
           <div class="edit-survey-content-left">
@@ -282,7 +283,7 @@
                 <option value="No Afiliado">No Afiliado</option>
               </select>
             </div>
-            
+
             <div>
 
               <div class="card">
@@ -353,7 +354,7 @@
               </select>
             </div>
 
-            
+
 
             <div class="card">
               <label for="runv">Inscrito en el RUNV</label>
@@ -442,9 +443,9 @@
           </div>
         </div>
 
-        <div class="login-btn">
+        <div  class="survey-btn">
           <button type="submit">
-            Guardar Cambios
+            Crear persona
           </button>
         </div>
       </form>
@@ -457,7 +458,8 @@
             <th>documento</th>
             <th>genero</th>
             <th>parentezco</th>
-            <th><i class="fa fa-edit"></i></th>
+            <th>Editar</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -478,9 +480,10 @@
               {{ p.parentezco}}
             </td>
             <td>
-              <a routerLink="/administracion/editar-persona/{{ p.id }}"
-            >Editar <i class="fa fa-edit"></i
-          ></a>
+              <a routerLink="/administracion/editar-persona/{{ p.id }}"> <i class="fa fa-edit"></i></a>
+            </td>
+            <td>
+              <a routerLink="/administracion/eliminar-persona/{{ p.id }}"> <i class="fa fa-minus-circle"></i></a>
             </td>
           </tr>
         </tbody>
