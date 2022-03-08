@@ -9,7 +9,8 @@ export class ModelUser {
   estado?: String;
 }
 
-// "nombre": "string",
+// "r8P6IZSe-admin",
+
 //   "apellido": "string",
 //   "documento": "string",
 //   "correo": "string",

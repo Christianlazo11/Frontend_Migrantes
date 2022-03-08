@@ -145,6 +145,67 @@
               <option value="No especificado">No especificado</option>
             </select>
           </div>
+          <div class="card">
+            <label for="maternidad">31B. Maternidad?</label>
+            <select formControlName="maternidad" id="31B">
+              <option value="Gestante">Gestante</option>
+              <option value="Lactante">Lactante</option>
+              <option value="Ninguno">Ninguno</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="apostillo_tit_bachiller">32A. ¿Apostilló Titulo de Bachiller?</label>
+            <select name="apostillo_tit_bachiller" id="32A" formControlName="apostillo_tit_bachiller">
+              <option value="Si">Si</option>
+              <option value="No">No</option>
+              <option value="No Aplica">No aplica</option>
+            </select>
+          </div>
+          <div class="card">
+            <label for="apostillo_tit_tec">32A. ¿Apostilló Titulo de Técnico/Tecnologo?</label>
+            <select name="apostillo_tit_tec" id="32B" formControlName="apostillo_tit_tec">
+              <option value="Si">Si</option>
+              <option value="No">No</option>
+              <option value="No Aplica">No aplica</option>
+            </select>
+          </div>
+          <div class="card">
+            <label for="lugar_trabajo">33. Lugar de Trabajo?</label>
+            <select formControlName="lugar_trabajo" id="33">
+              
+              <option value="sector_rural">Sector Rural</option>
+              <option value="casa">En la casa o Residencia</option>
+              <option value="local">Local y/o sitio jo</option>
+              <option value="En_calle">En la calle</option>
+              <option value="empresa">Empresa /micro</option>
+              <option value="Ninguno">Ninguno</option>
+            </select>
+          </div>
+ 
+          <div class="card">
+            <label for="posicion_trabajo">34. Posicion en el Trabajo?</label>
+            <select formControlName="posicion_trabajo" id="34">
+              <option value="contrato">por contrato</option>
+              <option value="sueldo_fijo">Sueldo Fijo</option>
+              <option value="tarea_cumplida">Tareas cumplidas</option>
+              <option value="cuenta_propia">Por cuenta propia</option>
+              <option value="otro">Otro</option>
+              <option value="no_especificado">No especificado</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="tipo_viculacion">35. Tipo ontrato: Vinculación</label>
+            <select formControlName="tipo_viculacion" id="35">
+              <option value="termino_fijo">Contrato término fijo</option>
+              <option value="termino_indefinido">Contrato término indefinido</option>
+              <option value="obra_labor">Contrato Obra labor</option>
+              <option value="contrato_temporal">Contrato temporal ocasional</option>
+              <option value="prestacion_servicios">Contrato civil prestación de servicios</option>
+              <option value="ns_nr">NS/NR</option>
+            </select>
+          </div>
 
         </div>
 
@@ -154,6 +215,8 @@
       </form>
     </div>
 
+
+ <!-- DATOS DE LAS PERSONAS******* -->
 
     <div class="edit-survey-content-right">
       <h2>Grupo Familiar</h2>
@@ -357,6 +420,7 @@
                 <option value="9">9</option>
                 <option value="10">10</option>
                 <option value="11">11</option>
+                <option value="12">Tec./Universidad</option>
                 <option value="Ninguno">Ninguno</option>
               </select>
             </div>
@@ -367,10 +431,10 @@
                 <option value="Principal">Principal</option>
                 <option value="Padre">Padre</option>
                 <option value="Madre">Madre</option>
-                <option value="Hijo/Hija">Hijo/Hija</option>
-                <option value="Abuelo/Abuela">Abuelo/Abuela</option>
-                <option value="Tio/Tia">Tio/Tia</option>
-                <option value="Primo/Prima">Primo/Prima</option>
+                <option value="Hijo/(a)">Hijo/Hija</option>
+                <option value="Abuelo/(a)">Abuelo/Abuela</option>
+                <option value="Tio/(a)">Tio/Tia</option>
+                <option value="Primo/(a)">Primo/Prima</option>
                 <option value="Otro">Otro</option>
               </select>
             </div>

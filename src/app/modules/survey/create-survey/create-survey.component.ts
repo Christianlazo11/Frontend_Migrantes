@@ -142,7 +142,6 @@ export class CreateSurveyComponent implements OnInit {
 
   ModificarEncuesta() {
 
-
     let dataEncu = this.serviceSecurity.GetDataSession();
     let Municipio = this.fgValidator.controls['municipio'].value;
     let Direccion = this.fgValidator.controls['direccion'].value;
