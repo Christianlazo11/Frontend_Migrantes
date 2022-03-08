@@ -15,7 +15,7 @@
       routerLink="/administracion/lista-usuarios"
       >Encuestadores</a
     >
-    <a *ngIf="isLogin" routerLink="/administracion/lista-personas">Personas</a>
+    <!-- <a *ngIf="isLogin" routerLink="/administracion/lista-personas">Personas</a> -->
     <a (click)="buttonClick('about')">Nosotros</a>
     <a (click)="buttonClick('contact')">Contacto</a>
     <a *ngIf="!isLogin" routerLink="/seguridad/identificar"

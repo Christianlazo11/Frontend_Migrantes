@@ -43,24 +43,32 @@
 
 
 .table {
-    width: 100%;
+  margin-top:10px;  
+  width: 100%;
     border: 0.1rem solid #0eb582;
+    border-radius: 3%;
     /* padding: 1rem; */
   }
 .table thead {
     background-color: #0eb582;
+    border-radius: 3%;
+    
   }
 .table th {
+    border-radius: 3%;
     font-size: 2rem;
     /* background-color: #0eb582; */
+    padding: 1rem 0;
   }
 .table tbody tr:nth-child(odd) {
+    border-radius: 5%;
     background-color: #e1e1e1;
   }
 .table td {
+    border-radius: 5%;
     font-size: 1.7rem;
     text-align: center;
-    padding: 2rem 0;
+    padding: 1rem 0;
   }
 
   .card {

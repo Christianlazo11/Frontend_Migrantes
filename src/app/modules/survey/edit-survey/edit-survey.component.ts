@@ -46,7 +46,6 @@ export class EditSurveyComponent implements OnInit {
     this.SerchSurvey();
     this.GetListPeople();
 
-
   }
 
   //Creamos el formulario
@@ -65,6 +64,16 @@ export class EditSurveyComponent implements OnInit {
     tiempo_estancia: ['', [Validators.required]],
     razon_arauca: ['', [Validators.required]],
     intencion_permanecer: ['', [Validators.required]],
+    localidad_procedencia: ['', [Validators.required]],
+    maternidad: ['', [Validators.required]],
+    apostillo_tit_bachiller: ['', [Validators.required]],
+    apostillo_tit_tec: ['', [Validators.required]],
+    lugar_trabajo: ['', [Validators.required]],
+    posicion_trabajo: ['', [Validators.required]],
+    tipo_viculacion: ['', [Validators.required]],
+    obtener_ingresos: ['', [Validators.required]],
+    ingresos_mensuales: ['', [Validators.required]],
+    
 
   });
   fgPersona: FormGroup = this.fb.group({
@@ -91,10 +100,6 @@ export class EditSurveyComponent implements OnInit {
     estudia: ['', [Validators.required]],
     grado: ['', [Validators.required]],
     parentezco: ['', [Validators.required]],
-
-
-
-
     // surveyId: ['', [Validators.required]],
   });
 
@@ -129,16 +134,10 @@ export class EditSurveyComponent implements OnInit {
 
 
   SerchSurvey() {
-
-    console.log("l número de encuesta es: " + this.noEncu.replace(":", ""))
-
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
       (datos: ModelSurvey) => {
-
-
+        console.log(datos)
         this.idEncu = Object.values(datos)[0].id
-  
-
 
         this.fgValidator.controls['municipio'].setValue(Object.values(datos)[0].municipio);
         this.fgValidator.controls['direccion'].setValue(Object.values(datos)[0].direccion);
@@ -155,6 +154,18 @@ export class EditSurveyComponent implements OnInit {
         this.fgValidator.controls['razon_arauca'].setValue(Object.values(datos)[0].razon_arauca);
         this.fgValidator.controls['intencion'].setValue(Object.values(datos)[0].intencion);
         this.fgValidator.controls['intencion_permanecer'].setValue(Object.values(datos)[0].intencion_permanecer);
+        this.fgValidator.controls['localidad_procedencia'].setValue(Object.values(datos)[0].localidad_procedencia);
+        this.fgValidator.controls['maternidad'].setValue(Object.values(datos)[0].maternidad);
+        this.fgValidator.controls['apostillo_tit_bachiller'].setValue(Object.values(datos)[0].apostillo_tit_bachiller);
+        this.fgValidator.controls['apostillo_tit_tec'].setValue(Object.values(datos)[0].apostillo_tit_tec);
+        this.fgValidator.controls['lugar_trabajo'].setValue(Object.values(datos)[0].lugar_trabajo);
+        this.fgValidator.controls['posicion_trabajo'].setValue(Object.values(datos)[0].posicion_trabajo);
+        this.fgValidator.controls['tipo_viculacion'].setValue(Object.values(datos)[0].tipo_viculacion);
+        this.fgValidator.controls['obtener_ingresos'].setValue(Object.values(datos)[0].obtener_ingresos);
+        this.fgValidator.controls['ingresos_mensuales'].setValue(Object.values(datos)[0].ingresos_mensuales);
+
+        
+
       },
       (error) => {
         alert("No se encontró la encuesta")
@@ -193,17 +204,50 @@ export class EditSurveyComponent implements OnInit {
         let nacionalidad = this.fgPersona.controls['country'].value;
         let fechaNacimiento = this.fgPersona.controls['dateOfBirth'].value;
         let nivelEducativo = this.fgPersona.controls['nivel'].value;
+        let edad = this.fgPersona.controls['edad'].value;
+        let profesion = this.fgPersona.controls['profesion'].value;
+        let tipo_emprendimiento = this.fgPersona.controls['tipo_emprendimiento'].value;
+        let act_economica = this.fgPersona.controls['act_economica'].value;
+        let tipo_act_economica = this.fgPersona.controls['tipo_act_economica'].value;
+        let runv = this.fgPersona.controls['runv'].value;
+        let estatus_migratorio = this.fgPersona.controls['estatus_migratorio'].value;
+        let afiliacion_salud = this.fgPersona.controls['afiliacion_salud'].value;
+        let docsSeleccionados = this.fgPersona.controls['docsSeleccionados'].value;
+        let discapacidad= this.fgPersona.controls['discapacidad'].value;
+        let grupo_etnico = this.fgPersona.controls['grupo_etnico'].value;
+        let movilidad_migratoria = this.fgPersona.controls['movilidad_migratoria'].value;
+        let estudia = this.fgPersona.controls['estudia'].value;
+        let grado = this.fgPersona.controls['grado'].value;
+        let parentezco = this.fgPersona.controls['parentezco'].value;
+        
         let surveyId = Object.values(datos)[0].id;
     
         let newPerson = new ModelPerson();
+
+        console.log ("los documentos seleccionados son de tipo " +  typeof(docsSeleccionados))
         newPerson.nombre = nombre;
         newPerson.apellido = apellido;
         newPerson.documento = String(documento);
         newPerson.genero = genero;
         newPerson.nacionalidad = nacionalidad;
         newPerson.fechaNac = fechaNacimiento;
-
         newPerson.nivelEdu = nivelEducativo;
+        newPerson.edad = String(edad);
+        newPerson.profesion = profesion;
+        newPerson.tipo_emprendimiento = tipo_emprendimiento;
+        newPerson.act_economica = act_economica;
+        newPerson.tipo_act_economica = tipo_act_economica;
+        newPerson.runv = runv;
+        newPerson.estatus_migratorio = estatus_migratorio;
+        newPerson.afiliacion_salud = afiliacion_salud;
+        newPerson.docsSeleccionados= String(docsSeleccionados);
+        newPerson.discapacidad = discapacidad;
+        newPerson.grupo_etnico = grupo_etnico;
+        newPerson.movilidad_migratoria = movilidad_migratoria;
+        newPerson.estudia = estudia;
+        newPerson.grado = grado;
+        newPerson.parentezco = parentezco;
+        
         newPerson.encuestaId = surveyId;
 
         console.log(newPerson)
@@ -227,9 +271,12 @@ export class EditSurveyComponent implements OnInit {
       })
    
   }
+  DeletePerson(){
+    // this.servicePerson.DeletePerson(this.listPeople.id)
+
+  }
 
   ModificarEncuesta() {
-
 
     let dataEncu = this.serviceSecurity.GetDataSession();
     let Municipio = this.fgValidator.controls['municipio'].value;
@@ -246,6 +293,17 @@ export class EditSurveyComponent implements OnInit {
     let razon_arauca = this.fgValidator.controls['razon_arauca'].value;
     let Intencion = this.fgValidator.controls['intencion'].value;
     let intencion_permanecer = this.fgValidator.controls['intencion_permanecer'].value;
+    let localidad_procedencia = this.fgValidator.controls['localidad_procedencia'].value;
+    let maternidad = this.fgValidator.controls['maternidad'].value;
+    let apostillo_tit_bachiller = this.fgValidator.controls['apostillo_tit_bachiller'].value;
+    let apostillo_tit_tec = this.fgValidator.controls['apostillo_tit_tec'].value;
+    let lugar_trabajo = this.fgValidator.controls['lugar_trabajo'].value;
+    let posicion_trabajo = this.fgValidator.controls['posicion_trabajo'].value;
+    let tipo_vinculacion = this.fgValidator.controls['tipo_vinculacion'].value;
+    let obtener_ingresos = this.fgValidator.controls['obtener_ingresos'].value;
+    let ingresos_mensuales = this.fgValidator.controls['ingresos_mensuales'].value;
+
+    
     let newSurvey = new ModelSurvey();
 
     //Obtenemos el numero del Id con el numero de encuesta
@@ -271,11 +329,20 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.razon_arauca = razon_arauca;
 
     newSurvey.intencion = Intencion;
-    newSurvey.intencion_permancer = intencion_permanecer;
+    newSurvey.intencion_permanecer = intencion_permanecer;
+    newSurvey.localidad_procedencia = localidad_procedencia;
+    newSurvey.maternidad = maternidad;
+    newSurvey.apostillo_tit_bachiller = apostillo_tit_bachiller;
+    newSurvey.apostillo_tit_tec = apostillo_tit_tec;
+    newSurvey.lugar_trabajo = lugar_trabajo;
+    newSurvey.posicion_trabajo = posicion_trabajo;
+    newSurvey.tipo_vinculacion = tipo_vinculacion;
+    newSurvey.obtener_ingresos = obtener_ingresos;
+    newSurvey.ingresos_mensuales = ingresos_mensuales;
+
+
     newSurvey.usuarioId = dataEncu.datos.id;
  
-
-
     this.serviceSurvey.UpdateSurvey(newSurvey).subscribe(
       (datos: ModelSurvey) => {
         alert('Encuesta Actualizada Correctamente');

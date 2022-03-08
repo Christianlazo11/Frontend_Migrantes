@@ -65,7 +65,7 @@ export class CreateSurveyComponent implements OnInit {
     tiempo_estancia: ['', [Validators.required]],
     razon_arauca: ['', [Validators.required]],
     intencion: ['', [Validators.required]],
-    intencion_permancer: ['', [Validators.required]],
+    intencion_permanecer: ['', [Validators.required]],
   });
   fgPersona: FormGroup = this.fb.group({
     id: ['', [Validators.required]],
@@ -142,7 +142,6 @@ export class CreateSurveyComponent implements OnInit {
 
   ModificarEncuesta() {
 
-
     let dataEncu = this.serviceSecurity.GetDataSession();
     let Municipio = this.fgValidator.controls['municipio'].value;
     let Direccion = this.fgValidator.controls['direccion'].value;
@@ -156,7 +155,8 @@ export class CreateSurveyComponent implements OnInit {
     let razon_cruce = this.fgValidator.controls['razon_cruce'].value;
     let tiempo_estancia = this.fgValidator.controls['tiempo_estancia'].value;
     let razon_arauca = this.fgValidator.controls['razon_arauca'].value;
-    let Intencion = this.fgValidator.controls['intencion'].value;
+    let intencion = this.fgValidator.controls['intencion'].value;
+    let intencion_permanecer = this.fgValidator.controls['intencion_permanecer'].value;
 
     let newSurvey = new ModelSurvey();
 
@@ -182,11 +182,10 @@ export class CreateSurveyComponent implements OnInit {
     newSurvey.tiempo_estancia = tiempo_estancia;
     newSurvey.razon_arauca = razon_arauca;
 
-
-    newSurvey.intencion = Intencion;
+    newSurvey.intencion = intencion;
+    newSurvey.intencion_permanecer  = intencion_permanecer;
     newSurvey.usuarioId = dataEncu.datos.id;
  
-
 
     this.serviceSurvey.UpdateSurvey(newSurvey).subscribe(
       (datos: ModelSurvey) => {
