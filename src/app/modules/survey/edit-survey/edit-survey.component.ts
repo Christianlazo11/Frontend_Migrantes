@@ -270,7 +270,6 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.tiempo_estancia = tiempo_estancia;
     newSurvey.razon_arauca = razon_arauca;
 
-
     newSurvey.intencion = Intencion;
     newSurvey.intencion_permancer = intencion_permanecer;
     newSurvey.usuarioId = dataEncu.datos.id;
