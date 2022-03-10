@@ -50,6 +50,7 @@ export class EditSurveyComponent implements OnInit {
 
   //Creamos el formulario
   fgValidator: FormGroup = this.fb.group({
+    
     municipio: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
     correo: ['', [Validators.required, Validators.email]],
@@ -70,7 +71,7 @@ export class EditSurveyComponent implements OnInit {
     apostillo_tit_tec: ['', [Validators.required]],
     lugar_trabajo: ['', [Validators.required]],
     posicion_trabajo: ['', [Validators.required]],
-    tipo_viculacion: ['', [Validators.required]],
+    tipo_vinculacion: ['', [Validators.required]],
     obtener_ingresos: ['', [Validators.required]],
     ingresos_mensuales: ['', [Validators.required]],
     
@@ -100,6 +101,7 @@ export class EditSurveyComponent implements OnInit {
     estudia: ['', [Validators.required]],
     grado: ['', [Validators.required]],
     parentezco: ['', [Validators.required]],
+
     // surveyId: ['', [Validators.required]],
   });
 
@@ -160,12 +162,11 @@ export class EditSurveyComponent implements OnInit {
         this.fgValidator.controls['apostillo_tit_tec'].setValue(Object.values(datos)[0].apostillo_tit_tec);
         this.fgValidator.controls['lugar_trabajo'].setValue(Object.values(datos)[0].lugar_trabajo);
         this.fgValidator.controls['posicion_trabajo'].setValue(Object.values(datos)[0].posicion_trabajo);
-        this.fgValidator.controls['tipo_viculacion'].setValue(Object.values(datos)[0].tipo_viculacion);
+        this.fgValidator.controls['tipo_vinculacion'].setValue(Object.values(datos)[0].tipo_vinculacion);
         this.fgValidator.controls['obtener_ingresos'].setValue(Object.values(datos)[0].obtener_ingresos);
         this.fgValidator.controls['ingresos_mensuales'].setValue(Object.values(datos)[0].ingresos_mensuales);
 
-        
-
+   
       },
       (error) => {
         alert("No se encontró la encuesta")

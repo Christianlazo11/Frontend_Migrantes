@@ -4,6 +4,7 @@
     <div class="edit-survey-content-left">
       <h2>Formulario</h2>
       <form [formGroup]="fgValidator" (ngSubmit)="ModificarEncuesta()">
+        
         <div class="content">
           <div class="card">
             <h3>Municipio</h3>
@@ -148,6 +149,7 @@
               <option value="No especificado">No especificado</option>
             </select>
           </div>
+
           <div class="card">
             <label for="maternidad">31B. Maternidad?</label>
             <select formControlName="maternidad" id="31B">
@@ -165,6 +167,7 @@
               <option value="No Aplica">No aplica</option>
             </select>
           </div>
+
           <div class="card">
             <label for="apostillo_tit_tec">32A. ¿Apostilló Titulo de Técnico/Tecnologo?</label>
             <select name="apostillo_tit_tec" id="32B" formControlName="apostillo_tit_tec">
@@ -173,6 +176,7 @@
               <option value="No Aplica">No aplica</option>
             </select>
           </div>
+
           <div class="card">
             <label for="lugar_trabajo">33. Lugar de Trabajo?</label>
             <select formControlName="lugar_trabajo" id="33">
@@ -225,7 +229,7 @@
             <select formControlName="ingresos_mensuales" id="37">
               <option value="sin_ingresos">Sin_ingresos</option>
               <option value="menos_medio_salario">Menos de medio salario minimo</option>
-              <option value="hasta_ub_salario">Hasta un salario minimo</option>
+              <option value="hasta_un_salario">Hasta un salario minimo</option>
               <option value="hasta_dos_salarios">Hasta dos salarios minimos</option>
               <option value="hasta_tres_salarios">Hasta tres salarios minimos</option>
               <option value="hasta_cuatro_salarios">Hasta cuatro salarios minimos</option>
