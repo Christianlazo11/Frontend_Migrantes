@@ -332,6 +332,7 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.intencion = Intencion;
     newSurvey.intencion_permanecer = intencion_permanecer;
     newSurvey.localidad_procedencia = localidad_procedencia;
+    
     newSurvey.maternidad = maternidad;
     newSurvey.apostillo_tit_bachiller = apostillo_tit_bachiller;
     newSurvey.apostillo_tit_tec = apostillo_tit_tec;
