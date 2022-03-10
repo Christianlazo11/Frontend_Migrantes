@@ -17,6 +17,13 @@ export class ModelSurvey {
     intencion_permanecer?: string;
     usuarioId?: string;
     localidad_procedencia?: string;
-    
-   
+    maternidad?: string;
+    apostillo_tit_bachiller?: string;    
+    apostillo_tit_tec?: string; 
+    lugar_trabajo?: string; 
+    posicion_trabajo?: string; 
+    tipo_vinculacion?: string;
+    obtener_ingresos?: string;
+    ingresos_mensuales?: string;
+
   }

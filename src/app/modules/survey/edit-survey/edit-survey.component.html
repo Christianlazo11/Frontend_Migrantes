@@ -4,6 +4,7 @@
     <div class="edit-survey-content-left">
       <h2>Formulario</h2>
       <form [formGroup]="fgValidator" (ngSubmit)="ModificarEncuesta()">
+        
         <div class="content">
           <div class="card">
             <h3>Municipio</h3>
@@ -42,8 +43,8 @@
           </div>
 
           <div class="card">
-            <label for="info_nucleo">20. Informacion nucleo Familiar</label>
-            <select formControlName="info_nucleo" id="info_nucleo">
+              <label for="info_nucleo">20. Informacion nucleo Familiar</label>
+              <select formControlName="info_nucleo" id="info_nucleo">
               <option value="Padre Jefe de Hogar">Padre Jefe de Hogar</option>
               <option value="Madre Jefe de Hogar">Madre Jefe de Hogar</option>
               <option value="Padre Cabeza de familia">Padre Cabeza de familia</option>
@@ -102,7 +103,7 @@
 
           <div class="card">
             <label for="razon_arauca">24. Razon de permanencia en el departamente de Arauca</label>
-            <select name="razon_arauca" id="24" formControlName="razon_arauca">
+            <select name="razon_arauca" id="razon_arauca" formControlName="razon_arauca">
               <option value="Trabajar en Arauca">Trabajar en Arauca</option>
               <option value="Trabajar en Arauquita">Trabajar en Arauquita</option>
               <option value="Trabajar en Saravena">Trabajar en Saravena</option>
@@ -115,7 +116,7 @@
 
           <div class="card">
             <h3>25. ¿Una vez ingresó a Colombia cuál fue su intención?</h3>
-            <select formControlName="intencion" id="25">
+            <select formControlName="intencion" id="4">
               <option value="Establecer su domicilio en el país">Establecer su domicilio en el país</option>
               <option value="Transitar hacia otro país">Transitar hacia otro país</option>
               <option value="Trabajar por un tiempo para regresar a Venezuela">Trabajar por un tiempo para regresar a
@@ -123,18 +124,15 @@
               <option value="Encontrarse con su familia">Encontrarse con su familia</option>
             </select>
           </div>
-
           <div class="card">
             <label for="intencion_permanecer">26. Intencion de Permanecer en Colombia</label>
             <select formControlName="intencion_permanecer" id="26">
               <option value="Interesado en permancer en Colombia">Interesado en Permanecer en Colombia</option>
               <option value="Planea retornar a venezuela">Planea retornar a venezuela</option>
               <option value="Ha reglamentado su estancia en Colombia">Ha reglamentado su estancia en Colombia</option>
-              <option value="No ha reglamentado su estancia en Colombia">No ha reglamentado su estancia en Colombia
-              </option>
+              <option value="No ha reglamentado su estancia en Colombia">No ha reglamentado su estancia en Colombia</option>
               <option value="No le interesa reglamentar su estancia">No le interesa reglamentar su estancia</option>
-              <option value="No sabe cómo hacerlo y/o carece de orientación">No sabe cómo hacerlo y/o carece de
-                orientación</option>
+              <option value="No sabe cómo hacerlo y/o carece de orientación">No sabe cómo hacerlo y/o carece de orientación</option>
               <option value="Estudio de los hijos y/o propio">Estudio de los hijos y/o propio</option>
               <option value="Otra circunstancia">Otra circunstancia</option>
             </select>
@@ -149,6 +147,96 @@
             </select>
           </div>
 
+          <div class="card">
+            <label for="maternidad">31B. Maternidad?</label>
+            <select formControlName="maternidad" id="31B">
+              <option value="Gestante">Gestante</option>
+              <option value="Lactante">Lactante</option>
+              <option value="Ninguno">Ninguno</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="apostillo_tit_bachiller">32A. ¿Apostilló Titulo de Bachiller?</label>
+            <select name="apostillo_tit_bachiller" id="32A" formControlName="apostillo_tit_bachiller">
+              <option value="Si">Si</option>
+              <option value="No">No</option>
+              <option value="No Aplica">No aplica</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="apostillo_tit_tec">32A. ¿Apostilló Titulo de Técnico/Tecnologo?</label>
+            <select name="apostillo_tit_tec" id="32B" formControlName="apostillo_tit_tec">
+              <option value="Si">Si</option>
+              <option value="No">No</option>
+              <option value="No Aplica">No aplica</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="lugar_trabajo">33. Lugar de Trabajo?</label>
+            <select formControlName="lugar_trabajo" id="33">
+              
+              <option value="sector_rural">Sector Rural</option>
+              <option value="casa">En la casa o Residencia</option>
+              <option value="local">Local y/o sitio jo</option>
+              <option value="En_calle">En la calle</option>
+              <option value="empresa">Empresa /micro</option>
+              <option value="Ninguno">Ninguno</option>
+            </select>
+          </div>
+ 
+          <div class="card">
+            <label for="posicion_trabajo">34. Posicion en el Trabajo?</label>
+            <select formControlName="posicion_trabajo" id="34">
+              <option value="contrato">por contrato</option>
+              <option value="sueldo_fijo">Sueldo Fijo</option>
+              <option value="tarea_cumplida">Tareas cumplidas</option>
+              <option value="cuenta_propia">Por cuenta propia</option>
+              <option value="otro">Otro</option>
+              <option value="no_especificado">No especificado</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="tipo_vinculacion">35. Tipo contrato: Vinculacion</label>
+            <select formControlName="tipo_vinculacion" id="35">
+              <option value="termino_fijo">Contrato termino fijo</option>
+              <option value="termino_indefinido">Contrato termino indefinido</option>
+              <option value="obra_labor">Contrato Obra labor</option>
+              <option value="contrato_temporal">Contrato temporal ocasional</option>
+              <option value="prestacion_servicios">Contrato civil prestación de servicios</option>
+              <option value="ns_nr">NS/NR</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="obtener_ingresos">36. Forma de obtenes ingresos</label>
+            <select formControlName="obtener_ingresos" id="36">
+              <option value="por_trabajo">Por trabajo</option>
+              <option value="ayuda_personas_locales">Por ayuda de personas locales</option>
+              <option value="remesas">Por remesas de familiares en otros paises</option>
+              <option value="mendicidad">por mendicidad</option>
+              </select>
+          </div>
+
+          <div class="card">
+            <label for="ingresos_mensuales">37. Ingresos mensuales en pesos</label>
+            <select formControlName="ingresos_mensuales" id="37">
+              <option value="sin_ingresos">Sin_ingresos</option>
+              <option value="menos_medio_salario">Menos de medio salario minimo</option>
+              <option value="hasta_un_salario">Hasta un salario minimo</option>
+              <option value="hasta_dos_salarios">Hasta dos salarios minimos</option>
+              <option value="hasta_tres_salarios">Hasta tres salarios minimos</option>
+              <option value="hasta_cuatro_salarios">Hasta cuatro salarios minimos</option>
+              <option value="hasta_cinco_salarios">Hasta cinco salarios minimos</option>
+              <option value="mas_cinco_salarios">Mas de  cinco salarios minimos</option>
+              <option value="no_especificado">No especificado</option>
+            </select>
+          </div>
+
+
         </div>
 
         <div class="survey-btn">
@@ -157,9 +245,10 @@
       </form>
     </div>
 
-
     <div class="edit-survey-content-right">
       <h2>Grupo Familiar</h2>
+      <!-- <crear-persona-root></crear-persona-root> -->
+
       <form [formGroup]="fgPersona" (ngSubmit)="SavePerson()">
         <div class="edit-survey-content">
           <div class="edit-survey-content-left">
@@ -220,7 +309,7 @@
                 <option value="No Afiliado">No Afiliado</option>
               </select>
             </div>
-
+            
             <div>
 
               <div class="card">
@@ -254,8 +343,8 @@
               <div>
                 <label for="gender">Genero</label>
                 <select name="" id="gender" formControlName="gender">
-                  <option value="Masculino">Masculino</option>
-                  <option value="Femenino">Femenino</option>
+                  <option value="masculino">Masculino</option>
+                  <option value="femenino">Femenino</option>
                   <option value="LGTBI">LGTBI</option>
                 </select>
               </div>
@@ -291,7 +380,7 @@
               </select>
             </div>
 
-
+            
 
             <div class="card">
               <label for="runv">Inscrito en el RUNV</label>
@@ -379,9 +468,9 @@
           </div>
         </div>
 
-        <div  class="survey-btn">
+        <div class="login-btn">
           <button type="submit">
-            Crear persona
+            Guardar Cambios
           </button>
         </div>
       </form>
@@ -393,9 +482,7 @@
             <th>apellido</th>
             <th>documento</th>
             <th>genero</th>
-            <th>parentezco</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
+            <th><i class="fa fa-edit"></i></th>
           </tr>
         </thead>
         <tbody>
@@ -413,13 +500,9 @@
               {{ p.genero }}
             </td>
             <td>
-              {{ p.parentezco}}
-            </td>
-            <td>
-              <a routerLink="/administracion/editar-persona/{{ p.id }}"> <i class="fa fa-edit"></i></a>
-            </td>
-            <td>
-              <a routerLink="/administracion/eliminar-persona/{{ p.id }}"> <i class="fa fa-minus-circle"></i></a>
+              <a routerLink="/administracion/editar-persona/{{ p.id }}"
+            >Editar <i class="fa fa-edit"></i
+          ></a>
             </td>
           </tr>
         </tbody>

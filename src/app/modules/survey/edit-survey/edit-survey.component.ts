@@ -46,11 +46,11 @@ export class EditSurveyComponent implements OnInit {
     this.SerchSurvey();
     this.GetListPeople();
 
-
   }
 
   //Creamos el formulario
   fgValidator: FormGroup = this.fb.group({
+    
     municipio: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
     correo: ['', [Validators.required, Validators.email]],
@@ -66,6 +66,15 @@ export class EditSurveyComponent implements OnInit {
     razon_arauca: ['', [Validators.required]],
     intencion_permanecer: ['', [Validators.required]],
     localidad_procedencia: ['', [Validators.required]],
+    maternidad: ['', [Validators.required]],
+    apostillo_tit_bachiller: ['', [Validators.required]],
+    apostillo_tit_tec: ['', [Validators.required]],
+    lugar_trabajo: ['', [Validators.required]],
+    posicion_trabajo: ['', [Validators.required]],
+    tipo_vinculacion: ['', [Validators.required]],
+    obtener_ingresos: ['', [Validators.required]],
+    ingresos_mensuales: ['', [Validators.required]],
+    
 
   });
   fgPersona: FormGroup = this.fb.group({
@@ -92,6 +101,7 @@ export class EditSurveyComponent implements OnInit {
     estudia: ['', [Validators.required]],
     grado: ['', [Validators.required]],
     parentezco: ['', [Validators.required]],
+
     // surveyId: ['', [Validators.required]],
   });
 
@@ -147,7 +157,16 @@ export class EditSurveyComponent implements OnInit {
         this.fgValidator.controls['intencion'].setValue(Object.values(datos)[0].intencion);
         this.fgValidator.controls['intencion_permanecer'].setValue(Object.values(datos)[0].intencion_permanecer);
         this.fgValidator.controls['localidad_procedencia'].setValue(Object.values(datos)[0].localidad_procedencia);
-      
+        this.fgValidator.controls['maternidad'].setValue(Object.values(datos)[0].maternidad);
+        this.fgValidator.controls['apostillo_tit_bachiller'].setValue(Object.values(datos)[0].apostillo_tit_bachiller);
+        this.fgValidator.controls['apostillo_tit_tec'].setValue(Object.values(datos)[0].apostillo_tit_tec);
+        this.fgValidator.controls['lugar_trabajo'].setValue(Object.values(datos)[0].lugar_trabajo);
+        this.fgValidator.controls['posicion_trabajo'].setValue(Object.values(datos)[0].posicion_trabajo);
+        this.fgValidator.controls['tipo_vinculacion'].setValue(Object.values(datos)[0].tipo_vinculacion);
+        this.fgValidator.controls['obtener_ingresos'].setValue(Object.values(datos)[0].obtener_ingresos);
+        this.fgValidator.controls['ingresos_mensuales'].setValue(Object.values(datos)[0].ingresos_mensuales);
+
+   
       },
       (error) => {
         alert("No se encontró la encuesta")
@@ -201,6 +220,7 @@ export class EditSurveyComponent implements OnInit {
         let estudia = this.fgPersona.controls['estudia'].value;
         let grado = this.fgPersona.controls['grado'].value;
         let parentezco = this.fgPersona.controls['parentezco'].value;
+        
         let surveyId = Object.values(datos)[0].id;
     
         let newPerson = new ModelPerson();
@@ -274,8 +294,17 @@ export class EditSurveyComponent implements OnInit {
     let razon_arauca = this.fgValidator.controls['razon_arauca'].value;
     let Intencion = this.fgValidator.controls['intencion'].value;
     let intencion_permanecer = this.fgValidator.controls['intencion_permanecer'].value;
-    
     let localidad_procedencia = this.fgValidator.controls['localidad_procedencia'].value;
+    let maternidad = this.fgValidator.controls['maternidad'].value;
+    let apostillo_tit_bachiller = this.fgValidator.controls['apostillo_tit_bachiller'].value;
+    let apostillo_tit_tec = this.fgValidator.controls['apostillo_tit_tec'].value;
+    let lugar_trabajo = this.fgValidator.controls['lugar_trabajo'].value;
+    let posicion_trabajo = this.fgValidator.controls['posicion_trabajo'].value;
+    let tipo_vinculacion = this.fgValidator.controls['tipo_vinculacion'].value;
+    let obtener_ingresos = this.fgValidator.controls['obtener_ingresos'].value;
+    let ingresos_mensuales = this.fgValidator.controls['ingresos_mensuales'].value;
+
+    
     let newSurvey = new ModelSurvey();
 
     //Obtenemos el numero del Id con el numero de encuesta
@@ -300,15 +329,21 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.tiempo_estancia = tiempo_estancia;
     newSurvey.razon_arauca = razon_arauca;
 
-
     newSurvey.intencion = Intencion;
     newSurvey.intencion_permanecer = intencion_permanecer;
     newSurvey.localidad_procedencia = localidad_procedencia;
+    newSurvey.maternidad = maternidad;
+    newSurvey.apostillo_tit_bachiller = apostillo_tit_bachiller;
+    newSurvey.apostillo_tit_tec = apostillo_tit_tec;
+    newSurvey.lugar_trabajo = lugar_trabajo;
+    newSurvey.posicion_trabajo = posicion_trabajo;
+    newSurvey.tipo_vinculacion = tipo_vinculacion;
+    newSurvey.obtener_ingresos = obtener_ingresos;
+    newSurvey.ingresos_mensuales = ingresos_mensuales;
+
 
     newSurvey.usuarioId = dataEncu.datos.id;
  
-
-
     this.serviceSurvey.UpdateSurvey(newSurvey).subscribe(
       (datos: ModelSurvey) => {
         alert('Encuesta Actualizada Correctamente');
