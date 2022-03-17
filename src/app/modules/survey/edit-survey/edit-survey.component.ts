@@ -18,6 +18,13 @@ import { __values } from 'tslib';
   styleUrls: ['./edit-survey.component.css']
 })
 export class EditSurveyComponent implements OnInit {
+
+  lista:string[]=["Ha recibido apoyo del sector Salud","Ha recibido apoyo del sector educacion",
+   "Ha recibido apoyo de Migracion Colombia","Ha recibido apoyo de Min.Trabajo", "Ha recibido apoyo de la Alcaldia",
+   "Ha recibido apoyo de las Ongs"];
+
+  seleccionados:string[]=[];
+
   item: any
   noEncu: any
   idEncu: any
@@ -74,6 +81,17 @@ export class EditSurveyComponent implements OnInit {
     tipo_vinculacion: ['', [Validators.required]],
     obtener_ingresos: ['', [Validators.required]],
     ingresos_mensuales: ['', [Validators.required]],
+    invierte_salario: ['', [Validators.required]],
+    intencion_tiempo_estancia: ['', [Validators.required]],
+    interes_salud_publica: ['', [Validators.required]],
+    institucion_cubrio_gastos: ['', [Validators.required]],
+    servicios_institucionales: ['', [Validators.required]],
+    
+    miselect: ['', [Validators.required]],
+    clase_vivienda: ['', [Validators.required]],
+    tipo_vivienda: ['', [Validators.required]],
+
+    
     
 
   });
@@ -133,8 +151,6 @@ export class EditSurveyComponent implements OnInit {
     }
   }
 
-
-
   SerchSurvey() {
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
       (datos: ModelSurvey) => {
@@ -165,8 +181,17 @@ export class EditSurveyComponent implements OnInit {
         this.fgValidator.controls['tipo_vinculacion'].setValue(Object.values(datos)[0].tipo_vinculacion);
         this.fgValidator.controls['obtener_ingresos'].setValue(Object.values(datos)[0].obtener_ingresos);
         this.fgValidator.controls['ingresos_mensuales'].setValue(Object.values(datos)[0].ingresos_mensuales);
+        this.fgValidator.controls['invierte_salario'].setValue(Object.values(datos)[0].invierte_salario);
+        this.fgValidator.controls['intencion_tiempo_estancia'].setValue(Object.values(datos)[0].intencion_tiempo_estancia);
+        this.fgValidator.controls['interes_salud_publica'].setValue(Object.values(datos)[0].interes_salud_publica);
+        this.fgValidator.controls['institucion_cubrio_gastos'].setValue(Object.values(datos)[0].institucion_cubrio_gastos);
+        
+        this.fgValidator.controls['servicios_institucionales'].setValue(Object.values(datos)[0].servicios_institucionales);
+        this.fgValidator.controls['miselect'].setValue(Object.values(datos)[0].miselect);
+        this.fgValidator.controls['clase_vivienda'].setValue(Object.values(datos)[0].clase_vivienda);
+        this.fgValidator.controls['tipo_vivienda'].setValue(Object.values(datos)[0].tipo_vivienda);
+        
 
-   
       },
       (error) => {
         alert("No se encontró la encuesta")
@@ -174,8 +199,6 @@ export class EditSurveyComponent implements OnInit {
       })
 
   }
-
-
 
   GetListPeople() {
 
@@ -303,8 +326,18 @@ export class EditSurveyComponent implements OnInit {
     let tipo_vinculacion = this.fgValidator.controls['tipo_vinculacion'].value;
     let obtener_ingresos = this.fgValidator.controls['obtener_ingresos'].value;
     let ingresos_mensuales = this.fgValidator.controls['ingresos_mensuales'].value;
-
+    let invierte_salario = this.fgValidator.controls['invierte_salario'].value;
+    let intencion_tiempo_estancia = this.fgValidator.controls['intencion_tiempo_estancia'].value;
+    let interes_salud_publica = this.fgValidator.controls['interes_salud_publica'].value;
+    let institucion_cubrio_gastos = this.fgValidator.controls['institucion_cubrio_gastos'].value;
     
+    let servicios_institucionales = this.fgValidator.controls['servicios_institucionales'].value;
+    let miselect = this.fgValidator.controls['miselect'].value;
+    let clase_vivienda = this.fgValidator.controls['clase_vivienda'].value;
+    let tipo_vivienda = this.fgValidator.controls['tipo_vivienda'].value;
+
+
+
     let newSurvey = new ModelSurvey();
 
     //Obtenemos el numero del Id con el numero de encuesta
@@ -328,11 +361,9 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.razon_cruce = razon_cruce;
     newSurvey.tiempo_estancia = tiempo_estancia;
     newSurvey.razon_arauca = razon_arauca;
-
     newSurvey.intencion = Intencion;
     newSurvey.intencion_permanecer = intencion_permanecer;
     newSurvey.localidad_procedencia = localidad_procedencia;
-    
     newSurvey.maternidad = maternidad;
     newSurvey.apostillo_tit_bachiller = apostillo_tit_bachiller;
     newSurvey.apostillo_tit_tec = apostillo_tit_tec;
@@ -341,8 +372,18 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.tipo_vinculacion = tipo_vinculacion;
     newSurvey.obtener_ingresos = obtener_ingresos;
     newSurvey.ingresos_mensuales = ingresos_mensuales;
+    newSurvey.invierte_salario = invierte_salario;
+    newSurvey.intencion_tiempo_estancia = intencion_tiempo_estancia;
+    newSurvey.interes_salud_publica = interes_salud_publica;
+    newSurvey.institucion_cubrio_gastos = institucion_cubrio_gastos;
+    
+    newSurvey.servicios_institucionales = servicios_institucionales;
+    newSurvey.miselect = miselect;
+    //          console.log("miselect " + typeof(miselect));
+    newSurvey.clase_vivienda = clase_vivienda;
+    newSurvey.tipo_vivienda = tipo_vivienda;
 
-
+    
     newSurvey.usuarioId = dataEncu.datos.id;
  
     this.serviceSurvey.UpdateSurvey(newSurvey).subscribe(
@@ -356,6 +397,5 @@ export class EditSurveyComponent implements OnInit {
     )
 
   }
-
 
 }

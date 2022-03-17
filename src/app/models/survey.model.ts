@@ -25,5 +25,12 @@ export class ModelSurvey {
     tipo_vinculacion?: string;
     obtener_ingresos?: string;
     ingresos_mensuales?: string;
-
+    invierte_salario?: string;
+    intencion_tiempo_estancia?: string;
+    interes_salud_publica?: string;
+    institucion_cubrio_gastos?: string;
+    servicios_institucionales?: string;
+    miselect?: string;
+    clase_vivienda?: string;
+    tipo_vivienda?: string;
   }
