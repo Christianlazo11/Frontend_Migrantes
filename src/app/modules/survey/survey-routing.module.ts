@@ -23,10 +23,10 @@ const routes: Routes = [
     path: "crear-encuesta/:id",
     component: CreateSurveyComponent,
   },
-  {
-    path: "prueba",
-    component: PruebaComponent,
-  },
+  // {
+  //   path: "prueba",
+  //   component: PruebaComponent,
+  // },
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ModelUser } from "src/app/models/user.model";
 import { SecurityService } from "src/app/services/security.service";
@@ -10,6 +10,25 @@ import { UserService } from "src/app/services/user.service";
   styleUrls: ["./search-user.component.css"],
 })
 export class SearchUserComponent implements OnInit {
+
+  @HostListener('window:beforeunload')
+  onUnLoad(){
+    const data = new FormData();
+    // alert("Desea salir de la aplicacion?")
+
+    data.append('name', 'abc');
+    data.append('location', 'world');
+    navigator.sendBeacon('http://www.mysitioweb.com/api/v1/endpoint', data);
+    // const confirmar = confirm("Desea salir de la aplicacion?");
+    // // alert("Desea salir de la aplicacion?")
+    console.log("hola Mundo")
+    this.serviceSecurity.DeleteDataSession();
+    this.router.navigate(['/inicio']);
+
+    return false;
+
+  }
+
   listUsers: ModelUser[] = [];
 
   constructor(

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ModelSurvey } from "src/app/models/survey.model";
@@ -12,11 +12,36 @@ import Swal from "sweetalert2";
   styleUrls: ["./search-survey.component.css"],
 })
 export class SearchSurveyComponent implements OnInit {
+
+
+  @HostListener('window:beforeunload')
+  onUnLoad(){
+    const data = new FormData();
+    // alert("Desea salir de la aplicacion?")
+
+    data.append('name', 'abc');
+    data.append('location', 'world');
+    navigator.sendBeacon('http://www.mysitioweb.com/api/v1/endpoint', data);
+    // const confirmar = confirm("Desea salir de la aplicacion?");
+    // // alert("Desea salir de la aplicacion?")
+    console.log("hola Mundo")
+    this.serviceSecurity.DeleteDataSession();
+    this.router.navigate(['/inicio']);
+
+    return false;
+
+  }
+
+
+
+
+
   fgEncuesta: FormGroup = this.fb.group({
     noEncuesta: ["", [Validators.required]],
   });
 
   constructor(
+    
     private fb: FormBuilder,
     private serviceSecurity: SecurityService,
     private serviceSurvey: SurveyService,

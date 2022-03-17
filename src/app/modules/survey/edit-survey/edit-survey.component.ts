@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModelDatos } from 'src/app/models/datos.model';
@@ -18,6 +18,24 @@ import { __values } from 'tslib';
   styleUrls: ['./edit-survey.component.css']
 })
 export class EditSurveyComponent implements OnInit {
+
+  @HostListener('window:beforeunload')
+  onUnLoad(){
+    const data = new FormData();
+    // alert("Desea salir de la aplicacion?")
+
+    data.append('name', 'abc');
+    data.append('location', 'world');
+    navigator.sendBeacon('http://www.mysitioweb.com/api/v1/endpoint', data);
+    // const confirmar = confirm("Desea salir de la aplicacion?");
+    // // alert("Desea salir de la aplicacion?")
+    console.log("hola Mundo")
+    this.serviceSecurity.DeleteDataSession();
+    this.router.navigate(['/inicio']);
+
+    return false;
+
+  }
   item: any
   noEncu: any
   idEncu: any

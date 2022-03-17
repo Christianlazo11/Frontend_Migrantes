@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./identify.component.css'],
 })
 export class IdentifyComponent implements OnInit {
+
+  
   fgValidator: FormGroup = this.fb.group({
     user: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
