@@ -236,6 +236,126 @@
             </select>
           </div>
 
+          <div class="card">
+            <label for="invierte_salario">38. Lugar donde invierte su salario:</label>
+            <select formControlName="invierte_salario" id="38">
+              <option value="en_colombia">Colombia</option>
+              <option value="en_venezuela">Venezuela</option>
+              <option value="colombia_venezuela">Colombia y Venezuela</option>
+            </select>
+          </div>
+          <div class="card">
+            <label for="intencion_tiempo_estancia">39. Intención de tiempo de estancia en la ciudad
+              de Arauca y / o municipio de Arauquita o Saravena:</label>
+            <select formControlName="intencion_tiempo_estancia" id="39">
+              <option value="permanencia">Vocacion de permanencia</option>
+              <option value="pendular">Pendular</option>
+              <option value="transito">Transito</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="interes_salud_publica">40. Tipo de evento de interés en salud publica:</label>
+            <select formControlName="interes_salud_publica" id="40">
+              <option value="violencia_genero">Violencia de genero</option>
+              <option value="vigilancia_de_rabia">Vigilancia integrada de rabia humana</option>
+              <option value="varicela">Varicela individual</option>
+              <option value="chagas">Chagas</option>
+              <option value="intento_suicidio">intento de suicidio</option>
+              <option value="morvilidad_materna">Morvilidad materna externa</option>
+              <option value="intoxicacion">Intoxicaciones</option>
+              <option value="desnuticion_menores">Desnutricion aguda en menores de 5 años</option>
+              <option value="exposicion_fluor">Exposicion a fluor</option>
+              <option value="tuberculosis">Tuberculosis</option>
+              <option value="accidente_ofidico">Accidente ofidico</option>
+              <option value="dengue">Dengue</option>
+              <option value="vhs_sida">VHS/Sida/mortalidad por sida</option>
+              <option value="parotiditis">Parotiditis</option>
+              <option value="infeccion_quirurgico">Infeccion de sitio quirurgico asociado PMQ</option>
+              <option value="defectos_congenitos">Defectos congenitos</option>
+              <option value="bajo_peso_bebe">Bajo peso al nacer</option>
+              <option value="endometritis">Endometritis puerperal</option>
+              <option value="sifilis_congenita">Sifilis congenita</option>
+              <option value="sifilis_gestacional">Sifilis gestacional</option>
+              <option value="ninguno">Ninguno</option>
+            </select>
+          </div>
+          
+          <div class="card">
+            <label for="institucion_cubrio_gastos">41. Institucion que cubrio gastos medicos:</label>
+            <select formControlName="institucion_cubrio_gastos" id="41">
+              <option value="permanencia">Patron</option>
+              <option value="pendular">Seguro privado</option>
+              <option value="transito">Viajo a venezuela a recibir atencion medica</option>
+              <option value="permanencia">No hubo costo a la atencion recibida en hospital colombiano</option>
+              <option value="pendular">Recursos propios y/o de familiares y amigos</option>
+              <option value="otro">Otro</option>
+              <option value="no_especificado">No especificado</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="servicios_institucionales">Servicios Institucionales:</label>
+             <select multiple Name="servicios_institucionales" id="42">
+               <option value="salud"> Sector salud le ha brindado atencion 
+                médica, hospitalaria y de vacunacion?</option>
+               <option value="educacion">Sector educacion, le ha permitido 
+                que sus hijos estudien?</option>
+               <option value="migracion">Migración Colombia, le ha brindado 
+                atención oportuna y eciente.</option>
+               <option value="ministerio_trabajo">Min.del Trabajo, le ha brindado apoyo 
+                en solución de conictos laborales</option>
+               <option value="alcaldia">La alcaldía a través de la Sec. 
+                de Gobierno le ha brindado apoyo y orientacion requerida.?</option>
+               <option value="tontin">¿ Las ONGs nacionales e internacionales,
+                le han brindado el apoyo y/o cooperación o ayuda humanitaria?</option>
+             </select>
+            </div>
+
+             <br/>
+              <div class="card">
+                <label for="miselect" [(ngModel)]="seleccionados" multiple="multiple">45. prueba servivios institucionales:</label>
+                <select multiple Name="miselect" id="42">
+                  <option [value]="item" *ngFor="let item of lista">{{item}}</option>
+                </select>
+                <ul>
+                <li *ngFor="let item of seleccionados">
+                  {{item}}
+                </li>
+              </ul>
+              </div>
+
+              <div class="card">
+                <label for="clase_vivienda">43. Clase de vivienda:</label>
+                <select formControlName="clase_vivienda" id="43">
+                  <option value="casa">Casa</option>
+                  <option value="pieza">Pieza</option>
+                  <option value="apartamento">Apartamento</option>
+                  <option value="otro">Otro</option>
+                  </select>
+              </div>
+
+              <div class="card">
+                <label for="tipo_vivienda">44. Tipo de vivienda:</label>
+                <select formControlName="tipo_vivienda" id="44">
+                  <option value="arendamiento">Arrendamiento</option>
+                  <option value="propia_asentamiento">Propia en arrendamiento</option>
+                  <option value="propia">propia</option>
+                  <option value="cedida">Cedida por amigo/familiar</option>
+                  <option value="Otra">Otra</option>
+                </select>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
 
@@ -244,6 +364,8 @@
         </div>
       </form>
     </div>
+
+      <!-- <GRUPO FAMILIAR > --> 
 
     <div class="edit-survey-content-right">
       <h2>Grupo Familiar</h2>
@@ -381,7 +503,6 @@
             </div>
 
             
-
             <div class="card">
               <label for="runv">Inscrito en el RUNV</label>
               <select name="runv" id="runv" formControlName="runv">
@@ -447,6 +568,7 @@
                 <option value="9">9</option>
                 <option value="10">10</option>
                 <option value="11">11</option>
+                <option value="12">Tecnico/Universitario</option>
                 <option value="Ninguno">Ninguno</option>
               </select>
             </div>
@@ -482,6 +604,8 @@
             <th>apellido</th>
             <th>documento</th>
             <th>genero</th>
+            <th>parentezco</th>
+
             <th><i class="fa fa-edit"></i></th>
           </tr>
         </thead>
@@ -499,6 +623,10 @@
             <td>
               {{ p.genero }}
             </td>
+            <td>
+              {{ p.parentezco }}
+            </td>
+
             <td>
               <a routerLink="/administracion/editar-persona/{{ p.id }}"
             >Editar <i class="fa fa-edit"></i
