@@ -22,6 +22,7 @@ export class EditUserComponent implements OnInit {
     password: ['', [Validators.required]],
     state: ['', [Validators.required]],
   });
+  
   constructor(
     private fb: FormBuilder,
     private serviceUser: UserService,

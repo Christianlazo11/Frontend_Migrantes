@@ -1,11 +1,10 @@
-
-  <div class="edit-survey">
-    <h1>Editar Usuario</h1>
-    <div class="edit-survey-content">
-      <div class="edit-survey-content-right">
-        <!-- <crear-persona-root></crear-persona-root> -->
-        <form [formGroup]="fgPersona" (ngSubmit)="EditPerson()">
-          <div class="content">
+<div class="edit-survey">
+  <h1>Editar Usuario</h1>
+  <div class="edit-survey-content">
+    <div class="edit-survey-content-right">
+      <!-- <crear-persona-root></crear-persona-root> -->
+      <form [formGroup]="fgPersona" (ngSubmit)="EditPerson()">
+        <div class="content">
           <div class="edit-survey-content">
             <div class="edit-survey-content-left">
               <!-- IZQUIERDA ***************************** -->
@@ -14,17 +13,17 @@
                 <label for="name">Nombre</label>
                 <input formControlName="name" id="name" type="text" />
               </div>
-  
+
               <div class="card">
                 <label for="document">Número de Documento</label>
                 <input formControlName="document" id="document" type="text" />
               </div>
-  
+
               <div class="card">
                 <label for="dateOfBirth">fecha de nacimiento</label>
                 <input formControlName="dateOfBirth" id="dateOfBirth" type="date" />
               </div>
-  
+
               <div class="card">
                 <label for="country">nacionalidad</label>
                 <select name="" id="country" formControlName="country">
@@ -33,17 +32,17 @@
                   <option value="otro">otro</option>
                 </select>
               </div>
-  
+
               <div class="card">
                 <label for="profesion">profesion</label>
                 <input formControlName="profesion" id="profesion" type="text" />
               </div>
-  
+
               <div class="card">
                 <label for="act_economica">act_economica</label>
                 <input formControlName="act_economica" id="act_economica" type="text" />
               </div>
-  
+
               <div class="card">
                 <label for="estatus_migratorio">Estatus Migratorio</label>
                 <select name="estatus_migratorio" id="estatus_migratorio" formControlName="estatus_migratorio">
@@ -53,7 +52,7 @@
                   <option value="No Aplica">No Aplica</option>
                 </select>
               </div>
-  
+
               <div class="card">
                 <label for="afiliacion_salud">Afiliación Salud</label>
                 <select name="afiliacion_salud" id="afiliacion_salud" formControlName="afiliacion_salud">
@@ -65,28 +64,38 @@
                   <option value="No Afiliado">No Afiliado</option>
                 </select>
               </div>
-              <div>
-  
-                <div class="card">
-                  <label>Tipo de Documento</label>
-  
-                  <div *ngFor="let doc of docs; let i=index">
-                    <div *ngIf="(i/2)*2==i">
-                      <label class="container">
-                        <input type="checkbox" formArrayName="docsSeleccionados" [value]="doc.value"
-                          (change)="onCheckboxChange($event)" />
-                        {{doc.name}}
-                        <span class="checkmark"></span><br />
-                      </label>
+
+              <div class="card">
+                <label>Tipo de Documento</label>
+                <div *ngFor="let doc of docs; let i=index">
+                  <div *ngIf="(i/2)*2==i">
+                    <div *ngFor="let docs of TipoDocsSeleccionados; let a=index">
+                      <div *ngIf="TipoDocsSeleccionados[a] == doc.value">
+                        <label class="container">
+                          <input type="checkbox" formArrayName="docsSeleccionados" [value]="doc.value" 
+                            (change)="onCheckboxChange($event)" checked />
+                          {{doc.name}}
+                          <span class="checkmark"></span><br />
+                        </label>
+                      </div>
                     </div>
-  
+                    <div *ngFor="let docs of TipoDocsSeleccionados; let a=index">
+                      <div *ngIf=" a === 0">
+                        <div
+                          *ngIf="TipoDocsSeleccionados[a] != doc.value && TipoDocsSeleccionados[a+1] != doc.value && TipoDocsSeleccionados[a+2] != doc.value && TipoDocsSeleccionados[a+3] != doc.value && TipoDocsSeleccionados[a+4] != doc.value && TipoDocsSeleccionados[a+5] != doc.value && TipoDocsSeleccionados[a+6] != doc.value && TipoDocsSeleccionados[a+7] != doc.value && TipoDocsSeleccionados[a+8] != doc.value && TipoDocsSeleccionados[a+9] != doc.value">
+                          <label class="container">
+                            <input type="checkbox" formArrayName="docsSeleccionados" [value]="doc.value"
+                              (change)="onCheckboxChange($event)" />
+                            {{doc.name}}
+                            <span class="checkmark"></span><br />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-  
-  
-                  <!-- <p>{{ fgValidator.value | json }}</p> -->
-  
                 </div>
               </div>
+
               <!-- ************************************************ -->
             </div>
             <div class="edit-survey-content-right">
@@ -99,8 +108,8 @@
                 <div>
                   <label for="gender">Genero</label>
                   <select name="" id="gender" formControlName="gender">
-                    <option value="Masculino">Masculino</option>
-                    <option value="Femenino">Femenino</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
                     <option value="LGTBI">LGTBI</option>
                   </select>
                 </div>
@@ -109,7 +118,7 @@
                 <label for="edad">edad</label>
                 <input formControlName="edad" id="edad" type="number" />
               </div>
-  
+
               <div class="card">
                 <label for="nivel">Nivel Educativo</label>
                 <select name="" id="nivel" formControlName="nivel">
@@ -121,12 +130,12 @@
                   <option value="N-Ninguna">N-Ninguna</option>
                 </select>
               </div>
-  
+
               <div class="card">
                 <label for="tipo_emprendimiento">tipo_emprendimiento</label>
                 <input formControlName="tipo_emprendimiento" id="tipo_emprendimiento" type="text" />
               </div>
-  
+
               <div class="card">
                 <label for="tipo_act_economica">Tipo de actividad</label>
                 <select name="tipo_act_economica" id="tipo_act_economica" formControlName="tipo_act_economica">
@@ -135,9 +144,9 @@
                   <option value="No Aplica">No Aplica</option>
                 </select>
               </div>
-  
-              
-  
+
+
+
               <div class="card">
                 <label for="runv">Inscrito en el RUNV</label>
                 <select name="runv" id="runv" formControlName="runv">
@@ -145,7 +154,7 @@
                   <option value="No">No</option>
                 </select>
               </div>
-  
+
               <div class="card">
                 <label for="discapacidad">Discapacidad</label>
                 <select name="discapacidad" id="discapacidad" formControlName="discapacidad">
@@ -158,7 +167,7 @@
                   <option value="Ninguna">Ninguna</option>
                 </select>
               </div>
-  
+
               <div class="card">
                 <label for="grupo_etnico">Grupo Étnico</label>
                 <select name="grupo_etnico" id="grupo_etnico" formControlName="grupo_etnico">
@@ -170,7 +179,7 @@
                   <option value="ROM/Gitano">ROM/Gitano</option>
                 </select>
               </div>
-  
+
               <div class="card">
                 <label for="movilidad_migratoria">Movilidad Migratoria</label>
                 <select name="movilidad_migratoria" id="movilidad_migratoria" formControlName="movilidad_migratoria">
@@ -179,7 +188,7 @@
                   <option value="Grupal">Grupal</option>
                 </select>
               </div>
-  
+
               <div class="card">
                 <label for="estudia">Estudia Actualmente</label>
                 <select name="estudia" id="estudia" formControlName="estudia">
@@ -187,7 +196,7 @@
                   <option value="No">No</option>
                 </select>
               </div>
-  
+
               <div class="card">
                 <label for="grado">Grado Actual</label>
                 <select name="grado" id="grado" formControlName="grado">
@@ -207,7 +216,7 @@
                   <option value="Ninguno">Ninguno</option>
                 </select>
               </div>
-  
+
               <div class="card">
                 <label for="parentezco">Parentezco</label>
                 <select name="parentezco" id="parentezco" formControlName="parentezco">
@@ -224,18 +233,18 @@
               <!-- ************************************************ -->
             </div>
           </div>
-  
+
           <div class="survey-btn">
             <button type="submit">
               Guardar Cambios
             </button>
           </div>
         </div>
-        </form>
-      </div>
-
+      </form>
     </div>
-    <!-- <form [formGroup]="fgValidator" (ngSubmit)="EditPerson()">
+
+  </div>
+  <!-- <form [formGroup]="fgValidator" (ngSubmit)="EditPerson()">
       <input type="hidden" formControlName="id" />
       <div>
         <label for="name">nombre</label>
@@ -281,5 +290,4 @@
         </button>
       </div>
     </form> -->
-  </div>
-
+</div>

@@ -18,24 +18,26 @@ import { __values } from 'tslib';
   styleUrls: ['./edit-survey.component.css']
 })
 export class EditSurveyComponent implements OnInit {
+  ServInstiSeleccionados: Number[] = [];
 
-  @HostListener('window:beforeunload')
-  onUnLoad(){
-    const data = new FormData();
-    // alert("Desea salir de la aplicacion?")
+  // @HostListener('window:beforeunload')
+  // onUnLoad(){
+  //   const data = new FormData();
+  //   // alert("Desea salir de la aplicacion?")
 
-    data.append('name', 'abc');
-    data.append('location', 'world');
-    navigator.sendBeacon('http://www.mysitioweb.com/api/v1/endpoint', data);
-    // const confirmar = confirm("Desea salir de la aplicacion?");
-    // // alert("Desea salir de la aplicacion?")
-    console.log("hola Mundo")
-    this.serviceSecurity.DeleteDataSession();
-    this.router.navigate(['/inicio']);
+  //   data.append('name', 'abc');
+  //   data.append('location', 'world');
+  //   navigator.sendBeacon('http://www.mysitioweb.com/api/v1/endpoint', data);
+  //   // const confirmar = confirm("Desea salir de la aplicacion?");
+  //   // // alert("Desea salir de la aplicacion?")
+  //   console.log("hola Mundo")
+  //   this.serviceSecurity.DeleteDataSession();
+  //   this.router.navigate(['/inicio']);
 
-    return false;
+  //   return false;
 
-  }
+  // }
+
   lista:string[]=["Ha recibido apoyo del sector Salud","Ha recibido apoyo del sector educacion",
    "Ha recibido apoyo de Migracion Colombia","Ha recibido apoyo de Min.Trabajo", "Ha recibido apoyo de la Alcaldia",
    "Ha recibido apoyo de las Ongs"];
@@ -56,23 +58,11 @@ export class EditSurveyComponent implements OnInit {
   listPeople: ModelPerson[] = [];
 
 
-  constructor(
-    private fb: FormBuilder,
-    private serviceSurvey: SurveyService,
-    private servicePerson: PersonService,
-    private serviceSecurity: SecurityService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) { }
+  
 
-  ngOnInit(): void {
-    this.noEncu = this.route.snapshot.params['id'];
-    this.SerchSurvey();
-    this.GetListPeople();
 
-  }
 
-  //Creamos el formulario
+  //Creamos el formulario Encuesta
   fgValidator: FormGroup = this.fb.group({
     
     municipio: ['', [Validators.required]],
@@ -102,16 +92,14 @@ export class EditSurveyComponent implements OnInit {
     intencion_tiempo_estancia: ['', [Validators.required]],
     interes_salud_publica: ['', [Validators.required]],
     institucion_cubrio_gastos: ['', [Validators.required]],
-    servicios_institucionales: ['', [Validators.required]],
+    servicios_institucionales: new FormArray([]),
     
     miselect: ['', [Validators.required]],
     clase_vivienda: ['', [Validators.required]],
     tipo_vivienda: ['', [Validators.required]],
 
-    
-    
-
   });
+  //Creamos el formulario Persona
   fgPersona: FormGroup = this.fb.group({
     id: ['', [Validators.required]],
     name: ['', [Validators.required]],
@@ -140,20 +128,22 @@ export class EditSurveyComponent implements OnInit {
     // surveyId: ['', [Validators.required]],
   });
 
-  // Checkbox intención
+  SISeleccionados = (this.fgValidator.controls['servicios_institucionales'] as FormArray);
+
+  // Checkbox Tipo de documento
   //************************************************************************ */
 
   docs: Array<any> = [
-    { name: 'Acta de nacimiento', value: 'Acta de nacimiento' },
-    { name: 'Cédula venezolana', value: 'Cédula venezolana' },
-    { name: 'PPT', value: 'PPT' },
-    { name: 'Pasaporte venezolano', value: 'Pasaporte venezolano' },
-    { name: 'Salvo conducto', value: 'Salvo conducto' },
-    { name: 'TMF', value: 'TMF' },
-    { name: 'Cédula/TI/RC Colombia', value: 'Cédula/TI/RC Colombia' },
-    { name: 'Solución ETPV', value: 'Solución ETPV' },
-    { name: 'Visa laboral o estudiantil', value: 'Visa laboral o estudiantil' },
-    { name: 'Ninguno', value: 'Ninguno' }
+    { name: 'Acta de nacimiento', value: '0' },
+    { name: 'Cédula venezolana', value: '1' },
+    { name: 'PPT', value: '2' },
+    { name: 'Pasaporte venezolano', value: '3' },
+    { name: 'Salvo conducto', value: '4' },
+    { name: 'TMF', value: '5' },
+    { name: 'Cédula/TI/RC Colombia', value: '6' },
+    { name: 'Solución ETPV', value: '7' },
+    { name: 'Visa laboral o estudiantil', value: '8' },
+    { name: 'Ninguno', value: '9' }
   ];
 
   onCheckboxChange(event: any) {
@@ -168,10 +158,57 @@ export class EditSurveyComponent implements OnInit {
     }
   }
 
-  SerchSurvey() {
+   // Checkbox Servicios institucionales
+  //************************************************************************ */
+  servInsti: Array<any> = [
+    { name: '¿Sector salud le ha brindado atencion médica, hospitalaria y de vacunacion?', value: '0' },
+    { name: '¿Sector educacion, le ha permitido que sus hijos estudien?', value: '1' },
+    { name: '¿Migración Colombia, le ha brindado atención oportuna y eficiente', value: '2' },
+    { name: '¿Min.del Trabajo, le ha brindado apoyo en solución de conflictos laborales', value: '3' },
+    { name: '¿La alcaldía a través de la Sec. de Gobierno le ha brindado apoyo y orientacion requerida.?', value: '4' },
+    { name: '¿Las ONGs nacionales e internacionales, le han brindado el apoyo y/o cooperación o ayuda humanitaria?', value: '5' },
+  ];
+  onCheckboxChangeSI(event: any) {
+    if (event.target.checked) {
+      this.SISeleccionados.push(new FormControl(event.target.value));
+    } else {
+      const index = this.SISeleccionados.controls
+        .findIndex(x => x.value === event.target.value);
+      this.SISeleccionados.removeAt(index);
+    }
+    console.log(this.SISeleccionados)
+  }
+  constructor(
+    private fb: FormBuilder,
+    private serviceSurvey: SurveyService,
+    private servicePerson: PersonService,
+    private serviceSecurity: SecurityService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit(): void {
+    this.noEncu = this.route.snapshot.params['id'];
+    this.SerchSurvey(this.ServInstiSeleccionados);
+    this.GetListPeople();
+
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
       (datos: ModelSurvey) => {
-        console.log(datos)
+
+      for (let i = 0; i < Number(Object.values(datos)[0].servicios_institucionales?.split(",").length); i++) {
+        this.SISeleccionados.push(new FormControl(Object.values(datos)[0].servicios_institucionales?.split(",")[i]));
+      }
+    })
+    
+  }
+
+
+  
+
+  SerchSurvey(ServInstiSeleccionados: Number[]) {
+    this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
+      (datos: ModelSurvey) => {
+        // console.log(Object.values(datos)[0].servicios_institucionales.split(",")[0])
         this.idEncu = Object.values(datos)[0].id
 
         this.fgValidator.controls['municipio'].setValue(Object.values(datos)[0].municipio);
@@ -203,7 +240,12 @@ export class EditSurveyComponent implements OnInit {
         this.fgValidator.controls['interes_salud_publica'].setValue(Object.values(datos)[0].interes_salud_publica);
         this.fgValidator.controls['institucion_cubrio_gastos'].setValue(Object.values(datos)[0].institucion_cubrio_gastos);
         
-        this.fgValidator.controls['servicios_institucionales'].setValue(Object.values(datos)[0].servicios_institucionales);
+        
+        for (let i = 0; i < Number(Object.values(datos)[0].servicios_institucionales.length-1); i++) {
+          ServInstiSeleccionados.push(Number(Object.values(datos)[0].servicios_institucionales.split(",")[i]))
+        }
+        // console.log(ServInstiSeleccionados)
+
         this.fgValidator.controls['miselect'].setValue(Object.values(datos)[0].miselect);
         this.fgValidator.controls['clase_vivienda'].setValue(Object.values(datos)[0].clase_vivienda);
         this.fgValidator.controls['tipo_vivienda'].setValue(Object.values(datos)[0].tipo_vivienda);
@@ -253,7 +295,7 @@ export class EditSurveyComponent implements OnInit {
         let runv = this.fgPersona.controls['runv'].value;
         let estatus_migratorio = this.fgPersona.controls['estatus_migratorio'].value;
         let afiliacion_salud = this.fgPersona.controls['afiliacion_salud'].value;
-        let docsSeleccionados = this.fgPersona.controls['docsSeleccionados'].value;
+        let docsSeleccionados: string[] = this.fgPersona.value.docsSeleccionados;
         let discapacidad= this.fgPersona.controls['discapacidad'].value;
         let grupo_etnico = this.fgPersona.controls['grupo_etnico'].value;
         let movilidad_migratoria = this.fgPersona.controls['movilidad_migratoria'].value;
@@ -318,8 +360,10 @@ export class EditSurveyComponent implements OnInit {
   }
 
   ModificarEncuesta() {
+    
 
     let dataEncu = this.serviceSecurity.GetDataSession();
+    
     let Municipio = this.fgValidator.controls['municipio'].value;
     let Direccion = this.fgValidator.controls['direccion'].value;
     let Correo = this.fgValidator.controls['correo'].value;
@@ -347,8 +391,8 @@ export class EditSurveyComponent implements OnInit {
     let intencion_tiempo_estancia = this.fgValidator.controls['intencion_tiempo_estancia'].value;
     let interes_salud_publica = this.fgValidator.controls['interes_salud_publica'].value;
     let institucion_cubrio_gastos = this.fgValidator.controls['institucion_cubrio_gastos'].value;
-    
-    let servicios_institucionales = this.fgValidator.controls['servicios_institucionales'].value;
+   
+    let servicios_institucionales: string[] = this.SISeleccionados.value;
     let miselect = this.fgValidator.controls['miselect'].value;
     let clase_vivienda = this.fgValidator.controls['clase_vivienda'].value;
     let tipo_vivienda = this.fgValidator.controls['tipo_vivienda'].value;
@@ -359,7 +403,7 @@ export class EditSurveyComponent implements OnInit {
 
     //Obtenemos el numero del Id con el numero de encuesta
     
-    console.log(typeof(this.noEncu))
+    // console.log(typeof(this.noEncu))
 
     
     newSurvey.id = this.idEncu;
@@ -394,7 +438,7 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.interes_salud_publica = interes_salud_publica;
     newSurvey.institucion_cubrio_gastos = institucion_cubrio_gastos;
     
-    newSurvey.servicios_institucionales = servicios_institucionales;
+    newSurvey.servicios_institucionales = String(servicios_institucionales);
     newSurvey.miselect = miselect;
     //          console.log("miselect " + typeof(miselect));
     newSurvey.clase_vivienda = clase_vivienda;

@@ -10,7 +10,6 @@ import { PersonService } from 'src/app/services/person.service';
 export class SearchPersonComponent implements OnInit {
   listPeople: ModelPerson[] = [];
   constructor(private servicePerson: PersonService) {}
-
   ngOnInit(): void {
     this.GetListPeople();
   }

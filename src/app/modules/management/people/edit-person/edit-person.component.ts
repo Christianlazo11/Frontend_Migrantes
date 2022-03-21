@@ -13,6 +13,10 @@ import { SurveyService } from 'src/app/services/survey.service';
 })
 export class EditPersonComponent implements OnInit {
   id: string = '';
+  TipoDocsSeleccionados: Number[] = [];
+  cantidad: Number[] = [];
+  
+
 
   fgValidator: FormGroup = this.fb.group({
     id: ['', [Validators.required]],
@@ -52,32 +56,36 @@ export class EditPersonComponent implements OnInit {
 
     // surveyId: ['', [Validators.required]],
   });
+  docsSeleccionados = (this.fgPersona.controls['docsSeleccionados'] as FormArray);
 
   // Checkbox intención
   //************************************************************************ */
 
   docs: Array<any> = [
-    { name: 'Acta de nacimiento', value: 'Acta de nacimiento' },
-    { name: 'Cédula venezolana', value: 'Cédula venezolana' },
-    { name: 'PPT', value: 'PPT' },
-    { name: 'Pasaporte venezolano', value: 'Pasaporte venezolano' },
-    { name: 'Salvo conducto', value: 'Salvo conducto' },
-    { name: 'TMF', value: 'TMF' },
-    { name: 'Cédula/TI/RC Colombia', value: 'Cédula/TI/RC Colombia' },
-    { name: 'Solución ETPV', value: 'Solución ETPV' },
-    { name: 'Visa laboral o estudiantil', value: 'Visa laboral o estudiantil' },
-    { name: 'Ninguno', value: 'Ninguno' }
+    { name: 'Acta de nacimiento', value: '0' },
+    { name: 'Cédula venezolana', value: '1' },
+    { name: 'PPT', value: '2' },
+    { name: 'Pasaporte venezolano', value: '3' },
+    { name: 'Salvo conducto', value: '4' },
+    { name: 'TMF', value: '5' },
+    { name: 'Cédula/TI/RC Colombia', value: '6' },
+    { name: 'Solución ETPV', value: '7' },
+    { name: 'Visa laboral o estudiantil', value: '8' },
+    { name: 'Ninguno', value: '9' }
   ];
 
+
   onCheckboxChange(event: any) {
-    const docsSeleccionados = (this.fgPersona.controls['docsSeleccionados'] as FormArray);
+    
+
+    console.log(this.docsSeleccionados)
     if (event.target.checked) {
-      docsSeleccionados.push(new FormControl(event.target.value));
+      this.docsSeleccionados.push(new FormControl(event.target.value));
 
     } else {
-      const index = docsSeleccionados.controls
+      const index = this.docsSeleccionados.controls
         .findIndex(x => x.value === event.target.value);
-      docsSeleccionados.removeAt(index);
+      this.docsSeleccionados.removeAt(index);
     }
   }
 
@@ -91,14 +99,25 @@ export class EditPersonComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.SearchPerson();
+    this.SearchPerson(this.TipoDocsSeleccionados);
+    console.log(this.TipoDocsSeleccionados)
+
+    this.servicePerson.GetPeopleById(this.id).subscribe((datos: ModelPerson) => {
+      console.log(datos)
+      for (let i = 0; i < Number(datos.docsSeleccionados?.split(",").length); i++) {
+        this.docsSeleccionados.push(new FormControl(datos.docsSeleccionados?.split(",")[i]));
+      }
+    })
+    console.log(this.docsSeleccionados)
+
+
   }
 
-  SearchPerson() {
-    this.servicePerson
-      .GetPeopleById(this.id)
-      .subscribe((datos: ModelPerson) => {
-        console.log(datos)
+  SearchPerson(tipoDocsSeleccionados: Number[]) {
+    this.servicePerson.GetPeopleById(this.id).subscribe((datos: ModelPerson) => {
+        // console.log("Hola")
+        // console.log(datos.docsSeleccionados?.split(",")[0])
+
 
         this.fgPersona.controls['name'].setValue(datos.nombre);
         this.fgPersona.controls['lastName'].setValue(datos.apellido);
@@ -115,8 +134,8 @@ export class EditPersonComponent implements OnInit {
         this.fgPersona.controls['runv'].setValue(datos.runv);
         this.fgPersona.controls['estatus_migratorio'].setValue(datos.estatus_migratorio);
         this.fgPersona.controls['afiliacion_salud'].setValue(datos.afiliacion_salud);
-        
-        
+
+
         // this.fgPersona.controls["docsSeleccionados"].setValue;
         this.fgPersona.controls['discapacidad'].setValue(datos.discapacidad);
         this.fgPersona.controls['grupo_etnico'].setValue(datos.grupo_etnico);
@@ -124,10 +143,19 @@ export class EditPersonComponent implements OnInit {
         this.fgPersona.controls['estudia'].setValue(datos.estudia);
         this.fgPersona.controls['grado'].setValue(datos.grado);
         this.fgPersona.controls['parentezco'].setValue(datos.parentezco);
+        
+       
+        for (let i = 0; i < Number(datos.docsSeleccionados?.split(",").length); i++) {
+          tipoDocsSeleccionados.push(Number(datos.docsSeleccionados?.split(",")[i]))
+        }
+        for (let i = 0; i < Number(datos.docsSeleccionados?.split(",").length); i++) {
+          this.cantidad.push(i)
+        }
       });
   }
 
   EditPerson() {
+    console.log(this.docsSeleccionados)
     let nombre = this.fgPersona.controls['name'].value;
     let apellido = this.fgPersona.controls['lastName'].value;
     let documento = this.fgPersona.controls['document'].value;
@@ -143,7 +171,7 @@ export class EditPersonComponent implements OnInit {
     let runv = this.fgPersona.controls['runv'].value;
     let estatus_migratorio = this.fgPersona.controls['estatus_migratorio'].value;
     let afiliacion_salud = this.fgPersona.controls['afiliacion_salud'].value;
-    let docsSeleccionados = this.fgPersona.controls['docsSeleccionados'].value;
+    let docsSeleccionados: string[] = this.fgPersona.value.docsSeleccionados;
     let discapacidad = this.fgPersona.controls['discapacidad'].value;
     let grupo_etnico = this.fgPersona.controls['grupo_etnico'].value;
     let movilidad_migratoria = this.fgPersona.controls['movilidad_migratoria'].value;
@@ -169,7 +197,7 @@ export class EditPersonComponent implements OnInit {
     newPerson.runv = runv;
     newPerson.estatus_migratorio = estatus_migratorio;
     newPerson.afiliacion_salud = afiliacion_salud;
-    newPerson.docsSeleccionados= String(docsSeleccionados);
+    newPerson.docsSeleccionados = String(docsSeleccionados);
     newPerson.discapacidad = discapacidad;
     newPerson.grupo_etnico = grupo_etnico;
     newPerson.movilidad_migratoria = movilidad_migratoria;
@@ -200,7 +228,7 @@ export class EditPersonComponent implements OnInit {
           }
         )
 
-        
+
 
 
       });

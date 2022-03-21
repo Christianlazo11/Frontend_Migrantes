@@ -294,7 +294,50 @@
             </select>
           </div>
 
+          
+
+
           <div class="card">
+            <label>Servicios Institucionales</label>
+            <div *ngFor="let doc of servInsti; let i=index">
+              <div *ngIf="(i/2)*2==i">
+                <div *ngFor="let docs of ServInstiSeleccionados; let a=index">
+                  <div *ngIf="ServInstiSeleccionados[a] == doc.value">
+                    <label class="container">
+                      <input type="checkbox" formArrayName="servicios_institucionales" [value]="doc.value" 
+                        (change)="onCheckboxChangeSI($event)" checked />
+                      {{doc.name}}
+                      <span class="checkmark"></span><br />
+                    </label>
+                  </div>
+                </div>
+                <div *ngFor="let docs of ServInstiSeleccionados; let a=index">
+                  <div *ngIf=" a === 0">
+                    <div
+                      *ngIf="ServInstiSeleccionados[a] != doc.value && ServInstiSeleccionados[a+1] != doc.value && ServInstiSeleccionados[a+2] != doc.value && ServInstiSeleccionados[a+3] != doc.value && ServInstiSeleccionados[a+4] != doc.value">
+                      <label class="container">
+                        <input type="checkbox" formArrayName="servicios_institucionales" [value]="doc.value"
+                          (change)="onCheckboxChangeSI($event)" />
+                        {{doc.name}}
+                        <span class="checkmark"></span><br />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="ServInstiSeleccionados.length == 0">
+                  <label class="container">
+                    <input type="checkbox" formArrayName="servicios_institucionales" [value]="doc.value"
+                      (change)="onCheckboxChangeSI($event)" />
+                    {{doc.name}}
+                    <span class="checkmark"></span><br />
+                  </label>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="card">
             <label for="servicios_institucionales">Servicios Institucionales:</label>
              <select multiple Name="servicios_institucionales" id="42">
                <option value="salud"> Sector salud le ha brindado atencion 
@@ -323,7 +366,7 @@
                   {{item}}
                 </li>
               </ul>
-              </div>
+              </div> -->
 
               <div class="card">
                 <label for="clase_vivienda">43. Clase de vivienda:</label>
@@ -345,18 +388,6 @@
                   <option value="Otra">Otra</option>
                 </select>
               </div>
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
 
         <div class="survey-btn">
