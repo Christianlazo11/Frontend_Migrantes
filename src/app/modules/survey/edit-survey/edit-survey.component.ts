@@ -19,6 +19,7 @@ import { __values } from 'tslib';
 })
 export class EditSurveyComponent implements OnInit {
   ServInstiSeleccionados: Number[] = [];
+  PServInstiSeleccionados: Number[] = [];
 
   // @HostListener('window:beforeunload')
   // onUnLoad(){
@@ -56,11 +57,6 @@ export class EditSurveyComponent implements OnInit {
   listSurvey: ModelSurvey[] = [];
   listUsers: ModelUser[] = [];
   listPeople: ModelPerson[] = [];
-
-
-  
-
-
 
   //Creamos el formulario Encuesta
   fgValidator: FormGroup = this.fb.group({
@@ -129,7 +125,7 @@ export class EditSurveyComponent implements OnInit {
   });
 
   SISeleccionados = (this.fgValidator.controls['servicios_institucionales'] as FormArray);
-
+  PSISeleccionados = (this.fgValidator.controls['servicios_institucionales'] as FormArray);
   // Checkbox Tipo de documento
   //************************************************************************ */
 
@@ -168,7 +164,7 @@ export class EditSurveyComponent implements OnInit {
     { name: '¿La alcaldía a través de la Sec. de Gobierno le ha brindado apoyo y orientacion requerida.?', value: '4' },
     { name: '¿Las ONGs nacionales e internacionales, le han brindado el apoyo y/o cooperación o ayuda humanitaria?', value: '5' },
   ];
-  onCheckboxChangeSI(event: any) {
+  onCheckboxChangePSI(event: any) {
     if (event.target.checked) {
       this.SISeleccionados.push(new FormControl(event.target.value));
     } else {
@@ -178,6 +174,30 @@ export class EditSurveyComponent implements OnInit {
     }
     console.log(this.SISeleccionados)
   }
+
+     // Checkbox Prueba Servicios institucionales
+  //************************************************************************ */
+  pruServInsti: Array<any> = [
+    { name: 'Ha recibido apoyo del sector Salud', value: '0' },
+    { name: 'Ha recibido apoyo del sector educacion', value: '1' },
+    { name: 'Ha recibido apoyo de Migracion Colombia', value: '2' },
+    { name: 'Ha recibido apoyo de Min.Trabajo', value: '3' },
+    { name: 'Ha recibido apoyo de la Alcaldia', value: '4' },
+    { name: 'Ha recibido apoyo de las Ongs', value: '5' },
+  ];
+  onCheckboxChangeSI(event: any) {
+    if (event.target.checked) {
+      this.PSISeleccionados.push(new FormControl(event.target.value));
+    } else {
+      const index = this.PSISeleccionados.controls
+        .findIndex(x => x.value === event.target.value);
+      this.PSISeleccionados.removeAt(index);
+    }
+    console.log(this.PSISeleccionados)
+  }
+
+
+
   constructor(
     private fb: FormBuilder,
     private serviceSurvey: SurveyService,
@@ -202,8 +222,6 @@ export class EditSurveyComponent implements OnInit {
     
   }
 
-
-  
 
   SerchSurvey(ServInstiSeleccionados: Number[]) {
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
