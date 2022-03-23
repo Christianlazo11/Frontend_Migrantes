@@ -219,7 +219,7 @@
           </div>
 
           <div class="card">
-            <label for="tipo_vinculacion">35. Tipo contrato: Vinculacion</label>
+            <label for="tipo_vinculacion">35. Tipo contrato o Vinculacion</label>
             <select formControlName="tipo_vinculacion" id="35">
               <option value="termino_fijo">Contrato termino fijo</option>
               <option value="termino_indefinido">Contrato termino indefinido</option>
@@ -315,7 +315,7 @@
 
    
           <div class="card">
-            <label>Servicios Institucionales</label>
+            <label>42. Servicios Institucionales</label>
             <div *ngFor="let doc of servInsti; let i=index">
               <div *ngIf="(i/2)*2==i">
                 <div *ngFor="let docs of ServInstiSeleccionados; let a=index">
@@ -374,7 +374,44 @@
                   <option value="Otra">Otra</option>
                 </select>
               </div>
+
+              <div class="card">
+                <h2> Colombianos retornados</h2>
+             </div>
+
+             <div class="card">
+              <label for="causal_de_retorno">47. Causal de retorno</label>
+              <select name="causal_de_retorno" id="47" formControlName="causal_de_retorno">
+                <option value="situacion_social">Situacion social, economica y de inseguridad de venezuela </option>
+                <option value="situacion_Politica">Situacion Politica</option>
+                <option value="deportado_por_la_guardia">Devuelto y/o deportado por la guardia Venezolana</option>
+              </select>
+            </div>
+
+
+
+             <div class="card">
+              <label for="años_estancia_vzla">49. Años de estancia en Venezuela</label>
+              <select name="años_estancia_vzla" id="49" formControlName="años_estancia_vzla">
+                <option value="de_1_a_3años">De 1 a 3 años</option>
+                <option value="de_3_a_5años">De 3 a 5 años</option>
+                <option value="de_6_a_10años">De 6 a 10 años</option>
+                <option value="de_11_a_15años">De 11 a 15 años</option>
+                <option value="de_16_a_20años">De 16 a 20 años</option>
+                <option value="de_21_a_25años">De 21 a 25 años</option>
+                <option value="mas_de_25años">Mas de 25 años</option>
+              </select>
+            </div>
+
+
+
+
+
+
+
+
         </div>
+
 
         <div class="survey-btn">
           <button type="submit">Guardar</button>

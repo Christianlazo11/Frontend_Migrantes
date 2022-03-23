@@ -36,4 +36,8 @@ export class ModelSurvey {
     miselect?: string;
     clase_vivienda?: string;
     tipo_vivienda?: string;
+
+    causal_de_retorno?: string;
+    años_estancia_vzla?: string;
+
   }

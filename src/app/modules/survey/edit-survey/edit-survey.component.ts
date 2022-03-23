@@ -96,6 +96,9 @@ export class EditSurveyComponent implements OnInit {
     clase_vivienda: ['', [Validators.required]],
     tipo_vivienda: ['', [Validators.required]],
 
+    causal_de_retorno:['', [Validators.required]],
+    años_estancia_vzla:['', [Validators.required]],
+
   });
   //Creamos el formulario Persona
   fgPersona: FormGroup = this.fb.group({
@@ -262,8 +265,7 @@ export class EditSurveyComponent implements OnInit {
         this.fgValidator.controls['intencion_tiempo_estancia'].setValue(Object.values(datos)[0].intencion_tiempo_estancia);
         this.fgValidator.controls['interes_salud_publica'].setValue(Object.values(datos)[0].interes_salud_publica);
         this.fgValidator.controls['institucion_cubrio_gastos'].setValue(Object.values(datos)[0].institucion_cubrio_gastos);
-        
-        
+                
         for (let i = 0; i < Number(Object.values(datos)[0].servicios_institucionales.length-1); i++) {
           ServInstiSeleccionados.push(Number(Object.values(datos)[0].servicios_institucionales.split(",")[i]))
         }
@@ -272,7 +274,9 @@ export class EditSurveyComponent implements OnInit {
         this.fgValidator.controls['miselect'].setValue(Object.values(datos)[0].miselect);
         this.fgValidator.controls['clase_vivienda'].setValue(Object.values(datos)[0].clase_vivienda);
         this.fgValidator.controls['tipo_vivienda'].setValue(Object.values(datos)[0].tipo_vivienda);
+        this.fgValidator.controls['causal_de_retorno'].setValue(Object.values(datos)[0].causal_de_retorno);        
         
+        this.fgValidator.controls['años_estancia_vzla'].setValue(Object.values(datos)[0].años_estancia_vzla);
 
       },
       (error) => {
@@ -423,7 +427,9 @@ export class EditSurveyComponent implements OnInit {
     let miselect = this.fgValidator.controls['miselect'].value;
     let clase_vivienda = this.fgValidator.controls['clase_vivienda'].value;
     let tipo_vivienda = this.fgValidator.controls['tipo_vivienda'].value;
-
+      
+    let causal_de_retorno = this.fgValidator.controls['causal_de_retorno'].value;
+    let años_estancia_vzla = this.fgValidator.controls['años_estancia_vzla'].value;
 
 
     let newSurvey = new ModelSurvey();
@@ -473,6 +479,9 @@ export class EditSurveyComponent implements OnInit {
     //          console.log("miselect " + typeof(miselect));
     newSurvey.clase_vivienda = clase_vivienda;
     newSurvey.tipo_vivienda = tipo_vivienda;
+    
+    newSurvey.causal_de_retorno = causal_de_retorno;
+    newSurvey.años_estancia_vzla = años_estancia_vzla;
 
     
     newSurvey.usuarioId = dataEncu.datos.id;
