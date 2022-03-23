@@ -153,11 +153,12 @@
               <option value="Gestante">Gestante</option>
               <option value="Lactante">Lactante</option>
               <option value="Ninguno">Ninguno</option>
+              <option value="No Aplica">Ninguno</option>              
             </select>
           </div>
 
           <div class="card">
-            <label for="apostillo_tit_bachiller">32A. ¿Apostilló Titulo de Bachiller?</label>
+            <label for="apostillo_tit_bachiller">32a. ¿Apostilló Titulo de Bachiller?</label>
             <select name="apostillo_tit_bachiller" id="32A" formControlName="apostillo_tit_bachiller">
               <option value="Si">Si</option>
               <option value="No">No</option>
@@ -166,8 +167,26 @@
           </div>
 
           <div class="card">
-            <label for="apostillo_tit_tec">32A. ¿Apostilló Titulo de Técnico/Tecnologo?</label>
+            <label for="apostillo_tit_tec">32b. ¿Apostilló Titulo de Técnico/Tecnologo?</label>
             <select name="apostillo_tit_tec" id="32B" formControlName="apostillo_tit_tec">
+              <option value="Si">Si</option>
+              <option value="No">No</option>
+              <option value="No Aplica">No aplica</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="apostillo_tit_profesional">32c. ¿Apostilló Titulo de Profesional?</label>
+            <select name="apostillo_tit_profesional" id="32B" formControlName="apostillo_tit_profesional">
+              <option value="Si">Si</option>
+              <option value="No">No</option>
+              <option value="No Aplica">No aplica</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="apostillo_otro_titulo">32d. ¿Apostilló otro Titulo?</label>
+            <select name="apostillo_otro_titulo" id="32B" formControlName="apostillo_otro_titulo">
               <option value="Si">Si</option>
               <option value="No">No</option>
               <option value="No Aplica">No aplica</option>
@@ -294,9 +313,7 @@
             </select>
           </div>
 
-          
-
-
+   
           <div class="card">
             <label>Servicios Institucionales</label>
             <div *ngFor="let doc of servInsti; let i=index">
@@ -336,8 +353,6 @@
               </div>
             </div>
           </div>
-
-        
 
               <div class="card">
                 <label for="clase_vivienda">43. Clase de vivienda:</label>

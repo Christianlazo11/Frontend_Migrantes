@@ -79,6 +79,8 @@ export class EditSurveyComponent implements OnInit {
     maternidad: ['', [Validators.required]],
     apostillo_tit_bachiller: ['', [Validators.required]],
     apostillo_tit_tec: ['', [Validators.required]],
+    apostillo_tit_profesional: ['', [Validators.required]],
+    apostillo_otro_titulo: ['', [Validators.required]],
     lugar_trabajo: ['', [Validators.required]],
     posicion_trabajo: ['', [Validators.required]],
     tipo_vinculacion: ['', [Validators.required]],
@@ -248,6 +250,9 @@ export class EditSurveyComponent implements OnInit {
         this.fgValidator.controls['maternidad'].setValue(Object.values(datos)[0].maternidad);
         this.fgValidator.controls['apostillo_tit_bachiller'].setValue(Object.values(datos)[0].apostillo_tit_bachiller);
         this.fgValidator.controls['apostillo_tit_tec'].setValue(Object.values(datos)[0].apostillo_tit_tec);
+        this.fgValidator.controls['apostillo_tit_profesional'].setValue(Object.values(datos)[0].apostillo_tit_profesional);
+        this.fgValidator.controls['apostillo_otro_titulo'].setValue(Object.values(datos)[0].apostillo_otro_titulo); 
+        
         this.fgValidator.controls['lugar_trabajo'].setValue(Object.values(datos)[0].lugar_trabajo);
         this.fgValidator.controls['posicion_trabajo'].setValue(Object.values(datos)[0].posicion_trabajo);
         this.fgValidator.controls['tipo_vinculacion'].setValue(Object.values(datos)[0].tipo_vinculacion);
@@ -313,6 +318,7 @@ export class EditSurveyComponent implements OnInit {
         let runv = this.fgPersona.controls['runv'].value;
         let estatus_migratorio = this.fgPersona.controls['estatus_migratorio'].value;
         let afiliacion_salud = this.fgPersona.controls['afiliacion_salud'].value;
+        //Tipo de Documento
         let docsSeleccionados: string[] = this.fgPersona.value.docsSeleccionados;
         let discapacidad= this.fgPersona.controls['discapacidad'].value;
         let grupo_etnico = this.fgPersona.controls['grupo_etnico'].value;
@@ -400,6 +406,9 @@ export class EditSurveyComponent implements OnInit {
     let maternidad = this.fgValidator.controls['maternidad'].value;
     let apostillo_tit_bachiller = this.fgValidator.controls['apostillo_tit_bachiller'].value;
     let apostillo_tit_tec = this.fgValidator.controls['apostillo_tit_tec'].value;
+    let apostillo_tit_profesional = this.fgValidator.controls['apostillo_tit_profesional'].value;
+    let apostillo_otro_titulo = this.fgValidator.controls['apostillo_otro_titulo'].value;
+
     let lugar_trabajo = this.fgValidator.controls['lugar_trabajo'].value;
     let posicion_trabajo = this.fgValidator.controls['posicion_trabajo'].value;
     let tipo_vinculacion = this.fgValidator.controls['tipo_vinculacion'].value;
@@ -446,6 +455,9 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.maternidad = maternidad;
     newSurvey.apostillo_tit_bachiller = apostillo_tit_bachiller;
     newSurvey.apostillo_tit_tec = apostillo_tit_tec;
+    newSurvey.apostillo_tit_profesional = apostillo_tit_profesional;
+    newSurvey.apostillo_otro_titulo = apostillo_otro_titulo ;
+
     newSurvey.lugar_trabajo = lugar_trabajo;
     newSurvey.posicion_trabajo = posicion_trabajo;
     newSurvey.tipo_vinculacion = tipo_vinculacion;

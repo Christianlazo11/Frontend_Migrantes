@@ -20,6 +20,9 @@ export class ModelSurvey {
     maternidad?: string;
     apostillo_tit_bachiller?: string;    
     apostillo_tit_tec?: string; 
+    apostillo_tit_profesional?: string;    
+    apostillo_otro_titulo?: string; 
+    
     lugar_trabajo?: string; 
     posicion_trabajo?: string; 
     tipo_vinculacion?: string;
