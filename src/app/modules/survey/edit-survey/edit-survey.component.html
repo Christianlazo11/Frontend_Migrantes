@@ -155,7 +155,7 @@
               <option value="Gestante">Gestante</option>
               <option value="Lactante">Lactante</option>
               <option value="Ninguno">Ninguno</option>
-              <option value="No Aplica">Ninguno</option>              
+              <option value="No Aplica">Ninguno</option>
             </select>
           </div>
 
@@ -315,9 +315,6 @@
             </select>
           </div>
 
-
-
-
           <div class="card">
             <label>42. Servicios Institucionales</label>
             <div *ngFor="let doc of servInsti; let i=index">
@@ -353,59 +350,96 @@
                     <span class="checkmark"></span><br />
                   </label>
                 </div>
-
               </div>
             </div>
           </div>
 
-              <div class="card">
-                <label for="clase_vivienda">43. Clase de vivienda:</label>
-                <select formControlName="clase_vivienda" id="43">
-                  <option value="casa">Casa</option>
-                  <option value="pieza">Pieza</option>
-                  <option value="apartamento">Apartamento</option>
-                  <option value="otro">Otro</option>
-                  </select>
+          <div class="card">
+            <label for="clase_vivienda">43. Clase de vivienda:</label>
+            <select formControlName="clase_vivienda" id="43">
+              <option value="casa">Casa</option>
+              <option value="pieza">Pieza</option>
+              <option value="apartamento">Apartamento</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label for="tipo_vivienda">44. Tipo de vivienda:</label>
+            <select formControlName="tipo_vivienda" id="44">
+              <option value="arendamiento">Arrendamiento</option>
+              <option value="propia_asentamiento">Propia en arrendamiento</option>
+              <option value="propia">propia</option>
+              <option value="cedida">Cedida por amigo/familiar</option>
+              <option value="Otra">Otra</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <label>45. Tipo de necesidades básicas</label>
+            <div *ngFor="let doc of tipoNeceBasica; let i=index">
+              <div *ngIf="(i/2)*2==i">
+                <div *ngFor="let docs of TipoNeceBasicaSeleccionados; let a=index">
+                  <div *ngIf="TipoNeceBasicaSeleccionados[a] == doc.value">
+                    <label class="container">
+                      <input type="checkbox" formArrayName="tipo_necesidad_basica" [value]="doc.value"
+                        (change)="onCheckboxChangeTNB($event)" checked />
+                      {{doc.name}}
+                      <span class="checkmark"></span><br />
+                    </label>
+                  </div>
+                </div>
+                <div *ngFor="let docs of TipoNeceBasicaSeleccionados; let a=index">
+                  <div *ngIf=" a === 0">
+                    <div *ngIf="TipoNeceBasicaSeleccionados[a] != doc.value && TipoNeceBasicaSeleccionados[a+1] != doc.value && TipoNeceBasicaSeleccionados[a+2] != doc.value && TipoNeceBasicaSeleccionados[a+3] != doc.value && TipoNeceBasicaSeleccionados[a+4] != doc.value  && TipoNeceBasicaSeleccionados[a+5] != doc.value && TipoNeceBasicaSeleccionados[a+6] != doc.value && TipoNeceBasicaSeleccionados[a+7] != doc.value && TipoNeceBasicaSeleccionados[a+8] != doc.value && TipoNeceBasicaSeleccionados[a+9] != doc.value && TipoNeceBasicaSeleccionados[a+10] != doc.value && TipoNeceBasicaSeleccionados[a+11] != doc.value && TipoNeceBasicaSeleccionados[a+12] != doc.value && TipoNeceBasicaSeleccionados[a+13] != doc.value && TipoNeceBasicaSeleccionados[a+14] != doc.value">
+                      <label class="container">
+                        <input type="checkbox" formArrayName="tipo_necesidad_basica" [value]="doc.value"
+                          (change)="onCheckboxChangeTNB($event)" />
+                        {{doc.name}}
+                        <span class="checkmark"></span><br />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="TipoNeceBasicaSeleccionados.length == 0">
+                  <label class="container">
+                    <input type="checkbox" formArrayName="tipo_necesidad_basica" [value]="doc.value"
+                      (change)="onCheckboxChangeTNB($event)" />
+                    {{doc.name}}
+                    <span class="checkmark"></span><br />
+                  </label>
+                </div>
               </div>
-
-              <div class="card">
-                <label for="tipo_vivienda">44. Tipo de vivienda:</label>
-                <select formControlName="tipo_vivienda" id="44">
-                  <option value="arendamiento">Arrendamiento</option>
-                  <option value="propia_asentamiento">Propia en arrendamiento</option>
-                  <option value="propia">propia</option>
-                  <option value="cedida">Cedida por amigo/familiar</option>
-                  <option value="Otra">Otra</option>
-                </select>
-              </div>
-
-              <div class="card">
-                <h2> Colombianos retornados</h2>
-             </div>
-
-             <div class="card">
-              <label for="causal_de_retorno">47. Causal de retorno</label>
-              <select name="causal_de_retorno" id="47" formControlName="causal_de_retorno">
-                <option value="situacion_social">Situacion social, economica y de inseguridad de venezuela </option>
-                <option value="situacion_Politica">Situacion Politica</option>
-                <option value="deportado_por_la_guardia">Devuelto y/o deportado por la guardia Venezolana</option>
-              </select>
             </div>
+          </div>
+
+          <div class="card">
+            <h2> Colombianos retornados</h2>
+          </div>
+
+          <div class="card">
+            <label for="causal_de_retorno">47. Causal de retorno</label>
+            <select name="causal_de_retorno" id="47" formControlName="causal_de_retorno">
+              <option value="situacion_social">Situacion social, economica y de inseguridad de venezuela </option>
+              <option value="situacion_Politica">Situacion Politica</option>
+              <option value="deportado_por_la_guardia">Devuelto y/o deportado por la guardia Venezolana</option>
+            </select>
+          </div>
 
 
 
-             <div class="card">
-              <label for="años_estancia_vzla">49. Años de estancia en Venezuela</label>
-              <select name="años_estancia_vzla" id="49" formControlName="años_estancia_vzla">
-                <option value="de_1_a_3años">De 1 a 3 años</option>
-                <option value="de_3_a_5años">De 3 a 5 años</option>
-                <option value="de_6_a_10años">De 6 a 10 años</option>
-                <option value="de_11_a_15años">De 11 a 15 años</option>
-                <option value="de_16_a_20años">De 16 a 20 años</option>
-                <option value="de_21_a_25años">De 21 a 25 años</option>
-                <option value="mas_de_25años">Mas de 25 años</option>
-              </select>
-            </div>
+          <div class="card">
+            <label for="años_estancia_vzla">49. Años de estancia en Venezuela</label>
+            <select name="años_estancia_vzla" id="49" formControlName="años_estancia_vzla">
+              <option value="de_1_a_3años">De 1 a 3 años</option>
+              <option value="de_3_a_5años">De 3 a 5 años</option>
+              <option value="de_6_a_10años">De 6 a 10 años</option>
+              <option value="de_11_a_15años">De 11 a 15 años</option>
+              <option value="de_16_a_20años">De 16 a 20 años</option>
+              <option value="de_21_a_25años">De 21 a 25 años</option>
+              <option value="mas_de_25años">Mas de 25 años</option>
+            </select>
+          </div>
 
 
 

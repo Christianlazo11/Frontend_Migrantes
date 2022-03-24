@@ -20,6 +20,7 @@ import { __values } from 'tslib';
 export class EditSurveyComponent implements OnInit {
   ServInstiSeleccionados: Number[] = [];
   PServInstiSeleccionados: Number[] = [];
+  TipoNeceBasicaSeleccionados: Number[] = [];
 
   // @HostListener('window:beforeunload')
   // onUnLoad(){
@@ -95,6 +96,7 @@ export class EditSurveyComponent implements OnInit {
     miselect: ['', [Validators.required]],
     clase_vivienda: ['', [Validators.required]],
     tipo_vivienda: ['', [Validators.required]],
+    tipo_necesidad_basica: new FormArray([]),
 
     causal_de_retorno:['', [Validators.required]],
     años_estancia_vzla:['', [Validators.required]],
@@ -131,6 +133,7 @@ export class EditSurveyComponent implements OnInit {
 
   SISeleccionados = (this.fgValidator.controls['servicios_institucionales'] as FormArray);
   PSISeleccionados = (this.fgValidator.controls['servicios_institucionales'] as FormArray);
+  TNBSeleccionados = (this.fgValidator.controls['tipo_necesidad_basica'] as FormArray);
   // Checkbox Tipo de documento
   //************************************************************************ */
 
@@ -180,6 +183,35 @@ export class EditSurveyComponent implements OnInit {
     console.log(this.SISeleccionados)
   }
 
+     // Checkbox Tipo de necesidades básicas
+  //************************************************************************ */
+  tipoNeceBasica: Array<any> = [
+    { name: 'a) Contacto con familiares', value: '0' },
+    { name: 'b) Recuperacion', value: '1' },
+    { name: 'c) Acceso a fuente regulares de financiacion', value: '2' },
+    { name: 'd) acceso a vivienda', value: '3' },
+    { name: 'e) Generación de ingresos', value: '4' },
+    { name: 'f) Acceso al trabajo', value: '5' },
+    { name: 'g) Apostillar documentos', value: '6' },
+    { name: 'h) Servicios sociales', value: '7' },
+    { name: 'i) Educacion', value: '8' },
+    { name: 'j) Acceso a nutrición / alimentos', value: '9' },
+    { name: 'k) Salud y seguridad social', value: '10' },
+    { name: 'l) Acceso a medicamentos', value: '11' },
+    { name: 'm) Asilo y refugio', value: '12' },
+    { name: 'n) Generación de ingresos', value: '13' },
+    { name: 'o) Otra, cuál', value: '14' },
+  ];
+  onCheckboxChangeTNB(event: any) {
+    if (event.target.checked) {
+      this.TNBSeleccionados.push(new FormControl(event.target.value));
+    } else {
+      const index = this.TNBSeleccionados.controls
+        .findIndex(x => x.value === event.target.value);
+      this.TNBSeleccionados.removeAt(index);
+    }
+    console.log(this.TNBSeleccionados)
+  }
 
 
 
@@ -195,7 +227,7 @@ export class EditSurveyComponent implements OnInit {
 
   ngOnInit(): void {
     this.noEncu = this.route.snapshot.params['id'];
-    this.SerchSurvey(this.ServInstiSeleccionados);
+    this.SerchSurvey(this.ServInstiSeleccionados, this.TipoNeceBasicaSeleccionados);
     this.GetListPeople();
 
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
@@ -204,12 +236,17 @@ export class EditSurveyComponent implements OnInit {
       for (let i = 0; i < Number(Object.values(datos)[0].servicios_institucionales?.split(",").length); i++) {
         this.SISeleccionados.push(new FormControl(Object.values(datos)[0].servicios_institucionales?.split(",")[i]));
       }
+  
+      for (let i = 0; i < Number(Object.values(datos)[0].tipo_necesidad_basica?.split(",").length); i++) {
+        this.TNBSeleccionados.push(new FormControl(Object.values(datos)[0].tipo_necesidad_basica?.split(",")[i]));
+      }
+
     })
     
   }
 
 
-  SerchSurvey(ServInstiSeleccionados: Number[]) {
+  SerchSurvey(ServInstiSeleccionados: Number[],  TipoNeceBasicaSeleccionados: Number[]) {
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
       (datos: ModelSurvey) => {
         // console.log(Object.values(datos)[0].servicios_institucionales.split(",")[0])
@@ -249,6 +286,9 @@ export class EditSurveyComponent implements OnInit {
                 
         for (let i = 0; i < Number(Object.values(datos)[0].servicios_institucionales.length-1); i++) {
           ServInstiSeleccionados.push(Number(Object.values(datos)[0].servicios_institucionales.split(",")[i]))
+        }
+        for (let i = 0; i < Number(Object.values(datos)[0].tipo_necesidad_basica.length-1); i++) {
+          TipoNeceBasicaSeleccionados.push(Number(Object.values(datos)[0].tipo_necesidad_basica.split(",")[i]))
         }
         // console.log(ServInstiSeleccionados)
 
@@ -408,6 +448,7 @@ export class EditSurveyComponent implements OnInit {
     let miselect = this.fgValidator.controls['miselect'].value;
     let clase_vivienda = this.fgValidator.controls['clase_vivienda'].value;
     let tipo_vivienda = this.fgValidator.controls['tipo_vivienda'].value;
+    let tipo_necesidad_basica: string[] = this.TNBSeleccionados.value;
       
     let causal_de_retorno = this.fgValidator.controls['causal_de_retorno'].value;
     let años_estancia_vzla = this.fgValidator.controls['años_estancia_vzla'].value;
@@ -461,13 +502,18 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.clase_vivienda = clase_vivienda;
     newSurvey.tipo_vivienda = tipo_vivienda;
     
-    newSurvey.causal_de_retorno = causal_de_retorno;
-    newSurvey.años_estancia_vzla = años_estancia_vzla;
+    newSurvey.tipo_necesidad_basica = String(tipo_necesidad_basica);
+    
+    // newSurvey.causal_de_retorno = causal_de_retorno;
+    // newSurvey.años_estancia_vzla = años_estancia_vzla;
 
     
     newSurvey.usuarioId = dataEncu.datos.id;
+
+    console.log(newSurvey)
  
     this.serviceSurvey.UpdateSurvey(newSurvey).subscribe(
+
       (datos: ModelSurvey) => {
         alert('Encuesta Actualizada Correctamente');
         this.router.navigate(['/encuesta/buscar-encuesta']);

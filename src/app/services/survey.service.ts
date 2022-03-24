@@ -32,6 +32,7 @@ export class SurveyService {
    }
 
    UpdateSurvey(data:ModelSurvey):Observable<ModelSurvey>{
+     console.log(data)
     return this.http.put<ModelSurvey>(`${this.url}/encuestas/${data.id}`,data,{
       headers:new HttpHeaders({
         Authorization: `Bearer ${this.token}`
