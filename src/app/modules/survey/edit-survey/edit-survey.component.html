@@ -4,7 +4,7 @@
     <div class="edit-survey-content-left">
       <h2>Formulario</h2>
       <form [formGroup]="fgValidator" (ngSubmit)="ModificarEncuesta()">
-        
+
         <div class="content">
           <div class="card">
             <h3>Municipio</h3>
@@ -43,8 +43,8 @@
           </div>
 
           <div class="card">
-              <label for="info_nucleo">20. Informacion nucleo Familiar</label>
-              <select formControlName="info_nucleo" id="info_nucleo">
+            <label for="info_nucleo">20. Informacion nucleo Familiar</label>
+            <select formControlName="info_nucleo" id="info_nucleo">
               <option value="Padre Jefe de Hogar">Padre Jefe de Hogar</option>
               <option value="Madre Jefe de Hogar">Madre Jefe de Hogar</option>
               <option value="Padre Cabeza de familia">Padre Cabeza de familia</option>
@@ -130,9 +130,11 @@
               <option value="Interesado en permancer en Colombia">Interesado en Permanecer en Colombia</option>
               <option value="Planea retornar a venezuela">Planea retornar a venezuela</option>
               <option value="Ha reglamentado su estancia en Colombia">Ha reglamentado su estancia en Colombia</option>
-              <option value="No ha reglamentado su estancia en Colombia">No ha reglamentado su estancia en Colombia</option>
+              <option value="No ha reglamentado su estancia en Colombia">No ha reglamentado su estancia en Colombia
+              </option>
               <option value="No le interesa reglamentar su estancia">No le interesa reglamentar su estancia</option>
-              <option value="No sabe cómo hacerlo y/o carece de orientación">No sabe cómo hacerlo y/o carece de orientación</option>
+              <option value="No sabe cómo hacerlo y/o carece de orientación">No sabe cómo hacerlo y/o carece de
+                orientación</option>
               <option value="Estudio de los hijos y/o propio">Estudio de los hijos y/o propio</option>
               <option value="Otra circunstancia">Otra circunstancia</option>
             </select>
@@ -177,7 +179,7 @@
           <div class="card">
             <label for="lugar_trabajo">33. Lugar de Trabajo?</label>
             <select formControlName="lugar_trabajo" id="33">
-              
+
               <option value="sector_rural">Sector Rural</option>
               <option value="casa">En la casa o Residencia</option>
               <option value="local">Local y/o sitio jo</option>
@@ -186,7 +188,7 @@
               <option value="Ninguno">Ninguno</option>
             </select>
           </div>
- 
+
           <div class="card">
             <label for="posicion_trabajo">34. Posicion en el Trabajo?</label>
             <select formControlName="posicion_trabajo" id="34">
@@ -218,7 +220,7 @@
               <option value="ayuda_personas_locales">Por ayuda de personas locales</option>
               <option value="remesas">Por remesas de familiares en otros paises</option>
               <option value="mendicidad">por mendicidad</option>
-              </select>
+            </select>
           </div>
 
           <div class="card">
@@ -231,7 +233,7 @@
               <option value="hasta_tres_salarios">Hasta tres salarios minimos</option>
               <option value="hasta_cuatro_salarios">Hasta cuatro salarios minimos</option>
               <option value="hasta_cinco_salarios">Hasta cinco salarios minimos</option>
-              <option value="mas_cinco_salarios">Mas de  cinco salarios minimos</option>
+              <option value="mas_cinco_salarios">Mas de cinco salarios minimos</option>
               <option value="no_especificado">No especificado</option>
             </select>
           </div>
@@ -280,7 +282,7 @@
               <option value="ninguno">Ninguno</option>
             </select>
           </div>
-          
+
           <div class="card">
             <label for="institucion_cubrio_gastos">41. Institucion que cubrio gastos medicos:</label>
             <select formControlName="institucion_cubrio_gastos" id="41">
@@ -294,17 +296,17 @@
             </select>
           </div>
 
-          
+
 
 
           <div class="card">
-            <label>Servicios Institucionales</label>
+            <label>42. Servicios Institucionales</label>
             <div *ngFor="let doc of servInsti; let i=index">
               <div *ngIf="(i/2)*2==i">
                 <div *ngFor="let docs of ServInstiSeleccionados; let a=index">
                   <div *ngIf="ServInstiSeleccionados[a] == doc.value">
                     <label class="container">
-                      <input type="checkbox" formArrayName="servicios_institucionales" [value]="doc.value" 
+                      <input type="checkbox" formArrayName="servicios_institucionales" [value]="doc.value"
                         (change)="onCheckboxChangeSI($event)" checked />
                       {{doc.name}}
                       <span class="checkmark"></span><br />
@@ -332,7 +334,7 @@
                     <span class="checkmark"></span><br />
                   </label>
                 </div>
-                
+
               </div>
             </div>
           </div>
@@ -368,26 +370,28 @@
               </ul>
               </div> -->
 
-              <div class="card">
-                <label for="clase_vivienda">43. Clase de vivienda:</label>
-                <select formControlName="clase_vivienda" id="43">
-                  <option value="casa">Casa</option>
-                  <option value="pieza">Pieza</option>
-                  <option value="apartamento">Apartamento</option>
-                  <option value="otro">Otro</option>
-                  </select>
-              </div>
+          <div class="card">
+            <label for="clase_vivienda">43. Clase de vivienda:</label>
+            <select formControlName="clase_vivienda" id="43">
+              <option value="casa">Casa</option>
+              <option value="pieza">Pieza</option>
+              <option value="apartamento">Apartamento</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
 
-              <div class="card">
-                <label for="tipo_vivienda">44. Tipo de vivienda:</label>
-                <select formControlName="tipo_vivienda" id="44">
-                  <option value="arendamiento">Arrendamiento</option>
-                  <option value="propia_asentamiento">Propia en arrendamiento</option>
-                  <option value="propia">propia</option>
-                  <option value="cedida">Cedida por amigo/familiar</option>
-                  <option value="Otra">Otra</option>
-                </select>
-              </div>
+          <div class="card">
+            <label for="tipo_vivienda">44. Tipo de vivienda:</label>
+            <select formControlName="tipo_vivienda" id="44">
+              <option value="arendamiento">Arrendamiento</option>
+              <option value="propia_asentamiento">Propia en arrendamiento</option>
+              <option value="propia">propia</option>
+              <option value="cedida">Cedida por amigo/familiar</option>
+              <option value="Otra">Otra</option>
+            </select>
+          </div>
+
+         
         </div>
 
         <div class="survey-btn">
@@ -396,7 +400,7 @@
       </form>
     </div>
 
-      <!-- <GRUPO FAMILIAR > --> 
+    <!-- <GRUPO FAMILIAR > -->
 
     <div class="edit-survey-content-right">
       <h2>Grupo Familiar</h2>
@@ -462,7 +466,7 @@
                 <option value="No Afiliado">No Afiliado</option>
               </select>
             </div>
-            
+
             <div>
 
               <div class="card">
@@ -533,7 +537,7 @@
               </select>
             </div>
 
-            
+
             <div class="card">
               <label for="runv">Inscrito en el RUNV</label>
               <select name="runv" id="runv" formControlName="runv">
@@ -659,9 +663,7 @@
             </td>
 
             <td>
-              <a routerLink="/administracion/editar-persona/{{ p.id }}"
-            >Editar <i class="fa fa-edit"></i
-          ></a>
+              <a routerLink="/administracion/editar-persona/{{ p.id }}">Editar <i class="fa fa-edit"></i></a>
             </td>
           </tr>
         </tbody>

@@ -163,3 +163,8 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+  
