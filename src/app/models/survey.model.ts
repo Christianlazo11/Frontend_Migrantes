@@ -37,6 +37,10 @@ export class ModelSurvey {
     clase_vivienda?: string;
     tipo_vivienda?: string;
     tipo_necesidad_basica?: string;
+    tipo_ayuda_recibida_IE?: string;
+    tipo_ayuda_recibida_CI?: string;
+
+    
 
     causal_de_retorno?: string;
     años_estancia_vzla?: string;

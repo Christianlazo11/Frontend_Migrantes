@@ -414,6 +414,84 @@
           </div>
 
           <div class="card">
+            <label>46a. Tipo de ayuda recibida</label>
+            <div *ngFor="let doc of tipoAyuRecIEBasica; let i=index">
+              <div *ngIf="(i/2)*2==i">
+                <div *ngFor="let docs of TipoAyuRecibidaIESeleccionados; let a=index">
+                  <div *ngIf="TipoAyuRecibidaIESeleccionados[a] == doc.value">
+                    <label class="container">
+                      <input type="checkbox" formArrayName="tipo_ayuda_recibida_IE" [value]="doc.value"
+                        (change)="onCheckboxChangeTARIE($event)" checked />
+                      {{doc.name}}
+                      <span class="checkmark"></span><br />
+                    </label>
+                  </div>
+                </div>
+                <div *ngFor="let docs of TipoAyuRecibidaIESeleccionados; let a=index">
+                  <div *ngIf=" a === 0">
+                    <div *ngIf="TipoAyuRecibidaIESeleccionados[a] != doc.value && TipoAyuRecibidaIESeleccionados[a+1] != doc.value && TipoAyuRecibidaIESeleccionados[a+2] != doc.value && TipoAyuRecibidaIESeleccionados[a+3] != doc.value && TipoAyuRecibidaIESeleccionados[a+4] != doc.value  && TipoAyuRecibidaIESeleccionados[a+5] != doc.value && TipoAyuRecibidaIESeleccionados[a+6] != doc.value && TipoAyuRecibidaIESeleccionados[a+7] != doc.value && TipoAyuRecibidaIESeleccionados[a+8] != doc.value && TipoAyuRecibidaIESeleccionados[a+9] != doc.value && TipoAyuRecibidaIESeleccionados[a+10] != doc.value && TipoAyuRecibidaIESeleccionados[a+11] != doc.value && TipoAyuRecibidaIESeleccionados[a+12] != doc.value && TipoAyuRecibidaIESeleccionados[a+13] != doc.value && TipoAyuRecibidaIESeleccionados[a+14] != doc.value">
+                      <label class="container">
+                        <input type="checkbox" formArrayName="tipo_ayuda_recibida_IE" [value]="doc.value"
+                          (change)="onCheckboxChangeTARIE($event)" />
+                        {{doc.name}}
+                        <span class="checkmark"></span><br />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="TipoAyuRecibidaIESeleccionados.length == 0">
+                  <label class="container">
+                    <input type="checkbox" formArrayName="tipo_ayuda_recibida_IE" [value]="doc.value"
+                      (change)="onCheckboxChangeTARIE($event)" />
+                    {{doc.name}}
+                    <span class="checkmark"></span><br />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <label>46a. Tipo de ayuda recibida</label>
+            <div *ngFor="let doc of tipoAyuRecCIBasica; let i=index">
+              <div *ngIf="(i/2)*2==i">
+                <div *ngFor="let docs of TipoAyuRecibidaCISeleccionados; let a=index">
+                  <div *ngIf="TipoAyuRecibidaCISeleccionados[a] == doc.value">
+                    <label class="container">
+                      <input type="checkbox" formArrayName="tipo_ayuda_recibida_CI" [value]="doc.value"
+                        (change)="onCheckboxChangeTARCI($event)" checked />
+                      {{doc.name}}
+                      <span class="checkmark"></span><br />
+                    </label>
+                  </div>
+                </div>
+                <div *ngFor="let docs of TipoAyuRecibidaCISeleccionados; let a=index">
+                  <div *ngIf=" a === 0">
+                    <div *ngIf="TipoAyuRecibidaCISeleccionados[a] != doc.value && TipoAyuRecibidaCISeleccionados[a+1] != doc.value && TipoAyuRecibidaCISeleccionados[a+2] != doc.value && TipoAyuRecibidaCISeleccionados[a+3] != doc.value && TipoAyuRecibidaCISeleccionados[a+4] != doc.value  && TipoAyuRecibidaCISeleccionados[a+5] != doc.value && TipoAyuRecibidaCISeleccionados[a+6] != doc.value && TipoAyuRecibidaCISeleccionados[a+7] != doc.value && TipoAyuRecibidaCISeleccionados[a+8] != doc.value && TipoAyuRecibidaCISeleccionados[a+9] != doc.value && TipoAyuRecibidaCISeleccionados[a+10] != doc.value && TipoAyuRecibidaCISeleccionados[a+11] != doc.value && TipoAyuRecibidaCISeleccionados[a+12] != doc.value && TipoAyuRecibidaCISeleccionados[a+13] != doc.value && TipoAyuRecibidaCISeleccionados[a+14] != doc.value">
+                      <label class="container">
+                        <input type="checkbox" formArrayName="tipo_ayuda_recibida_CI" [value]="doc.value"
+                          (change)="onCheckboxChangeTARCI($event)" />
+                        {{doc.name}}
+                        <span class="checkmark"></span><br />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="TipoAyuRecibidaCISeleccionados.length == 0">
+                  <label class="container">
+                    <input type="checkbox" formArrayName="tipo_ayuda_recibida_CI" [value]="doc.value"
+                      (change)="onCheckboxChangeTARCI($event)" />
+                    {{doc.name}}
+                    <span class="checkmark"></span><br />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+
+          <div class="card">
             <h2> Colombianos retornados</h2>
           </div>
 

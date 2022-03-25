@@ -21,6 +21,8 @@ export class EditSurveyComponent implements OnInit {
   ServInstiSeleccionados: Number[] = [];
   PServInstiSeleccionados: Number[] = [];
   TipoNeceBasicaSeleccionados: Number[] = [];
+  TipoAyuRecibidaIESeleccionados: Number[] = [];
+  TipoAyuRecibidaCISeleccionados: Number[] = [];
 
   // @HostListener('window:beforeunload')
   // onUnLoad(){
@@ -97,6 +99,8 @@ export class EditSurveyComponent implements OnInit {
     clase_vivienda: ['', [Validators.required]],
     tipo_vivienda: ['', [Validators.required]],
     tipo_necesidad_basica: new FormArray([]),
+    tipo_ayuda_recibida_IE: new FormArray([]),
+    tipo_ayuda_recibida_CI: new FormArray([]),
 
     causal_de_retorno:['', [Validators.required]],
     años_estancia_vzla:['', [Validators.required]],
@@ -134,9 +138,11 @@ export class EditSurveyComponent implements OnInit {
   SISeleccionados = (this.fgValidator.controls['servicios_institucionales'] as FormArray);
   PSISeleccionados = (this.fgValidator.controls['servicios_institucionales'] as FormArray);
   TNBSeleccionados = (this.fgValidator.controls['tipo_necesidad_basica'] as FormArray);
+  TARIESeleccionados = (this.fgValidator.controls['tipo_ayuda_recibida_IE'] as FormArray);
+  TARCISeleccionados = (this.fgValidator.controls['tipo_ayuda_recibida_CI'] as FormArray);
+
   // Checkbox Tipo de documento
   //************************************************************************ */
-
   docs: Array<any> = [
     { name: 'Acta de nacimiento', value: '0' },
     { name: 'Cédula venezolana', value: '1' },
@@ -210,9 +216,68 @@ export class EditSurveyComponent implements OnInit {
         .findIndex(x => x.value === event.target.value);
       this.TNBSeleccionados.removeAt(index);
     }
-    console.log(this.TNBSeleccionados)
+
   }
 
+       // Checkbox Tipo de ayuda recibida IE
+  //************************************************************************ */
+  tipoAyuRecIEBasica: Array<any> = [
+    { name: 'a) Ayuda Educativa', value: '0' },
+    { name: 'b) Ayuda de Salud', value: '1' },
+    { name: 'c) Ayuda de medicamentos', value: '2' },
+    { name: 'd) Bono de alimentación', value: '3' },
+    { name: 'e) Kit de alimentos', value: '4' },
+    { name: 'f) Kit de aseo', value: '5' },
+    { name: 'g) Kit de ropa', value: '6' },
+    { name: 'h) Kit de cosina', value: '7' },
+    { name: 'i) Beneficios financieros', value: '8' },
+    { name: 'j) Ingreso solidario', value: '9' },
+    { name: 'k) Adulto mayor', value: '10' },
+    { name: 'l) Jóvenes en acción', value: '11' },
+    { name: 'm) Vivienda', value: '12' },
+    { name: 'n) Ayuda funeraria', value: '13' },
+    { name: 'o) Otras ayudas', value: '14' },
+  ];
+  onCheckboxChangeTARIE(event: any) {
+    if (event.target.checked) {
+      this.TARIESeleccionados.push(new FormControl(event.target.value));
+    } else {
+      const index = this.TARIESeleccionados.controls
+        .findIndex(x => x.value === event.target.value);
+      this.TARIESeleccionados.removeAt(index);
+    }
+
+  }
+
+         // Checkbox Tipo de ayuda recibida CI
+  //************************************************************************ */
+  tipoAyuRecCIBasica: Array<any> = [
+    { name: 'a) Ayuda Educativa', value: '0' },
+    { name: 'b) Ayuda de Salud', value: '1' },
+    { name: 'c) Ayuda de medicamentos', value: '2' },
+    { name: 'd) Bono de alimentación', value: '3' },
+    { name: 'e) Kit de alimentos', value: '4' },
+    { name: 'f) Kit de aseo', value: '5' },
+    { name: 'g) Kit de ropa', value: '6' },
+    { name: 'h) Kit de cosina', value: '7' },
+    { name: 'i) Beneficios financieros', value: '8' },
+    { name: 'j) Ingreso solidario', value: '9' },
+    { name: 'k) Adulto mayor', value: '10' },
+    { name: 'l) Jóvenes en acción', value: '11' },
+    { name: 'm) Vivienda', value: '12' },
+    { name: 'n) Ayuda funeraria', value: '13' },
+    { name: 'o) Otras ayudas', value: '14' },
+  ];
+  onCheckboxChangeTARCI(event: any) {
+    if (event.target.checked) {
+      this.TARCISeleccionados.push(new FormControl(event.target.value));
+    } else {
+      const index = this.TARCISeleccionados.controls
+        .findIndex(x => x.value === event.target.value);
+      this.TARCISeleccionados.removeAt(index);
+    }
+
+  }
 
 
 
@@ -227,7 +292,7 @@ export class EditSurveyComponent implements OnInit {
 
   ngOnInit(): void {
     this.noEncu = this.route.snapshot.params['id'];
-    this.SerchSurvey(this.ServInstiSeleccionados, this.TipoNeceBasicaSeleccionados);
+    this.SerchSurvey(this.ServInstiSeleccionados, this.TipoNeceBasicaSeleccionados, this.TipoAyuRecibidaIESeleccionados, this.TipoAyuRecibidaCISeleccionados);
     this.GetListPeople();
 
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
@@ -240,17 +305,34 @@ export class EditSurveyComponent implements OnInit {
       for (let i = 0; i < Number(Object.values(datos)[0].tipo_necesidad_basica?.split(",").length); i++) {
         this.TNBSeleccionados.push(new FormControl(Object.values(datos)[0].tipo_necesidad_basica?.split(",")[i]));
       }
+      
+
+      for (let i = 0; i < Number(Object.values(datos)[0].tipo_ayuda_recibida_IE?.split(",").length); i++) {
+        this.TARIESeleccionados.push(new FormControl(Object.values(datos)[0].tipo_ayuda_recibida_IE?.split(",")[i]));
+      }
+
+      
+
+
+      for (let i = 0; i < Number(Object.values(datos)[0].tipo_ayuda_recibida_CI?.split(",").length); i++) {
+        this.TARCISeleccionados.push(new FormControl(Object.values(datos)[0].tipo_ayuda_recibida_CI?.split(",")[i]));
+      }
+
 
     })
     
   }
 
 
-  SerchSurvey(ServInstiSeleccionados: Number[],  TipoNeceBasicaSeleccionados: Number[]) {
+  SerchSurvey(ServInstiSeleccionados: Number[],  TipoNeceBasicaSeleccionados: Number[], TipoAyuRecibidaIESeleccionados: Number[], TipoAyuRecibidaCISeleccionados: Number[]) {
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
       (datos: ModelSurvey) => {
         // console.log(Object.values(datos)[0].servicios_institucionales.split(",")[0])
         this.idEncu = Object.values(datos)[0].id
+
+        console.log("Tipo de ayuda recibida IE: " + Object.values(datos)[0].tipo_ayuda_recibida_IE.length)
+        console.log("Tipo de ayuda recibida CI: " + Object.values(datos)[0].tipo_ayuda_recibida_CI.length)
+        console.log("Nececidad basica: " + Object.values(datos)[0].tipo_necesidad_basica.length)
 
         this.fgValidator.controls['municipio'].setValue(Object.values(datos)[0].municipio);
         this.fgValidator.controls['direccion'].setValue(Object.values(datos)[0].direccion);
@@ -290,6 +372,19 @@ export class EditSurveyComponent implements OnInit {
         for (let i = 0; i < Number(Object.values(datos)[0].tipo_necesidad_basica.length-1); i++) {
           TipoNeceBasicaSeleccionados.push(Number(Object.values(datos)[0].tipo_necesidad_basica.split(",")[i]))
         }
+
+        for (let i = 0; i < Number(Object.values(datos)[0].tipo_ayuda_recibida_IE.length-1); i++) {
+          TipoAyuRecibidaIESeleccionados.push(Number(Object.values(datos)[0].tipo_ayuda_recibida_IE.split(",")[i]))
+
+        }
+
+
+        for (let i = 0; i < Number(Object.values(datos)[0].tipo_ayuda_recibida_CI.length-1); i++) {
+          TipoAyuRecibidaCISeleccionados.push(Number(Object.values(datos)[0].tipo_ayuda_recibida_CI.split(",")[i]))
+        }
+        
+        
+
         // console.log(ServInstiSeleccionados)
 
         this.fgValidator.controls['miselect'].setValue(Object.values(datos)[0].miselect);
@@ -449,12 +544,16 @@ export class EditSurveyComponent implements OnInit {
     let clase_vivienda = this.fgValidator.controls['clase_vivienda'].value;
     let tipo_vivienda = this.fgValidator.controls['tipo_vivienda'].value;
     let tipo_necesidad_basica: string[] = this.TNBSeleccionados.value;
+
+    let tipo_ayuda_recibida_IE: string[] = this.TARIESeleccionados.value;
+    let tipo_ayuda_recibida_CI: string[] = this.TARCISeleccionados.value;
       
     let causal_de_retorno = this.fgValidator.controls['causal_de_retorno'].value;
     let años_estancia_vzla = this.fgValidator.controls['años_estancia_vzla'].value;
 
 
     let newSurvey = new ModelSurvey();
+    
 
     //Obtenemos el numero del Id con el numero de encuesta
     
@@ -503,6 +602,8 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.tipo_vivienda = tipo_vivienda;
     
     newSurvey.tipo_necesidad_basica = String(tipo_necesidad_basica);
+    newSurvey.tipo_ayuda_recibida_IE = String(tipo_ayuda_recibida_IE);
+    newSurvey.tipo_ayuda_recibida_CI = String(tipo_ayuda_recibida_CI);
     
     // newSurvey.causal_de_retorno = causal_de_retorno;
     // newSurvey.años_estancia_vzla = años_estancia_vzla;
