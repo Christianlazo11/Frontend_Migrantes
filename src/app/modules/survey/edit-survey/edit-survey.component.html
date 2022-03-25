@@ -376,6 +376,7 @@
           </div>
 
           <div class="card">
+            <br>
             <label>45. Tipo de necesidades básicas</label>
             <div *ngFor="let doc of tipoNeceBasica; let i=index">
               <div *ngIf="(i/2)*2==i">
@@ -414,7 +415,8 @@
           </div>
 
           <div class="card">
-            <label>46a. Tipo de ayuda recibida</label>
+            <br>
+            <label>46a. Tipo de ayuda recibida (Inst. Estado)</label>
             <div *ngFor="let doc of tipoAyuRecIEBasica; let i=index">
               <div *ngIf="(i/2)*2==i">
                 <div *ngFor="let docs of TipoAyuRecibidaIESeleccionados; let a=index">
@@ -452,7 +454,8 @@
           </div>
 
           <div class="card">
-            <label>46a. Tipo de ayuda recibida</label>
+            <br>
+            <label>46b. Tipo de ayuda recibida (Coop. Internacional)</label>
             <div *ngFor="let doc of tipoAyuRecCIBasica; let i=index">
               <div *ngIf="(i/2)*2==i">
                 <div *ngFor="let docs of TipoAyuRecibidaCISeleccionados; let a=index">
