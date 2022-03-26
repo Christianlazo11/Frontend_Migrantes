@@ -372,7 +372,7 @@ export class EditSurveyComponent implements OnInit {
         this.fgValidator.controls['quedaron_hijos'].setValue(Object.values(datos)[0].quedaron_hijos);
         this.fgValidator.controls['nacionalidad_pareja'].setValue(Object.values(datos)[0].nacionalidad_pareja);
         this.fgValidator.controls['razon_cruce'].setValue(Object.values(datos)[0].razon_cruce);
-        this.fgValidator.controls['razon_cruce'].setValue(Object.values(datos)[0].razon_cruce);
+       
         this.fgValidator.controls['tiempo_estancia'].setValue(Object.values(datos)[0].tiempo_estancia);
         this.fgValidator.controls['razon_arauca'].setValue(Object.values(datos)[0].razon_arauca);
         this.fgValidator.controls['intencion'].setValue(Object.values(datos)[0].intencion);
@@ -639,8 +639,8 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.tipo_ayuda_recibida_CI = String(tipo_ayuda_recibida_CI);
     newSurvey.situa_especial_retornado = String(situa_especial_retornado);
     
-    // newSurvey.causal_de_retorno = causal_de_retorno;
-    // newSurvey.años_estancia_vzla = años_estancia_vzla;
+    newSurvey.causal_de_retorno = causal_de_retorno;
+    newSurvey.años_estancia_vzla = años_estancia_vzla;
 
     
     newSurvey.usuarioId = dataEncu.datos.id;
