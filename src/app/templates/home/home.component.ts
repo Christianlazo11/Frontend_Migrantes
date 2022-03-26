@@ -9,10 +9,10 @@ import { SurveyService } from 'src/app/services/survey.service';
 })
 export class HomeComponent implements OnInit {
 
-total_encuestas: number=0;
-encuestas_Arauca: number=0;
-encuestas_Arauquita: number=0;
-encuestas_Saravena: number=0;
+total_encuestas: number=900;
+encuestas_Arauca: number=475;
+encuestas_Arauquita: number=200;
+encuestas_Saravena: number=225;
 
   @HostListener('window:beforeunload')
   onUnLoad(){
@@ -25,12 +25,9 @@ encuestas_Saravena: number=0;
     let conf = navigator.sendBeacon('http://www.mysitioweb.com/api/v1/endpoint', data);
     if(conf){
       this.serviceSecurity.DeleteDataSession();
-      
-
 
     }
     else{
-
       
     }
     return false;
@@ -38,7 +35,6 @@ encuestas_Saravena: number=0;
   }
   constructor(
     private serviceSecurity: SecurityService,
-
 
   ) {}
 

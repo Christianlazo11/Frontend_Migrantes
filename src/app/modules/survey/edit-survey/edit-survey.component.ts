@@ -442,6 +442,8 @@ export class EditSurveyComponent implements OnInit {
         this.servicePerson.GetPeople(Object.values(datos)[0].id).subscribe((datos: ModelPerson[]) => {
           this.listPeople = datos;
           console.log(this.listPeople)
+          console.log(this.listPeople)
+
         });
       },
       (error) => {
