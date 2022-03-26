@@ -9,6 +9,11 @@ import { SurveyService } from 'src/app/services/survey.service';
 })
 export class HomeComponent implements OnInit {
 
+total_encuestas: number=0;
+encuestas_Arauca: number=0;
+encuestas_Arauquita: number=0;
+encuestas_Saravena: number=0;
+
   @HostListener('window:beforeunload')
   onUnLoad(){
     const data = new FormData();

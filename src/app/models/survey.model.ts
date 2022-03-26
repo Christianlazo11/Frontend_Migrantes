@@ -41,8 +41,6 @@ export class ModelSurvey {
     tipo_ayuda_recibida_CI?: string;
     situa_especial_retornado?: string;
 
-    
-
     causal_de_retorno?: string;
     años_estancia_vzla?: string;
 
