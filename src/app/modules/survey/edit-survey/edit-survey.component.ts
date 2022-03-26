@@ -23,6 +23,7 @@ export class EditSurveyComponent implements OnInit {
   TipoNeceBasicaSeleccionados: Number[] = [];
   TipoAyuRecibidaIESeleccionados: Number[] = [];
   TipoAyuRecibidaCISeleccionados: Number[] = [];
+  SituaEspeRetornadoSeleccionados: Number[] = [];
 
   // @HostListener('window:beforeunload')
   // onUnLoad(){
@@ -103,6 +104,7 @@ export class EditSurveyComponent implements OnInit {
     tipo_ayuda_recibida_CI: new FormArray([]),
 
     causal_de_retorno:['', [Validators.required]],
+    situa_especial_retornado: new FormArray([]),
     años_estancia_vzla:['', [Validators.required]],
 
   });
@@ -140,6 +142,7 @@ export class EditSurveyComponent implements OnInit {
   TNBSeleccionados = (this.fgValidator.controls['tipo_necesidad_basica'] as FormArray);
   TARIESeleccionados = (this.fgValidator.controls['tipo_ayuda_recibida_IE'] as FormArray);
   TARCISeleccionados = (this.fgValidator.controls['tipo_ayuda_recibida_CI'] as FormArray);
+  SERSeleccionados = (this.fgValidator.controls['situa_especial_retornado'] as FormArray);
 
   // Checkbox Tipo de documento
   //************************************************************************ */
@@ -249,7 +252,7 @@ export class EditSurveyComponent implements OnInit {
 
   }
 
-         // Checkbox Tipo de ayuda recibida CI
+  // Checkbox Tipo de ayuda recibida CI
   //************************************************************************ */
   tipoAyuRecCIBasica: Array<any> = [
     { name: 'a) Ayuda Educativa', value: '0' },
@@ -279,7 +282,28 @@ export class EditSurveyComponent implements OnInit {
 
   }
 
+  // Checkbox situación especial de retornados
+  //************************************************************************ */
+  situaEspecialRetornado: Array<any> = [
+    { name: 'a) Tiene propiedades en Venezuela', value: '0' },
+    { name: 'b) Su familia se quedó en Venezuela', value: '1' },
+    { name: 'c) Tiene familiares en el departamento de Arauca', value: '2' },
+    { name: 'd) Las Instituciones del Estado le han brindado apoyo', value: '3' },
+    { name: 'e) Desea regresar a Venezuela', value: '4' },
+    { name: 'f) Otra razón', value: '5' },
+  ];
+  onCheckboxChangeSER(event: any) {
+    if (event.target.checked) {
+      this.SERSeleccionados.push(new FormControl(event.target.value));
+    } else {
+      const index = this.SERSeleccionados.controls
+        .findIndex(x => x.value === event.target.value);
+      this.SERSeleccionados.removeAt(index);
+    }
 
+  }
+
+  
 
   constructor(
     private fb: FormBuilder,
@@ -292,7 +316,7 @@ export class EditSurveyComponent implements OnInit {
 
   ngOnInit(): void {
     this.noEncu = this.route.snapshot.params['id'];
-    this.SerchSurvey(this.ServInstiSeleccionados, this.TipoNeceBasicaSeleccionados, this.TipoAyuRecibidaIESeleccionados, this.TipoAyuRecibidaCISeleccionados);
+    this.SerchSurvey(this.ServInstiSeleccionados, this.TipoNeceBasicaSeleccionados, this.TipoAyuRecibidaIESeleccionados, this.TipoAyuRecibidaCISeleccionados, this.SituaEspeRetornadoSeleccionados);
     this.GetListPeople();
 
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
@@ -318,13 +342,17 @@ export class EditSurveyComponent implements OnInit {
         this.TARCISeleccionados.push(new FormControl(Object.values(datos)[0].tipo_ayuda_recibida_CI?.split(",")[i]));
       }
 
+      for (let i = 0; i < Number(Object.values(datos)[0].situa_especial_retornado?.split(",").length); i++) {
+        this.SERSeleccionados.push(new FormControl(Object.values(datos)[0].situa_especial_retornado?.split(",")[i]));
+      }
+
 
     })
     
   }
 
 
-  SerchSurvey(ServInstiSeleccionados: Number[],  TipoNeceBasicaSeleccionados: Number[], TipoAyuRecibidaIESeleccionados: Number[], TipoAyuRecibidaCISeleccionados: Number[]) {
+  SerchSurvey(ServInstiSeleccionados: Number[],  TipoNeceBasicaSeleccionados: Number[], TipoAyuRecibidaIESeleccionados: Number[], TipoAyuRecibidaCISeleccionados: Number[], SituaEspeRetornadoSeleccionados: Number[]) {
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
       (datos: ModelSurvey) => {
         // console.log(Object.values(datos)[0].servicios_institucionales.split(",")[0])
@@ -381,6 +409,10 @@ export class EditSurveyComponent implements OnInit {
 
         for (let i = 0; i < Number(Object.values(datos)[0].tipo_ayuda_recibida_CI.length-1); i++) {
           TipoAyuRecibidaCISeleccionados.push(Number(Object.values(datos)[0].tipo_ayuda_recibida_CI.split(",")[i]))
+        }
+
+        for (let i = 0; i < Number(Object.values(datos)[0].situa_especial_retornado.length-1); i++) {
+          SituaEspeRetornadoSeleccionados.push(Number(Object.values(datos)[0].situa_especial_retornado.split(",")[i]))
         }
         
         
@@ -547,6 +579,7 @@ export class EditSurveyComponent implements OnInit {
 
     let tipo_ayuda_recibida_IE: string[] = this.TARIESeleccionados.value;
     let tipo_ayuda_recibida_CI: string[] = this.TARCISeleccionados.value;
+    let situa_especial_retornado: string[] = this.SERSeleccionados.value;
       
     let causal_de_retorno = this.fgValidator.controls['causal_de_retorno'].value;
     let años_estancia_vzla = this.fgValidator.controls['años_estancia_vzla'].value;
@@ -604,6 +637,7 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.tipo_necesidad_basica = String(tipo_necesidad_basica);
     newSurvey.tipo_ayuda_recibida_IE = String(tipo_ayuda_recibida_IE);
     newSurvey.tipo_ayuda_recibida_CI = String(tipo_ayuda_recibida_CI);
+    newSurvey.situa_especial_retornado = String(situa_especial_retornado);
     
     // newSurvey.causal_de_retorno = causal_de_retorno;
     // newSurvey.años_estancia_vzla = años_estancia_vzla;

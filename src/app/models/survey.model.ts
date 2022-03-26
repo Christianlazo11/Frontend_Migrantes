@@ -39,6 +39,7 @@ export class ModelSurvey {
     tipo_necesidad_basica?: string;
     tipo_ayuda_recibida_IE?: string;
     tipo_ayuda_recibida_CI?: string;
+    situa_especial_retornado?: string;
 
     
 

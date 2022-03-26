@@ -507,6 +507,45 @@
             </select>
           </div>
 
+          <div class="card">
+            <br>
+            <label>48. Situación especial de retornados</label>
+            <div *ngFor="let doc of situaEspecialRetornado; let i=index">
+              <div *ngIf="(i/2)*2==i">
+                <div *ngFor="let docs of SituaEspeRetornadoSeleccionados; let a=index">
+                  <div *ngIf="SituaEspeRetornadoSeleccionados[a] == doc.value">
+                    <label class="container">
+                      <input type="checkbox" formArrayName="situa_especial_retornado" [value]="doc.value"
+                        (change)="onCheckboxChangeSER($event)" checked />
+                      {{doc.name}}
+                      <span class="checkmark"></span><br />
+                    </label>
+                  </div>
+                </div>
+                <div *ngFor="let docs of SituaEspeRetornadoSeleccionados; let a=index">
+                  <div *ngIf=" a === 0">
+                    <div *ngIf="SituaEspeRetornadoSeleccionados[a] != doc.value && SituaEspeRetornadoSeleccionados[a+1] != doc.value && SituaEspeRetornadoSeleccionados[a+2] != doc.value && SituaEspeRetornadoSeleccionados[a+3] != doc.value && SituaEspeRetornadoSeleccionados[a+4] != doc.value">
+                      <label class="container">
+                        <input type="checkbox" formArrayName="situa_especial_retornado" [value]="doc.value"
+                          (change)="onCheckboxChangeSER($event)" />
+                        {{doc.name}}
+                        <span class="checkmark"></span><br />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="SituaEspeRetornadoSeleccionados.length == 0">
+                  <label class="container">
+                    <input type="checkbox" formArrayName="situa_especial_retornado" [value]="doc.value"
+                      (change)="onCheckboxChangeSER($event)" />
+                    {{doc.name}}
+                    <span class="checkmark"></span><br />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
 
           <div class="card">
