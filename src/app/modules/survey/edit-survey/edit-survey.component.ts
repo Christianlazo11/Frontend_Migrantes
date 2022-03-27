@@ -24,6 +24,7 @@ export class EditSurveyComponent implements OnInit {
   TipoAyuRecibidaIESeleccionados: Number[] = [];
   TipoAyuRecibidaCISeleccionados: Number[] = [];
   SituaEspeRetornadoSeleccionados: Number[] = [];
+  AjuSocioDemoVeneSeleccionados: Number[] = [];
 
   // @HostListener('window:beforeunload')
   // onUnLoad(){
@@ -106,6 +107,7 @@ export class EditSurveyComponent implements OnInit {
     causal_de_retorno:['', [Validators.required]],
     situa_especial_retornado: new FormArray([]),
     años_estancia_vzla:['', [Validators.required]],
+    ajuste_socio_demo_vene: new FormArray([]),
 
   });
   //Creamos el formulario Persona
@@ -143,6 +145,7 @@ export class EditSurveyComponent implements OnInit {
   TARIESeleccionados = (this.fgValidator.controls['tipo_ayuda_recibida_IE'] as FormArray);
   TARCISeleccionados = (this.fgValidator.controls['tipo_ayuda_recibida_CI'] as FormArray);
   SERSeleccionados = (this.fgValidator.controls['situa_especial_retornado'] as FormArray);
+  ASDVSeleccionados = (this.fgValidator.controls['ajuste_socio_demo_vene'] as FormArray);
 
   // Checkbox Tipo de documento
   //************************************************************************ */
@@ -303,6 +306,33 @@ export class EditSurveyComponent implements OnInit {
 
   }
 
+    // Checkbox Ajuste socio demografico en venezuela 
+  //************************************************************************ */
+  ajusteSociodVene: Array<any> = [
+    { name: 'a) Obtuvo cédula de extranjería', value: '0' },
+    { name: 'b) Se casó en Venezuela con venezolana(o)', value: '1' },
+    { name: 'c) Sus hijos nacieron en Venezuela', value: '2' },
+    { name: 'd) Registro sus hijos con cédula de extranjería', value: '3' },
+    { name: 'e) Sus hijos estudian en Venezuela', value: '4' },
+    { name: 'f) Era empleado en Venezuela', value: '5' },
+    { name: 'f) Era trabajador independiente', value: '6' },
+    { name: 'f) Era agricultor', value: '7' },
+    { name: 'f) Era trabajador de la construcción', value: '8' },
+    { name: 'f) Era comerciante', value: '9' },
+    { name: 'f) No especificado', value: '10' },
+    { name: 'f) Otro', value: '11' },
+  ];
+  onCheckboxChangeASDV(event: any) {
+    if (event.target.checked) {
+      this.ASDVSeleccionados.push(new FormControl(event.target.value));
+    } else {
+      const index = this.ASDVSeleccionados.controls
+        .findIndex(x => x.value === event.target.value);
+      this.ASDVSeleccionados.removeAt(index);
+    }
+
+  }
+
   
 
   constructor(
@@ -316,7 +346,7 @@ export class EditSurveyComponent implements OnInit {
 
   ngOnInit(): void {
     this.noEncu = this.route.snapshot.params['id'];
-    this.SerchSurvey(this.ServInstiSeleccionados, this.TipoNeceBasicaSeleccionados, this.TipoAyuRecibidaIESeleccionados, this.TipoAyuRecibidaCISeleccionados, this.SituaEspeRetornadoSeleccionados);
+    this.SerchSurvey(this.ServInstiSeleccionados, this.TipoNeceBasicaSeleccionados, this.TipoAyuRecibidaIESeleccionados, this.TipoAyuRecibidaCISeleccionados, this.SituaEspeRetornadoSeleccionados, this.AjuSocioDemoVeneSeleccionados);
     this.GetListPeople();
 
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
@@ -346,13 +376,17 @@ export class EditSurveyComponent implements OnInit {
         this.SERSeleccionados.push(new FormControl(Object.values(datos)[0].situa_especial_retornado?.split(",")[i]));
       }
 
+      for (let i = 0; i < Number(Object.values(datos)[0].ajuste_socio_demo_vene?.split(",").length); i++) {
+        this.ASDVSeleccionados.push(new FormControl(Object.values(datos)[0].ajuste_socio_demo_vene?.split(",")[i]));
+      }
+
 
     })
     
   }
 
 
-  SerchSurvey(ServInstiSeleccionados: Number[],  TipoNeceBasicaSeleccionados: Number[], TipoAyuRecibidaIESeleccionados: Number[], TipoAyuRecibidaCISeleccionados: Number[], SituaEspeRetornadoSeleccionados: Number[]) {
+  SerchSurvey(ServInstiSeleccionados: Number[],  TipoNeceBasicaSeleccionados: Number[], TipoAyuRecibidaIESeleccionados: Number[], TipoAyuRecibidaCISeleccionados: Number[], SituaEspeRetornadoSeleccionados: Number[], AjuSocioDemoVeneSeleccionados: Number[]) {
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
       (datos: ModelSurvey) => {
         // console.log(Object.values(datos)[0].servicios_institucionales.split(",")[0])
@@ -406,13 +440,15 @@ export class EditSurveyComponent implements OnInit {
 
         }
 
-
         for (let i = 0; i < Number(Object.values(datos)[0].tipo_ayuda_recibida_CI.length-1); i++) {
           TipoAyuRecibidaCISeleccionados.push(Number(Object.values(datos)[0].tipo_ayuda_recibida_CI.split(",")[i]))
         }
 
         for (let i = 0; i < Number(Object.values(datos)[0].situa_especial_retornado.length-1); i++) {
           SituaEspeRetornadoSeleccionados.push(Number(Object.values(datos)[0].situa_especial_retornado.split(",")[i]))
+        }
+        for (let i = 0; i < Number(Object.values(datos)[0].ajuste_socio_demo_vene.length-1); i++) {
+          AjuSocioDemoVeneSeleccionados.push(Number(Object.values(datos)[0].ajuste_socio_demo_vene.split(",")[i]))
         }
         
         
@@ -582,6 +618,7 @@ export class EditSurveyComponent implements OnInit {
     let tipo_ayuda_recibida_IE: string[] = this.TARIESeleccionados.value;
     let tipo_ayuda_recibida_CI: string[] = this.TARCISeleccionados.value;
     let situa_especial_retornado: string[] = this.SERSeleccionados.value;
+    let ajuste_socio_demo_vene: string[] = this.ASDVSeleccionados.value;
       
     let causal_de_retorno = this.fgValidator.controls['causal_de_retorno'].value;
     let años_estancia_vzla = this.fgValidator.controls['años_estancia_vzla'].value;
@@ -640,7 +677,8 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.tipo_ayuda_recibida_IE = String(tipo_ayuda_recibida_IE);
     newSurvey.tipo_ayuda_recibida_CI = String(tipo_ayuda_recibida_CI);
     newSurvey.situa_especial_retornado = String(situa_especial_retornado);
-    
+    newSurvey.ajuste_socio_demo_vene = String(ajuste_socio_demo_vene);
+
     newSurvey.causal_de_retorno = causal_de_retorno;
     newSurvey.años_estancia_vzla = años_estancia_vzla;
 

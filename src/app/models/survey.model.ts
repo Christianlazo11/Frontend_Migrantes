@@ -40,6 +40,7 @@ export class ModelSurvey {
     tipo_ayuda_recibida_IE?: string;
     tipo_ayuda_recibida_CI?: string;
     situa_especial_retornado?: string;
+    ajuste_socio_demo_vene?: string;
 
     causal_de_retorno?: string;
     años_estancia_vzla?: string;
