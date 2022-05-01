@@ -152,7 +152,7 @@ export class EditSurveyComponent implements OnInit {
   docs: Array<any> = [
     { name: 'Acta de nacimiento', value: '0' },
     { name: 'Cédula venezolana', value: '1' },
-    { name: 'PPT', value: '2' },
+    { name: 'PTP', value: '2' },
     { name: 'Pasaporte venezolano', value: '3' },
     { name: 'Salvo conducto', value: '4' },
     { name: 'TMF', value: '5' },
@@ -174,7 +174,7 @@ export class EditSurveyComponent implements OnInit {
     }
   }
 
-   // Checkbox Servicios institucionales
+   // Checkbox Servicios institucionales recibidos
   //************************************************************************ */
   servInsti: Array<any> = [
     { name: '¿Sector salud le ha brindado atencion médica, hospitalaria y de vacunacion?', value: '0' },
@@ -183,6 +183,7 @@ export class EditSurveyComponent implements OnInit {
     { name: '¿Min.del Trabajo, le ha brindado apoyo en solución de conflictos laborales', value: '3' },
     { name: '¿La alcaldía a través de la Sec. de Gobierno le ha brindado apoyo y orientacion requerida.?', value: '4' },
     { name: '¿Las ONGs nacionales e internacionales, le han brindado el apoyo y/o cooperación o ayuda humanitaria?', value: '5' },
+    { name: '¿Ninguna?', value: '6' },
   ];
   onCheckboxChangeSI(event: any) {
     if (event.target.checked) {
@@ -236,7 +237,7 @@ export class EditSurveyComponent implements OnInit {
     { name: 'e) Kit de alimentos', value: '4' },
     { name: 'f) Kit de aseo', value: '5' },
     { name: 'g) Kit de ropa', value: '6' },
-    { name: 'h) Kit de cosina', value: '7' },
+    { name: 'h) Kit de cocina', value: '7' },
     { name: 'i) Beneficios financieros', value: '8' },
     { name: 'j) Ingreso solidario', value: '9' },
     { name: 'k) Adulto mayor', value: '10' },
