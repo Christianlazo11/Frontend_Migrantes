@@ -9,10 +9,10 @@ import { SurveyService } from 'src/app/services/survey.service';
 })
 export class HomeComponent implements OnInit {
 
-total_encuestas: number=900;
-encuestas_Arauca: number=475;
-encuestas_Arauquita: number=200;
-encuestas_Saravena: number=225;
+total_encuestas: number=2500;
+encuestas_Arauca: number=1280;
+encuestas_Arauquita: number=600;
+encuestas_Saravena: number=625;
 
   @HostListener('window:beforeunload')
   onUnLoad(){
