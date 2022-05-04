@@ -289,7 +289,7 @@ export class PruebaComponent implements OnInit {
         // console.log(listDatos)
         console.log(listDatos.length)
 
-        if (listDatos.length != 2 && dataEncu.datos.id == Object.values(datos)[0].usuarioId) {
+        if (listDatos.length != 2 && (dataEncu.datos.id == Object.values(datos)[0].usuarioId || dataEncu.datos.rol == "administrador")) {
           Swal.fire({
             title: 'Se encontró una encuesta, ¿Desea editarla?',
             showDenyButton: true,

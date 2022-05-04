@@ -41,6 +41,7 @@ export class SearchSurveyComponent implements OnInit {
     private serviceSecurity: SecurityService,
     private serviceSurvey: SurveyService,
     private router: Router
+    
   ) {}
 
   ngOnInit(): void {}
@@ -78,10 +79,9 @@ export class SearchSurveyComponent implements OnInit {
         let listDatos = JSON.stringify(datos);
         // console.log(listDatos)
         console.log(listDatos.length);
-
         if (
           listDatos.length != 2 &&
-          dataEncu.datos.id == Object.values(datos)[0].usuarioId
+          (dataEncu.datos.id == Object.values(datos)[0].usuarioId || dataEncu.datos.rol == "administrador")
         ) {
           Swal.fire({
             title: "Se encontró una encuesta, ¿Desea editarla?",
