@@ -152,7 +152,7 @@ export class EditSurveyComponent implements OnInit {
   docs: Array<any> = [
     { name: 'Acta de nacimiento', value: '0' },
     { name: 'Cédula venezolana', value: '1' },
-    { name: 'PPT', value: '2' },
+    { name: 'PTP', value: '2' },
     { name: 'Pasaporte venezolano', value: '3' },
     { name: 'Salvo conducto', value: '4' },
     { name: 'TMF', value: '5' },
@@ -174,7 +174,7 @@ export class EditSurveyComponent implements OnInit {
     }
   }
 
-   // Checkbox Servicios institucionales
+   // Checkbox Servicios institucionales recibidos
   //************************************************************************ */
   servInsti: Array<any> = [
     { name: '¿Sector salud le ha brindado atencion médica, hospitalaria y de vacunacion?', value: '0' },
@@ -183,6 +183,7 @@ export class EditSurveyComponent implements OnInit {
     { name: '¿Min.del Trabajo, le ha brindado apoyo en solución de conflictos laborales', value: '3' },
     { name: '¿La alcaldía a través de la Sec. de Gobierno le ha brindado apoyo y orientacion requerida.?', value: '4' },
     { name: '¿Las ONGs nacionales e internacionales, le han brindado el apoyo y/o cooperación o ayuda humanitaria?', value: '5' },
+    { name: '¿Ninguna?', value: '6' },
   ];
   onCheckboxChangeSI(event: any) {
     if (event.target.checked) {
@@ -213,6 +214,7 @@ export class EditSurveyComponent implements OnInit {
     { name: 'm) Asilo y refugio', value: '12' },
     { name: 'n) Generación de ingresos', value: '13' },
     { name: 'o) Otra, cuál', value: '14' },
+    { name: 'p) Ninguna', value: '15' },
   ];
   onCheckboxChangeTNB(event: any) {
     if (event.target.checked) {
@@ -225,7 +227,7 @@ export class EditSurveyComponent implements OnInit {
 
   }
 
-       // Checkbox Tipo de ayuda recibida IE
+       // Checkbox Tipo de ayuda recibida Instituciones del Estado
   //************************************************************************ */
   tipoAyuRecIEBasica: Array<any> = [
     { name: 'a) Ayuda Educativa', value: '0' },
@@ -235,7 +237,7 @@ export class EditSurveyComponent implements OnInit {
     { name: 'e) Kit de alimentos', value: '4' },
     { name: 'f) Kit de aseo', value: '5' },
     { name: 'g) Kit de ropa', value: '6' },
-    { name: 'h) Kit de cosina', value: '7' },
+    { name: 'h) Kit de cocina', value: '7' },
     { name: 'i) Beneficios financieros', value: '8' },
     { name: 'j) Ingreso solidario', value: '9' },
     { name: 'k) Adulto mayor', value: '10' },
@@ -243,6 +245,7 @@ export class EditSurveyComponent implements OnInit {
     { name: 'm) Vivienda', value: '12' },
     { name: 'n) Ayuda funeraria', value: '13' },
     { name: 'o) Otras ayudas', value: '14' },
+    { name: 'p) Ninguna', value: '15' },
   ];
   onCheckboxChangeTARIE(event: any) {
     if (event.target.checked) {
@@ -255,7 +258,7 @@ export class EditSurveyComponent implements OnInit {
 
   }
 
-  // Checkbox Tipo de ayuda recibida CI
+  // Checkbox Tipo de ayuda recibida C Internacionales
   //************************************************************************ */
   tipoAyuRecCIBasica: Array<any> = [
     { name: 'a) Ayuda Educativa', value: '0' },
@@ -273,6 +276,7 @@ export class EditSurveyComponent implements OnInit {
     { name: 'm) Vivienda', value: '12' },
     { name: 'n) Ayuda funeraria', value: '13' },
     { name: 'o) Otras ayudas', value: '14' },
+    { name: 'p) Ninguna', value: '15' },
   ];
   onCheckboxChangeTARCI(event: any) {
     if (event.target.checked) {
@@ -294,6 +298,7 @@ export class EditSurveyComponent implements OnInit {
     { name: 'd) Las Instituciones del Estado le han brindado apoyo', value: '3' },
     { name: 'e) Desea regresar a Venezuela', value: '4' },
     { name: 'f) Otra razón', value: '5' },
+    { name: 'g) No aplica', value: '6' },
   ];
   onCheckboxChangeSER(event: any) {
     if (event.target.checked) {
@@ -315,12 +320,13 @@ export class EditSurveyComponent implements OnInit {
     { name: 'd) Registro sus hijos con cédula de extranjería', value: '3' },
     { name: 'e) Sus hijos estudian en Venezuela', value: '4' },
     { name: 'f) Era empleado en Venezuela', value: '5' },
-    { name: 'f) Era trabajador independiente', value: '6' },
-    { name: 'f) Era agricultor', value: '7' },
-    { name: 'f) Era trabajador de la construcción', value: '8' },
-    { name: 'f) Era comerciante', value: '9' },
-    { name: 'f) No especificado', value: '10' },
-    { name: 'f) Otro', value: '11' },
+    { name: 'g) Era trabajador independiente', value: '6' },
+    { name: 'h) Era agricultor', value: '7' },
+    { name: 'i) Era trabajador de la construcción', value: '8' },
+    { name: 'j) Era comerciante', value: '9' },
+    { name: 'k) No especificado', value: '10' },
+    { name: 'l) Otro', value: '11' },
+    { name: 'm) No Aplica', value: '12' },
   ];
   onCheckboxChangeASDV(event: any) {
     if (event.target.checked) {
@@ -332,8 +338,6 @@ export class EditSurveyComponent implements OnInit {
     }
 
   }
-
-  
 
   constructor(
     private fb: FormBuilder,
@@ -451,8 +455,6 @@ export class EditSurveyComponent implements OnInit {
           AjuSocioDemoVeneSeleccionados.push(Number(Object.values(datos)[0].ajuste_socio_demo_vene.split(",")[i]))
         }
         
-        
-
         // console.log(ServInstiSeleccionados)
 
         this.fgValidator.controls['miselect'].setValue(Object.values(datos)[0].miselect);
@@ -471,7 +473,6 @@ export class EditSurveyComponent implements OnInit {
   }
 
   GetListPeople() {
-
   
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
       (datos: ModelSurvey) => {
@@ -557,7 +558,7 @@ export class EditSurveyComponent implements OnInit {
             
           },
           (error: any) => {
-            alert('Error Al Guardar La Persona');
+            alert('Error al Guardar la Persona');
           }
         );
 
@@ -574,8 +575,7 @@ export class EditSurveyComponent implements OnInit {
   }
 
   ModificarEncuesta() {
-    
-
+  
     let dataEncu = this.serviceSecurity.GetDataSession();
     
     let Municipio = this.fgValidator.controls['municipio'].value;
@@ -598,7 +598,6 @@ export class EditSurveyComponent implements OnInit {
     let apostillo_tit_tec = this.fgValidator.controls['apostillo_tit_tec'].value;
     let apostillo_tit_profesional = this.fgValidator.controls['apostillo_tit_profesional'].value;
     let apostillo_otro_titulo = this.fgValidator.controls['apostillo_otro_titulo'].value;
-
     let lugar_trabajo = this.fgValidator.controls['lugar_trabajo'].value;
     let posicion_trabajo = this.fgValidator.controls['posicion_trabajo'].value;
     let tipo_vinculacion = this.fgValidator.controls['tipo_vinculacion'].value;
@@ -619,18 +618,15 @@ export class EditSurveyComponent implements OnInit {
     let tipo_ayuda_recibida_CI: string[] = this.TARCISeleccionados.value;
     let situa_especial_retornado: string[] = this.SERSeleccionados.value;
     let ajuste_socio_demo_vene: string[] = this.ASDVSeleccionados.value;
-      
+     
     let causal_de_retorno = this.fgValidator.controls['causal_de_retorno'].value;
     let años_estancia_vzla = this.fgValidator.controls['años_estancia_vzla'].value;
 
-
     let newSurvey = new ModelSurvey();
     
-
     //Obtenemos el numero del Id con el numero de encuesta
     
     // console.log(typeof(this.noEncu))
-
     
     newSurvey.id = this.idEncu;
     newSurvey.no_encuesta = this.noEncu.replace(":","");
@@ -682,7 +678,6 @@ export class EditSurveyComponent implements OnInit {
     newSurvey.causal_de_retorno = causal_de_retorno;
     newSurvey.años_estancia_vzla = años_estancia_vzla;
 
-    
     newSurvey.usuarioId = dataEncu.datos.id;
 
     console.log(newSurvey)
@@ -694,7 +689,7 @@ export class EditSurveyComponent implements OnInit {
         this.router.navigate(['/encuesta/buscar-encuesta']);
       },
       (error: any) => {
-        alert('Error Actualizando la encuesta');
+        alert('Error actualizando la encuesta');
       }
     )
 

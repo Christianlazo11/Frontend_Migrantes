@@ -1,6 +1,6 @@
 <header class="header">
   <a href="index.html" class="logo">
-    <p>Migrantes <span>2022</span></p>
+    <a><p>GOBERNACIÓN DE ARAUCA <br><br>Construyendo Futuro </p></a>
   </a>
 
   <div (click)="responsiveNav()" id="menu-btn" class="fa fa-bars"></div>
@@ -8,13 +8,10 @@
   <nav class="navbar">
     <a routerLink="/inicio">Inicio</a>
     <a *ngIf="isLogin" routerLink="/encuesta/buscar-encuesta"
-      >Ingresar Encuesta</a
-    >
-    <a
-      *ngIf="isLogin && isAdmin == 'administrador'"
+      >Ingresar Encuesta</a>
+    <a *ngIf="isLogin && isAdmin == 'administrador'"
       routerLink="/administracion/lista-usuarios"
-      >Encuestadores</a
-    >
+      >Encuestadores</a>
     <!-- <a *ngIf="isLogin" routerLink="/administracion/lista-personas">Personas</a> -->
     <a (click)="buttonClick('about')">Nosotros</a>
     <a (click)="buttonClick('contact')">Contacto</a>
@@ -22,7 +19,6 @@
       ><i class="fa fa-user"></i
     ></a>
     <a *ngIf="isLogin" routerLink="/seguridad/cerrar-sesion"
-      ><i class="fa fa-times"></i
-    ></a>
+      ><i class="fa fa-times"></i></a>
   </nav>
 </header>

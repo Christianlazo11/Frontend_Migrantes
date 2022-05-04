@@ -36,19 +36,20 @@ section {
 .btn {
   display: inline-block;
   margin-top: 1rem;
-  padding: 1rem 3rem;
-  font-size: 1.8rem;
+  padding: 1% 1% 1% 2%;
+  /*padding: 1rem 3rem;*/
+  font-size: 4rem;
   border: 0.1rem solid #0eb582;
   background: #f0fdfa;
-  color: #0eb582;
+  color: #2c7b64;
   cursor: pointer;
 }
 .btn:hover {
-  background: #0eb582;
+  background: #0f5842;
   color: #fff;
   padding-right: 5rem;
-  border-top-right-radius: 2rem;
-  border-bottom-right-radius: 2rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1.4rem ;
 }
 
 .header {
@@ -59,22 +60,27 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 9%;
+  padding: 1rem 5%;
   z-index: 10000;
-  background: #444;
+  background: rgb(5, 37, 63);
 }
 .header .logo {
-  font-weight: bolder;
-  color: #0eb582;
+  font-weight:bold;
+  color: #27927b;
   font-size: 3rem;
 }
 .header .logo span {
   color: #eee;
 }
+.header .logo a:hover {
+  color: #cad8d4;
+}
+
 .header .navbar a {
   display: inline-block;
-  padding: 1.5rem 2rem;
-  font-size: 1.7rem;
+  padding: 1rem 4rem 1rem 4rem;
+  /*padding: 1.8rem 2rem;*/
+  font-size: 1.8rem;
   color: #eee;
 }
 .header .navbar a:hover {
@@ -116,23 +122,23 @@ section {
   background-repeat: no-repeat;
 }
 .home .content {
-  width: 60rem;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 1rem;
+  width: 50rem;
+  background: rgba(15, 60, 111, 0.6);
+  padding: 1.5rem;
   border-radius: 1rem;
 }
 .home .content span {
-  font-size: 2rem;
+  font-size: 3rem;
   color: white;
   display: block;
 }
 .home .content h3 {
-  font-size: 5rem;
+  font-size: 2rem;
   color: white;
   padding: 1rem 0;
 }
 .home .content:hover {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(10, 51, 78, 0.8);
 }
 
 .swiper-pagination-bullet {
