@@ -183,7 +183,7 @@ export class EditSurveyComponent implements OnInit {
     { name: '¿Min.del Trabajo, le ha brindado apoyo en solución de conflictos laborales', value: '3' },
     { name: '¿La alcaldía a través de la Sec. de Gobierno le ha brindado apoyo y orientacion requerida.?', value: '4' },
     { name: '¿Las ONGs nacionales e internacionales, le han brindado el apoyo y/o cooperación o ayuda humanitaria?', value: '5' },
-    { name: '¿Ninguna?', value: '6' },
+    { name: '¿Ninguna?', value: '6' }
   ];
   onCheckboxChangeSI(event: any) {
     if (event.target.checked) {
@@ -214,7 +214,7 @@ export class EditSurveyComponent implements OnInit {
     { name: 'm) Asilo y refugio', value: '12' },
     { name: 'n) Generación de ingresos', value: '13' },
     { name: 'o) Otra, cuál', value: '14' },
-    { name: 'p) Ninguna', value: '15' },
+    { name: 'p) Ninguna', value: '15' }
   ];
   onCheckboxChangeTNB(event: any) {
     if (event.target.checked) {
@@ -245,7 +245,7 @@ export class EditSurveyComponent implements OnInit {
     { name: 'm) Vivienda', value: '12' },
     { name: 'n) Ayuda funeraria', value: '13' },
     { name: 'o) Otras ayudas', value: '14' },
-    { name: 'p) Ninguna', value: '15' },
+    { name: 'p) Ninguna', value: '15' }
   ];
   onCheckboxChangeTARIE(event: any) {
     if (event.target.checked) {
@@ -276,7 +276,7 @@ export class EditSurveyComponent implements OnInit {
     { name: 'm) Vivienda', value: '12' },
     { name: 'n) Ayuda funeraria', value: '13' },
     { name: 'o) Otras ayudas', value: '14' },
-    { name: 'p) Ninguna', value: '15' },
+    { name: 'p) Ninguna', value: '15' }
   ];
   onCheckboxChangeTARCI(event: any) {
     if (event.target.checked) {
@@ -298,7 +298,7 @@ export class EditSurveyComponent implements OnInit {
     { name: 'd) Las Instituciones del Estado le han brindado apoyo', value: '3' },
     { name: 'e) Desea regresar a Venezuela', value: '4' },
     { name: 'f) Otra razón', value: '5' },
-    { name: 'g) No aplica', value: '6' },
+    { name: 'g) No aplica', value: '6' }
   ];
   onCheckboxChangeSER(event: any) {
     if (event.target.checked) {
@@ -326,7 +326,7 @@ export class EditSurveyComponent implements OnInit {
     { name: 'j) Era comerciante', value: '9' },
     { name: 'k) No especificado', value: '10' },
     { name: 'l) Otro', value: '11' },
-    { name: 'm) No Aplica', value: '12' },
+    { name: 'm) No Aplica', value: '12' }
   ];
   onCheckboxChangeASDV(event: any) {
     if (event.target.checked) {
