@@ -13,7 +13,6 @@ import Swal from 'sweetalert2';
 import { __values } from 'tslib';
 import { SurveyRoutingModule } from '../survey-routing.module';
 
-
 @Component({
   selector: 'app-create-survey',
   templateUrl: './create-survey.component.html',
@@ -93,10 +92,8 @@ export class CreateSurveyComponent implements OnInit {
     parentezco: ['', [Validators.required]],
     // surveyId: ['', [Validators.required]],
   });
-
   // Checkbox intención
   //************************************************************************ */
-
   docs: Array<any> = [
     { name: 'Acta de nacimiento', value: 'Acta de nacimiento' },
     { name: 'Cédula venezolana', value: 'Cédula venezolana' },
