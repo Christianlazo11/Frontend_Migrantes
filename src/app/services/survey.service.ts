@@ -11,7 +11,7 @@ import { SecurityService } from './security.service';
 })
 export class SurveyService {
   // https://api.migrantesarauca2022.com.co
-  url="http://localhost:3000";
+  url="https://api.migrantesarauca2022.com.co";
   token:string="";
   dataUserSession = new BehaviorSubject<ModelIdentify>(new ModelIdentify());
 
