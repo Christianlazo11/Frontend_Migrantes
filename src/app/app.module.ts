@@ -10,6 +10,8 @@ import { ErrorComponent } from './templates/error/error.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
 
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
-  providers: [],
+  providers: [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

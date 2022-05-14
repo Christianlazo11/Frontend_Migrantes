@@ -8,7 +8,7 @@ import { SecurityService } from './security.service';
   providedIn: 'root',
 })
 export class UserService {
-  url = 'https://api.migrantesarauca2022.com.co';
+  url = 'http://localhost:3000';
   token: string = '';
   constructor(
     private http: HttpClient,

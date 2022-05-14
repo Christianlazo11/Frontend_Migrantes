@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@ang
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModelPerson } from 'src/app/models/person.model';
 import { ModelSurvey } from 'src/app/models/survey.model';
+import { SecurityService } from 'src/app/services/security.service';
 import { PersonService } from 'src/app/services/person.service';
 import { SurveyService } from 'src/app/services/survey.service';
 
@@ -93,6 +94,7 @@ export class EditPersonComponent implements OnInit {
     private fb: FormBuilder,
     private servicePerson: PersonService,
     private serviceSurvey: SurveyService,
+    private serviceSecurity: SecurityService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -155,6 +157,12 @@ export class EditPersonComponent implements OnInit {
   }
 
   EditPerson() {
+    let dataEncu = this.serviceSecurity.GetDataSession();
+    if(dataEncu.datos.rol == "adminviewer"){
+      alert('No estas autorizado para realizar esta accion.');
+      return
+    }
+
     console.log(this.docsSeleccionados)
     let nombre = this.fgPersona.controls['name'].value;
     let apellido = this.fgPersona.controls['lastName'].value;

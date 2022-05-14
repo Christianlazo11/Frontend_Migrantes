@@ -78,10 +78,10 @@ export class SearchSurveyComponent implements OnInit {
         // console.log(dataEncu.datos.id)
         let listDatos = JSON.stringify(datos);
         // console.log(listDatos)
-        console.log(listDatos.length);
+        // console.log(listDatos.length);
         if (
           listDatos.length != 2 &&
-          (dataEncu.datos.id == Object.values(datos)[0].usuarioId || dataEncu.datos.rol == "administrador")
+          (dataEncu.datos.id == Object.values(datos)[0].usuarioId || dataEncu.datos.rol == "administrador" || dataEncu.datos.rol == "adminviewer")
         ) {
           Swal.fire({
             title: "Se encontró una encuesta, ¿Desea editarla?",

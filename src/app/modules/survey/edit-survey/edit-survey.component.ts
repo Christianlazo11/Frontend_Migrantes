@@ -492,6 +492,12 @@ export class EditSurveyComponent implements OnInit {
 
   SavePerson() {
 
+    let dataEncu = this.serviceSecurity.GetDataSession();
+    if(dataEncu.datos.rol == "adminviewer"){
+      alert('No estas autorizado para realizar esta accion.');
+      return
+    }
+
     this.serviceSurvey.GetData(this.noEncu.replace(":", "")).subscribe(
       (datos: ModelSurvey) => {
         let nombre = this.fgPersona.controls['name'].value;
@@ -577,6 +583,10 @@ export class EditSurveyComponent implements OnInit {
   ModificarEncuesta() {
   
     let dataEncu = this.serviceSecurity.GetDataSession();
+    if(dataEncu.datos.rol == "adminviewer"){
+      alert('No estas autorizado para realizar esta accion.');
+      return
+    }
     
     let Municipio = this.fgValidator.controls['municipio'].value;
     let Direccion = this.fgValidator.controls['direccion'].value;
