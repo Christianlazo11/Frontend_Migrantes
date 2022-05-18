@@ -217,6 +217,7 @@
               <option value="cuenta_propia">Por cuenta propia</option>
               <option value="otro">Otro</option>
               <option value="no_especificado">No especificado</option>
+              <option value="no_aplica">No Aplica</option>
             </select>
           </div>
 
@@ -229,6 +230,7 @@
               <option value="contrato_temporal">Contrato temporal ocasional</option>
               <option value="prestacion_servicios">Contrato civil prestación de servicios</option>
               <option value="ns_nr">NS/NR</option>
+              <option value="no_aplica">No Aplica</option>
             </select>
           </div>
 
@@ -239,6 +241,7 @@
               <option value="ayuda_personas_locales">Por ayuda de personas locales</option>
               <option value="remesas">Por remesas de familiares en otros paises</option>
               <option value="mendicidad">Por mendicidad</option>
+              
             </select>
           </div>
 
@@ -305,11 +308,11 @@
           <div class="card">
             <label for="institucion_cubrio_gastos">41. Institucion que cubrio gastos medicos:</label>
             <select formControlName="institucion_cubrio_gastos" id="41">
-              <option value="permanencia">Patron</option>
-              <option value="pendular">Seguro privado</option>
-              <option value="transito">Viajo a venezuela a recibir atencion medica</option>
-              <option value="permanencia">No hubo costo a la atencion recibida en hospital colombiano</option>
-              <option value="pendular">Recursos propios y/o de familiares y amigos</option>
+              <option value="Patron">Patron</option>
+              <option value="Seguro privado">Seguro privado</option>
+              <option value="Viajo a venezuela recibir atencion medica">Viajo a venezuela a recibir atencion medica</option>
+              <option value="No hubo costo a atencion recibida hospital colombiano">No hubo costo a la atencion recibida en hospital colombiano</option>
+              <option value="Recursos propios y/o de familiares y amigos">Recursos propios y/o de familiares y amigos</option>
               <option value="otro">Otro</option>
               <option value="no_especificado">No especificado</option>
             </select>
@@ -369,7 +372,7 @@
           <div class="card">
             <label for="tipo_vivienda">44. Tipo de vivienda:</label>
             <select formControlName="tipo_vivienda" id="44">
-              <option value="arendamiento">Arrendamiento</option>
+              <option value="arrendamiento">Arrendamiento</option>
               <option value="propia_asentamiento">Propia en asentamiento</option>
               <option value="propia">propia</option>
               <option value="cedida">Cedida por amigo/familiar</option>

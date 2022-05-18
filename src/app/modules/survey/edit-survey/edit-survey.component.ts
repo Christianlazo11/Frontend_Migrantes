@@ -156,7 +156,7 @@ export class EditSurveyComponent implements OnInit {
     { name: 'Pasaporte venezolano', value: '3' },
     { name: 'Salvo conducto', value: '4' },
     { name: 'TMF', value: '5' },
-    { name: 'Cédula/TI/RC Colombia', value: '6' },
+    { name: 'Cédula/TI/RC Colombiana', value: '6' },
     { name: 'Solución ETPV', value: '7' },
     { name: 'Visa laboral o estudiantil', value: '8' },
     { name: 'Ninguno', value: '9' }
@@ -695,7 +695,7 @@ export class EditSurveyComponent implements OnInit {
     this.serviceSurvey.UpdateSurvey(newSurvey).subscribe(
 
       (datos: ModelSurvey) => {
-        alert('Encuesta Actualizada Correctamente');
+        alert('Encuesta Actualizada Correctamente !');
         this.router.navigate(['/encuesta/buscar-encuesta']);
       },
       (error: any) => {
