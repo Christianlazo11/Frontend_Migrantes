@@ -1,20 +1,74 @@
-<div class="search-survey">
-  <h1>Buscar Encuesta</h1>
+<div>
+  <div class="search-survey">
+    <br>
+    <h1>Buscar Encuesta</h1>
 
-  <div class="search-survey-content">
-    <form
-      [formGroup]="fgEncuesta"
-      (ngSubmit)="validarNoEncuesta()"
-      class="search-survey-form"
-    >
-      <input
-        type="text"
-        formControlName="noEncuesta"
-        (keypress)="validateFormat($event)"
-      />
-      <button [disabled]="!fgEncuesta.valid">Buscar</button>
-    </form>
+    <div class="search-survey-content">
+      <form
+        [formGroup]="fgEncuesta"
+        (ngSubmit)="validarNoEncuesta()"
+        class="search-survey-form"
+      >
+        <h3>Numero de encuesta</h3>
+        <input
+          type="text"
+          formControlName="noEncuesta"
+          (keypress)="validateFormat($event)"
+        />
+        <button [disabled]="!fgEncuesta.valid">Buscar</button>
+      </form>
+
+      <h1>Listado de encuestas</h1>
+      <form [formGroup]="surveyFilterValidator" (ngSubmit)="getByMun()" class="search-survey-form">
+        <h3>Municipio</h3>
+        <select formControlName="municipio" id="2">
+          <option value="Arauca" selected>Arauca</option>
+          <option value=">Arauquita">Arauquita</option>
+          <option value="Saravena">Saravena</option>
+        </select>
+        <button [disabled]="!surveyFilterValidator.valid">Buscar</button>
+      </form>
+    </div>
   </div>
-</div>
 
+    <div class="pollsters tableSurveyList" >
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Numero</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Informacion de nucleo</th>
+            <th>Conforman el hogar</th>
+            <th>Municipio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of listSurvey">
+            <td>
+              {{ p.no_encuesta }}
+            </td>
+            <td>
+              {{ p.direccion }}
+            </td>
+            <td>
+              {{ p.fijo_cel }}
+            </td>
+            <td>
+              {{ p.info_nucleo }}
+            </td>
+            <td>
+              {{ p.conf_hogar }}
+            </td>
+            <td>
+              {{ p.municipio }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+
+
+</div>
 

@@ -13,6 +13,7 @@ import Swal from "sweetalert2";
 })
 export class SearchSurveyComponent implements OnInit {
 
+  listSurvey: ModelSurvey[] = [];
 
   @HostListener('window:beforeunload')
   onUnLoad(){
@@ -29,7 +30,10 @@ export class SearchSurveyComponent implements OnInit {
 
 
 
-
+ // Formulario de busqueda
+  surveyFilterValidator: FormGroup = this.fb.group({
+    municipio: ['', [Validators.required]],
+  });
 
   fgEncuesta: FormGroup = this.fb.group({
     noEncuesta: ["", [Validators.required]],
@@ -155,12 +159,23 @@ export class SearchSurveyComponent implements OnInit {
     );
   }
 
+  //listar encuestas por muniicipio
+  getByMun(){
+    let mun = this.surveyFilterValidator.controls['municipio'].value;
+    this.serviceSurvey.GetSurveyByMun(mun).subscribe(
+      (datos: ModelSurvey) => {
+        this.listSurvey = Object.values(datos)
+      },
+      (error) => {
+        alert("No se encontraron resultados")
+      })
+  }
+
   //Metodo para guardar las respuestas siempre y cuando los campos esten llenos
   CrearEncuestaVacia() {
     let dataEncu = this.serviceSecurity.GetDataSession();
 
     let NoEncuesta: number =  this.fgEncuesta.controls["noEncuesta"].value
-
 
     let newSurvey = new ModelSurvey();
 

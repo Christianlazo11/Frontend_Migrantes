@@ -10,7 +10,7 @@ import { SecurityService } from './security.service';
   providedIn: 'root'
 })
 export class SurveyService {
-  // https://api.migrantesarauca2022.com.co
+  // htttps://api.migrantesarauca2022.com.co
   url="https://api.migrantesarauca2022.com.co";
   token:string="";
   dataUserSession = new BehaviorSubject<ModelIdentify>(new ModelIdentify());
@@ -19,8 +19,6 @@ export class SurveyService {
   constructor(
     private http:HttpClient,
     private securityService:SecurityService
-
-
   ) {
     this.token=this.securityService.GetToken();
    }
@@ -65,7 +63,10 @@ export class SurveyService {
   }
 
   ObtenerDatos(noEncuesta:number): Observable<ModelSurvey> {
- 
     return this.http.get<ModelSurvey>( `${this.url}/encuestas?filter={"where":{"no_encuesta":"${noEncuesta}"}}`)
+  }
+
+  GetSurveyByMun(mun:string): Observable<ModelSurvey> {
+    return this.http.get<ModelSurvey>( `${this.url}/encuestas?filter={"where":{"municipio":"${mun}"}}`)
   }
 }

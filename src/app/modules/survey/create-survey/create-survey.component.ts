@@ -27,6 +27,8 @@ export class CreateSurveyComponent implements OnInit {
   data: any
   validador = false
   NoEncu: any
+  
+  municiplity: any
 
   listSurvey: ModelSurvey[] = [];
   listUsers: ModelUser[] = [];
@@ -92,6 +94,8 @@ export class CreateSurveyComponent implements OnInit {
     parentezco: ['', [Validators.required]],
     // surveyId: ['', [Validators.required]],
   });
+  
+  
   // Checkbox intención
   //************************************************************************ */
   docs: Array<any> = [
@@ -120,8 +124,6 @@ export class CreateSurveyComponent implements OnInit {
   }
 
   buscarencuesta(){
-
-    
     // let noEncuesta=this.NoEncu
     let noEncuesta=this.noEncu.replace(":","")
     this.serviceSurvey.ObtenerDatos(noEncuesta).subscribe(
@@ -134,7 +136,6 @@ export class CreateSurveyComponent implements OnInit {
         alert("No se encontro la encuesta")
     
       })
-
   }
 
   ModificarEncuesta() {
@@ -160,7 +161,6 @@ export class CreateSurveyComponent implements OnInit {
     //Obtenemos el numero del Id con el numero de encuesta
     
     console.log(typeof(this.noEncu))
-
     
     newSurvey.id = this.idEncu;
     newSurvey.no_encuesta = this.noEncu.replace(":","");
