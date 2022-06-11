@@ -8,7 +8,8 @@ import { SecurityService } from "./security.service";
   providedIn: "root",
 })
 export class PersonService {
-  url = "https://api.migrantesarauca2022.com.co";
+  // url = "https://api.migrantesarauca2022.com.co";
+  url = "http://localhost:3000";
   token: String = "";
 
   constructor(
@@ -18,11 +19,11 @@ export class PersonService {
     this.token = this.serviceSecurity.GetToken();
   }
 
-  GetPeople(id:string): Observable<ModelPerson[]> {
-    return this.http.get<ModelPerson[]>(`${this.url}/personas?filter={"where":{"encuestaId":"${id}"}}`);
+  GetPeople(id: string): Observable<ModelPerson[]> {
+    return this.http.get<ModelPerson[]>(
+      `${this.url}/personas?filter={"where":{"encuestaId":"${id}"}}`
+    );
   }
-
- 
 
   GetPeopleById(id: string): Observable<ModelPerson> {
     return this.http.get<ModelPerson>(`${this.url}/personas/${id}`);

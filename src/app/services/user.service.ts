@@ -1,15 +1,15 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
-import { ModelUser } from '../models/user.model';
-import { SecurityService } from './security.service';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs/internal/Observable";
+import { ModelUser } from "../models/user.model";
+import { SecurityService } from "./security.service";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class UserService {
-  url = 'https://api.migrantesarauca2022.com.co';
-  token: string = '';
+  url = "http://localhost:3000";
+  token: string = "";
   constructor(
     private http: HttpClient,
     private securityService: SecurityService

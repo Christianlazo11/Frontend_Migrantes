@@ -1,26 +1,33 @@
 <header class="header">
   <a href="index.html" class="logo">
     <!-- <a><p>GOBERNACIÓN DE ARAUCA <br><br>Construyendo Futuro </p></a> -->
-    <img src="/assets/img/Gobernacion.jpg" alt="Italian Trulli" style="width: 25vw; min-width: 140px;">
+    <img
+      src="/assets/img/Gobernacion.jpg"
+      alt="Italian Trulli"
+      style="width: 25vw; min-width: 140px;"
+    />
   </a>
- 
 
   <div (click)="responsiveNav()" id="menu-btn" class="fa fa-bars"></div>
 
   <nav class="navbar">
     <a routerLink="/inicio">Inicio</a>
     <a *ngIf="isLogin" routerLink="/encuesta/buscar-encuesta"
-      >Ingresar Encuesta</a>
-    <a *ngIf="isLogin && isAdmin == 'administrador'"
+      >Ingresar Encuesta</a
+    >
+    <a
+      *ngIf="isLogin && isAdmin == 'administrador'"
       routerLink="/administracion/lista-usuarios"
-      >Encuestadores</a>
-    <!-- <a *ngIf="isLogin" routerLink="/administracion/lista-personas">Personas</a> -->
+      >Encuestadores</a
+    >
+    <a *ngIf="isLogin" routerLink="/administracion/lista-personas">Personas</a>
     <a (click)="buttonClick('about')">Nosotros</a>
     <a (click)="buttonClick('contact')">Contacto</a>
     <a *ngIf="!isLogin" routerLink="/seguridad/identificar"
       ><i class="fa fa-user"></i
     ></a>
     <a *ngIf="isLogin" routerLink="/seguridad/cerrar-sesion"
-      ><i class="fa fa-times"></i></a>
+      ><i class="fa fa-times"></i
+    ></a>
   </nav>
 </header>

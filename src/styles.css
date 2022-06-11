@@ -2,6 +2,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=Nunito:wght@200;300;400;600&family=Raleway:wght@100;300;400;500;600&display=swap");
 @import '~font-awesome/css/font-awesome.css';
+
+:root {
+  --color__primary: rgb(5, 37, 63);
+}
 * {
   font-family: "Nunito", sans-serif;
   margin: 0;
@@ -26,7 +30,7 @@ html::-webkit-scrollbar-track {
   background: transparent;
 }
 html::-webkit-scrollbar-thumb {
-  background: #0eb582;
+  background: var(--color__primary);
 }
 
 section {
@@ -36,7 +40,7 @@ section {
 .btn {
   display: inline-block;
   margin-top: 1rem;
-  padding: 1% 1% 1% 2%;
+  padding: 1rem 1rem;
   /*padding: 1rem 3rem;*/
   font-size: 4rem;
   border: 0.1rem solid #0eb582;
@@ -62,7 +66,7 @@ section {
   justify-content: space-between;
   padding: 1rem 5%;
   z-index: 10000;
-  background: rgb(5, 37, 63);
+  background: var(--color__primary);
 }
 .header .logo {
   font-weight:bold;
@@ -167,7 +171,7 @@ section {
   padding: 2rem;
   height: 30rem;
   width: 35rem;
-  background-color: #f0fdfa;
+  background-color: var(--color__primary);
   border-radius: 1rem;
 }
 .about .card h3 {
@@ -176,10 +180,7 @@ section {
 }
 .about .card p {
   font-size: 1.7rem;
-}
-.about .card:hover {
-  background-color: #444;
-  color: #fff;
+  color: white;
 }
 .about .card:hover h3 {
   color: #0eb582;
@@ -203,8 +204,9 @@ section {
   font-size: 3rem;
   padding: 1rem;
   border-radius: 50%;
-  background: #f0fdfa;
+  background: var(--color__primary);
   margin-right: 2rem;
+  color: white;
 }
 .contact .icons .icons-content i:hover {
   background: #0eb582;
@@ -213,7 +215,7 @@ section {
   font-size: 2rem;
 }
 .contact .form {
-  background: #f0fdfa;
+  background: var(--color__primary);
   padding: 2rem;
   border-radius: 1rem;
   flex: 1 1 auto;
@@ -224,16 +226,21 @@ section {
   color: #777;
   margin: 2rem 0 2rem 0;
 }
+.contact .form h3:hover {
+  color: #0eb582;
+}
 .contact .form label {
   font-size: 2rem;
   display: block;
-  margin: 0.5rem 0 0.5rem 0;
+  margin: 1rem 0 1rem 0;
+  color: white;
 }
 .contact .form input {
   border: none;
   border-radius: 1rem;
-  padding: 1rem 0 1rem 0;
+  padding: 1rem 0.5rem 1rem 0.5rem;
   width: 100%;
+  font-size: 1.9rem;
 }
 .contact .form .btn-content {
   display: flex;
@@ -243,7 +250,7 @@ section {
 }
 
 .footer {
-  background: #444;
+  background: var(--color__primary);
   padding: 2rem;
 }
 .footer h3 {
@@ -259,6 +266,7 @@ section {
 /*login Styles*/
 /*******************************/
 .login {
+  margin-top: 10rem;
   height: 92vh;
   display: flex;
   justify-content: center;
@@ -271,7 +279,7 @@ section {
   border-radius: 1rem;
   padding: 1.5rem;
   font-size: 1.8rem;
-  background: #f0fdfa;
+  background: var(--color__primary);
   color: #0eb582;
 }
 .login .card-login i {
@@ -287,6 +295,7 @@ section {
 .login .card-login label,
 .login .card-login input {
   display: block;
+  margin: 1.5rem 0;
 }
 .login .card-login label {
   margin: 0.5rem 0 0.5rem 0;
@@ -297,6 +306,7 @@ section {
   border-radius: 1rem;
   border: none;
   padding: 1rem 0.5rem 1rem 0.5rem;
+  font-size:1.7rem;
 }
 .login .card-login .login-btn {
   text-align: center;
@@ -500,7 +510,7 @@ section {
     top: 99%;
     left: 0;
     right: 0;
-    background: #444;
+    background: var(--color__primary);
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
   .header .navbar.active {

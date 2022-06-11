@@ -1,4 +1,11 @@
 .resumen {
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.resumen__content {
     margin-top: 10rem;
     font-size: 4rem;
     text-align: center;
