@@ -42,11 +42,12 @@ section {
   margin-top: 1rem;
   padding: 1rem 1rem;
   /*padding: 1rem 3rem;*/
-  font-size: 4rem;
+  font-size: 2.5rem;
   border: 0.1rem solid #0eb582;
   background: #f0fdfa;
   color: #2c7b64;
   cursor: pointer;
+  line-height: 2;
 }
 .btn:hover {
   background: #0f5842;
@@ -330,25 +331,39 @@ section {
 /*Pollsters-search*/
 /**********************************************************************************/
 .pollsters{
-  min-height: 80rem;
+  min-height: 92vh;
   height: auto;
   padding: 8rem 9%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  margin-top: 10rem;
+}
+
+.pollsters__tables {
+  overflow-x:auto
+}
+
+.pollsters__cards{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+
+@media (min-width:768px) {
+  .pollsters {
+    justify-content:start;
+  }
 }
 
 .pollsters .table {
   width: 100%;
-  border: 0.1rem solid #0eb582;
-  /* padding: 1rem; */
 }
 .pollsters .table thead {
-  background-color: #0eb582;
+  background-color: var(--color__primary);
+  
 }
 .pollsters .table th {
   font-size: 2rem;
+  color: white;
   /* background-color: #0eb582; */
 }
 .pollsters .table tbody tr:nth-child(odd) {
@@ -371,7 +386,7 @@ section {
   border-radius: 1rem;
   padding: 1.5rem;
   font-size: 1.8rem;
-  background: #f0fdfa;
+  background: var(--color__primary);
   color: #0eb582;
 }
 
@@ -383,6 +398,7 @@ section {
 
 .pollsters .card-login label, input {
   display: block;
+  margin: 1.5rem 0;
 }
 
 .pollsters .card-login label {

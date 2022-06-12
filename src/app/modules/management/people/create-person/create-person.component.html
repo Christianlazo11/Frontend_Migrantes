@@ -1,48 +1,50 @@
 <div class="pollsters">
-  <div class="card-login">
-    <h3>Crear Encuestador</h3>
-    <form [formGroup]="fgValidator" (ngSubmit)="SavePerson()">
-      <div>
-        <label for="name">nombre</label>
-        <input formControlName="name" id="name" type="text" />
-      </div>
-      <div>
-        <label for="lastName">apellido</label>
-        <input formControlName="lastName" id="lastname" type="text" />
-      </div>
-      <div>
-        <label for="document">número documento</label>
-        <input formControlName="document" id="document" type="number" />
-      </div>
-      <div>
-        <label for="country">nacionalidad</label>
-        <select name="" id="country" formControlName="country">
-          <option value="venezuela">venezuela</option>
-          <option value="colombia">colombia</option>
-        </select>
-      </div>
-      <div>
-        <label for="gender">Genero</label>
-        <select name="" id="gender" formControlName="gender">
-          <option value="masculino">Masculino</option>
-          <option value="femenino">Femenino</option>
-        </select>
-      </div>
+  <div class="pollsters__cards">
+    <div class="card-login">
+      <h3>Crear Encuestador</h3>
+      <form [formGroup]="fgValidator" (ngSubmit)="SavePerson()">
+        <div>
+          <label for="name">nombre</label>
+          <input formControlName="name" id="name" type="text" />
+        </div>
+        <div>
+          <label for="lastName">apellido</label>
+          <input formControlName="lastName" id="lastname" type="text" />
+        </div>
+        <div>
+          <label for="document">número documento</label>
+          <input formControlName="document" id="document" type="number" />
+        </div>
+        <div>
+          <label for="country">nacionalidad</label>
+          <select name="" id="country" formControlName="country">
+            <option value="venezuela">venezuela</option>
+            <option value="colombia">colombia</option>
+          </select>
+        </div>
+        <div>
+          <label for="gender">Genero</label>
+          <select name="" id="gender" formControlName="gender">
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+          </select>
+        </div>
 
-      <div>
-        <label for="dateOfBirth">fecha de nacimiento</label>
-        <input formControlName="dateOfBirth" id="dateOfBirth" type="date" />
-      </div>
-      <div>
-        <label for="nivel">Nivel Educativo</label>
-        <select name="" id="nivel" formControlName="nivel">
-          <option value="bachiller">bachiller</option>
-          <option value="primaria">primaria</option>
-        </select>
-      </div>
-      <div class="login-btn">
-        <button [disabled]="!fgValidator.valid" type="submit">Crear</button>
-      </div>
-    </form>
+        <div>
+          <label for="dateOfBirth">fecha de nacimiento</label>
+          <input formControlName="dateOfBirth" id="dateOfBirth" type="date" />
+        </div>
+        <div>
+          <label for="nivel">Nivel Educativo</label>
+          <select name="" id="nivel" formControlName="nivel">
+            <option value="bachiller">bachiller</option>
+            <option value="primaria">primaria</option>
+          </select>
+        </div>
+        <div class="login-btn">
+          <button [disabled]="!fgValidator.valid" type="submit">Crear</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

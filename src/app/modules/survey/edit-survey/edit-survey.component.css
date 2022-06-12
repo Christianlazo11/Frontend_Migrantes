@@ -12,6 +12,7 @@
 
 .edit-survey-content {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .edit-survey-content-left, .edit-survey-content-right {
@@ -45,14 +46,12 @@
 .table {
   margin-top:10px;  
   width: 100%;
-    border: 0.1rem solid #0eb582;
-    border-radius: 3%;
     /* padding: 1rem; */
   }
 .table thead {
-    background-color: #0eb582;
+    background-color: var(--color__primary);
     border-radius: 3%;
-    
+    color: white;
   }
 .table th {
     border-radius: 3%;

@@ -4,7 +4,6 @@
     <div class="edit-survey-content-left">
       <h2>Formulario</h2>
       <form [formGroup]="fgValidator" (ngSubmit)="ModificarEncuesta()">
-
         <div class="content">
           <div class="card">
             <h3>Municipio</h3>
@@ -47,28 +46,44 @@
             <select formControlName="info_nucleo" id="info_nucleo">
               <option value="Padre Jefe de Hogar">Padre Jefe de Hogar</option>
               <option value="Madre Jefe de Hogar">Madre Jefe de Hogar</option>
-              <option value="Padre Cabeza de familia">Padre Cabeza de familia</option>
-              <option value="Madre Cabeza de familia">Madre Cabeza de familia</option>
+              <option value="Padre Cabeza de familia"
+                >Padre Cabeza de familia</option
+              >
+              <option value="Madre Cabeza de familia"
+                >Madre Cabeza de familia</option
+              >
               <option value="Otro">Otro</option>
             </select>
           </div>
 
           <div class="card">
-            <label for="conf_hogar">21A. Número de personas que conforman el hogar</label>
+            <label for="conf_hogar"
+              >21A. Número de personas que conforman el hogar</label
+            >
             <input formControlName="conf_hogar" id="conf_hogar" type="number" />
           </div>
 
           <div class="card">
             <label for="quedaron_hijos">21B. ¿Se quedaron hijos?</label>
-            <select name="quedaron_hijos" id="quedaron_hijos" formControlName="quedaron_hijos">
+            <select
+              name="quedaron_hijos"
+              id="quedaron_hijos"
+              formControlName="quedaron_hijos"
+            >
               <option value="Si">Si</option>
               <option value="No">No</option>
             </select>
           </div>
 
           <div class="card">
-            <label for="nacionalidad_pareja">21C. Nacionalidad de la pareja</label>
-            <select name="nacionalidad_pareja" id="nacionalidad_pareja" formControlName="nacionalidad_pareja">
+            <label for="nacionalidad_pareja"
+              >21C. Nacionalidad de la pareja</label
+            >
+            <select
+              name="nacionalidad_pareja"
+              id="nacionalidad_pareja"
+              formControlName="nacionalidad_pareja"
+            >
               <option value="Venezolano">Venezolano</option>
               <option value="Colombiano">Colombiano</option>
               <option value="Otro">Otro</option>
@@ -78,7 +93,11 @@
 
           <div class="card">
             <label for="razon_cruce">22. Razón del cruce a Colombia</label>
-            <select name="razon_cruce" id="razon_cruce" formControlName="razon_cruce">
+            <select
+              name="razon_cruce"
+              id="razon_cruce"
+              formControlName="razon_cruce"
+            >
               <option value="Seguridad">Seguridad</option>
               <option value="Político">Político</option>
               <option value="Familiar">Familiar</option>
@@ -90,8 +109,14 @@
           </div>
 
           <div class="card">
-            <label for="tiempo_estancia">23. Tiempo de estancia en el departamento de Arauca</label>
-            <select name="tiempo_estancia" id="tiempo_estancia" formControlName="tiempo_estancia">
+            <label for="tiempo_estancia"
+              >23. Tiempo de estancia en el departamento de Arauca</label
+            >
+            <select
+              name="tiempo_estancia"
+              id="tiempo_estancia"
+              formControlName="tiempo_estancia"
+            >
               <option value="Hasta 1 año">Hasta 1 año</option>
               <option value="2 años">2 años</option>
               <option value="3 años">3 años</option>
@@ -102,12 +127,22 @@
           </div>
 
           <div class="card">
-            <label for="razon_arauca">24. Razon de permanencia en el departamente de Arauca</label>
-            <select name="razon_arauca" id="razon_arauca" formControlName="razon_arauca">
+            <label for="razon_arauca"
+              >24. Razon de permanencia en el departamente de Arauca</label
+            >
+            <select
+              name="razon_arauca"
+              id="razon_arauca"
+              formControlName="razon_arauca"
+            >
               <option value="Trabajar en Arauca">Trabajar en Arauca</option>
-              <option value="Trabajar en Arauquita">Trabajar en Arauquita</option>
+              <option value="Trabajar en Arauquita"
+                >Trabajar en Arauquita</option
+              >
               <option value="Trabajar en Saravena">Trabajar en Saravena</option>
-              <option value="Trabajar en Otro municipio">Trabajar en Otro municipio</option>
+              <option value="Trabajar en Otro municipio"
+                >Trabajar en Otro municipio</option
+              >
               <option value="Estudiar">Estudiar</option>
               <option value="Otra Razón">Otra Razón</option>
               <option value="No especificado">No especificado</option>
@@ -117,31 +152,54 @@
           <div class="card">
             <h3>25. ¿Una vez ingresó a Colombia cuál fue su intención?</h3>
             <select formControlName="intencion" id="4">
-              <option value="Establecer su domicilio en el país">Establecer su domicilio en el país</option>
-              <option value="Transitar hacia otro país">Transitar hacia otro país</option>
-              <option value="Trabajar por un tiempo para regresar a Venezuela">Trabajar por un tiempo para regresar a
-                Venezuela</option>
-              <option value="Encontrarse con su familia">Encontrarse con su familia</option>
+              <option value="Establecer su domicilio en el país"
+                >Establecer su domicilio en el país</option
+              >
+              <option value="Transitar hacia otro país"
+                >Transitar hacia otro país</option
+              >
+              <option value="Trabajar por un tiempo para regresar a Venezuela"
+                >Trabajar por un tiempo para regresar a Venezuela</option
+              >
+              <option value="Encontrarse con su familia"
+                >Encontrarse con su familia</option
+              >
             </select>
           </div>
           <div class="card">
-            <label for="intencion_permanecer">26. Intencion de Permanecer en Colombia</label>
+            <label for="intencion_permanecer"
+              >26. Intencion de Permanecer en Colombia</label
+            >
             <select formControlName="intencion_permanecer" id="26">
-              <option value="Interesado en permancer en Colombia">Interesado en Permanecer en Colombia</option>
-              <option value="Planea retornar a venezuela">Planea retornar a venezuela</option>
-              <option value="Ha reglamentado su estancia en Colombia">Ha reglamentado su estancia en Colombia</option>
-              <option value="No ha reglamentado su estancia en Colombia">No ha reglamentado su estancia en Colombia
+              <option value="Interesado en permancer en Colombia"
+                >Interesado en Permanecer en Colombia</option
+              >
+              <option value="Planea retornar a venezuela"
+                >Planea retornar a venezuela</option
+              >
+              <option value="Ha reglamentado su estancia en Colombia"
+                >Ha reglamentado su estancia en Colombia</option
+              >
+              <option value="No ha reglamentado su estancia en Colombia"
+                >No ha reglamentado su estancia en Colombia
               </option>
-              <option value="No le interesa reglamentar su estancia">No le interesa reglamentar su estancia</option>
-              <option value="No sabe cómo hacerlo y/o carece de orientación">No sabe cómo hacerlo y/o carece de
-                orientación</option>
-              <option value="Estudio de los hijos y/o propio">Estudio de los hijos y/o propio</option>
+              <option value="No le interesa reglamentar su estancia"
+                >No le interesa reglamentar su estancia</option
+              >
+              <option value="No sabe cómo hacerlo y/o carece de orientación"
+                >No sabe cómo hacerlo y/o carece de orientación</option
+              >
+              <option value="Estudio de los hijos y/o propio"
+                >Estudio de los hijos y/o propio</option
+              >
               <option value="Otra circunstancia">Otra circunstancia</option>
             </select>
           </div>
 
           <div class="card">
-            <label for="localidad_procedencia">31A. Tipo de localidad de donde procede</label>
+            <label for="localidad_procedencia"
+              >31A. Tipo de localidad de donde procede</label
+            >
             <select formControlName="localidad_procedencia" id="31">
               <option value="Urbana">Urbana</option>
               <option value="Rural">Rural</option>
@@ -160,8 +218,14 @@
           </div>
 
           <div class="card">
-            <label for="apostillo_tit_bachiller">32a. ¿Apostilló Titulo de Bachiller?</label>
-            <select name="apostillo_tit_bachiller" id="32A" formControlName="apostillo_tit_bachiller">
+            <label for="apostillo_tit_bachiller"
+              >32a. ¿Apostilló Titulo de Bachiller?</label
+            >
+            <select
+              name="apostillo_tit_bachiller"
+              id="32A"
+              formControlName="apostillo_tit_bachiller"
+            >
               <option value="Si">Si</option>
               <option value="No">No</option>
               <option value="No Aplica">No aplica</option>
@@ -169,8 +233,14 @@
           </div>
 
           <div class="card">
-            <label for="apostillo_tit_tec">32b. ¿Apostilló Titulo de Técnico/Tecnologo?</label>
-            <select name="apostillo_tit_tec" id="32B" formControlName="apostillo_tit_tec">
+            <label for="apostillo_tit_tec"
+              >32b. ¿Apostilló Titulo de Técnico/Tecnologo?</label
+            >
+            <select
+              name="apostillo_tit_tec"
+              id="32B"
+              formControlName="apostillo_tit_tec"
+            >
               <option value="Si">Si</option>
               <option value="No">No</option>
               <option value="No Aplica">No aplica</option>
@@ -178,8 +248,14 @@
           </div>
 
           <div class="card">
-            <label for="apostillo_tit_profesional">32c. ¿Apostilló Titulo de Profesional?</label>
-            <select name="apostillo_tit_profesional" id="32B" formControlName="apostillo_tit_profesional">
+            <label for="apostillo_tit_profesional"
+              >32c. ¿Apostilló Titulo de Profesional?</label
+            >
+            <select
+              name="apostillo_tit_profesional"
+              id="32B"
+              formControlName="apostillo_tit_profesional"
+            >
               <option value="Si">Si</option>
               <option value="No">No</option>
               <option value="No Aplica">No aplica</option>
@@ -187,8 +263,14 @@
           </div>
 
           <div class="card">
-            <label for="apostillo_otro_titulo">32d. ¿Apostilló otro titulo?</label>
-            <select name="apostillo_otro_titulo" id="32B" formControlName="apostillo_otro_titulo">
+            <label for="apostillo_otro_titulo"
+              >32d. ¿Apostilló otro titulo?</label
+            >
+            <select
+              name="apostillo_otro_titulo"
+              id="32B"
+              formControlName="apostillo_otro_titulo"
+            >
               <option value="Si">Si</option>
               <option value="No">No</option>
               <option value="No Aplica">No aplica</option>
@@ -198,7 +280,6 @@
           <div class="card">
             <label for="lugar_trabajo">33. Lugar de Trabajo?</label>
             <select formControlName="lugar_trabajo" id="33">
-
               <option value="sector_rural">Sector Rural</option>
               <option value="casa">En la casa o Residencia</option>
               <option value="local">Local y/o sitio jo</option>
@@ -222,13 +303,21 @@
           </div>
 
           <div class="card">
-            <label for="tipo_vinculacion">35. Tipo contrato o Vinculacion</label>
+            <label for="tipo_vinculacion"
+              >35. Tipo contrato o Vinculacion</label
+            >
             <select formControlName="tipo_vinculacion" id="35">
               <option value="termino_fijo">Contrato termino fijo</option>
-              <option value="termino_indefinido">Contrato termino indefinido</option>
+              <option value="termino_indefinido"
+                >Contrato termino indefinido</option
+              >
               <option value="obra_labor">Contrato Obra labor</option>
-              <option value="contrato_temporal">Contrato temporal ocasional</option>
-              <option value="prestacion_servicios">Contrato civil prestación de servicios</option>
+              <option value="contrato_temporal"
+                >Contrato temporal ocasional</option
+              >
+              <option value="prestacion_servicios"
+                >Contrato civil prestación de servicios</option
+              >
               <option value="ns_nr">NS/NR</option>
               <option value="no_aplica">No Aplica</option>
             </select>
@@ -238,30 +327,49 @@
             <label for="obtener_ingresos">36.Forma de obtener ingresos</label>
             <select formControlName="obtener_ingresos" id="36">
               <option value="por_trabajo">Por trabajo</option>
-              <option value="ayuda_personas_locales">Por ayuda de personas locales</option>
-              <option value="remesas">Por remesas de familiares en otros paises</option>
+              <option value="ayuda_personas_locales"
+                >Por ayuda de personas locales</option
+              >
+              <option value="remesas"
+                >Por remesas de familiares en otros paises</option
+              >
               <option value="mendicidad">Por mendicidad</option>
-              
             </select>
           </div>
 
           <div class="card">
-            <label for="ingresos_mensuales">37. Ingresos mensuales en pesos</label>
+            <label for="ingresos_mensuales"
+              >37. Ingresos mensuales en pesos</label
+            >
             <select formControlName="ingresos_mensuales" id="37">
               <option value="sin_ingresos">Sin_ingresos</option>
-              <option value="menos_medio_salario">Menos de medio salario minimo</option>
+              <option value="menos_medio_salario"
+                >Menos de medio salario minimo</option
+              >
               <option value="hasta_un_salario">Hasta un salario minimo</option>
-              <option value="hasta_dos_salarios">Hasta dos salarios minimos</option>
-              <option value="hasta_tres_salarios">Hasta tres salarios minimos</option>
-              <option value="hasta_cuatro_salarios">Hasta cuatro salarios minimos</option>
-              <option value="hasta_cinco_salarios">Hasta cinco salarios minimos</option>
-              <option value="mas_cinco_salarios">Mas de cinco salarios minimos</option>
+              <option value="hasta_dos_salarios"
+                >Hasta dos salarios minimos</option
+              >
+              <option value="hasta_tres_salarios"
+                >Hasta tres salarios minimos</option
+              >
+              <option value="hasta_cuatro_salarios"
+                >Hasta cuatro salarios minimos</option
+              >
+              <option value="hasta_cinco_salarios"
+                >Hasta cinco salarios minimos</option
+              >
+              <option value="mas_cinco_salarios"
+                >Mas de cinco salarios minimos</option
+              >
               <option value="no_especificado">No especificado</option>
             </select>
           </div>
 
           <div class="card">
-            <label for="invierte_salario">38. Lugar donde invierte su salario:</label>
+            <label for="invierte_salario"
+              >38. Lugar donde invierte su salario:</label
+            >
             <select formControlName="invierte_salario" id="38">
               <option value="en_colombia">Colombia</option>
               <option value="en_venezuela">Venezuela</option>
@@ -269,8 +377,10 @@
             </select>
           </div>
           <div class="card">
-            <label for="intencion_tiempo_estancia">39. Intención de tiempo de estancia en la ciudad
-              de Arauca y / o municipio de Arauquita o Saravena:</label>
+            <label for="intencion_tiempo_estancia"
+              >39. Intención de tiempo de estancia en la ciudad de Arauca y / o
+              municipio de Arauquita o Saravena:</label
+            >
             <select formControlName="intencion_tiempo_estancia" id="39">
               <option value="permanencia">Vocacion de permanencia</option>
               <option value="pendular">Pendular</option>
@@ -279,23 +389,33 @@
           </div>
 
           <div class="card">
-            <label for="interes_salud_publica">40. Tipo de evento de interés en salud publica:</label>
+            <label for="interes_salud_publica"
+              >40. Tipo de evento de interés en salud publica:</label
+            >
             <select formControlName="interes_salud_publica" id="40">
               <option value="violencia_genero">Violencia de genero</option>
-              <option value="vigilancia_de_rabia">Vigilancia integrada de rabia humana</option>
+              <option value="vigilancia_de_rabia"
+                >Vigilancia integrada de rabia humana</option
+              >
               <option value="varicela">Varicela individual</option>
               <option value="chagas">Chagas</option>
               <option value="intento_suicidio">intento de suicidio</option>
-              <option value="morvilidad_materna">Morvilidad materna externa</option>
+              <option value="morvilidad_materna"
+                >Morvilidad materna externa</option
+              >
               <option value="intoxicacion">Intoxicaciones</option>
-              <option value="desnuticion_menores">Desnutricion aguda en menores de 5 años</option>
+              <option value="desnuticion_menores"
+                >Desnutricion aguda en menores de 5 años</option
+              >
               <option value="exposicion_fluor">Exposicion a fluor</option>
               <option value="tuberculosis">Tuberculosis</option>
               <option value="accidente_ofidico">Accidente ofidico</option>
               <option value="dengue">Dengue</option>
               <option value="vhs_sida">VHS/Sida/mortalidad por sida</option>
               <option value="parotiditis">Parotiditis</option>
-              <option value="infeccion_quirurgico">Infeccion de sitio quirurgico asociado PMQ</option>
+              <option value="infeccion_quirurgico"
+                >Infeccion de sitio quirurgico asociado PMQ</option
+              >
               <option value="defectos_congenitos">Defectos congenitos</option>
               <option value="bajo_peso_bebe">Bajo peso al nacer</option>
               <option value="endometritis">Endometritis puerperal</option>
@@ -306,28 +426,43 @@
           </div>
 
           <div class="card">
-            <label for="institucion_cubrio_gastos">41. Institucion que cubrio gastos medicos:</label>
+            <label for="institucion_cubrio_gastos"
+              >41. Institucion que cubrio gastos medicos:</label
+            >
             <select formControlName="institucion_cubrio_gastos" id="41">
               <option value="Patron">Patron</option>
               <option value="Seguro privado">Seguro privado</option>
-              <option value="Viajo a venezuela recibir atencion medica">Viajo a venezuela a recibir atencion medica</option>
-              <option value="No hubo costo a atencion recibida hospital colombiano">No hubo costo a la atencion recibida en hospital colombiano</option>
-              <option value="Recursos propios y/o de familiares y amigos">Recursos propios y/o de familiares y amigos</option>
+              <option value="Viajo a venezuela recibir atencion medica"
+                >Viajo a venezuela a recibir atencion medica</option
+              >
+              <option
+                value="No hubo costo a atencion recibida hospital colombiano"
+                >No hubo costo a la atencion recibida en hospital
+                colombiano</option
+              >
+              <option value="Recursos propios y/o de familiares y amigos"
+                >Recursos propios y/o de familiares y amigos</option
+              >
               <option value="otro">Otro</option>
               <option value="no_especificado">No especificado</option>
             </select>
           </div>
 
           <div class="card">
-            <br>
+            <br />
             <label>42. Servicios Institucionales</label>
             <div *ngFor="let doc of servInsti; let i=index">
               <div *ngIf="(i/2)*2==i">
                 <div *ngFor="let docs of ServInstiSeleccionados; let a=index">
                   <div *ngIf="ServInstiSeleccionados[a] == doc.value">
                     <label class="container">
-                      <input type="checkbox" formArrayName="servicios_institucionales" [value]="doc.value"
-                        (change)="onCheckboxChangeSI($event)" checked />
+                      <input
+                        type="checkbox"
+                        formArrayName="servicios_institucionales"
+                        [value]="doc.value"
+                        (change)="onCheckboxChangeSI($event)"
+                        checked
+                      />
                       {{doc.name}}
                       <span class="checkmark"></span><br />
                     </label>
@@ -336,10 +471,15 @@
                 <div *ngFor="let docs of ServInstiSeleccionados; let a=index">
                   <div *ngIf=" a === 0">
                     <div
-                      *ngIf="ServInstiSeleccionados[a] != doc.value && ServInstiSeleccionados[a+1] != doc.value && ServInstiSeleccionados[a+2] != doc.value && ServInstiSeleccionados[a+3] != doc.value && ServInstiSeleccionados[a+4] != doc.value">
+                      *ngIf="ServInstiSeleccionados[a] != doc.value && ServInstiSeleccionados[a+1] != doc.value && ServInstiSeleccionados[a+2] != doc.value && ServInstiSeleccionados[a+3] != doc.value && ServInstiSeleccionados[a+4] != doc.value"
+                    >
                       <label class="container">
-                        <input type="checkbox" formArrayName="servicios_institucionales" [value]="doc.value"
-                          (change)="onCheckboxChangeSI($event)" />
+                        <input
+                          type="checkbox"
+                          formArrayName="servicios_institucionales"
+                          [value]="doc.value"
+                          (change)="onCheckboxChangeSI($event)"
+                        />
                         {{doc.name}}
                         <span class="checkmark"></span><br />
                       </label>
@@ -348,8 +488,12 @@
                 </div>
                 <div *ngIf="ServInstiSeleccionados.length == 0">
                   <label class="container">
-                    <input type="checkbox" formArrayName="servicios_institucionales" [value]="doc.value"
-                      (change)="onCheckboxChangeSI($event)" />
+                    <input
+                      type="checkbox"
+                      formArrayName="servicios_institucionales"
+                      [value]="doc.value"
+                      (change)="onCheckboxChangeSI($event)"
+                    />
                     {{doc.name}}
                     <span class="checkmark"></span><br />
                   </label>
@@ -359,7 +503,7 @@
           </div>
 
           <div class="card">
-            <br>
+            <br />
             <label for="clase_vivienda">43. Clase de vivienda:</label>
             <select formControlName="clase_vivienda" id="43">
               <option value="casa">Casa</option>
@@ -373,7 +517,9 @@
             <label for="tipo_vivienda">44. Tipo de vivienda:</label>
             <select formControlName="tipo_vivienda" id="44">
               <option value="arrendamiento">Arrendamiento</option>
-              <option value="propia_asentamiento">Propia en asentamiento</option>
+              <option value="propia_asentamiento"
+                >Propia en asentamiento</option
+              >
               <option value="propia">propia</option>
               <option value="cedida">Cedida por amigo/familiar</option>
               <option value="Otra">Otra</option>
@@ -381,26 +527,41 @@
           </div>
 
           <div class="card">
-            <br>
+            <br />
             <label>45. Tipo de necesidades básicas</label>
             <div *ngFor="let doc of tipoNeceBasica; let i=index">
               <div *ngIf="(i/2)*2==i">
-                <div *ngFor="let docs of TipoNeceBasicaSeleccionados; let a=index">
+                <div
+                  *ngFor="let docs of TipoNeceBasicaSeleccionados; let a=index"
+                >
                   <div *ngIf="TipoNeceBasicaSeleccionados[a] == doc.value">
                     <label class="container">
-                      <input type="checkbox" formArrayName="tipo_necesidad_basica" [value]="doc.value"
-                        (change)="onCheckboxChangeTNB($event)" checked />
+                      <input
+                        type="checkbox"
+                        formArrayName="tipo_necesidad_basica"
+                        [value]="doc.value"
+                        (change)="onCheckboxChangeTNB($event)"
+                        checked
+                      />
                       {{doc.name}}
                       <span class="checkmark"></span><br />
                     </label>
                   </div>
                 </div>
-                <div *ngFor="let docs of TipoNeceBasicaSeleccionados; let a=index">
+                <div
+                  *ngFor="let docs of TipoNeceBasicaSeleccionados; let a=index"
+                >
                   <div *ngIf=" a === 0">
-                    <div *ngIf="TipoNeceBasicaSeleccionados[a] != doc.value && TipoNeceBasicaSeleccionados[a+1] != doc.value && TipoNeceBasicaSeleccionados[a+2] != doc.value && TipoNeceBasicaSeleccionados[a+3] != doc.value && TipoNeceBasicaSeleccionados[a+4] != doc.value  && TipoNeceBasicaSeleccionados[a+5] != doc.value && TipoNeceBasicaSeleccionados[a+6] != doc.value && TipoNeceBasicaSeleccionados[a+7] != doc.value && TipoNeceBasicaSeleccionados[a+8] != doc.value && TipoNeceBasicaSeleccionados[a+9] != doc.value && TipoNeceBasicaSeleccionados[a+10] != doc.value && TipoNeceBasicaSeleccionados[a+11] != doc.value && TipoNeceBasicaSeleccionados[a+12] != doc.value && TipoNeceBasicaSeleccionados[a+13] != doc.value && TipoNeceBasicaSeleccionados[a+14] != doc.value">
+                    <div
+                      *ngIf="TipoNeceBasicaSeleccionados[a] != doc.value && TipoNeceBasicaSeleccionados[a+1] != doc.value && TipoNeceBasicaSeleccionados[a+2] != doc.value && TipoNeceBasicaSeleccionados[a+3] != doc.value && TipoNeceBasicaSeleccionados[a+4] != doc.value  && TipoNeceBasicaSeleccionados[a+5] != doc.value && TipoNeceBasicaSeleccionados[a+6] != doc.value && TipoNeceBasicaSeleccionados[a+7] != doc.value && TipoNeceBasicaSeleccionados[a+8] != doc.value && TipoNeceBasicaSeleccionados[a+9] != doc.value && TipoNeceBasicaSeleccionados[a+10] != doc.value && TipoNeceBasicaSeleccionados[a+11] != doc.value && TipoNeceBasicaSeleccionados[a+12] != doc.value && TipoNeceBasicaSeleccionados[a+13] != doc.value && TipoNeceBasicaSeleccionados[a+14] != doc.value"
+                    >
                       <label class="container">
-                        <input type="checkbox" formArrayName="tipo_necesidad_basica" [value]="doc.value"
-                          (change)="onCheckboxChangeTNB($event)" />
+                        <input
+                          type="checkbox"
+                          formArrayName="tipo_necesidad_basica"
+                          [value]="doc.value"
+                          (change)="onCheckboxChangeTNB($event)"
+                        />
                         {{doc.name}}
                         <span class="checkmark"></span><br />
                       </label>
@@ -409,8 +570,12 @@
                 </div>
                 <div *ngIf="TipoNeceBasicaSeleccionados.length == 0">
                   <label class="container">
-                    <input type="checkbox" formArrayName="tipo_necesidad_basica" [value]="doc.value"
-                      (change)="onCheckboxChangeTNB($event)" />
+                    <input
+                      type="checkbox"
+                      formArrayName="tipo_necesidad_basica"
+                      [value]="doc.value"
+                      (change)="onCheckboxChangeTNB($event)"
+                    />
                     {{doc.name}}
                     <span class="checkmark"></span><br />
                   </label>
@@ -420,26 +585,41 @@
           </div>
 
           <div class="card">
-            <br>
+            <br />
             <label>46a. Tipo de ayuda recibida (Inst. Estado)</label>
             <div *ngFor="let doc of tipoAyuRecIEBasica; let i=index">
               <div *ngIf="(i/2)*2==i">
-                <div *ngFor="let docs of TipoAyuRecibidaIESeleccionados; let a=index">
+                <div
+                  *ngFor="let docs of TipoAyuRecibidaIESeleccionados; let a=index"
+                >
                   <div *ngIf="TipoAyuRecibidaIESeleccionados[a] == doc.value">
                     <label class="container">
-                      <input type="checkbox" formArrayName="tipo_ayuda_recibida_IE" [value]="doc.value"
-                        (change)="onCheckboxChangeTARIE($event)" checked />
+                      <input
+                        type="checkbox"
+                        formArrayName="tipo_ayuda_recibida_IE"
+                        [value]="doc.value"
+                        (change)="onCheckboxChangeTARIE($event)"
+                        checked
+                      />
                       {{doc.name}}
                       <span class="checkmark"></span><br />
                     </label>
                   </div>
                 </div>
-                <div *ngFor="let docs of TipoAyuRecibidaIESeleccionados; let a=index">
+                <div
+                  *ngFor="let docs of TipoAyuRecibidaIESeleccionados; let a=index"
+                >
                   <div *ngIf=" a === 0">
-                    <div *ngIf="TipoAyuRecibidaIESeleccionados[a] != doc.value && TipoAyuRecibidaIESeleccionados[a+1] != doc.value && TipoAyuRecibidaIESeleccionados[a+2] != doc.value && TipoAyuRecibidaIESeleccionados[a+3] != doc.value && TipoAyuRecibidaIESeleccionados[a+4] != doc.value  && TipoAyuRecibidaIESeleccionados[a+5] != doc.value && TipoAyuRecibidaIESeleccionados[a+6] != doc.value && TipoAyuRecibidaIESeleccionados[a+7] != doc.value && TipoAyuRecibidaIESeleccionados[a+8] != doc.value && TipoAyuRecibidaIESeleccionados[a+9] != doc.value && TipoAyuRecibidaIESeleccionados[a+10] != doc.value && TipoAyuRecibidaIESeleccionados[a+11] != doc.value && TipoAyuRecibidaIESeleccionados[a+12] != doc.value && TipoAyuRecibidaIESeleccionados[a+13] != doc.value && TipoAyuRecibidaIESeleccionados[a+14] != doc.value">
+                    <div
+                      *ngIf="TipoAyuRecibidaIESeleccionados[a] != doc.value && TipoAyuRecibidaIESeleccionados[a+1] != doc.value && TipoAyuRecibidaIESeleccionados[a+2] != doc.value && TipoAyuRecibidaIESeleccionados[a+3] != doc.value && TipoAyuRecibidaIESeleccionados[a+4] != doc.value  && TipoAyuRecibidaIESeleccionados[a+5] != doc.value && TipoAyuRecibidaIESeleccionados[a+6] != doc.value && TipoAyuRecibidaIESeleccionados[a+7] != doc.value && TipoAyuRecibidaIESeleccionados[a+8] != doc.value && TipoAyuRecibidaIESeleccionados[a+9] != doc.value && TipoAyuRecibidaIESeleccionados[a+10] != doc.value && TipoAyuRecibidaIESeleccionados[a+11] != doc.value && TipoAyuRecibidaIESeleccionados[a+12] != doc.value && TipoAyuRecibidaIESeleccionados[a+13] != doc.value && TipoAyuRecibidaIESeleccionados[a+14] != doc.value"
+                    >
                       <label class="container">
-                        <input type="checkbox" formArrayName="tipo_ayuda_recibida_IE" [value]="doc.value"
-                          (change)="onCheckboxChangeTARIE($event)" />
+                        <input
+                          type="checkbox"
+                          formArrayName="tipo_ayuda_recibida_IE"
+                          [value]="doc.value"
+                          (change)="onCheckboxChangeTARIE($event)"
+                        />
                         {{doc.name}}
                         <span class="checkmark"></span><br />
                       </label>
@@ -448,8 +628,12 @@
                 </div>
                 <div *ngIf="TipoAyuRecibidaIESeleccionados.length == 0">
                   <label class="container">
-                    <input type="checkbox" formArrayName="tipo_ayuda_recibida_IE" [value]="doc.value"
-                      (change)="onCheckboxChangeTARIE($event)" />
+                    <input
+                      type="checkbox"
+                      formArrayName="tipo_ayuda_recibida_IE"
+                      [value]="doc.value"
+                      (change)="onCheckboxChangeTARIE($event)"
+                    />
                     {{doc.name}}
                     <span class="checkmark"></span><br />
                   </label>
@@ -459,26 +643,41 @@
           </div>
 
           <div class="card">
-            <br>
+            <br />
             <label>46b. Tipo de ayuda recibida (Coop. Internacional)</label>
             <div *ngFor="let doc of tipoAyuRecCIBasica; let i=index">
               <div *ngIf="(i/2)*2==i">
-                <div *ngFor="let docs of TipoAyuRecibidaCISeleccionados; let a=index">
+                <div
+                  *ngFor="let docs of TipoAyuRecibidaCISeleccionados; let a=index"
+                >
                   <div *ngIf="TipoAyuRecibidaCISeleccionados[a] == doc.value">
                     <label class="container">
-                      <input type="checkbox" formArrayName="tipo_ayuda_recibida_CI" [value]="doc.value"
-                        (change)="onCheckboxChangeTARCI($event)" checked />
+                      <input
+                        type="checkbox"
+                        formArrayName="tipo_ayuda_recibida_CI"
+                        [value]="doc.value"
+                        (change)="onCheckboxChangeTARCI($event)"
+                        checked
+                      />
                       {{doc.name}}
                       <span class="checkmark"></span><br />
                     </label>
                   </div>
                 </div>
-                <div *ngFor="let docs of TipoAyuRecibidaCISeleccionados; let a=index">
+                <div
+                  *ngFor="let docs of TipoAyuRecibidaCISeleccionados; let a=index"
+                >
                   <div *ngIf=" a === 0">
-                    <div *ngIf="TipoAyuRecibidaCISeleccionados[a] != doc.value && TipoAyuRecibidaCISeleccionados[a+1] != doc.value && TipoAyuRecibidaCISeleccionados[a+2] != doc.value && TipoAyuRecibidaCISeleccionados[a+3] != doc.value && TipoAyuRecibidaCISeleccionados[a+4] != doc.value  && TipoAyuRecibidaCISeleccionados[a+5] != doc.value && TipoAyuRecibidaCISeleccionados[a+6] != doc.value && TipoAyuRecibidaCISeleccionados[a+7] != doc.value && TipoAyuRecibidaCISeleccionados[a+8] != doc.value && TipoAyuRecibidaCISeleccionados[a+9] != doc.value && TipoAyuRecibidaCISeleccionados[a+10] != doc.value && TipoAyuRecibidaCISeleccionados[a+11] != doc.value && TipoAyuRecibidaCISeleccionados[a+12] != doc.value && TipoAyuRecibidaCISeleccionados[a+13] != doc.value && TipoAyuRecibidaCISeleccionados[a+14] != doc.value">
+                    <div
+                      *ngIf="TipoAyuRecibidaCISeleccionados[a] != doc.value && TipoAyuRecibidaCISeleccionados[a+1] != doc.value && TipoAyuRecibidaCISeleccionados[a+2] != doc.value && TipoAyuRecibidaCISeleccionados[a+3] != doc.value && TipoAyuRecibidaCISeleccionados[a+4] != doc.value  && TipoAyuRecibidaCISeleccionados[a+5] != doc.value && TipoAyuRecibidaCISeleccionados[a+6] != doc.value && TipoAyuRecibidaCISeleccionados[a+7] != doc.value && TipoAyuRecibidaCISeleccionados[a+8] != doc.value && TipoAyuRecibidaCISeleccionados[a+9] != doc.value && TipoAyuRecibidaCISeleccionados[a+10] != doc.value && TipoAyuRecibidaCISeleccionados[a+11] != doc.value && TipoAyuRecibidaCISeleccionados[a+12] != doc.value && TipoAyuRecibidaCISeleccionados[a+13] != doc.value && TipoAyuRecibidaCISeleccionados[a+14] != doc.value"
+                    >
                       <label class="container">
-                        <input type="checkbox" formArrayName="tipo_ayuda_recibida_CI" [value]="doc.value"
-                          (change)="onCheckboxChangeTARCI($event)" />
+                        <input
+                          type="checkbox"
+                          formArrayName="tipo_ayuda_recibida_CI"
+                          [value]="doc.value"
+                          (change)="onCheckboxChangeTARCI($event)"
+                        />
                         {{doc.name}}
                         <span class="checkmark"></span><br />
                       </label>
@@ -487,8 +686,12 @@
                 </div>
                 <div *ngIf="TipoAyuRecibidaCISeleccionados.length == 0">
                   <label class="container">
-                    <input type="checkbox" formArrayName="tipo_ayuda_recibida_CI" [value]="doc.value"
-                      (change)="onCheckboxChangeTARCI($event)" />
+                    <input
+                      type="checkbox"
+                      formArrayName="tipo_ayuda_recibida_CI"
+                      [value]="doc.value"
+                      (change)="onCheckboxChangeTARCI($event)"
+                    />
                     {{doc.name}}
                     <span class="checkmark"></span><br />
                   </label>
@@ -497,43 +700,64 @@
             </div>
           </div>
 
-          
-
           <div class="card">
-            <h2> Colombianos retornados</h2>
+            <h2>Colombianos retornados</h2>
           </div>
 
           <div class="card">
             <label for="causal_de_retorno">47. Causal de retorno</label>
-            <select name="causal_de_retorno" id="47" formControlName="causal_de_retorno">
-              <option value="situacion_social">Situacion social, economica y de inseguridad de venezuela </option>
+            <select
+              name="causal_de_retorno"
+              id="47"
+              formControlName="causal_de_retorno"
+            >
+              <option value="situacion_social"
+                >Situacion social, economica y de inseguridad de venezuela
+              </option>
               <option value="situacion_Politica">Situacion Politica</option>
-              <option value="deportado_por_la_guardia">Devuelto y/o deportado por la guardia Venezolana</option>
+              <option value="deportado_por_la_guardia"
+                >Devuelto y/o deportado por la guardia Venezolana</option
+              >
               <option value="no aplica">No aplica</option>
             </select>
           </div>
 
           <div class="card">
-            <br>
+            <br />
             <label>48. Situación especial de retornados</label>
             <div *ngFor="let doc of situaEspecialRetornado; let i=index">
               <div *ngIf="(i/2)*2==i">
-                <div *ngFor="let docs of SituaEspeRetornadoSeleccionados; let a=index">
+                <div
+                  *ngFor="let docs of SituaEspeRetornadoSeleccionados; let a=index"
+                >
                   <div *ngIf="SituaEspeRetornadoSeleccionados[a] == doc.value">
                     <label class="container">
-                      <input type="checkbox" formArrayName="situa_especial_retornado" [value]="doc.value"
-                        (change)="onCheckboxChangeSER($event)" checked />
+                      <input
+                        type="checkbox"
+                        formArrayName="situa_especial_retornado"
+                        [value]="doc.value"
+                        (change)="onCheckboxChangeSER($event)"
+                        checked
+                      />
                       {{doc.name}}
                       <span class="checkmark"></span><br />
                     </label>
                   </div>
                 </div>
-                <div *ngFor="let docs of SituaEspeRetornadoSeleccionados; let a=index">
+                <div
+                  *ngFor="let docs of SituaEspeRetornadoSeleccionados; let a=index"
+                >
                   <div *ngIf=" a === 0">
-                    <div *ngIf="SituaEspeRetornadoSeleccionados[a] != doc.value && SituaEspeRetornadoSeleccionados[a+1] != doc.value && SituaEspeRetornadoSeleccionados[a+2] != doc.value && SituaEspeRetornadoSeleccionados[a+3] != doc.value && SituaEspeRetornadoSeleccionados[a+4] != doc.value">
+                    <div
+                      *ngIf="SituaEspeRetornadoSeleccionados[a] != doc.value && SituaEspeRetornadoSeleccionados[a+1] != doc.value && SituaEspeRetornadoSeleccionados[a+2] != doc.value && SituaEspeRetornadoSeleccionados[a+3] != doc.value && SituaEspeRetornadoSeleccionados[a+4] != doc.value"
+                    >
                       <label class="container">
-                        <input type="checkbox" formArrayName="situa_especial_retornado" [value]="doc.value"
-                          (change)="onCheckboxChangeSER($event)" />
+                        <input
+                          type="checkbox"
+                          formArrayName="situa_especial_retornado"
+                          [value]="doc.value"
+                          (change)="onCheckboxChangeSER($event)"
+                        />
                         {{doc.name}}
                         <span class="checkmark"></span><br />
                       </label>
@@ -542,8 +766,12 @@
                 </div>
                 <div *ngIf="SituaEspeRetornadoSeleccionados.length == 0">
                   <label class="container">
-                    <input type="checkbox" formArrayName="situa_especial_retornado" [value]="doc.value"
-                      (change)="onCheckboxChangeSER($event)" />
+                    <input
+                      type="checkbox"
+                      formArrayName="situa_especial_retornado"
+                      [value]="doc.value"
+                      (change)="onCheckboxChangeSER($event)"
+                    />
                     {{doc.name}}
                     <span class="checkmark"></span><br />
                   </label>
@@ -552,12 +780,16 @@
             </div>
           </div>
 
-
-
           <div class="card">
-            <br>
-            <label for="años_estancia_vzla">49. Años de estancia en Venezuela</label>
-            <select name="años_estancia_vzla" id="49" formControlName="años_estancia_vzla">
+            <br />
+            <label for="años_estancia_vzla"
+              >49. Años de estancia en Venezuela</label
+            >
+            <select
+              name="años_estancia_vzla"
+              id="49"
+              formControlName="años_estancia_vzla"
+            >
               <option value="de_1_a_3años">De 1 a 3 años</option>
               <option value="de_3_a_5años">De 3 a 5 años</option>
               <option value="de_6_a_10años">De 6 a 10 años</option>
@@ -565,31 +797,46 @@
               <option value="de_16_a_20años">De 16 a 20 años</option>
               <option value="de_21_a_25años">De 21 a 25 años</option>
               <option value="mas_de_25años">Mas de 25 años</option>
-              <option value="no aplica">No aplica</option>              
+              <option value="no aplica">No aplica</option>
             </select>
           </div>
 
           <div class="card">
-            <br>
+            <br />
             <label>50. Ajuste Socio-Demográfico en venezuela</label>
             <div *ngFor="let doc of ajusteSociodVene; let i=index">
               <div *ngIf="(i/2)*2==i">
-                <div *ngFor="let docs of AjuSocioDemoVeneSeleccionados; let a=index">
+                <div
+                  *ngFor="let docs of AjuSocioDemoVeneSeleccionados; let a=index"
+                >
                   <div *ngIf="AjuSocioDemoVeneSeleccionados[a] == doc.value">
                     <label class="container">
-                      <input type="checkbox" formArrayName="ajuste_socio_demo_vene" [value]="doc.value"
-                        (change)="onCheckboxChangeASDV($event)" checked />
+                      <input
+                        type="checkbox"
+                        formArrayName="ajuste_socio_demo_vene"
+                        [value]="doc.value"
+                        (change)="onCheckboxChangeASDV($event)"
+                        checked
+                      />
                       {{doc.name}}
                       <span class="checkmark"></span><br />
                     </label>
                   </div>
                 </div>
-                <div *ngFor="let docs of AjuSocioDemoVeneSeleccionados; let a=index">
+                <div
+                  *ngFor="let docs of AjuSocioDemoVeneSeleccionados; let a=index"
+                >
                   <div *ngIf=" a === 0">
-                    <div *ngIf="AjuSocioDemoVeneSeleccionados[a] != doc.value && AjuSocioDemoVeneSeleccionados[a+1] != doc.value && AjuSocioDemoVeneSeleccionados[a+2] != doc.value && AjuSocioDemoVeneSeleccionados[a+3] != doc.value && AjuSocioDemoVeneSeleccionados[a+4] != doc.value && AjuSocioDemoVeneSeleccionados[a+5] != doc.value && AjuSocioDemoVeneSeleccionados[a+6] != doc.value && AjuSocioDemoVeneSeleccionados[a+7] != doc.value && AjuSocioDemoVeneSeleccionados[a+8] != doc.value && AjuSocioDemoVeneSeleccionados[a+9] != doc.value && AjuSocioDemoVeneSeleccionados[a+10] != doc.value && AjuSocioDemoVeneSeleccionados[a+11] != doc.value">
+                    <div
+                      *ngIf="AjuSocioDemoVeneSeleccionados[a] != doc.value && AjuSocioDemoVeneSeleccionados[a+1] != doc.value && AjuSocioDemoVeneSeleccionados[a+2] != doc.value && AjuSocioDemoVeneSeleccionados[a+3] != doc.value && AjuSocioDemoVeneSeleccionados[a+4] != doc.value && AjuSocioDemoVeneSeleccionados[a+5] != doc.value && AjuSocioDemoVeneSeleccionados[a+6] != doc.value && AjuSocioDemoVeneSeleccionados[a+7] != doc.value && AjuSocioDemoVeneSeleccionados[a+8] != doc.value && AjuSocioDemoVeneSeleccionados[a+9] != doc.value && AjuSocioDemoVeneSeleccionados[a+10] != doc.value && AjuSocioDemoVeneSeleccionados[a+11] != doc.value"
+                    >
                       <label class="container">
-                        <input type="checkbox" formArrayName="ajuste_socio_demo_vene" [value]="doc.value"
-                          (change)="onCheckboxChangeASDV($event)" />
+                        <input
+                          type="checkbox"
+                          formArrayName="ajuste_socio_demo_vene"
+                          [value]="doc.value"
+                          (change)="onCheckboxChangeASDV($event)"
+                        />
                         {{doc.name}}
                         <span class="checkmark"></span><br />
                       </label>
@@ -598,8 +845,12 @@
                 </div>
                 <div *ngIf="AjuSocioDemoVeneSeleccionados.length == 0">
                   <label class="container">
-                    <input type="checkbox" formArrayName="ajuste_socio_demo_vene" [value]="doc.value"
-                      (change)="onCheckboxChangeASDV($event)" />
+                    <input
+                      type="checkbox"
+                      formArrayName="ajuste_socio_demo_vene"
+                      [value]="doc.value"
+                      (change)="onCheckboxChangeASDV($event)"
+                    />
                     {{doc.name}}
                     <span class="checkmark"></span><br />
                   </label>
@@ -607,10 +858,7 @@
               </div>
             </div>
           </div>
-
-
         </div>
-
 
         <div class="survey-btn">
           <button type="submit">Guardar</button>
@@ -641,7 +889,11 @@
 
             <div class="card">
               <label for="dateOfBirth">fecha de nacimiento</label>
-              <input formControlName="dateOfBirth" id="dateOfBirth" type="date" />
+              <input
+                formControlName="dateOfBirth"
+                id="dateOfBirth"
+                type="date"
+              />
             </div>
 
             <div class="card">
@@ -660,12 +912,20 @@
 
             <div class="card">
               <label for="act_economica">act_economica</label>
-              <input formControlName="act_economica" id="act_economica" type="text" />
+              <input
+                formControlName="act_economica"
+                id="act_economica"
+                type="text"
+              />
             </div>
 
             <div class="card">
               <label for="estatus_migratorio">Estatus Migratorio</label>
-              <select name="estatus_migratorio" id="estatus_migratorio" formControlName="estatus_migratorio">
+              <select
+                name="estatus_migratorio"
+                id="estatus_migratorio"
+                formControlName="estatus_migratorio"
+              >
                 <option value="Migrante">Migrante</option>
                 <option value="Refugiado">Refugiado</option>
                 <option value="Retornado">Retornado</option>
@@ -675,35 +935,42 @@
 
             <div class="card">
               <label for="afiliacion_salud">Afiliación Salud</label>
-              <select name="afiliacion_salud" id="afiliacion_salud" formControlName="afiliacion_salud">
+              <select
+                name="afiliacion_salud"
+                id="afiliacion_salud"
+                formControlName="afiliacion_salud"
+              >
                 <option value="Contributivo">Contributivo</option>
                 <option value="Subsidiado">Subsidiado</option>
                 <option value="Vinculado">Vinculado</option>
                 <option value="Regimen especial">Regimen especial</option>
-                <option value="Refugiado Subsidiado">Refugiado Subsidiado</option>
+                <option value="Refugiado Subsidiado"
+                  >Refugiado Subsidiado</option
+                >
                 <option value="No Afiliado">No Afiliado</option>
               </select>
             </div>
 
             <div>
-
               <div class="card">
                 <label>Tipo de Documento</label>
 
                 <div *ngFor="let doc of docs; let i=index">
                   <div *ngIf="(i/2)*2==i">
                     <label class="container">
-                      <input type="checkbox" formArrayName="docsSeleccionados" [value]="doc.value"
-                        (change)="onCheckboxChange($event)" />
+                      <input
+                        type="checkbox"
+                        formArrayName="docsSeleccionados"
+                        [value]="doc.value"
+                        (change)="onCheckboxChange($event)"
+                      />
                       {{doc.name}}
                       <span class="checkmark"></span><br />
                     </label>
                   </div>
-
                 </div>
 
                 <!-- <p>{{ fgValidator.value | json }}</p> -->
-
               </div>
             </div>
             <!-- ************************************************ -->
@@ -743,18 +1010,25 @@
 
             <div class="card">
               <label for="tipo_emprendimiento">tipo_emprendimiento</label>
-              <input formControlName="tipo_emprendimiento" id="tipo_emprendimiento" type="text" />
+              <input
+                formControlName="tipo_emprendimiento"
+                id="tipo_emprendimiento"
+                type="text"
+              />
             </div>
 
             <div class="card">
               <label for="tipo_act_economica">Tipo de actividad</label>
-              <select name="tipo_act_economica" id="tipo_act_economica" formControlName="tipo_act_economica">
+              <select
+                name="tipo_act_economica"
+                id="tipo_act_economica"
+                formControlName="tipo_act_economica"
+              >
                 <option value="Formal">Formal</option>
                 <option value="Informal">Informal</option>
                 <option value="No Aplica">No Aplica</option>
               </select>
             </div>
-
 
             <div class="card">
               <label for="runv">Inscrito en el RUNV</label>
@@ -766,7 +1040,11 @@
 
             <div class="card">
               <label for="discapacidad">Discapacidad</label>
-              <select name="discapacidad" id="discapacidad" formControlName="discapacidad">
+              <select
+                name="discapacidad"
+                id="discapacidad"
+                formControlName="discapacidad"
+              >
                 <option value="Mental">Mental</option>
                 <option value="Cognitiva">Cognitiva</option>
                 <option value="Auditiva">Auditiva</option>
@@ -779,7 +1057,11 @@
 
             <div class="card">
               <label for="grupo_etnico">Grupo Étnico</label>
-              <select name="grupo_etnico" id="grupo_etnico" formControlName="grupo_etnico">
+              <select
+                name="grupo_etnico"
+                id="grupo_etnico"
+                formControlName="grupo_etnico"
+              >
                 <option value="Mestizo">Mestizo</option>
                 <option value="Afrodescendiente">Afrodescendiente</option>
                 <option value="Palenquero">Palenquero</option>
@@ -791,7 +1073,11 @@
 
             <div class="card">
               <label for="movilidad_migratoria">Movilidad Migratoria</label>
-              <select name="movilidad_migratoria" id="movilidad_migratoria" formControlName="movilidad_migratoria">
+              <select
+                name="movilidad_migratoria"
+                id="movilidad_migratoria"
+                formControlName="movilidad_migratoria"
+              >
                 <option value="Solo">Solo</option>
                 <option value="Familiar">Familiar</option>
                 <option value="Grupal">Grupal</option>
@@ -828,7 +1114,11 @@
 
             <div class="card">
               <label for="parentezco">Parentezco</label>
-              <select name="parentezco" id="parentezco" formControlName="parentezco">
+              <select
+                name="parentezco"
+                id="parentezco"
+                formControlName="parentezco"
+              >
                 <option value="Principal">Principal</option>
                 <option value="Padre">Padre</option>
                 <option value="Madre">Madre</option>
@@ -849,43 +1139,46 @@
           </button>
         </div>
       </form>
+      <div class="pollsters__tables">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>nombre</th>
+              <th>apellido</th>
+              <th>documento</th>
+              <th>genero</th>
+              <th>parentezco</th>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th>nombre</th>
-            <th>apellido</th>
-            <th>documento</th>
-            <th>genero</th>
-            <th>parentezco</th>
+              <th><i class="fa fa-edit"></i></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of listPeople">
+              <td>
+                {{ p.nombre }}
+              </td>
+              <td>
+                {{ p.apellido }}
+              </td>
+              <td>
+                {{ p.documento }}
+              </td>
+              <td>
+                {{ p.genero }}
+              </td>
+              <td>
+                {{ p.parentezco }}
+              </td>
 
-            <th><i class="fa fa-edit"></i></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let p of listPeople">
-            <td>
-              {{ p.nombre }}
-            </td>
-            <td>
-              {{ p.apellido }}
-            </td>
-            <td>
-              {{ p.documento }}
-            </td>
-            <td>
-              {{ p.genero }}
-            </td>
-            <td>
-              {{ p.parentezco }}
-            </td>
-
-            <td>
-              <a routerLink="/administracion/editar-persona/{{ p.id }}">Editar <i class="fa fa-edit"></i></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              <td>
+                <a routerLink="/administracion/editar-persona/{{ p.id }}"
+                  >Editar <i class="fa fa-edit"></i
+                ></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

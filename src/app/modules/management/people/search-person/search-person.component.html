@@ -1,44 +1,46 @@
-<div class="pollsters get-users">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>nombre</th>
-        <th>apellido</th>
-        <th>documento</th>
-        <th>genero</th>
-        <th>nacionalidad</th>
-        <th>Fecha Nacimiento</th>
-        <th><i class="fa fa-edit"></i></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of listPeople">
-        <td>
-          {{ p.nombre }}
-        </td>
-        <td>
-          {{ p.apellido }}
-        </td>
-        <td>
-          {{ p.documento }}
-        </td>
-        <td>
-          {{ p.genero }}
-        </td>
-        <td>
-          {{ p.nacionalidad }}
-        </td>
-        <td>
-          {{ p.fechaNac }}
-        </td>
-        <td>
-          <a routerLink="/administracion/editar-persona/{{ p.id }}"
-            >Editar <i class="fa fa-edit"></i
-          ></a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="pollsters">
+  <div class="pollsters__tables">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>nombre</th>
+          <th>apellido</th>
+          <th>documento</th>
+          <th>genero</th>
+          <th>nacionalidad</th>
+          <th>Fecha Nacimiento</th>
+          <th><i class="fa fa-edit"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of listPeople">
+          <td>
+            {{ p.nombre }}
+          </td>
+          <td>
+            {{ p.apellido }}
+          </td>
+          <td>
+            {{ p.documento }}
+          </td>
+          <td>
+            {{ p.genero }}
+          </td>
+          <td>
+            {{ p.nacionalidad }}
+          </td>
+          <td>
+            {{ p.fechaNac }}
+          </td>
+          <td>
+            <a routerLink="/administracion/editar-persona/{{ p.id }}"
+              >Editar <i class="fa fa-edit"></i
+            ></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <a class="btn" routerLink="/administracion/crear-persona">Crear Persona</a>
 </div>
