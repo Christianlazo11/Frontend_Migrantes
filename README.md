@@ -23,6 +23,14 @@ Proyecto Freelancer, realizado para la gobernación de Arauca, con la finalidad 
 - CriptoJs
 - JWT
 
+## Deploy
+
+```bash
+    https://migrantes2022.netlify.app/#/inicio
+    Usuario: testgithub@gmail.com
+    Clave: vj5fc2J1
+```
+
 ## Instalación
 
 ```bash
