@@ -1,27 +1,33 @@
-# FrontEndMigrantes2022
+# Migrantes 2022
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
+Proyecto Freelancer, realizado para la gobernación de Arauca, con la finalidad de encuestar a migrantes, localizados en las zonas de Arauca, Arauquita, Saravena, para dar una ayuda por parte de la gobernación, dependiendo de si la persona encuestada cumple con los requisitos.
 
-## Development server
+## Vista Principal
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[![migrantes2022.png](https://i.postimg.cc/mkPX506g/migrantes2022.png)](https://postimg.cc/q6dxtZTP)
 
-## Code scaffolding
+## Funcionalidades
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Login
+- Roles (Administrador, Encuestador, Usuario)
+- CRUD Usuario
+- CRUD Encuestador
+- CRUD Encuestas
+- Filtro Encuestas
 
-## Build
+## Tecnologias Utilizadas
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Angular 13
+- TypesCript
+- NodeJs(Loopback)
+- CriptoJs
+- JWT
 
-## Running unit tests
+## Instalación
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+    git clone https://github.com/christianlazo2020/Front_end_Migrantes_demo.git
+    npm install
+    cd my-project
+    ng serve
+```
