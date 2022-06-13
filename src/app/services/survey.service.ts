@@ -10,7 +10,7 @@ import { SecurityService } from "./security.service";
   providedIn: "root",
 })
 export class SurveyService {
-  url = "http://localhost:3000";
+  url = "https://backmigrantes2022.herokuapp.com/";
   token: string = "";
   dataUserSession = new BehaviorSubject<ModelIdentify>(new ModelIdentify());
 
